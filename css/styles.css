@@ -72,6 +72,7 @@ h3 {
 p, ul, td {
   font-family: var(--font-family-2);
   font-weight: var(--font-weight-light);
+  margin-block-end: 0;
 }
 
 
@@ -94,7 +95,7 @@ a:active {
   text-decoration: none;
 }
 
-button, .button {
+button, .button, input[type=submit] {
   /* overwrites browser defaults and resets the border */
   border: none;
   display: inline-block;
@@ -112,10 +113,9 @@ button, .button {
   transition: 0.9s opacity, 0.5s background-color, 0.4s font-size;
 }
 
-button:hover, button:focus, .button:hover, .button:focus {
+button:hover, button:focus, .button:hover, .button:focus, input[type=submit]:hover {
   /* lets the mouse appear as a hand when hovering over the button */
   cursor: pointer;
-  font-size: 18px;
   opacity: 0.8;
 }
 
@@ -201,8 +201,10 @@ button:hover, button:focus, .button:hover, .button:focus {
   padding: 20px;
 }
 
-.about__me {
-text-align: center;
+.about__me, .contact {
+  text-align: center;
+  max-width: 750px;
+  margin: auto;
 }
 
 @media all and (max-width: 500px) {
@@ -326,4 +328,37 @@ table {
 
 ul {
   padding-inline-start: 0;
+}
+
+input[type=email], input[type=tel], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  max-width: 400px;
+  text-align: left;
+  float: right;
+  margin-bottom: 20px;
+}
+
+input[type=submit] {
+  width: 100%;
+}
+
+.address {
+  float: left;
+  text-align: left;
+}
+
+.reach-out {
+  margin-block-end: 40px;
 }
