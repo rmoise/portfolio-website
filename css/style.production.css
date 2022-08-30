@@ -366,7 +366,7 @@ input[type="submit"]:active {
 .navigation-list a {
   display: block;
   padding: 23px;
-  color: #fff;
+  color: #000;
 }
 
 /* Menu Icon */
@@ -425,6 +425,10 @@ input[type="submit"]:active {
   max-height: 100%;
   background-color: #e1dfdd;
   position: fixed;
+  margin: 0;
+  top: 70px;
+  left: 0;
+  overflow: hidden;
 }
 
 .side-menu:checked ~ .hamb .hamb-line {
@@ -626,7 +630,7 @@ input[type="submit"]:active {
   margin-top: 30px;
   margin-right: 5px;
 }
-
+@media screen and (min-width: 500px) {
 nav.container a {
   color: #000;
   text-decoration: none;
@@ -681,6 +685,7 @@ nav.top-bottom-borders-in a:hover::after {
   -webkit-transform: translateY(0);
   -ms-transform: translateY(0);
   transform: translateY(0);
+}
 }
 
 @-webkit-keyframes color-change {
