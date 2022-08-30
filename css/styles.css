@@ -211,8 +211,8 @@ input[type="submit"]:active {
 
 .navigation-list a {
   display: block;
-  padding: 23px;
-  color: var(--secondary-color);
+  padding: 10px;
+  color: var(--primary-color);
 }
 
 /* Menu Icon */
@@ -256,7 +256,12 @@ input[type="submit"]:active {
 /* Toggle menu icon */
 .side-menu:checked ~ nav {
   max-height: 100%;
-  background-color: var(--main-bg-color);
+  background-color: #e1dfdd;
+  position: fixed;
+  margin: 0;
+  top: 70px;
+  left: 0;
+  overflow: hidden;
 }
 
 .side-menu:checked ~ .hamb .hamb-line {
@@ -409,7 +414,7 @@ input[type="submit"]:active {
   margin: 20px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .logo {
     width: 20%;
   }
@@ -435,6 +440,10 @@ input[type="submit"]:active {
   .page-header {
     display: block;
   }
+
+  .address {
+    float: unset !important;
+  }
 }
 
 .btn1 {
@@ -442,41 +451,43 @@ input[type="submit"]:active {
   margin-right: 5px;
 }
 
-nav.container a {
-  color: var(--primary-color);
-  text-decoration: none;
-  position: relative;
-  z-index: 0;
-  cursor: pointer;
-}
+@media screen and (min-width: 500px) {
+  nav.container a {
+    color: var(--primary-color);
+    text-decoration: none;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+  }
 
-/* Top and Bottom borders come in */
-nav.top-bottom-borders-in a::before,
-nav.top-bottom-borders-in a::after {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--primary-color);
-  content: "";
-  opacity: 0;
-  transition: all 0.3s;
-}
+  /* Top and Bottom borders come in */
+  nav.top-bottom-borders-in a::before,
+  nav.top-bottom-borders-in a::after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary-color);
+    content: "";
+    opacity: 0;
+    transition: all 0.3s;
+  }
 
-nav.top-bottom-borders-in a::before {
-  top: 0;
-  transform: translateY(-10px);
-}
+  nav.top-bottom-borders-in a::before {
+    top: 0;
+    transform: translateY(-10px);
+  }
 
-nav.top-bottom-borders-in a::after {
-  bottom: 0;
-  transform: translateY(10px);
-}
+  nav.top-bottom-borders-in a::after {
+    bottom: 0;
+    transform: translateY(10px);
+  }
 
-nav.top-bottom-borders-in a:hover::before,
-nav.top-bottom-borders-in a:hover::after {
-  opacity: 1;
-  transform: translateY(0);
+  nav.top-bottom-borders-in a:hover::before,
+  nav.top-bottom-borders-in a:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes color-change {

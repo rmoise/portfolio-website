@@ -1,9 +1,6 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
+/* stylelint-disable at-rule-no-vendor-prefix */
+/* stylelint-disable value-no-vendor-prefix */
+/* stylelint-disable property-no-vendor-prefix */
 
 a {
   color: #000;
@@ -15,6 +12,7 @@ a {
 }
 
 body {
+  /* stylelint-disable-next-line font-family-name-quotes */
   font-family: "Mulish", sans-serif;
   font-weight: 400;
   font-size: 16px; /* Sets the font size to 16px */
@@ -31,17 +29,21 @@ h4 {
 }
 
 p {
-  font-family: "Space Mono", sans-sans-serif;
+  font-family: "Space Mono", sans-serif;
   font-weight: 400;
 }
 
 ul {
-  font-family: "Space Mono", sans-sans-serif;
+  font-family: "Space Mono", sans-serif;
   font-weight: 400;
+  -webkit-padding-start: 0;
+  padding-inline-start: 0;
+  text-align: end;
+  margin: 20px;
 }
 
 td {
-  font-family: "Space Mono", sans-sans-serif;
+  font-family: "Space Mono", sans-serif;
   font-weight: 400;
 }
 
@@ -185,10 +187,6 @@ input[type="submit"] {
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   vertical-align: baseline;
-  width: auto;
-}
-
-input[type="submit"] {
   width: 100%;
 }
 
@@ -365,7 +363,7 @@ input[type="submit"]:active {
 
 .navigation-list a {
   display: block;
-  padding: 23px;
+  padding: 10px;
   color: #000;
 }
 
@@ -394,6 +392,7 @@ input[type="submit"]:active {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   width: 100%;
+  top: 5px;
 }
 
 .hamb-line::after {
@@ -406,13 +405,6 @@ input[type="submit"]:active {
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
   width: 100%;
-}
-
-.hamb-line::before {
-  top: 5px;
-}
-
-.hamb-line::after {
   top: -5px;
 }
 
@@ -634,62 +626,58 @@ input[type="submit"]:active {
   margin-top: 30px;
   margin-right: 5px;
 }
+
 @media screen and (min-width: 500px) {
-nav.container a {
-  color: #000;
-  text-decoration: none;
-  position: relative;
-  z-index: 0;
-  cursor: pointer;
-}
+  nav.container a {
+    color: #000;
+    text-decoration: none;
+    position: relative;
+    z-index: 0;
+    cursor: pointer;
+  }
 
-/* Top and Bottom borders come in */
-nav.top-bottom-borders-in a::before {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #000;
-  content: "";
-  opacity: 0;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-}
-nav.top-bottom-borders-in a::after {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: #000;
-  content: "";
-  opacity: 0;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-}
+  /* Top and Bottom borders come in */
+  nav.top-bottom-borders-in a::before {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+    content: "";
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    top: 0;
+    -webkit-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
 
-nav.top-bottom-borders-in a::before {
-  top: 0;
-  -webkit-transform: translateY(-10px);
-  -ms-transform: translateY(-10px);
-  transform: translateY(-10px);
-}
+  nav.top-bottom-borders-in a::after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #000;
+    content: "";
+    opacity: 0;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    bottom: 0;
+    -webkit-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    transform: translateY(10px);
+  }
 
-nav.top-bottom-borders-in a::after {
-  bottom: 0;
-  -webkit-transform: translateY(10px);
-  -ms-transform: translateY(10px);
-  transform: translateY(10px);
-}
-
-nav.top-bottom-borders-in a:hover::before,
-nav.top-bottom-borders-in a:hover::after {
-  opacity: 1;
-  -webkit-transform: translateY(0);
-  -ms-transform: translateY(0);
-  transform: translateY(0);
-}
+  nav.top-bottom-borders-in a:hover::before,
+  nav.top-bottom-borders-in a:hover::after {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
 }
 
 @-webkit-keyframes color-change {
@@ -786,13 +774,6 @@ nav.top-bottom-borders-in a:hover::after {
 table {
   margin-left: auto;
   margin-right: auto;
-}
-
-ul {
-  -webkit-padding-start: 0;
-  padding-inline-start: 0;
-  text-align: end;
-  margin: 20px;
 }
 
 input[type="email"],
