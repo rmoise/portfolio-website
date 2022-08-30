@@ -361,9 +361,6 @@ input[type="submit"]:active {
   position: fixed;
   overflow: hidden;
   max-height: 0;
-  -webkit-transition: max-height 0.1s ease-out;
-  -o-transition: max-height 0.1s ease-out;
-  transition: max-height 0.1s ease-out;
 }
 
 .navigation-list a {
