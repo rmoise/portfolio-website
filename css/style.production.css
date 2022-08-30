@@ -424,11 +424,6 @@ input[type="submit"]:active {
 .side-menu:checked ~ nav {
   max-height: 100%;
   background-color: #e1dfdd;
-  position: fixed;
-  margin: 0;
-  top: 70px;
-  left: 0;
-  overflow: hidden;
 }
 
 .side-menu:checked ~ .hamb .hamb-line {
