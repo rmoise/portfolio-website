@@ -624,6 +624,10 @@ input[type="submit"]:active {
   .page-header {
     display: block;
   }
+
+  .address {
+    float: unset !important;
+  }
 }
 
 .btn1 {
@@ -811,7 +815,7 @@ form {
   max-width: 400px;
   text-align: left;
   float: right;
-  margin-bottom: 35px;
+  margin-bottom: 80px;
 }
 
 .address {
