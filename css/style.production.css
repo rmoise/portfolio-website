@@ -427,6 +427,7 @@ input[type="submit"]:active {
 .side-menu:checked ~ nav {
   max-height: 100%;
   background-color: #e1dfdd;
+  position: fixed;
 }
 
 .side-menu:checked ~ .hamb .hamb-line {
@@ -596,14 +597,14 @@ input[type="submit"]:active {
   margin: 20px;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
   .logo {
     width: 20%;
   }
 
   .profile {
     padding: 20px;
-    padding-bottom: 117px;
+    padding-bottom: 142px;
   }
 
   .profile-portrait {
