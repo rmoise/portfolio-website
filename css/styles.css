@@ -484,6 +484,10 @@ form {
     font-size: 22px;
   }
 
+  h2 {
+    font-size: 18px;
+  }
+
   .profile-portrait {
     width: 250px;
   }
@@ -506,6 +510,10 @@ form {
 
   h1 {
     font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
   }
 }
 
