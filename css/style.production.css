@@ -697,10 +697,6 @@ form {
     grid-row: auto / auto;
   }
 
-  h1 {
-    font-size: 22px;
-  }
-
   .profile-portrait {
     width: 250px;
   }
@@ -708,22 +704,36 @@ form {
   .portrait-grid {
     text-align: center;
   }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
 }
 
 @media all and (min-width: 500px) and (max-width: 750px) {
-  .grid {
+  .grid,
+  .portrait-grid {
     -ms-grid-columns: 1fr 10px 1fr;
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
   }
 
-  .grid-item:last-child {
+  .grid-item:last-child,
+  .portrait-grid-item:last-child {
     grid-column: auto / auto;
     grid-row: auto / auto;
   }
 
   h1 {
     font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
   }
 }
 
