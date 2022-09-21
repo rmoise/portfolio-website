@@ -188,6 +188,7 @@ input[type="submit"] {
   touch-action: manipulation;
   vertical-align: baseline;
   width: 100%;
+  -webkit-appearance: none;
 }
 
 button:hover {
@@ -830,4 +831,9 @@ form {
     -ms-transform: translateY(0);
     transform: translateY(0);
   }
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
 }
