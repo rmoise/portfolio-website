@@ -108,6 +108,7 @@ input[type="submit"] {
   touch-action: manipulation;
   vertical-align: baseline;
   width: auto;
+  -webkit-appearance: none;
 }
 
 input[type="submit"] {
@@ -601,4 +602,9 @@ form {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
 }
