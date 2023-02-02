@@ -13,10 +13,10 @@ a {
 
 body {
   /* stylelint-disable-next-line font-family-name-quotes */
-  font-family: "Mulish", sans-serif;
+  font-family: 'Mulish', sans-serif;
   font-weight: 400;
   font-size: 16px; /* Sets the font size to 16px */
-  line-height: 1.6;  /* Sets the line-height to 1.6 */
+  line-height: 1.6; /* Sets the line-height to 1.6 */
   background-color: #e1dfdd;
   margin: 0;
 }
@@ -29,12 +29,12 @@ h4 {
 }
 
 p {
-  font-family: "Space Mono", sans-serif;
+  font-family: 'Space Mono', sans-serif;
   font-weight: 400;
 }
 
 ul {
-  font-family: "Space Mono", sans-serif;
+  font-family: 'Space Mono', sans-serif;
   font-weight: 400;
   -webkit-padding-start: 0;
   padding-inline-start: 0;
@@ -42,9 +42,31 @@ ul {
   margin: 20px;
 }
 
+.social-media {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  width: 160px;
+
+  align-items: center;
+}
+
+.container-card {
+  padding: 40px;
+  padding-top: 0;
+}
+
 td {
-  font-family: "Space Mono", sans-serif;
+  font-family: 'Space Mono', sans-serif;
   font-weight: 400;
+}
+
+table {
+  border-spacing: 10px;
+  border-collapse: separate;
 }
 
 a:visited {
@@ -149,7 +171,7 @@ button {
   width: auto;
 }
 
-input[type="submit"] {
+input[type='submit'] {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
@@ -235,7 +257,7 @@ button:focus {
   color: #fff;
 }
 
-input[type="submit"]:hover {
+input[type='submit']:hover {
   /* lets the mouse appear as a hand when hovering over the button */
   border-color: rgb(0 0 0 / 15%);
   -webkit-box-shadow: rgb(0 0 0 / 10%) 0 4px 12px;
@@ -248,7 +270,7 @@ input[type="submit"]:hover {
 
 button:active,
 .button:active,
-input[type="submit"]:active {
+input[type='submit']:active {
   border-color: rgb(0 0 0 / 15%);
   -webkit-box-shadow: rgb(0 0 0 / 6%) 0 2px 4px;
   box-shadow: rgb(0 0 0 / 6%) 0 2px 4px;
@@ -376,7 +398,7 @@ input[type="submit"]:active {
 
 .hamb-line::before {
   background: #000;
-  content: "";
+  content: '';
   display: block;
   height: 100%;
   position: absolute;
@@ -389,7 +411,7 @@ input[type="submit"]:active {
 
 .hamb-line::after {
   background: #000;
-  content: "";
+  content: '';
   display: block;
   height: 100%;
   position: absolute;
@@ -509,20 +531,21 @@ input[type="submit"]:active {
   background-color: #fff;
   width: auto;
   min-height: auto;
-  margin: 0;
-  padding: 20px;
+/*   margin: 0;
+  padding: 20px; */
   display: inline-block;
 }
 
 .page-footer {
-  position: fixed;
+  /*  position: fixed; */
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #000;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.076);
+  /*  color: white; */
   text-align: center;
   padding-bottom: 20px;
+  padding-top: 5px;
 }
 
 .work,
@@ -531,6 +554,30 @@ input[type="submit"]:active {
   padding: 20px;
   -webkit-margin-after: 80px;
   margin-block-end: 80px;
+  min-height: 100vh;
+}
+
+.work-header  {
+  padding-left: 20px;
+  margin-bottom: 0;
+}
+
+.github-link {
+    display: inline-block;
+    line-height: 0;
+}
+
+.github-link:hover {
+  filter: contrast(0.5);
+}
+
+.project-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow-y: auto;
+    height: 100px;
+
 }
 
 .about-me,
@@ -641,8 +688,8 @@ table {
   margin-right: auto;
 }
 
-input[type="email"],
-input[type="tel"],
+input[type='email'],
+input[type='tel'],
 textarea {
   width: 100%;
   padding: 12px 20px;
@@ -664,10 +711,10 @@ form {
 }
 
 .address {
-  float: left;
+  /*  float: left; */
   text-align: left;
-  -webkit-margin-after: 40px;
-  margin-block-end: 40px;
+
+  overflow: hidden;
 }
 
 .reach-out {
@@ -748,9 +795,18 @@ form {
     width: 20%;
   }
 
+  form {
+    position: relative;
+    top: 40px;
+  }
+
+  .social-media {
+    width: 40%;
+  }
+
   .page-footer {
     float: left;
-    position: static;
+    /* position: static; */
   }
 
   .navigation-list {
@@ -789,6 +845,11 @@ form {
     cursor: pointer;
   }
 
+  form {
+    position: relative;
+    top: -201px;
+  }
+
   /* Top and Bottom borders come in */
   nav.top-bottom-borders-in a::before {
     position: absolute;
@@ -796,7 +857,7 @@ form {
     width: 100%;
     height: 2px;
     background: #000;
-    content: "";
+    content: '';
     opacity: 0;
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
@@ -813,7 +874,7 @@ form {
     width: 100%;
     height: 2px;
     background: #000;
-    content: "";
+    content: '';
     opacity: 0;
     -webkit-transition: all 0.3s;
     -o-transition: all 0.3s;
