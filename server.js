@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const keys = require('./config/keys');
+var cors = require('cors')
+app.use(cors());
+
 
 const nodemailer = require('nodemailer');
 
