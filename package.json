@@ -14,7 +14,9 @@
   "license": "ISC",
   "homepage": "https://dj2035.github.io/jude-portfolio/",
   "devDependencies": {
-    "tailwindcss": "^3.2.1"
+    "autoprefixer": "^10.4.14",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
   },
   "dependencies": {
     "gh-pages": "^4.0.0"
