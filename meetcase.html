@@ -60,12 +60,23 @@
     <section class="container flex justify-between items-center mx-auto">
         <div class="flex flex-wrap md:mb-8 justify-center md:justify-start md:flex-nowrap mt-32 px-8 md:px-14 lg:px-24 w-full">
             <!-- Left item -->
-            <div class="flex flex-col md:w-1/2">
+            <div class="flex flex-col md:w-full">
                 <h1 id="header" class="font-bold  text-5xl xl:text-6xl text-center md:text-left">
                     <span style="color: #01f3ab">Meet</span><br />
                     Case Study
                 </h1>
-                <a href="img/Meet Case Study.pdf" class="mt-8 underline text-center md:text-left block text-green hover:text-linkHover" target="_blank">Download Meet Case Study</a>
+                <div class="mt-8 md:flex">
+                    <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/meet/" class="md:block p-1 md:px-6 md:pt-2 lg:pl-0 text-green hover:text-linkHover">
+                        Live Preview
+                    </a>
+                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/meet" class="md:block p-1 md:px-6 md:pt-2 lg:pl-0 text-green hover:text-linkHover">
+                        GitHub
+                    </a>
+                    <a rel="noopener noreferrer" href="meetcase.html" class="md:block md:p-3 md:px-6 md:pt-2 lg:pl-0 text-green hover:text-linkHover">
+                        Download
+                    </a>
+                </div>
+
             </div>
         </div>
     </section>
@@ -337,7 +348,7 @@
                 <form class="space-y-8 input-form" action="https://formspree.io/f/mnqyjrrp" method="POST">
                     <div>
                         <label class="block mb-4 text-xl font-bold">Your name</label>
-                        <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required/>
+                        <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
                     </div>
                     <div>
                         <label for="email" class="block mb-4 text-xl font-bold">Your email</label>
