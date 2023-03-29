@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon-32x32.png" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Roderick's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="font-poppins pb-12">
+    <!-- Navbar -->
+    <nav class="fixed z-10 top-0 mx-auto py-6 w-full bg-white">
+        <!-- Flex container -->
+        <div class="flex items-center justify-between px-8 md:px-14 lg:px-24 w-full">
+            <!-- Logo -->
+            <div class="pt-2">
+                <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
+            </div>
+            <!-- Menu items -->
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
+                <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
+                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development Projects</a>
+                <a href="design.html" class="hover:text-darkGrayishBlue">Graphic Design</a>
+            </div>
+            <!-- Button -->
+            <a href="#contact" class="hidden md:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
+                Contact
+            </a>
+
+            <!-- Hamburger Icon -->
+            <button id="menu-btn" class="block hamburger md:hidden focus:outline-none">
+                <span class="hamburger-top"></span>
+                <span class="hamburger-middle"></span>
+                <span class="hamburger-bottom"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden">
+            <div id="menu" class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md">
+                <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
+                <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
+                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development Projects</a>
+                <a href="design.html" class="hover:text-darkGrayishBlue">Graphic Design</a>
+                <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Title Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="flex flex-wrap md:mb-8 justify-center md:justify-start md:flex-nowrap mt-32 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Left item -->
+            <div class="flex flex-col md:w-1/2">
+                <h1 id="header" class="font-bold  text-5xl xl:text-6xl text-center md:text-left">
+                    <span style="color: #01f3ab">myFlix</span><br />
+                    Case Study
+                </h1>
+                <a href="img/myFlix Case Study.pdf" class="mt-8 underline text-center md:text-left block text-green hover:text-linkHover" target="_blank">Download myFlix Case Study</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Overview Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="flex flex-wrap md:flex-nowrap md:mt-10 mt-20 mb-8 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Left item -->
+            <div class="flex flex-col md:w-1/2 justify-center">
+                <h2 id="web" class="secondary-title text-3xl font-bold">
+                    Overview
+                </h2>
+                <p class="mt-4 md:mb-0 mb-8">
+                    myFlix is a web app, developed using the MERN stack, that
+                    provides users with access to information about movies,
+                    directors, and genres. Users are able to create an account,
+                    update their personal data, and create a list of favorite
+                    movies.
+                </p>
+            </div>
+
+            <!-- Image -->
+            <div class="max-w-lg md:mb-0 md:ml-20">
+                <img src="img/myFlix-laptop.png" alt="" class="rounded-lg bottom-0 right-0 lg:left-0 mx-auto" />
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Purpose & Context Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="flex flex-wrap md:flex-nowrap md:mt-10 md:mb-10 mt-8 mb-8 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Left item -->
+            <div class="flex flex-col md:w-full">
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+
+                    <h2 class="secondary-title text-3xl font-bold">
+                        Purpose & Context
+                    </h2>
+
+                    <p class="mt-4 md:mb-0">myFlix was a project I built as part of my web development course
+                        at CareerFoundry to demonstrate my mastery of full-stack
+                        JavaScript development.</p>
+
+                </figure>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Objective Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="flex flex-wrap-reverse md:flex-nowrap mt-10 mb-8 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Image -->
+            <div class="max-w-lg md:mr-20">
+                <img src="img/safar-safarov-koOdUvfGr4c-unsplash.jpg" alt="" class="rounded-lg bottom-0 right-0 lg:left-0 mx-auto" />
+            </div>
+            <!-- Left item -->
+            <div class="mt-8 flex flex-col md:w-1/2 justify-center">
+                <h2 class="secondary-title text-3xl font-bold">
+                    Objective
+                </h2>
+                <p class="mt-4 mb-8">
+                    The aim of the project was to build the complete server-side and
+                    client-side application from scratch.
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Duration Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="mt-10 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Left item -->
+            <div class="flex flex-col">
+                <!--          <h2 id="web" class="secondary-title text-4xl font-bold mb-8">
+                    Duration
+                </h2> -->
+                <div class="grid mb-8  rounded-lg shadow-sm gap-4 md:mb-12 md:grid-cols">
+
+
+                    <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                        <svg fill="none" class="w-10 h-10 mb-2 " stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+
+                        </svg>
+
+                        <h5 class="mb-2 text-2xl font-semibold tracking-tight">Duration</h5>
+
+                        <p class="mb-3 font-normal">45 Days</p>
+
+                    </figure>
+                    <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                        <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"></path>
+                        </svg>
+
+                        <h5 class="mb-2 text-2xl font-semibold tracking-tight">Credits</h5>
+
+                        <p class="mb-3 font-normal ">
+                        <ul class="grid md:grid-cols-1 gap-1 list-disc list-inside">
+                            <li>Tutor: Terver Aosu</li>
+                            <li>Mentor: Stephen Barungi</li>
+                        </ul>
+                        </p>
+
+                    </figure>
+                    <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                        <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008z"></path>
+                        </svg>
+                        <a href="#">
+                            <h5 class="mb-2 text-2xl font-semibold tracking-tight">Built With</h5>
+                        </a>
+                        <p class="mb-3 font-normal">
+                        <ul class="grid md:grid-cols-3 gap-1 list-disc list-inside">
+                            <li>React</li>
+                            <li>Redux</li>
+                            <li>Bootstrap</li>
+                            <li>Netifly</li>
+                            <li>Heroku</li>
+                            <li>Javascript</li>
+                            <li>Node.JS</li>
+                            <li>MongoDB</li>
+                            <li>Express.JS</li>
+                            <li>Postman</li>
+                        </ul>
+                        </p>
+
+                    </figure>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Title Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="flex flex-wrap md:mb-8 justify-center md:justify-start md:flex-nowrap mt-6 mb-6 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Left item -->
+            <div class="flex flex-col md:w-1/2">
+                <h1 class="font-bold  text-5xl xl:text-6xl text-center md:text-left">
+                    Approach
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serverside Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="flex flex-wrap md:flex-nowrap mt-10 mb-8 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Left item -->
+            <div class="flex flex-col md:w-1/2">
+                <h2 class="secondary-title text-3xl font-bold">
+                    Serverside
+                </h2>
+                <p class="mt-4 md:mb-0 mb-8 md:mr-12">
+                    I created a RESTful API using Node.js and Express, that interacts with a non-relational database (MongoDB). The API can be accessed via commonly used HTTP methods like GET or POST. To retrieve and store data in the database, CRUD methods are used. The API provides movie information in JSON format.
+                </p>
+            </div>
+
+            <!-- Image -->
+            <div class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-2 lg:gap-6">
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight">01 Basics</h5>
+
+                    <p class="mb-3 font-normal">I first needed to determine if I wanted a relational or non-
+                        relational Database. After testing with PostGreSQL and
+                        MongoDB, I chose MongoDB because it is a non-relational
+                        database and offers more flexibility.</p>
+
+                </figure>
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight">02 Business Logic</h5>
+
+                    <p class="mb-3 font-normal ">Next, I created models to keep my data consistently formatted
+                        and used Mongoose to interact with the database</p>
+
+                </figure>
+
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2 " stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"></path>
+                    </svg>
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight ">03 Security</h5>
+
+                    <p class="mb-3 font-normal ">I chose basic HTTP for initial login paired with a JWT token
+                        based authorization to make my site secure. Then, I
+                        implemented CORS password hashing and data validation for
+                        extra security.</p>
+                </figure>
+
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2 " stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"></path>
+                    </svg>
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight">04 Deployment</h5>
+
+                    <p class="mb-3 font-normal ">After testing all endpoints using Postman, I finally used
+                        Heroku to deploy my app and MongoDB Atlas to host my database.</p>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Clientside Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="flex flex-wrap md:flex-nowrap mt-10 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Left item -->
+            <div class="flex flex-col md:w-3/5">
+                <h2 class="secondary-title text-3xl font-bold">
+                    Clientside
+                </h2>
+                <p class="leading-relaxed mt-4 mb-2 md:mr-12">
+                    After completing the API, I built the interface users would need to interact with the server-side. It is a single-page, responsive application, developed with React and React-Redux. It provides several interface views including a movie view, a login view, a registration view and a profile view (where users can update their user data and list of favorites). After completing the API, I built the interface users would need to interact with the server-side. It is a single-page, responsive application, developed with React and React-Redux. It provides several interface views including a movie view, a login view, a registration view and a profile view (where users can update their user data and list of favorites).
+                </p>
+
+                <div class="max-w-lg  md:mb-0 md:mr-5">
+                    <img src="img/myFlix-laptop_2.png" alt="" class="mb-8 rounded-lg bottom-0 right-0 lg:left-0 mx-auto" />
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols lg:gap-6 mb-10">
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.867 19.125h.008v.008h-.008v-.008z"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight">The Build</h5>
+
+                    <p class="mb-3 font-normal">This project taught me how to use MVC architecture as a design pattern. To facilitate this, I chose to use React because it is fast, easy to maintain, and well documented. Then, I used Parcel to complete the build operations.</p>
+
+                </figure>
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 6.878V6a2.25 2.25 0 012.25-2.25h7.5A2.25 2.25 0 0118 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 004.5 9v.878m13.5-3A2.25 2.25 0 0119.5 9v.878m0 0a2.246 2.246 0 00-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0121 12v6a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 18v-6c0-.98.626-1.813 1.5-2.122"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight">Create Components</h5>
+
+                    <p class="mb-3 font-normal">Once the initial build was done, I created components for the different views and hooks to control the state. I used Axios to pull in the API I had previously created.</p>
+
+                </figure>
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight">Design</h5>
+
+                    <p class="mb-3 font-normal">I used React Bootstrap to design the layout of the pages and cards and to ensure consistent styling. I also used client side app-routing to add authentication to access views.</p>
+
+                </figure>
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight">Final product</h5>
+
+                    <p class="mb-3 font-normal">Finally, I added Redux to better manage the application's state and ensure that my app would be scalable. Once integrated, I hosted my completed project on Netlify.</p>
+
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Retrospective Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="mt-10 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Left item -->
+            <h2 class="mb-8 secondary-title text-3xl font-bold">
+                Retrospective
+            </h2>
+
+            <!-- Image -->
+            <div class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-4 lg:gap-6 mb-10">
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight">What went well?</h5>
+
+                    <p class="mb-3 font-normal">I very much enjoyed learning how to build the database, working on the frontend and setting up the backend. Having worked as a UI designer, designing UI components/libraries I found react to make sense to me. I like the idea of working with components.</p>
+                </figure>
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2 text-gray-500" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 15h2.25m8.024-9.75c.011.05.028.1.052.148.591 1.2.924 2.55.924 3.977a8.96 8.96 0 01-.999 4.125m.023-8.25c-.076-.365.183-.75.575-.75h.908c.889 0 1.713.518 1.972 1.368.339 1.11.521 2.287.521 3.507 0 1.553-.295 3.036-.831 4.398C20.613 14.547 19.833 15 19 15h-1.053c-.472 0-.745-.556-.5-.96a8.95 8.95 0 00.303-.54m.023-8.25H16.48a4.5 4.5 0 01-1.423-.23l-3.114-1.04a4.5 4.5 0 00-1.423-.23H6.504c-.618 0-1.217.247-1.605.729A11.95 11.95 0 002.25 12c0 .434.023.863.068 1.285C2.427 14.306 3.346 15 4.372 15h3.126c.618 0 .991.724.725 1.282A7.471 7.471 0 007.5 19.5a2.25 2.25 0 002.25 2.25.75.75 0 00.75-.75v-.633c0-.573.11-1.14.322-1.672.304-.76.93-1.33 1.653-1.715a9.04 9.04 0 002.86-2.4c.498-.634 1.226-1.08 2.032-1.08h.384"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">What didn't go well?</h5>
+
+                    <p class="mb-3 font-normal">The biggest challenge was time. I would've hoped to add more functionality to the app, like adding google login, and possibly more movie choices and options such as trending, whats popular, etc. but I think its a great first project into building a backend and frontend application.</p>
+
+                </figure>
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2 text-gray-500" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900">Future Steps</h5>
+
+                    <p class="mb-3 font-normal">I would like to continue to build on the app to include more movies, movie features and a google oauth 2.0 login. I would like to incorporate features such as whats trending, whats popular, ability to watch trailers of the movies and movie ratings.</p>
+
+                </figure>
+                <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+                    <svg fill="none" class="w-10 h-10 mb-2" stroke="#00F2AA" stroke-width="1.5" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"></path>
+                    </svg>
+
+                    <h5 class="mb-2 text-2xl font-semibold tracking-tigh">Final Thoughts</h5>
+
+                    <p class="mb-3 font-normal">Overall, I've enjoyed this project and gained quite a bit of knowledge about developing an entire web application from scratch. This project taught me the ins and outs of react and how to structure a database for the backend.</p>
+
+                </figure>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact form-->
+    <div class="container mt-32 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
+        <section class="w-full">
+            <h1 id="contact" class="secondary-title text-4xl font-bold">
+                Contact me
+            </h1>
+            <p class="section-paragraph">
+                Please use the form below to send me a message. I'll be happy to hear
+                from you. Thanks!!!
+            </p>
+
+            <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
+                <form class="space-y-8 input-form" action="https://formspree.io/f/mnqyjrrp" method="POST">
+                    <div>
+                        <label class="block mb-4 text-xl font-bold">Your name</label>
+                        <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-4 text-xl font-bold">Your email</label>
+                        <input type="email" name="Email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+                    </div>
+                    <div>
+                        <label class="block mb-4 text-xl font-bold">Your message</label>
+                        <textarea name="Message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    <button id="form-btn" type="submit" class="px-6 py-2 bg-green rounded-full font-bold hover:bg-brightGreen">
+                        Send it!
+                    </button>
+                </form>
+
+                <!-- Contact info-->
+                <div class="mt-12">
+                    <p>+49 163 7126279</p>
+                    <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
+                    <a href="img/Roderick Moise_CV.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
+                    <!-- Socials-->
+                    <div class="flex mt-20 space-x-6">
+                        <!-- Github logo -->
+                        <a href="https://github.com/rmoise"><img src="img/github_icon.svg" alt="github" /></a>
+                        <!-- Twitter logo -->
+                        <a href="https://twitter.com/RoderickMoise"><img src="img/twitter_icon.svg" alt="twitter" /></a>
+                        <!-- LinkedIn logo -->
+                        <a href="https://www.linkedin.com/in/roderickmoise/"><img src="img/linkedin_icon.svg" alt="linkedin" /></a>
+                        <!-- Medium logo -->
+                        <a href="https://medium.com/@roderickfmoise"><img src="img/medium_icon.svg" alt="medium" /></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+
+</body>
+
+</html>

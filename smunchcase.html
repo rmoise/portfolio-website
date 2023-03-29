@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon-32x32.png" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Roderick's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="font-poppins pb-12">
+    <!-- Navbar -->
+    <nav class="fixed z-10 top-0 mx-auto py-6 w-full bg-white">
+        <!-- Flex container -->
+        <div class="flex items-center justify-between px-8 md:px-14 lg:px-24 w-full">
+            <!-- Logo -->
+            <div class="pt-2">
+                <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
+            </div>
+            <!-- Menu items -->
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
+                <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
+                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development Projects</a>
+                <a href="design.html" class="hover:text-darkGrayishBlue">Graphic Design</a>
+            </div>
+            <!-- Button -->
+            <a href="#contact" class="hidden md:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
+                Contact
+            </a>
+
+            <!-- Hamburger Icon -->
+            <button id="menu-btn" class="block hamburger md:hidden focus:outline-none">
+                <span class="hamburger-top"></span>
+                <span class="hamburger-middle"></span>
+                <span class="hamburger-bottom"></span>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden">
+            <div id="menu" class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md">
+                <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
+                <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
+                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development Projects</a>
+                <a href="design.html" class="hover:text-darkGrayishBlue">Graphic Design</a>
+                <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Title Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <div class="md:flex-nowrap mt-32 mb-16 px-8 md:px-14 lg:px-24 w-full">
+            <!-- Left item -->
+            <div class="flex flex-col md:w-1/2">
+                <h1 id="header" class="font-bold  text-5xl xl:text-6xl text-center md:text-left">
+                    <span style="color: #01f3ab">Smunch</span>
+                    <div class="md:mt-2">Case Study</div>
+                </h1>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- Hero Section -->
+    <section class="container flex justify-between items-center mx-auto">
+        <!-- Work section-->
+        <div class="container flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
+            <section class="w-full">
+                <!--                 <h2 id="web" class="secondary-title text-4xl font-bold">
+                    Smunch Case Study
+                </h2> -->
+
+                <div class="space-y-6">
+                    <h2 class="secondary-title text-3xl font-bold">
+                        Challenge
+                    </h2>
+                    <p>
+                        The goal was to create a new brand identity and better app
+                        usability that could resonate in today's busy market. When
+                        designing the logo I wanted to achieve speed and implementation
+                        and to do that I believe it’s best to set some boundaries to allow
+                        the mind to wander in a creative direction. The limitations set
+                        for this logo was that it had to be associated with food and tech
+                        due to Smunch mainly being a software\delivery food based company.
+                    </p>
+
+                    <h2 class="secondary-title text-3xl font-bold">
+                        Solution
+                    </h2>
+                    <p>
+                        Before implementing design I did some research on Smunch's
+                        competitors and found purple to be the ideal color for the brand.
+                        The previous logo looked a bit outdated and the icon didn’t really
+                        connect with the company’s philosophy. The philosophy that
+                        ordering Smunch should be as simple as clicking a button. What
+                        inspired the logos direction was a reference to the videogame
+                        pacman. This reference came to mind because of the simplistic
+                        nature of the game and the playfulness attitude of the team at
+                        Smunch. The pacman game plays mainly on winning/eating by pushing
+                        a button therefore I felt there was a creative connection there.
+                        Though the logo appears to be abstract I believe the redesign
+                        reveals more of a purpose behind the design decision that I made.
+                    </p>
+                    <p>
+                        Before designing the app I did some user testing and user research
+                        to get a better understanding of how people used the older version
+                        of the app. After feedback was given I worked on creating working
+                        prototypes through invision.
+                    </p>
+                    <br>
+                    <img src="img/Untitled-23.jpg" class="mx-auto lg:w-2/3 object-cover" />
+
+                    <img src="img/Smunch_Brand_Guidelines.png" class="mx-auto lg:w-2/3 object-cover" />
+
+                    <img src="img/Mockup7.jpg" class="mx-auto lg:w-2/3 object-cover" />
+
+                    <img src="img/Mockup (1).jpg" class="mx-auto lg:w-2/3 object-cover" />
+
+                    <img src="img/02---iPhone-XS-Front.jpg" class="mx-auto lg:w-2/3 object-cover" />
+
+                    <img src="img/02---iPhone-XS-Front2.jpg" class="mx-auto lg:w-2/3 object-cover w-400" />
+
+                    <img src="img/iMac-Flat-Mockup3_1_.jpg" class="mx-auto lg:w-2/3 object-cover" />
+
+                    <img src="img/Untitled-26.jpg" class="mx-auto lg:w-2/3 object-cover" />
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Contact form-->
+    <div class="container mt-32 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
+        <section class="w-full">
+            <h1 id="contact" class="secondary-title text-4xl font-bold">
+                Contact me
+            </h1>
+            <p class="section-paragraph">
+                Please use the form below to send me a message. I'll be happy to hear
+                from you. Thanks!!!
+            </p>
+
+            <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
+                <form class="space-y-8 input-form" action="https://formspree.io/f/mnqyjrrp" method="POST">
+                    <div>
+                        <label class="block mb-4 text-xl font-bold">Your name</label>
+                        <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-4 text-xl font-bold">Your email</label>
+                        <input type="email" name="Email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+                    </div>
+                    <div>
+                        <label class="block mb-4 text-xl font-bold">Your message</label>
+                        <textarea name="Message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
+                    </div>
+                    <button id="form-btn" type="submit" class="px-6 py-2 bg-green rounded-full font-bold hover:bg-brightGreen">
+                        Send it!
+                    </button>
+                </form>
+
+                <!-- Contact info-->
+                <div class="mt-12">
+                    <p>+49 163 7126279</p>
+                    <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
+                    <a href="img/Roderick Moise_CV.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
+                    <!-- Socials-->
+                    <div class="flex mt-20 space-x-6">
+                        <!-- Github logo -->
+                        <a href="https://github.com/rmoise"><img src="img/github_icon.svg" alt="github" /></a>
+                        <!-- Twitter logo -->
+                        <a href="https://twitter.com/RoderickMoise"><img src="img/twitter_icon.svg" alt="twitter" /></a>
+                        <!-- LinkedIn logo -->
+                        <a href="https://www.linkedin.com/in/roderickmoise/"><img src="img/linkedin_icon.svg" alt="linkedin" /></a>
+                        <!-- Medium logo -->
+                        <a href="https://medium.com/@roderickfmoise"><img src="img/medium_icon.svg" alt="medium" /></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
