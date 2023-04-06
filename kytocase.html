@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+
 </head>
 
 <body class="font-poppins pb-12">
@@ -136,48 +138,182 @@
                             Live Preview
                         </a>
                     </div>
-                    <p>
-                        Desktop view
-                    </p>
-                    <img src="img/Kyto-laptop-01.png" class="mx-auto lg:w-2/3 object-cover" />
+
+                    <div id="indicators-carousel" class="relative w-full mt-6" data-carousel="static">
+                        <!-- Carousel wrapper -->
+                        <div class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[520px] xl:h-[760px] 2xl:h-[900px]">
+                            <!-- Item 1 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Homepage
+                                </p>
+                                <img src="img/Kyto-laptop-01.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Kyto Platform Engine Page
+                                </p>
+                                <img src="img/Kyto-laptop-02.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Kyto Website Engine Page
+                                </p>
+                                <img src="img/Kyto-laptop-03.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Contact Page
+                                </p>
+                                <img src="img/Kyto-laptop-04.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 5 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Careers Page
+                                </p>
+                                <img src="img/Kyto-laptop-05.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 6 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Partners Page
+                                </p>
+                                <img src="img/Kyto-laptop-06.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 7 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Blog Page
+                                </p>
+                                <img src="img/Kyto-laptop-07.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 8 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Blog Article Page
+                                </p>
+                                <img src="img/Kyto-laptop-08.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                        </div>
+                        <!-- Slider indicators -->
+                        <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+                        </div>
+                        <!-- Slider controls -->
+                        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                                <span class="sr-only">Previous</span>
+                            </span>
+                        </button>
+                        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                <span class="sr-only">Next</span>
+                            </span>
+                        </button>
+                    </div>
                     <p>
                         Mobile view
                     </p>
-                    <img src="img/kyto-mobile.png" class="mx-auto lg:w-5/6 object-cover" />
+                    <img src="img/kyto-mobile.png" class="mx-auto lg:w-screen object-cover" />
                     <h3 class="text-xl font-bold">
                         Kyto Platform Engine App
                     </h3>
-                    <p>
-                        Product Catalogue - tile view
-                    </p>
-                    <img src="img/Kyto-laptop-platform-01.png" class="mx-auto lg:w-2/3 object-cover" />
-                    <p>
-                        Product Catalogue - accordion
-                    </p>
-                    <img src="img/Kyto-laptop-platform-02.png" class="mx-auto lg:w-2/3 object-cover" />
-                    <p>
-                        Product Catalogue - list view
-                    </p>
-                    <img src="img/Kyto-laptop-platform-03.png" class="mx-auto lg:w-2/3 object-cover" />
-                    <p>
-                        Product Data Details
-                    </p>
-                    <img src="img/Kyto-laptop-platform-04.png" class="mx-auto lg:w-2/3 object-cover" />
-                    <p>
-                        Company Profile
-                    </p>
-                    <img src="img/Kyto-laptop-platform-05.png" class="mx-auto lg:w-2/3 object-cover" />
-                    <p>
-                        Data Synchronization
-                    </p>
-                    <img src="img/Kyto-laptop-platform-06.png" class="mx-auto lg:w-2/3 object-cover" />
+
+                    <div id="indicators-carousel" class="relative w-full mt-6" data-carousel="static">
+                        <!-- Carousel wrapper -->
+                        <div class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[520px] xl:h-[760px] 2xl:h-[900px]">
+                            <!-- Item 1 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Product Catalogue - tile view
+                                </p>
+                                <img src="img/Kyto-laptop-platform-01.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 2 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Product Catalogue - accordion
+                                </p>
+                                <img src="img/Kyto-laptop-platform-02.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 3 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Product Catalogue - list view
+                                </p>
+                                <img src="img/Kyto-laptop-platform-03.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 4 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Product Data Details
+                                </p>
+                                <img src="img/Kyto-laptop-platform-04.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 5 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Company Profile
+                                </p>
+                                <img src="img/Kyto-laptop-platform-05.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                            <!-- Item 6 -->
+                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                <p class="xl:mt-12 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
+                                    Data Synchronization
+                                </p>
+                                <img src="img/Kyto-laptop-platform-06.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                            </div>
+                        </div>
+                        <!-- Slider indicators -->
+                        <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3" data-carousel-slide-to="2"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4" data-carousel-slide-to="3"></button>
+                            <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 5" data-carousel-slide-to="4"></button>
+                        </div>
+                        <!-- Slider controls -->
+                        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                </svg>
+                                <span class="sr-only">Previous</span>
+                            </span>
+                        </button>
+                        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                <span class="sr-only">Next</span>
+                            </span>
+                        </button>
+                    </div>
+
                     <h3 class="text-xl font-bold">
                         Kyto Website Engine App
                     </h3>
-                    <p>
+                    <div>
+                    <p class="2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
                         Dashboard
                     </p>
-                    <img src="img/Kyto-laptop-website-engine-01.png" class="mx-auto lg:w-2/3 object-cover" />
+                    <img src="img/Kyto-laptop-website-engine-01.png" class="mx-auto lg:w-screen object-cover" /></div>
 
                     <h3 class="text-xl font-bold">
                         Stationary
@@ -197,7 +333,15 @@
                         Desktop Wallpaper
                     </h3>
                     <img src="img/Kyto_Posters_2-03.png" class="mx-auto lg:w-2/3 object-cover" />
+
+
+
                 </div>
+
+
+
+
+
             </section>
         </div>
     </section>
@@ -255,6 +399,8 @@
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
+
 </body>
 
 </html>
