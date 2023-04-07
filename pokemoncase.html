@@ -19,25 +19,25 @@
     <!-- Navbar -->
     <nav class="fixed z-10 top-0 mx-auto py-6 w-full bg-white">
         <!-- Flex container -->
-        <div class="flex items-center justify-between px-8 md:px-14 lg:px-24 w-full">
+        <div class="flex items-center justify-between px-8 md:px-14 lg:px-24 w-full z-[1]">
             <!-- Logo -->
             <div class="pt-2">
                 <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
             </div>
             <!-- Menu items -->
-            <div class="hidden md:flex space-x-6">
+            <div class="hidden lg:flex space-x-6">
                 <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
                 <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
-                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development Projects</a>
+                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development</a>
                 <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
             </div>
             <!-- Button -->
-            <a href="#contact" class="hidden md:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
+            <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
                 Contact
             </a>
 
             <!-- Hamburger Icon -->
-            <button id="menu-btn" class="block hamburger md:hidden focus:outline-none">
+            <button id="menu-btn" class="block hamburger lg:hidden focus:outline-none">
                 <span class="hamburger-top"></span>
                 <span class="hamburger-middle"></span>
                 <span class="hamburger-bottom"></span>
@@ -45,11 +45,11 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div class="md:hidden">
+        <div class="lg:hidden">
             <div id="menu" class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md">
                 <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
                 <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
-                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development Projects</a>
+                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development</a>
                 <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
                 <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
             </div>
