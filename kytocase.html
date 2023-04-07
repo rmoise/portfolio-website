@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,404 +9,675 @@
     <title>Roderick's Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body class="font-poppins pb-12">
+  <body class="font-poppins pb-12">
     <!-- Navbar -->
     <nav class="fixed z-40 top-0 mx-auto py-6 w-full bg-white">
-        <!-- Flex container -->
-        <div class="flex items-center justify-between px-8 md:px-14 lg:px-24 w-full z-[1] ">
-            <!-- Logo -->
-            <div class="pt-2">
-                <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
-            </div>
-            <!-- Menu items -->
-            <div class="hidden md:flex space-x-6">
-                <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
-                <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
-                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development Projects</a>
-                <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
-            </div>
-            <!-- Button -->
-            <a href="#contact" class="hidden md:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
-                Contact
-            </a>
-
-            <!-- Hamburger Icon -->
-            <button id="menu-btn" class="block hamburger md:hidden focus:outline-none">
-                <span class="hamburger-top"></span>
-                <span class="hamburger-middle"></span>
-                <span class="hamburger-bottom"></span>
-            </button>
+      <!-- Flex container -->
+      <div
+        class="flex items-center justify-between px-8 md:px-14 lg:px-24 w-full z-[1]"
+      >
+        <!-- Logo -->
+        <div class="pt-2">
+          <a href="index.html"
+            ><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8"
+          /></a>
         </div>
-
-        <!-- Mobile Menu -->
-        <div class="md:hidden">
-            <div id="menu" class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md">
-                <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
-                <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
-                <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development Projects</a>
-                <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
-                <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
-            </div>
+        <!-- Menu items -->
+        <div class="hidden md:flex space-x-6">
+          <a href="index.html#header" class="hover:text-darkGrayishBlue"
+            >Home</a
+          >
+          <a href="index.html#about" class="hover:text-darkGrayishBlue"
+            >About me</a
+          >
+          <a href="index.html#web" class="hover:text-darkGrayishBlue"
+            >Web Development Projects</a
+          >
+          <a href="design.html" class="hover:text-darkGrayishBlue"
+            >Design Systems</a
+          >
         </div>
+        <!-- Button -->
+        <a
+          href="#contact"
+          class="hidden md:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen"
+        >
+          Contact
+        </a>
+
+        <!-- Hamburger Icon -->
+        <button
+          id="menu-btn"
+          class="block hamburger md:hidden focus:outline-none"
+        >
+          <span class="hamburger-top"></span>
+          <span class="hamburger-middle"></span>
+          <span class="hamburger-bottom"></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden">
+        <div
+          id="menu"
+          class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md"
+        >
+          <a href="index.html#header" class="hover:text-darkGrayishBlue"
+            >Home</a
+          >
+          <a href="index.html#about" class="hover:text-darkGrayishBlue"
+            >About me</a
+          >
+          <a href="index.html#web" class="hover:text-darkGrayishBlue"
+            >Web Development Projects</a
+          >
+          <a href="design.html" class="hover:text-darkGrayishBlue"
+            >Design Systems</a
+          >
+          <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
+        </div>
+      </div>
     </nav>
-
 
     <!-- Title Section -->
     <section class="container flex justify-between items-center mx-auto">
-        <div class="md:flex-nowrap mt-32 mb-16 px-8 md:px-14 lg:px-24 w-full">
-            <!-- Left item -->
-            <div class="flex flex-col md:w-1/2">
-                <h1 id="header" class="font-bold  text-5xl xl:text-6xl text-center md:text-left">
-                    <span style="color: #01f3ab">Kyto</span>
-                    <div class="md:mt-2">Case Study</div>
-                </h1>
-            </div>
-
+      <div class="md:flex-nowrap mt-32 mb-16 px-8 md:px-14 lg:px-24 w-full">
+        <!-- Left item -->
+        <div class="flex flex-col md:w-1/2">
+          <h1
+            id="header"
+            class="font-bold text-5xl xl:text-6xl text-center md:text-left"
+          >
+            <span style="color: #01f3ab">Kyto</span>
+            <div class="md:mt-2">Case Study</div>
+          </h1>
         </div>
+      </div>
     </section>
-
 
     <!-- Hero Section -->
     <section class="container flex justify-between items-center mx-auto">
-        <!-- Work section-->
-        <div class="container flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
-            <section class="w-full">
-                <!--                 <h2 id="web" class="secondary-title text-4xl font-bold">
+      <!-- Work section-->
+      <div
+        class="container flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full"
+      >
+        <section class="w-full">
+          <!--                 <h2 id="web" class="secondary-title text-4xl font-bold">
                     Smunch Case Study
                 </h2> -->
 
-                <div class="space-y-6">
-                    <h2 class="secondary-title text-3xl font-bold">
-                        Challenge
-                    </h2>
-                    <p>
-                        Kyto needed a design and brand system that would unify their brand identity and create a consistent user experience across all touchpoints for new product launches.
-                    </p>
+          <div class="space-y-6">
+            <h2 class="secondary-title text-3xl font-bold">Challenge</h2>
+            <p>
+              Kyto needed a design and brand system that would unify their brand
+              identity and create a consistent user experience across all
+              touchpoints for new product launches.
+            </p>
 
-                    <h2 class="secondary-title text-3xl font-bold">
-                        Solution
-                    </h2>
-                    <p>
-                        Conducted extensive research to inform a comprehensive design and brand system that emphasized the company's values of innovation, simplicity, and accessibility. The system included visual guidelines for typography, color, and imagery.
-                    </p>
-                    <h2 class="secondary-title text-3xl font-bold">
-                        Results
-                    </h2>
-                    <p>
-                        The new design and brand system resulted in increased brand recognition and trust, website traffic, and sales for the company. User feedback indicated higher engagement and customer satisfaction due to the design and brand system's user-friendly and accessible approach.
-                    </p>
-                    <h2 class="secondary-title text-3xl font-bold">
-                        Reflection
-                    </h2>
-                    <p>
-                        This project taught me the importance of collaboration and communication to ensure that the design and brand system effectively reflected the company's values and goals. It also highlighted the impact of thorough research on design decisions and the importance of a well-designed system on brand recognition and customer engagement. Developing skills in executing a brand system consistently across multiple touchpoints was another key takeaway from this project.
-                    </p>
+            <h2 class="secondary-title text-3xl font-bold">Solution</h2>
+            <p>
+              Conducted extensive research to inform a comprehensive design and
+              brand system that emphasized the company's values of innovation,
+              simplicity, and accessibility. The system included visual
+              guidelines for typography, color, and imagery.
+            </p>
+            <h2 class="secondary-title text-3xl font-bold">Results</h2>
+            <p>
+              The new design and brand system resulted in increased brand
+              recognition and trust, website traffic, and sales for the company.
+              User feedback indicated higher engagement and customer
+              satisfaction due to the design and brand system's user-friendly
+              and accessible approach.
+            </p>
+            <h2 class="secondary-title text-3xl font-bold">Reflection</h2>
+            <p>
+              This project taught me the importance of collaboration and
+              communication to ensure that the design and brand system
+              effectively reflected the company's values and goals. It also
+              highlighted the impact of thorough research on design decisions
+              and the importance of a well-designed system on brand recognition
+              and customer engagement. Developing skills in executing a brand
+              system consistently across multiple touchpoints was another key
+              takeaway from this project.
+            </p>
 
-                    <br>
-                    <div>
-                        <h3 class="text-xl font-bold">
-                            Logo
-                        </h3>
-                        <img src="img/Kyto-logo.png" class="mx-auto lg:w-1/2 object-cover" />
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold">
-                            Product Logos
-                        </h3>
-                        <img src="img/Kyto-Product-logos.png" class="mx-auto lg:w-1/2 object-cover" />
-                    </div>
+            <br />
+            <div>
+              <h3 class="text-xl font-bold">Logo</h3>
+              <img
+                src="img/Kyto-logo.png"
+                class="mx-auto lg:w-1/2 object-cover"
+              />
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Product Logos</h3>
+              <img
+                src="img/Kyto-Product-logos.png"
+                class="mx-auto lg:w-1/2 object-cover"
+              />
+            </div>
 
+            <div>
+              <h3 class="text-xl font-bold">Design System</h3>
 
-                    <div>
-                        <h3 class="text-xl font-bold">
-                            Design System
-                        </h3>
+              <img
+                src="img/UI Elements - Colors.png"
+                class="mx-auto lg:w-2/3 object-cover"
+              />
+              <img
+                src="img/UI Elements - Gradients.png"
+                class="mx-auto lg:w-2/3 object-cover"
+              />
+              <img
+                src="img/UI Elements - Typography.png"
+                class="mx-auto lg:w-2/3 object-cover"
+              />
+            </div>
 
-                        <img src="img/UI Elements - Colors.png" class="mx-auto lg:w-2/3 object-cover" />
-                        <img src="img/UI Elements - Gradients.png" class="mx-auto lg:w-2/3 object-cover" />
-                        <img src="img/UI Elements - Typography.png" class="mx-auto lg:w-2/3 object-cover" />
-                    </div>
-
-
-
-                    <div id="indicators-carousel" class="relative w-full mt-6" data-carousel="static">
-                        <div class="flex space-x-6 justify-between items-center">
-                            <h3 class="text-xl lg:mb-4 2xl:mb-2 xl:mb-8 md:mb-8 mb-2 font-bold">
-                                Website
-                            </h3>
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.kyto.de/" class="md:block lg:pl-0  text-green hover:text-linkHover">
-                                Live Preview
-                            </a>
-                        </div>
-                        <!-- Carousel wrapper -->
-                        <div class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px]">
-                            <!-- Item 1 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Homepage
-                                </p>
-                                <img src="img/Kyto-laptop-01.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 2 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Kyto Platform Engine Page
-                                </p>
-                                <img src="img/Kyto-laptop-02.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 3 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Kyto Website Engine Page
-                                </p>
-                                <img src="img/Kyto-laptop-03.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 4 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Contact Page
-                                </p>
-                                <img src="img/Kyto-laptop-04.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 5 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Careers Page
-                                </p>
-                                <img src="img/Kyto-laptop-05.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 6 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Partners Page
-                                </p>
-                                <img src="img/Kyto-laptop-06.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 7 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Blog Page
-                                </p>
-                                <img src="img/Kyto-laptop-07.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 8 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Blog Article Page
-                                </p>
-                                <img src="img/Kyto-laptop-08.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-
-                        </div>
-
-                        <!-- Slider controls -->
-                        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                </svg>
-                                <span class="sr-only">Previous</span>
-                            </span>
-                        </button>
-                        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                                <span class="sr-only">Next</span>
-                            </span>
-                        </button>
-                    </div>
-
-
-
-
-                    <div>
-                        <p>
-                            Mobile view
-                        </p>
-                        <img src="img/kyto-mobile.png" class="mx-auto lg:w-screen object-cover" />
-                    </div>
-
-
-                    <div id="indicators-carousel" class="relative w-full mt-6" data-carousel="static">
-                        <h3 class="text-xl md:mt-20 mt-12 lg:mb-4 2xl:mb-2 xl:mb-8 md:mb-8 font-bold">
-                            Kyto Platform Engine App
-                        </h3>
-                        <!-- Carousel wrapper -->
-                        <div class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px]">
-                            <!-- Item 1 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Product Catalogue - tile view
-                                </p>
-                                <img src="img/Kyto-laptop-platform-01.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 2 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Product Catalogue - accordion
-                                </p>
-                                <img src="img/Kyto-laptop-platform-02.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 3 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Product Catalogue - list view
-                                </p>
-                                <img src="img/Kyto-laptop-platform-03.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 4 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Product Data Details
-                                </p>
-                                <img src="img/Kyto-laptop-platform-04.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 5 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Company Profile
-                                </p>
-                                <img src="img/Kyto-laptop-platform-05.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                            <!-- Item 6 -->
-                            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                                <p class=" 2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                                    Data Synchronization
-                                </p>
-                                <img src="img/Kyto-laptop-platform-06.png" class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-                            </div>
-                        </div>
-
-                        <!-- Slider controls -->
-                        <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                                </svg>
-                                <span class="sr-only">Previous</span>
-                            </span>
-                        </button>
-                        <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white  group-focus:outline-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                                </svg>
-                                <span class="sr-only">Next</span>
-                            </span>
-                        </button>
-                    </div>
-
-
-                    <div>
-                        <h3 class="text-xl md:mt-20   2xl:mb-10 xl:mb-6 lg:mb-6 md:mb-6 font-bold">
-                            Kyto Website Engine App
-                        </h3>
-                        <p class="2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">
-                            Dashboard
-                        </p>
-                        <img src="img/Kyto-laptop-website-engine-01.png" class="mt-1 md:mt-0 mx-auto lg:w-screen object-cover" />
-                    </div>
-
-                    <div>
-                        <h3 class="mt-12 text-xl font-bold">
-                            Stationary
-                        </h3>
-                        <p>
-                            Letterhead and business card
-                        </p>
-                        <img src="img/Kyto-Stationery.png" class="mx-auto lg:w-1/2 object-cover" />
-                        <img src="img/Business_Card_Mockup_4.png" class="mx-auto m-8 lg:w-1/2 object-cover" />
-                        <img src="img/Business_Card_Mockup_5.png" class="mx-auto lg:w-1/2 object-cover" />
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">
-                            Stickers
-                        </h3>
-
-                        <img src="img/Kyto_Stickers-01.png" class="mx-auto lg:w-1/2 object-cover" />
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">
-                            Desktop Wallpaper
-                        </h3>
-                        <img src="img/Kyto_Posters_2-03.png" class="mx-auto lg:w-2/3 object-cover" />
-                    </div>
-
-
-
+            <div
+              id="indicators-carousel"
+              class="relative w-full mt-6"
+              data-carousel="static"
+            >
+              <div class="flex space-x-6 justify-between items-center">
+                <h3 class="text-xl font-bold">Website</h3>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://www.kyto.de/"
+                  class="md:block lg:pl-0 text-green hover:text-linkHover"
+                >
+                  Live Preview
+                </a>
+              </div>
+              <!-- Carousel wrapper -->
+              <div
+                class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px]"
+              >
+                <!-- Item 1 -->
+                <div
+                  class="hidden duration-700 ease-in-out"
+                  data-carousel-item="active"
+                >
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Homepage
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-01.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
                 </div>
+                <!-- Item 2 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Kyto Platform Engine Page
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-02.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 3 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Kyto Website Engine Page
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-03.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 4 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Contact Page
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-04.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 5 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Careers Page
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-05.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 6 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Partners Page
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-06.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 7 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Blog Page
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-07.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 8 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Blog Article Page
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-08.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+              </div>
 
+              <!-- Slider controls -->
+              <button
+                type="button"
+                class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-prev
+              >
+                <span
+                  class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5 text-white sm:w-6 sm:h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 19l-7-7 7-7"
+                    ></path>
+                  </svg>
+                  <span class="sr-only">Previous</span>
+                </span>
+              </button>
+              <button
+                type="button"
+                class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-next
+              >
+                <span
+                  class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5 text-white sm:w-6 sm:h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                  <span class="sr-only">Next</span>
+                </span>
+              </button>
+            </div>
 
+            <div>
+              <p>Mobile view</p>
+              <img
+                src="img/kyto-mobile.png"
+                class="mx-auto lg:w-screen object-cover"
+              />
+            </div>
 
+            <div
+              id="indicators-carousel"
+              class="relative w-full mt-6"
+              data-carousel="static"
+            >
+              <h3
+                class="text-xl md:mt-20 mt-12 lg:mb-4 2xl:mb-2 xl:mb-8 md:mb-8 font-bold"
+              >
+                Kyto Platform Engine App
+              </h3>
+              <!-- Carousel wrapper -->
+              <div
+                class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px]"
+              >
+                <!-- Item 1 -->
+                <div
+                  class="hidden duration-700 ease-in-out"
+                  data-carousel-item="active"
+                >
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Product Catalogue - tile view
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-platform-01.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 2 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Product Catalogue - accordion
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-platform-02.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 3 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Product Catalogue - list view
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-platform-03.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 4 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Product Data Details
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-platform-04.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 5 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Company Profile
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-platform-05.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+                <!-- Item 6 -->
+                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                  <p
+                    class="2xl:mt-8 xl:mt-0 lg:mt-4 2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20"
+                  >
+                    Data Synchronization
+                  </p>
+                  <img
+                    src="img/Kyto-laptop-platform-06.png"
+                    class="mt-2 md:mt-0 absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
+                    alt="..."
+                  />
+                </div>
+              </div>
 
+              <!-- Slider controls -->
+              <button
+                type="button"
+                class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-prev
+              >
+                <span
+                  class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5 text-white sm:w-6 sm:h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 19l-7-7 7-7"
+                    ></path>
+                  </svg>
+                  <span class="sr-only">Previous</span>
+                </span>
+              </button>
+              <button
+                type="button"
+                class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
+                data-carousel-next
+              >
+                <span
+                  class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="w-5 h-5 text-white sm:w-6 sm:h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M9 5l7 7-7 7"
+                    ></path>
+                  </svg>
+                  <span class="sr-only">Next</span>
+                </span>
+              </button>
+            </div>
 
-            </section>
-        </div>
+            <div>
+              <h3
+                class="text-xl md:mt-20 2xl:mb-10 xl:mb-6 lg:mb-6 md:mb-6 font-bold"
+              >
+                Kyto Website Engine App
+              </h3>
+              <p class="2xl:ml-40 xl:ml-32 lg:ml-28 md:ml-20">Dashboard</p>
+              <img
+                src="img/Kyto-laptop-website-engine-01.png"
+                class="mt-1 md:mt-0 mx-auto lg:w-screen object-cover"
+              />
+            </div>
+
+            <div>
+              <h3 class="mt-12 text-xl font-bold">Stationary</h3>
+              <p>Letterhead and business card</p>
+              <img
+                src="img/Kyto-Stationery.png"
+                class="mx-auto lg:w-1/2 object-cover"
+              />
+              <img
+                src="img/Business_Card_Mockup_4.png"
+                class="mx-auto m-8 lg:w-1/2 object-cover"
+              />
+              <img
+                src="img/Business_Card_Mockup_5.png"
+                class="mx-auto lg:w-1/2 object-cover"
+              />
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Stickers</h3>
+
+              <img
+                src="img/Kyto_Stickers-01.png"
+                class="mx-auto lg:w-1/2 object-cover"
+              />
+            </div>
+            <div>
+              <h3 class="text-xl font-bold mb-2">Desktop Wallpaper</h3>
+              <img
+                src="img/Kyto_Posters_2-03.png"
+                class="mx-auto lg:w-2/3 object-cover"
+              />
+            </div>
+          </div>
+        </section>
+      </div>
     </section>
 
     <!-- Contact form-->
-    <div class="container mt-32 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full">
-        <section class="w-full">
-            <h1 id="contact" class="secondary-title text-4xl font-bold">
-                Contact me
-            </h1>
-            <p class="section-paragraph">
-                Please use the form below to send me a message. I'll be happy to hear
-                from you. Thanks!!!
-            </p>
+    <div
+      class="container mt-32 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full"
+    >
+      <section class="w-full">
+        <h1 id="contact" class="secondary-title text-4xl font-bold">
+          Contact me
+        </h1>
+        <p class="section-paragraph">
+          Please use the form below to send me a message. I'll be happy to hear
+          from you. Thanks!!!
+        </p>
 
-            <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
-                <form class="space-y-8 input-form" action="https://formspree.io/f/mnqyjrrp" method="POST">
-                    <div>
-                        <label class="block mb-4 text-xl font-bold">Your name</label>
-                        <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
-                    </div>
-                    <div>
-                        <label for="email" class="block mb-4 text-xl font-bold">Your email</label>
-                        <input type="email" name="Email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
-                    </div>
-                    <div>
-                        <label class="block mb-4 text-xl font-bold">Your message</label>
-                        <textarea name="Message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
-                    </div>
-                    <button id="form-btn" type="submit" class="px-6 py-2 bg-green rounded-full font-bold hover:bg-brightGreen">
-                        Send it!
-                    </button>
-                </form>
-
-                <!-- Contact info-->
-                <div class="mt-12">
-                    <p>+49 163 7126279</p>
-                    <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
-                    <a href="img/Roderick-Moise-CV-Full-Stack-Developer.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
-                    <!-- Socials-->
-                    <div class="flex mt-20 space-x-6">
-                        <!-- Github logo -->
-                        <a href="https://github.com/rmoise"><img src="img/github_icon.svg" alt="github" /></a>
-                        <!-- Twitter logo -->
-                        <a href="https://twitter.com/RoderickMoise"><img src="img/twitter_icon.svg" alt="twitter" /></a>
-                        <!-- LinkedIn logo -->
-                        <a href="https://www.linkedin.com/in/roderickmoise/"><img src="img/linkedin_icon.svg" alt="linkedin" /></a>
-                        <!-- Medium logo -->
-                        <a href="https://medium.com/@roderickfmoise"><img src="img/medium_icon.svg" alt="medium" /></a>
-                    </div>
-                </div>
+        <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
+          <form
+            class="space-y-8 input-form"
+            action="https://formspree.io/f/mnqyjrrp"
+            method="POST"
+          >
+            <div>
+              <label class="block mb-4 text-xl font-bold">Your name</label>
+              <input
+                type="text"
+                name="Name"
+                id="form-name"
+                class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                required
+              />
             </div>
-        </section>
+            <div>
+              <label for="email" class="block mb-4 text-xl font-bold"
+                >Your email</label
+              >
+              <input
+                type="email"
+                name="Email"
+                id="form-email"
+                class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                required
+              />
+            </div>
+            <div>
+              <label class="block mb-4 text-xl font-bold">Your message</label>
+              <textarea
+                name="Message"
+                id="form-message"
+                class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none"
+                placeholder="Type your message here..."
+                required
+              ></textarea>
+            </div>
+            <button
+              id="form-btn"
+              type="submit"
+              class="px-6 py-2 bg-green rounded-full font-bold hover:bg-brightGreen"
+            >
+              Send it!
+            </button>
+          </form>
+
+          <!-- Contact info-->
+          <div class="mt-12">
+            <p>+49 163 7126279</p>
+            <a
+              href="mailto:roderickfmoise@gmail.com"
+              class="underline mt-3 block"
+              >roderickfmoise@gmail.com</a
+            >
+            <a
+              href="img/Roderick-Moise-CV-Full-Stack-Developer.pdf"
+              target="_blank"
+              class="underline mt-3 block"
+              ><b>Download my CV</b></a
+            >
+            <!-- Socials-->
+            <div class="flex mt-20 space-x-6">
+              <!-- Github logo -->
+              <a href="https://github.com/rmoise"
+                ><img src="img/github_icon.svg" alt="github"
+              /></a>
+              <!-- Twitter logo -->
+              <a href="https://twitter.com/RoderickMoise"
+                ><img src="img/twitter_icon.svg" alt="twitter"
+              /></a>
+              <!-- LinkedIn logo -->
+              <a href="https://www.linkedin.com/in/roderickmoise/"
+                ><img src="img/linkedin_icon.svg" alt="linkedin"
+              /></a>
+              <!-- Medium logo -->
+              <a href="https://medium.com/@roderickfmoise"
+                ><img src="img/medium_icon.svg" alt="medium"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-
-</body>
-
+  </body>
 </html>
