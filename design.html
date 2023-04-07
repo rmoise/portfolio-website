@@ -1,89 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="img/favicon-32x32.png" />
-    <link rel="stylesheet" href="css/main.css" />
-    <title>Roderick's Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body class="font-poppins pb-12">
-    <!-- Navbar -->
-    <nav class="fixed z-10 top-0 mx-auto py-6 w-full bg-white">
-      <!-- Flex container -->
-      <div
-        class="flex items-center justify-between px-8 md:px-14 lg:px-24 w-full"
-      >
-        <!-- Logo -->
-        <div class="pt-2">
-          <a href="index.html"
-            ><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8"
-          /></a>
-        </div>
-        <!-- Menu items -->
-        <div class="hidden md:flex space-x-6">
-          <a href="index.html#header" class="hover:text-darkGrayishBlue"
-            >Home</a
-          >
-          <a href="index.html#about" class="hover:text-darkGrayishBlue"
-            >About me</a
-          >
-          <a href="index.html#web" class="hover:text-darkGrayishBlue"
-            >Web Development</a
-          >
-          <a href="design.html" class="hover:text-darkGrayishBlue"
-            >Design Systems</a
-          >
-        </div>
-        <!-- Button -->
-        <a
-          href="#contact"
-          class="hidden md:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen"
-        >
-          Contact
-        </a>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="img/favicon-32x32.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <title>Roderick's Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+</head>
 
-        <!-- Hamburger Icon -->
-        <button
-          id="menu-btn"
-          class="block hamburger md:hidden focus:outline-none"
-        >
-          <span class="hamburger-top"></span>
-          <span class="hamburger-middle"></span>
-          <span class="hamburger-bottom"></span>
-        </button>
+<body class="font-poppins pb-12">
+  <!-- Navbar -->
+  <nav class="fixed z-10 top-0 mx-auto py-6 w-full bg-white">
+    <!-- Flex container -->
+    <div class="flex items-center justify-between px-8 md:px-14 lg:px-24 w-full z-[1]">
+      <!-- Logo -->
+      <div class="pt-2">
+        <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
       </div>
-
-      <!-- Mobile Menu -->
-      <div class="md:hidden">
-        <div
-          id="menu"
-          class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md"
-        >
-          <a href="index.html#header" class="hover:text-darkGrayishBlue"
-            >Home</a
-          >
-          <a href="index.html#about" class="hover:text-darkGrayishBlue"
-            >About me</a
-          >
-          <a href="index.html#web" class="hover:text-darkGrayishBlue"
-            >Web Development Projects</a
-          >
-          <a href="design.html" class="hover:text-darkGrayishBlue"
-            >Design Systems</a
-          >
-          <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
-        </div>
+      <!-- Menu items -->
+      <div class="hidden lg:flex space-x-6">
+        <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
+        <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
+        <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development</a>
+        <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
       </div>
-    </nav>
+      <!-- Button -->
+      <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
+        Contact
+      </a>
+
+      <!-- Hamburger Icon -->
+      <button id="menu-btn" class="block hamburger lg:hidden focus:outline-none">
+        <span class="hamburger-top"></span>
+        <span class="hamburger-middle"></span>
+        <span class="hamburger-bottom"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="lg:hidden">
+      <div id="menu" class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md">
+        <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
+        <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
+        <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development</a>
+        <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
+        <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
+      </div>
+    </div>
+  </nav>
 
     <!-- Hero Section -->
     <section class="container flex justify-between items-center mx-auto">
@@ -92,10 +63,10 @@
         class="container mt-32 flex justify-between items-center mx-auto px-8 md:px-14 lg:px-24 w-full"
       >
         <section class="w-full">
-          <h2 id="web" class="secondary-title text-4xl font-bold">
+          <h2 id="web" class="secondary-title text-4xl font-bold mb-8">
             Design Systems
           </h2>
-          <p class="section-paragraph">
+          <p class="text-gray-400">
             Discover a diverse collection of design and brand systems showcased
             in my portfolio, reflecting my expertise in creating impactful
             solutions throughout my career at various companies and personal
