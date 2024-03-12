@@ -27,7 +27,7 @@
       <!-- Menu items -->
       <div class="hidden lg:flex space-x-6">
         <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
-        <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
+        <a href="#about" class="hover:text-darkGrayishBlue">About me</a>
         <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development</a>
         <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
       </div>
@@ -48,7 +48,7 @@
     <div class="lg:hidden">
       <div id="menu" class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md">
         <a href="index.html#header" class="hover:text-darkGrayishBlue">Home</a>
-        <a href="index.html#about" class="hover:text-darkGrayishBlue">About me</a>
+        <a href="#about" class="hover:text-darkGrayishBlue">About me</a>
         <a href="index.html#web" class="hover:text-darkGrayishBlue">Web Development</a>
         <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
         <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
@@ -56,8 +56,41 @@
     </div>
   </nav>
 
-    <!-- Hero Section -->
-    <section class="flex justify-between items-center mx-auto">
+  <!-- Hero Section -->
+  <section class="container flex justify-between items-center mx-auto">
+    <div class="flex flex-wrap-reverse md:flex-nowrap mt-32 mb-8 px-4 md:px-10 lg:px-10 w-full">
+      <!-- Left item -->
+      <div class="flex flex-col md:w-1/2">
+        <h1 id="header" class="font-bold text-4xl md:text-4xl lg:text-5xl xl:text-7xl text-center md:text-left">
+          Hi,<br />
+          I'm Roderick, <br />
+          <span style="color: #01f3ab">UI/UX Designer</span>
+        </h1>
+        <br />
+        <!--        <p class="max-w-md text-center text-darkGrayishBlue mt-12 md:text-left">
+            Hi' I'm Roderick Moise, a full-stack web developer based in Germany.
+          </p> -->
+        <a href="img/Roderick-Moise-CV-UI-UX-Designer.pdf" class="underline text-center md:text-left mt-3 block text-green hover:text-linkHover" target="_blank">Download my CV</a>
+      </div>
+
+      <!-- Image -->
+      <div class="max-w-lg mb-16 md:mb-0 md:ml-8">
+        <img src="img/roderick-moise.jpg" alt="" class="rounded-lg bottom-0 mx-auto md:object-right w-1/2 md:w-96" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About me section -->
+  <div class=" container mt-32 flex justify-between items-center mx-auto px-4 md:px-10 lg:px-10 w-full">
+    <section class="w-full">
+      <h2 id="about" class="secondary-title text-4xl font-bold">About me</h2>
+
+      <p class="my-6 w-full">
+As a UI/UX Designer with a background in graphic design, I bring a unique blend of creativity and problem-solving skills to my work. My ability to craft visually stunning and intuitive user interfaces is complemented by my dedication to finding innovative solutions. I thrive in challenging environments and see obstacles as opportunities for growth.
+      </p>
+    </section>
+  </div>
+
       <!-- Work section-->
       <div
         class=" mt-32 flex justify-between items-center mx-auto px-4 md:px-10 2xl:px-48 lg:px-10 w-full"
@@ -331,7 +364,7 @@
               >roderickfmoise@gmail.com</a
             >
             <a
-              href="img/Roderick-Moise-CV-Full-Stack-Developer.pdf"
+              href="img/Roderick-Moise-CV-UI-UX-Designer.pdf"
               target="_blank"
               class="underline mt-3 block"
               ><b>Download my CV</b></a
