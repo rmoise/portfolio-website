@@ -12,6 +12,168 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            inter: ['Inter', 'sans-serif'],
+          },
+          animation: {
+            'text-slide-2': 'text-slide-2 5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+            'text-slide-3': 'text-slide-3 7.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+            'text-slide-4': 'text-slide-4 10s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+            'text-slide-5': 'text-slide-5 12.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+            'text-slide-6': 'text-slide-6 15s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+            'text-slide-7': 'text-slide-7 17.5s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+            'text-slide-8': 'text-slide-8 20s cubic-bezier(0.83, 0, 0.17, 1) infinite',
+          },
+          keyframes: {
+            'text-slide-2': {
+              '0%, 40%': {
+                transform: 'translateY(0%)',
+              },
+              '50%, 90%': {
+                transform: 'translateY(-33.33%)',
+              },
+              '100%': {
+                transform: 'translateY(-66.66%)',
+              },
+            },
+            'text-slide-3': {
+              '0%, 26.66%': {
+                transform: 'translateY(0%)',
+              },
+              '33.33%, 60%': {
+                transform: 'translateY(-25%)',
+              },
+              '66.66%, 93.33%': {
+                transform: 'translateY(-50%)',
+              },
+              '100%': {
+                transform: 'translateY(-75%)',
+              },
+            },
+            'text-slide-4': {
+              '0%, 20%': {
+                transform: 'translateY(0%)',
+              },
+              '25%, 45%': {
+                transform: 'translateY(-20%)',
+              },
+              '50%, 70%': {
+                transform: 'translateY(-40%)',
+              },
+              '75%, 95%': {
+                transform: 'translateY(-60%)',
+              },
+              '100%': {
+                transform: 'translateY(-80%)',
+              },
+            },
+            'text-slide-5': {
+              '0%, 16%': {
+                transform: 'translateY(0%)',
+              },
+              '20%, 36%': {
+                transform: 'translateY(-16.66%)',
+              },
+              '40%, 56%': {
+                transform: 'translateY(-33.33%)',
+              },
+              '60%, 76%': {
+                transform: 'translateY(-50%)',
+              },
+              '80%, 96%': {
+                transform: 'translateY(-66.66%)',
+              },
+              '100%': {
+                transform: 'translateY(-83.33%)',
+              },
+            },
+            'text-slide-6': {
+              '0%, 13.33%': {
+                transform: 'translateY(0%)',
+              },
+              '16.66%, 30%': {
+                transform: 'translateY(-14.28%)',
+              },
+              '33.33%, 46.66%': {
+                transform: 'translateY(-28.57%)',
+              },
+              '50%, 63.33%': {
+                transform: 'translateY(-42.85%)',
+              },
+              '66.66%, 80%': {
+                transform: 'translateY(-57.14%)',
+              },
+              '83.33%, 96.66%': {
+                transform: 'translateY(-71.42%)',
+              },
+              '100%': {
+                transform: 'translateY(-85.71%)',
+              },
+            },
+            'text-slide-7': {
+              '0%, 11.43%': {
+                transform: 'translateY(0%)',
+              },
+              '14.28%, 25.71%': {
+                transform: 'translateY(-12.5%)',
+              },
+              '28.57%, 40%': {
+                transform: 'translateY(-25%)',
+              },
+              '42.85%, 54.28%': {
+                transform: 'translateY(-37.5%)',
+              },
+              '57.14%, 68.57%': {
+                transform: 'translateY(-50%)',
+              },
+              '71.42%, 82.85%': {
+                transform: 'translateY(-62.5%)',
+              },
+              '85.71%, 97.14%': {
+                transform: 'translateY(-75%)',
+              },
+              '100%': {
+                transform: 'translateY(-87.5%)',
+              },
+            },
+            'text-slide-8': {
+              '0%, 10%': {
+                transform: 'translateY(0%)',
+              },
+              '12.5%, 22.5%': {
+                transform: 'translateY(-11.11%)',
+              },
+              '25%, 35%': {
+                transform: 'translateY(-22.22%)',
+              },
+              '37.5%, 47.5%': {
+                transform: 'translateY(-33.33%)',
+              },
+              '50%, 60%': {
+                transform: 'translateY(-44.44%)',
+              },
+              '62.5%, 72.5%': {
+                transform: 'translateY(-55.55%)',
+              },
+              '75%, 85%': {
+                transform: 'translateY(-66.66%)',
+              },
+              '87.5%, 97.5%': {
+                transform: 'translateY(-77.77%)',
+              },
+              '100%': {
+                transform: 'translateY(-88.88%)',
+              },
+            }
+          },
+        },
+      },
+    };
+  </script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
 </head>
 
@@ -27,8 +189,8 @@
       <!-- Menu items -->
       <div class="hidden lg:flex space-x-6">
         <a href="#about" class="hover:text-darkGrayishBlue">About me</a>
-        <a href="#web" class="hover:text-darkGrayishBlue">Web Development</a>
-        <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
+        <a href="#web" class="hover:text-darkGrayishBlue">Design Systems</a>
+        <a href="develop.html" class="hover:text-darkGrayishBlue">Web Development</a>
       </div>
       <!-- Button -->
       <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
@@ -47,8 +209,8 @@
     <div class="lg:hidden">
       <div id="menu" class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md">
         <a href="#about" class="hover:text-darkGrayishBlue">About me</a>
-        <a href="#web" class="hover:text-darkGrayishBlue">Web Development</a>
-        <a href="design.html" class="hover:text-darkGrayishBlue">Design Systems</a>
+        <a href="#web" class="hover:text-darkGrayishBlue">Design Systems</a>
+        <a href="design.html" class="hover:text-darkGrayishBlue">Web Development</a>
         <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
       </div>
     </div>
@@ -59,16 +221,18 @@
     <div class="flex flex-wrap-reverse md:flex-nowrap mt-32 mb-8 px-4 md:px-10 lg:px-10 w-full">
       <!-- Left item -->
       <div class="grow md:grow-0 flex flex-col md:w-1/2">
+
         <h1 id="header" class="font-bold text-4xl md:text-4xl lg:text-5xl xl:text-7xl text-center md:text-left">
           Hi,<br />
           I'm Roderick, <br />
-          <span style="color: #01f3ab">Full-Stack Web Developer</span>
+          <span style="color: #01f3ab">Designer & Developer</span>
         </h1>
+        <!-- End: Sliding Text animation -->
         <br />
         <!--        <p class="max-w-md text-center text-darkGrayishBlue mt-12 md:text-left">
           Hi' I'm Roderick Moise, a full-stack web developer based in Germany.
         </p> -->
-        <a href="img/Roderick-Moise-CV-Fullstack-Web-Developer.pdf" class="underline text-center md:text-left mt-3 block text-green hover:text-linkHover" target="_blank">Download my CV</a>
+        <a href="img/Roderick-Moise-CV-Designer-Developer.pdf" class="underline text-center md:text-left mt-3 block text-green hover:text-linkHover" target="_blank">Download my CV</a>
       </div>
 
       <!-- Image -->
@@ -78,25 +242,33 @@
     </div>
   </section>
 
+
+
+
+
+
   <!-- About me section -->
   <div class=" container mt-32 flex justify-between items-center mx-auto px-4 md:px-10 lg:px-10 w-full">
     <section class="w-full">
       <h2 id="about" class="secondary-title text-4xl font-bold">About me</h2>
 
       <p class="my-6 w-full">
-        As a developer with a background in graphic design, I possess strong creative and analytical skills that enable me to build highly customized web pages. I thrive on solving problems and can be relied upon to work independently and find solutions. I enjoy taking on challenges and believe that overcoming them is key to my rapid growth in this industry. With experience building websites and applications from concept to back-end, server-side, and database integration, I am adept at delivering high-quality solutions to complex challenges.
+        Creative and analytical professional with over 10 years of graphic design experience, 4 years in UI/UX design, and 1 year expertise in fullstack web development. Proven ability to enhance user engagement and brand presence through user-centric digital products and high-quality technical solutions.
       </p>
     </section>
   </div>
 
   <!-- Work section-->
-  <div class=" mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 lg:px-10 w-full">
+  <div class=" mt-32 flex justify-between items-center mx-auto px-4 md:px-10 2xl:px-48 lg:px-10 w-full">
     <section class="w-full">
-      <h2 id="web" class="secondary-title text-4xl font-bold">
-        Web Development Projects
+      <h2 id="design" class="secondary-title text-4xl font-bold mb-6">
+        Design Systems
       </h2>
-      <p class="section-paragraph">
-        Below are a few projects I've worked on.
+      <p class="text-gray-400">
+        Discover a diverse collection of design and brand systems showcased
+        in my portfolio, reflecting my expertise in creating impactful
+        solutions throughout my career at various companies and personal
+        endeavors.
       </p>
 
       <div class="space-y-12 my-16">
@@ -104,289 +276,138 @@
         <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
           <!-- Project image-->
           <div class="mb-6 px-6 lg:mb-0 justify-center">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-app"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/document-management-app-screenshot.png" alt="Pokémon app" /></a>
+            <a href="kytocase.html"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/kyto_thumbnail_2.png" alt="Kyto" /></a>
           </div>
 
           <!-- Project info-->
           <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-            <h3 class="text-3xl font-semibold">Document Management App</h3>
+            <h3 class="text-3xl font-semibold">Kyto</h3>
 
             <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-              <div class="badge">React</div>
-              <div class="badge">Tailwind</div>
-              <div class="badge">ASP.NET</div>
-              <div class="badge">C#</div>
-              <div class="badge">Azure Blob Storage</div>
-              <div class="badge">PostgreSQL</div>
+              <div class="badge">Design System</div>
+              <div class="badge">UI</div>
+              <div class="badge">Branding</div>
+              <div class="badge">Prototyping</div>
             </div>
 
-            <p class="mb-4">
-              This document management app is a web and mobile application developed using React for the frontend and ASP.NET Core for the backend. It integrates PostgreSQL for database management and Azure Blob Storage for document storage. The app features user authentication, document upload, preview, download tracking, and secure sharing with expiration controls, all accessible through a user-friendly interface.
-
+            <p>
+              Kyto was founded in 2013 and specializes in B2B portal
+              marketing. The company maintains customer data worldwide in
+              B2B portals and directories via a central cloud-based
+              solution.
             </p>
-            <div class="md:flex">
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-app" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                GitHub
+            <div class="flex">
+              <a href="kytocase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                View Case Study
               </a>
             </div>
           </div>
         </div>
+
         <!-- project 2 -->
         <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
           <!-- Project image-->
           <div class="mb-6 px-6 lg:mb-0 justify-center">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-api"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/document-management-api-screenshot.png" alt="Pokémon app" /></a>
+            <a href="smunchcase.html"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/smunch_logo.png" alt="Smunch" /></a>
           </div>
 
           <!-- Project info-->
           <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-            <h3 class="text-3xl font-semibold">Document Management API</h3>
+            <h3 class="text-3xl font-semibold">Smunch</h3>
 
             <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-              <div class="badge">ASP.NET</div>
-              <div class="badge">Azure Blob Storage</div>
-              <div class="badge">PostgreSQL</div>
-              <div class="badge">Postman</div>
-              <div class="badge">C#</div>
+              <div class="badge">Design System</div>
+              <div class="badge">UI</div>
+              <div class="badge">Branding</div>
+              <div class="badge">Prototyping</div>
             </div>
 
-            <p class="mb-4">
-              This API integrates PostgreSQL for database management and Azure Blob Storage for document storage. The app features user authentication, document upload, preview, download tracking, and secure sharing with expiration controls
+            <p>
+              Smunch is a startup based in Berlin that wants to make it easy
+              for companies to provide healthy, mindful food for their
+              employees.
             </p>
-            <div class="md:flex">
-
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-api" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                GitHub
+            <div class="flex">
+              <a href="smunchcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                View Case Study
               </a>
             </div>
           </div>
         </div>
+
         <!-- project 3 -->
         <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
           <!-- Project image-->
-          <div class="mb-6 px-6 lg:mb-0">
-            <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/simple-js-app/"><img src="img/pokedex.png" alt="" class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" /></a>
+          <div class="mb-6 px-6 lg:mb-0 justify-center">
+            <a href="cogalleriescase.html"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/cogalleries_logo.png" alt="coGalleries" /></a>
           </div>
 
           <!-- Project info-->
           <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-            <h3 class="text-3xl font-semibold">Pokédex App</h3>
+            <h3 class="text-3xl font-semibold">coGalleries</h3>
 
             <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-              <div class="badge">JavaScript</div>
-              <div class="badge">Bootstrap</div>
-              <div class="badge">Jquery</div>
-              <div class="badge">HTML5</div>
-              <div class="badge">CSS3</div>
+              <div class="badge">Design System</div>
+              <div class="badge">UI</div>
+              <div class="badge">Branding</div>
+              <div class="badge">Prototyping</div>
             </div>
 
-            <p class="mb-4">
-              This Pokédex is a web application built with HTML, CSS, and
-              primarily JavaScript, which loads data from an external API and
-              enables the viewing of that data in detail.
-            </p>
-            <div class="md:flex">
-              <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/simple-js-app/" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                Live Preview
-              </a>
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/simple-js-app" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                GitHub
-              </a>
-              <a rel="noopener noreferrer" href="pokemoncase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-<!-- project 4 -->
-<div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
-  <!-- Project image-->
-  <div class="mb-6 px-6 lg:mb-0">
-    <a target="_blank" rel="noopener noreferrer" href="https://myflix-movie-client-react.netlify.app/"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/myFlix.png" alt="" /></a>
-  </div>
-
-  <!-- Project info-->
-  <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-    <h3 class="text-3xl font-semibold">myFlix React App</h3>
-
-    <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-      <div class="badge">React</div>
-      <div class="badge">Redux</div>
-      <div class="badge">Bootstrap</div>
-      <div class="badge">Netlify</div>
-    </div>
-
-    <p class="mb-4">
-      This single-page, responsive application (SPA) is the
-      client-side for an application called myFlix based on its
-      existing server-side code (REST API and database).
-    </p>
-    <div class="md:flex">
-      <a target="_blank" rel="noopener noreferrer" href="https://myflix-movie-client-react.netlify.app/" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-        Live Preview
-      </a>
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix-client" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-        GitHub
-      </a>
-      <br>
-      <a rel="noopener noreferrer" href="myflixcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-        Case Study
-      </a>
-    </div>
-  </div>
-</div>
-
-        <!-- project 5 -->
-        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
-          <!-- Project image-->
-          <div class="mb-6 px-6 lg:mb-0">
-            <a target="_blank" rel="noopener noreferrer" href="https://myflix-firstapi-app.herokuapp.com/documentation"><img src="img/movie-api2.png" alt="" class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" /></a>
-          </div>
-
-          <!-- Project info-->
-          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-            <h3 class="text-3xl font-semibold">myFlix API</h3>
-
-            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-              <div class="badge">Node.js</div>
-              <div class="badge">Express</div>
-              <div class="badge">MongoDB</div>
-              <div class="badge">Heroku</div>
-            </div>
-
-            <p class="mb-4">
-              This API is the server-side component of a movies web
-              application. The web application provides users with access to
-              information about different movies, the director, and genres.
-            </p>
-            <div class="md:flex">
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix_api?tab=readme-ov-file#endpoint-documentation" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                Documentation
-              </a>
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix_api" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                GitHub
-              </a>
-              <a rel="noopener noreferrer" href="myflixcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-
-<!-- project 6 -->
-<div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
-  <!-- Project image-->
-  <div class="mb-6 px-6 lg:mb-0">
-    <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/myFlix-Angular-client/welcome"><img src="img/myFlix-angular.png" alt="myFlix Angular App" class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" /></a>
-  </div>
-
-  <!-- Project info-->
-  <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-    <h3 class="text-3xl font-semibold">myFlix Angular App</h3>
-
-    <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-      <div class="badge">Angular</div>
-      <div class="badge">Angular Material UI</div>
-      <div class="badge">TypeScript</div>
-    </div>
-
-    <p>
-      Utilizing the same movie API as with the React app, this SPA is
-      built with Angular.
-    </p>
-    <div class="flex">
-      <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/myFlix-Angular-client/welcome" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-        Live Preview
-      </a>
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix-Angular-client" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-        GitHub
-      </a>
-    </div>
-  </div>
-</div>
-
-        <!-- project 7 -->
-        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
-          <!-- Project image-->
-          <div class="mb-6 px-6 lg:mb-0">
-            <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/meet/"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/meet-app.png" alt="meet app" /></a>
-          </div>
-
-          <!-- Project info-->
-          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-            <h3 class="text-3xl font-semibold">Meet App</h3>
-
-            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-              <div class="badge">React</div>
-              <div class="badge">Recharts</div>
-              <div class="badge">Enzyme</div>
-              <div class="badge">AWS</div>
-              <div class="badge">Google cloud platform</div>
-              <div class="badge">Jest</div>
-              <div class="badge">Bootstrap</div>
-            </div>
-
-            <p class="mb-4">
-              Meet App is a serverless, progressive web application (PWA)
-              built with React using a test-driven development (TDD)
-              technique. The application uses the Google Calendar API to fetch
-              upcoming events.
-            </p>
-            <div class="md:flex">
-              <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/meet/" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                Live Preview
-              </a>
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/meet" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                GitHub
-              </a>
-              <br>
-              <a rel="noopener noreferrer" href="meetcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                Case Study
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- project 8 -->
-        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
-          <!-- Project image-->
-          <div class="mb-6 px-6 lg:mb-0">
-            <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/Chat-App"><img src="img/Chat-App.png" alt="chat app" class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" /></a>
-          </div>
-
-          <!-- Project info-->
-          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-            <h3 class="text-3xl font-semibold">Chat App</h3>
-
-            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
-              <div class="badge">React Native</div>
-              <div class="badge">Expo</div>
-              <div class="badge">Gifted Chats</div>
-              <div class="badge">Android Studio</div>
-              <div class="badge">Google Firebase</div>
-              <div class="badge">PWA</div>
-            </div>
-
-            <p class="mb-4">
-              Chat App was built for mobile devices using React Native. The
-              app provides users with a chat interface and options to share
-              images and their location.
+            <p>
+              coGalleries is a creative travel company that offers unique
+              private art tours and cultural trips.
             </p>
             <div class="flex">
-              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/Chat-App" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                GitHub
-              </a>
-              <a rel="noopener noreferrer" href="chatappcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
-                Case Study
+              <a href="cogalleriescase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                View Case Study
               </a>
             </div>
           </div>
         </div>
+        <!-- project 4 -->
+        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
+          <!-- Project image-->
+          <div class="mb-6 px-6 lg:mb-0 justify-center">
+            <a href="pffcase.html"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/Simple-Mockup-Free-Scene 2.png" alt="Personality Friend Finding App" /></a>
+          </div>
 
+          <!-- Project info-->
+          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
+            <h3 class="text-3xl font-semibold">
+              Personality Friend Finding App
+            </h3>
 
+            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
+              <div class="badge">Design System</div>
+              <div class="badge">UI</div>
+              <div class="badge">Information Architecture</div>
+              <div class="badge">Wireframing</div>
+              <div class="badge">Prototyping</div>
+            </div>
+
+            <p>
+              Idea behind this app project was to design a chat app concept
+              to help people make friends through a variety of personality
+              quizzes. Here, user may take and view results of different
+              personality tests, and chat with people with similar
+              personality types.
+            </p>
+            <div class="flex">
+              <a href="pffcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                View Case Study
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </div>
+  </section>
+
+
+
+
+
 
   <!-- Contact form-->
   <div class=" mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full">
@@ -422,7 +443,7 @@
         <div class="mt-12">
           <p>+49 163 7126279</p>
           <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
-          <a href="img/Roderick-Moise-CV-Fullstack-Web-Developer.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
+          <a href="img/Roderick-Moise-CV-Designer-Developer.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
 
           <!-- Socials-->
           <div class="flex mt-20 space-x-6">

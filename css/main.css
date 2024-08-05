@@ -64,14 +64,13 @@ body {
   /* 2 */
 }
 
-[type=text], [type=email], textarea  {
-
-
-    border: none !important;
-
+[type='text'],
+[type='email'],
+textarea {
+  border: none !important;
 }
 #form-btn {
-    background-color: #01f3ab !important;
+  background-color: #01f3ab !important;
 }
 /*
 1. Add the correct height in Firefox.
@@ -1316,8 +1315,22 @@ body {
 
   .lg\:text-5xl {
     font-size: 3rem;
-    line-height: 1;
+    line-height: 1.1;
   }
+}
+
+@media (min-width: 1024px) {
+    .lg\:text-5xl {
+        font-size: 3rem;
+        line-height: 1.1!important;
+    }
+}
+
+@media (min-width: 1280px) {
+    .xl\:text-7xl {
+        font-size: 4.5rem;
+        line-height: 1.1!important;
+    }
 }
 
 @media (min-width: 1440px) {
@@ -1327,6 +1340,6 @@ body {
 
   .xl\:text-7xl {
     font-size: 4.5rem;
-    line-height: 1;
+    line-height: 1.1!important;
   }
 }
