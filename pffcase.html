@@ -21,16 +21,22 @@
   </head>
 
   <body class="font-poppins pb-12">
-      <!-- Navbar -->
-      <nav class="fixed z-40 top-0 mx-auto py-6 w-full bg-white">
-        <!-- Flex container -->
-        <div class="flex items-center justify-between px-4 2xl:px-48 lg:px-8 w-full z-[1]">
-          <!-- Logo -->
-          <div class="pt-2">
-            <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
-          </div>
-         
-      </nav>
+    <!-- Navbar -->
+    <nav class="fixed z-40 top-0 mx-auto py-6 w-full bg-white">
+      <!-- Flex container -->
+      <div class="flex items-center justify-between px-4 2xl:px-48 lg:px-8 w-full z-[1]">
+        <!-- Logo -->
+        <div class="pt-2">
+          <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
+        </div>
+        <!-- Menu items -->
+        <div class="hidden lg:flex space-x-6">
+        </div>
+        <!-- Button -->
+        <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
+          Contact
+        </a>
+    </nav>
 
     <section class="">
       <div class="mt-32 mb-8 px-4 md:px-14 lg:px-24">
@@ -204,7 +210,7 @@
 
     <!-- Contact form-->
     <div
-      class=" mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full"
+      class="container mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full"
     >
       <section class="w-full">
         <h1 id="contact" class="secondary-title text-4xl font-bold">
