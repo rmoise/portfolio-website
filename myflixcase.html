@@ -17,20 +17,21 @@
 
 <body class="font-poppins pb-12">
     <!-- Navbar -->
-    <nav class="fixed z-40 top-0 mx-auto py-6 w-full bg-white">
-        <!-- Flex container -->
-        <div class="flex items-center justify-between px-4 2xl:px-48 lg:px-8 w-full z-[1]">
-            <!-- Logo -->
-            <div class="pt-2">
-                <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
-            </div>
-            <!-- Menu items -->
-            <div class="hidden lg:flex space-x-6">
-            </div>
-            <!-- Button -->
-            <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
-                Contact
+    <nav class="bg-white fixed w-full z-20 top-0 start-0  ">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="img/rm_logo.svg" class="h-8" alt="RM Logo">
             </a>
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+                <a href="#contact"><button type="button" class="text-black bg-[#00FEB0] hover:bg-[#01e1a1]  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Contact</button></a>
+
+            </div>
+            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white ">
+
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <!-- Title Section -->
@@ -396,56 +397,56 @@
     </section>
 
 
-    <!-- Contact form-->
-    <div class="container mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full">
-        <section class="w-full">
-            <h1 id="contact" class="secondary-title text-4xl font-bold">
-                Contact me
-            </h1>
-            <p class="section-paragraph text-gray-500">
-                Please use the form below to send me a message. I'll be happy to hear
-                from you. Thanks!!!
-            </p>
+<!-- Contact form-->
+<div class=" container mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full">
+    <section class="w-full">
+        <h1 id="contact" class="secondary-title text-4xl font-bold">
+            Contact me
+        </h1>
+        <p class="section-paragraph text-gray-500">
+            Please use the form below to send me a message. I'll be happy to hear
+            from you. Thanks!!!
+        </p>
 
-            <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
-                <form class="space-y-8 input-form" action="https://formspree.io/f/mnqyjrrp" method="POST">
-                    <div>
-                        <label class="block mb-4 text-xl font-bold">Your name</label>
-                        <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
-                    </div>
-                    <div>
-                        <label for="email" class="block mb-4 text-xl font-bold">Your email</label>
-                        <input type="email" name="Email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
-                    </div>
-                    <div>
-                        <label class="block mb-4 text-xl font-bold">Your message</label>
-                        <textarea name="Message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
-                    </div>
-                    <button id="form-btn" type="submit" class="px-6 py-2 bg-green rounded-full font-bold hover:bg-brightGreen">
-                        Send it!
-                    </button>
-                </form>
+        <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
+            <form class="space-y-8 input-form" action="https://formspree.io/f/mnqyjrrp" method="POST">
+                <div>
+                    <label class="block mb-4 text-xl font-bold">Your name</label>
+                    <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+                </div>
+                <div>
+                    <label for="email" class="block mb-4 text-xl font-bold">Your email</label>
+                    <input type="email" name="Email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+                </div>
+                <div>
+                    <label class="block mb-4 text-xl font-bold">Your message</label>
+                    <textarea name="Message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
+                </div>
+                <button type="form-btn" type="submit" class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Send it!</button>
 
-                <!-- Contact info-->
-                <div class="mt-12">
-                    <p>+49 163 7126279</p>
-                    <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
-                    <a href="img/Roderick-Moise-CV-Designer-Developer.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
-                    <!-- Socials-->
-                    <div class="flex mt-20 space-x-6">
-                        <!-- Github logo -->
-                        <a href="https://github.com/rmoise"><img src="img/github_icon.svg" alt="github" /></a>
-                        <!-- Twitter logo -->
-                        <a href="https://twitter.com/RoderickMoise"><img src="img/twitter_icon.svg" alt="twitter" /></a>
-                        <!-- LinkedIn logo -->
-                        <a href="https://www.linkedin.com/in/roderickmoise/"><img src="img/linkedin_icon.svg" alt="linkedin" /></a>
-                        <!-- Medium logo -->
-                        <a href="https://medium.com/@roderickfmoise"><img src="img/medium_icon.svg" alt="medium" /></a>
-                    </div>
+            </form>
+
+            <!-- Contact info-->
+            <div class="mt-12">
+                <p>+49 163 7126279</p>
+                <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
+                <a href="img/Roderick-Moise-CV-Designer-Developer.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
+
+                <!-- Socials-->
+                <div class="flex mt-20 space-x-6">
+                    <!-- Github logo -->
+                    <a href="https://github.com/rmoise"><img src="img/github_icon.svg" alt="github" /></a>
+                    <!-- Twitter logo -->
+                    <a href="https://twitter.com/RoderickMoise"><img src="img/twitter_icon.svg" alt="twitter" /></a>
+                    <!-- LinkedIn logo -->
+                    <a href="https://www.linkedin.com/in/roderickmoise/"><img src="img/linkedin_icon.svg" alt="linkedin" /></a>
+                    <!-- Medium logo -->
+                    <a href="https://medium.com/@roderickfmoise"><img src="img/medium_icon.svg" alt="medium" /></a>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+</div>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/script.js"></script>
