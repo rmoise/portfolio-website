@@ -1,312 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="img/favicon-32x32.png" />
-    <link rel="stylesheet" href="css/main.css" />
-    <title>Roderick's Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body class="font-poppins pb-12">
-    <!-- Navbar -->
-    <nav class="fixed z-40 top-0 mx-auto py-6 w-full bg-white">
-      <!-- Flex container -->
-      <div class="flex items-center justify-between px-4 2xl:px-48 lg:px-8 w-full z-[1]">
-        <!-- Logo -->
-        <div class="pt-2">
-          <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
-        </div>
-        <!-- Menu items -->
-        <div class="hidden lg:flex space-x-6">
-        </div>
-        <!-- Button -->
-        <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
-          Contact
-        </a>
-    </nav>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="img/favicon-32x32.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <title>Roderick's Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+</head>
 
-    <section class="">
-      <div class="mt-32 mb-8 px-4 md:px-14 lg:px-24">
-        <!-- Left item -->
-        <div class="">
-          <h1
-            id="header"
-            class="font-bold text-5xl xl:text-6xl text-center md:text-left"
-          >
-            <span style="color: #01f3ab">Personality Friend Finding App</span>
-            <div class="mt-2">Case Study</div>
-          </h1>
-        </div>
+<body class="font-poppins pb-12">
+  <!-- Navbar -->
+  <nav class="fixed z-40 top-0 mx-auto py-6 w-full bg-white">
+    <!-- Flex container -->
+    <div class="flex items-center justify-between px-4 2xl:px-48 lg:px-8 w-full z-[1]">
+      <!-- Logo -->
+      <div class="pt-2">
+        <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
+      </div>
+      <!-- Menu items -->
+      <div class="hidden lg:flex space-x-6">
+      </div>
+      <!-- Button -->
+      <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
+        Contact
+      </a>
+  </nav>
+
+  <section class="">
+    <div class="mt-32 mb-8 px-4 md:px-14 lg:px-24">
+      <!-- Left item -->
+      <div class="">
+        <h1 id="header" class="font-bold text-5xl xl:text-6xl text-center md:text-left">
+          <span style="color: #01f3ab">Personality Friend Finding App</span>
+          <div class="mt-2">Case Study</div>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <main>
+    <!-- Work section-->
+    <section class="md:pt-10 py-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <h2 class="secondary-title text-3xl font-bold">
+          Idea Generation and Features
+        </h2>
+        <p class="mt-4">
+          Idea behind this app project was to design a chat app concept to
+          help people make friends through a variety of personality quizzes.
+          Here, user may take and view results of different personality tests,
+          and chat with people with similar personality types.
+        </p>
+        <p class="mt-4">
+          The app is divided into 3 branches: Quiz, Discover, Chat. I designed
+          the Quiz branch. The Quiz branch should allow the following:
+        </p>
+        <ul class="list-disc list-outside ml-4 mt-4">
+          <li>Answer quiz questions associated with a personality test</li>
+          <li>Viewing your test results</li>
+          <li>Comparing your results with your friends</li>
+        </ul>
+        <p class="mt-4">Currently, the app supports 4 personality tests:</p>
+        <ul class="list-disc list-outside ml-4 mt-4">
+          <li>Myers-Briggs</li>
+          <li>The Big Five</li>
+          <li>DISC</li>
+          <li>Jungian Archetypes</li>
+        </ul>
+        <p class="mt-4">I chose to design The Big Five Personality test.</p>
       </div>
     </section>
 
-    <!-- Hero Section -->
-    <main>
-      <!-- Work section-->
-      <section class="md:pt-10 py-5">
-        <div class="px-4 md:px-14 lg:px-24">
-          <h2 class="secondary-title text-3xl font-bold">
-            Idea Generation and Features
-          </h2>
-          <p class="mt-4">
-            Idea behind this app project was to design a chat app concept to
-            help people make friends through a variety of personality quizzes.
-            Here, user may take and view results of different personality tests,
-            and chat with people with similar personality types.
-          </p>
-          <p class="mt-4">
-            The app is divided into 3 branches: Quiz, Discover, Chat. I designed
-            the Quiz branch. The Quiz branch should allow the following:
-          </p>
-          <ul class="list-disc list-outside ml-4 mt-4">
-            <li>Answer quiz questions associated with a personality test</li>
-            <li>Viewing your test results</li>
-            <li>Comparing your results with your friends</li>
-          </ul>
-          <p class="mt-4">Currently, the app supports 4 personality tests:</p>
-          <ul class="list-disc list-outside ml-4 mt-4">
-            <li>Myers-Briggs</li>
-            <li>The Big Five</li>
-            <li>DISC</li>
-            <li>Jungian Archetypes</li>
-          </ul>
-          <p class="mt-4">I chose to design The Big Five Personality test.</p>
-        </div>
-      </section>
-
-      <!-- Work section-->
-      <section class="md:pb-5 py-5">
-        <div class="px-4 md:px-14 lg:px-24">
-          <h2 class="secondary-title text-3xl font-bold">
-            Information Architecture
-          </h2>
-          <p class="mt-4">
-            The next thing I did was to divide the information architecture into
-            feature based flows, such as viewing network, and test taking. I
-            made the Quiz dashboard the center point.
-          </p>
-
-          <img
-            src="img/IMG_05922.png"
-            class="mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover"
-          />
-        </div>
-      </section>
-
-      <!-- Work section-->
-      <section class="md:pb-5 py-5">
-        <div class="px-4 md:px-14 lg:px-24">
-          <h2 class="secondary-title text-3xl font-bold">Wireframing</h2>
-          <p class="mt-4">
-            This is the creative part of the design process. Here's some rough
-            sketching of ideas I came up with. I used the material design
-            guidelines for the app.
-          </p>
-
-          <img
-            src="img/IMG_05892.png"
-            class="mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover"
-          />
-        </div>
-      </section>
-
-      <!-- Work section-->
-      <section class="md:pb-5 py-5">
-        <div class="px-4 md:px-14 lg:px-24">
-          <h2 class="secondary-title text-3xl font-bold">Quiz Dashboard</h2>
-          <p class="mt-4">
-            Here I explored different ideas for the design of the app. I first
-            started with the main screen of the app i.e Quiz dashboard screen
-            through which users can see their test, and network of friends. I
-            created 3 design wireframes on this using functionalities like
-            horizontal scrolling cards and pull up tabs. I went with first
-            design i.e horizontal scrolling cards version.
-          </p>
-
-          <img
-            src="img/IMG_05874.png"
-            class="mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover"
-          />
-        </div>
-      </section>
-
-      <!-- Work section-->
-      <section class="md:pb-5 py-5">
-        <div class="px-4 md:px-14 lg:px-24">
-          <h2 class="secondary-title text-3xl font-bold">Results UI</h2>
-          <p class="mt-4">
-            The first two wireframes are for The Big Five Test UI. (I chose the
-            second one.) (The third wireframe was for The Big Five Test results
-            which I ended up not choosing)
-          </p>
-
-          <img
-            src="img/IMG_05912.png"
-            class="mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover"
-          />
-        </div>
-      </section>
-
-      <!-- Work section-->
-      <section class="md:pb-5 py-5">
-        <div class="px-4 md:px-14 lg:px-24">
-          <h2 class="secondary-title text-3xl font-bold">Design System</h2>
-
-          <img
-            src="img/Artboard2.png"
-            class="mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover"
-          />
-        </div>
-      </section>
-
-      <!-- Work section-->
-      <section class="md:pb-5 py-5">
-        <div class="px-4 md:px-14 lg:px-24">
-          <h2 class="secondary-title text-3xl font-bold">Final Screens</h2>
-          <img
-            src="img/Artboard_Copy.png"
-            class="mt-4 md:mt-8 mx-auto lg:w-3/4 object-cover"
-          />
-          <img
-            src="img/Artboard_Copy_2.png"
-            class="mt-4 md:mt-8 mx-auto lg:w-1/2 object-cover"
-          />
-        </div>
-      </section>
-
-      <section class="md:py-20 py-10">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center">
-          <!-- Previous Button -->
-          <a
-            href="cogalleriescase.html"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-          >
-            Previous
-          </a>
-
-          <!-- Next Button -->
-          <a
-            href="kytocase.html"
-            class="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
-          >
-            Next
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <!-- Contact form-->
-    <div
-      class="container mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full"
-    >
-      <section class="w-full">
-        <h1 id="contact" class="secondary-title text-4xl font-bold">
-          Contact me
-        </h1>
-        <p class="section-paragraph">
-          Please use the form below to send me a message. I'll be happy to hear
-          from you. Thanks!!!
+    <!-- Work section-->
+    <section class="md:pb-5 py-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <h2 class="secondary-title text-3xl font-bold">
+          Information Architecture
+        </h2>
+        <p class="mt-4">
+          The next thing I did was to divide the information architecture into
+          feature based flows, such as viewing network, and test taking. I
+          made the Quiz dashboard the center point.
         </p>
 
-        <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
-          <form
-            class="space-y-8 input-form"
-            action="https://formspree.io/f/mnqyjrrp"
-            method="POST"
-          >
-            <div>
-              <label class="block mb-4 text-xl font-bold">Your name</label>
-              <input
-                type="text"
-                name="Name"
-                id="form-name"
-                class="w-full border border-input-border bg-slate-100 px-4 py-2"
-                required
-              />
-            </div>
-            <div>
-              <label for="email" class="block mb-4 text-xl font-bold"
-                >Your email</label
-              >
-              <input
-                type="email"
-                name="Email"
-                id="form-email"
-                class="w-full border border-input-border bg-slate-100 px-4 py-2"
-                required
-              />
-            </div>
-            <div>
-              <label class="block mb-4 text-xl font-bold">Your message</label>
-              <textarea
-                name="Message"
-                id="form-message"
-                class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none"
-                placeholder="Type your message here..."
-                required
-              ></textarea>
-            </div>
-            <button
-              id="form-btn"
-              type="submit"
-              class="px-6 py-2 bg-green rounded-full font-bold hover:bg-brightGreen"
-            >
-              Send it!
-            </button>
-          </form>
+        <img src="img/IMG_05922.png" class="rounded-xl mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
 
-          <!-- Contact info-->
-          <div class="mt-12">
-            <p>+49 163 7126279</p>
-            <a
-              href="mailto:roderickfmoise@gmail.com"
-              class="underline mt-3 block"
-              >roderickfmoise@gmail.com</a
-            >
-            <a
-              href="img/Roderick-Moise-CV-Designer-Developer.pdf"
-              target="_blank"
-              class="underline mt-3 block"
-              ><b>Download my CV</b></a
-            >
-            <!-- Socials-->
-            <div class="flex mt-20 space-x-6">
-              <!-- Github logo -->
-              <a href="https://github.com/rmoise"
-                ><img src="img/github_icon.svg" alt="github"
-              /></a>
-              <!-- Twitter logo -->
-              <a href="https://twitter.com/RoderickMoise"
-                ><img src="img/twitter_icon.svg" alt="twitter"
-              /></a>
-              <!-- LinkedIn logo -->
-              <a href="https://www.linkedin.com/in/roderickmoise/"
-                ><img src="img/linkedin_icon.svg" alt="linkedin"
-              /></a>
-              <!-- Medium logo -->
-              <a href="https://medium.com/@roderickfmoise"
-                ><img src="img/medium_icon.svg" alt="medium"
-              /></a>
-            </div>
+    <!-- Work section-->
+    <section class="md:pb-5 py-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <h2 class="secondary-title text-3xl font-bold">Wireframing</h2>
+        <p class="mt-4">
+          This is the creative part of the design process. Here's some rough
+          sketching of ideas I came up with. I used the material design
+          guidelines for the app.
+        </p>
+
+        <img src="img/IMG_05892.png" class="rounded-xl mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section class="md:pb-5 py-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <h2 class="secondary-title text-3xl font-bold">Quiz Dashboard</h2>
+        <p class="mt-4">
+          Here I explored different ideas for the design of the app. I first
+          started with the main screen of the app i.e Quiz dashboard screen
+          through which users can see their test, and network of friends. I
+          created 3 design wireframes on this using functionalities like
+          horizontal scrolling cards and pull up tabs. I went with first
+          design i.e horizontal scrolling cards version.
+        </p>
+
+        <img src="img/IMG_05874.png" class="rounded-xl mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section class="md:pb-5 py-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <h2 class="secondary-title text-3xl font-bold">Results UI</h2>
+        <p class="mt-4">
+          The first two wireframes are for The Big Five Test UI. (I chose the
+          second one.) (The third wireframe was for The Big Five Test results
+          which I ended up not choosing)
+        </p>
+
+        <img src="img/IMG_05912.png" class="rounded-xl mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section class="md:pb-5 py-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <h2 class="secondary-title text-3xl font-bold">Design System</h2>
+
+        <img src="img/Artboard2.png" class="xl:border-2 bg-slate-50 rounded-xl xl:p-14 mt-4 md:mt-8 mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section class="md:pb-5 py-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <h2 class="secondary-title text-3xl font-bold">Final Screens</h2>
+        <img src="img/Artboard_Copy.png" class="xl:border-2 xl:p-14 rounded-xl mt-4 md:mt-8 mx-auto lg:w-3/4 object-cover" />
+        <img src="img/Artboard_Copy_2.png" class="xl:border-2 rounded-xl xl:p-14 mt-4 md:mt-8 mx-auto lg:w-1/2 object-cover" />
+      </div>
+    </section>
+
+    <section class="md:py-20 py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center">
+        <!-- Previous Button -->
+        <a href="cogalleriescase.html" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+          Previous
+        </a>
+
+        <!-- Next Button -->
+        <a href="kytocase.html" class="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+          Next
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Contact form-->
+  <div class="container mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full">
+    <section class="w-full">
+      <h1 id="contact" class="secondary-title text-4xl font-bold">
+        Contact me
+      </h1>
+      <p class="section-paragraph text-gray-500">
+        Please use the form below to send me a message. I'll be happy to hear
+        from you. Thanks!!!
+      </p>
+
+      <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
+        <form class="space-y-8 input-form" action="https://formspree.io/f/mnqyjrrp" method="POST">
+          <div>
+            <label class="block mb-4 text-xl font-bold">Your name</label>
+            <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+          </div>
+          <div>
+            <label for="email" class="block mb-4 text-xl font-bold">Your email</label>
+            <input type="email" name="Email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+          </div>
+          <div>
+            <label class="block mb-4 text-xl font-bold">Your message</label>
+            <textarea name="Message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
+          </div>
+          <button id="form-btn" type="submit" class="px-6 py-2 bg-green rounded-full font-bold hover:bg-brightGreen">
+            Send it!
+          </button>
+        </form>
+
+        <!-- Contact info-->
+        <div class="mt-12">
+          <p>+49 163 7126279</p>
+          <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
+          <a href="img/Roderick-Moise-CV-Designer-Developer.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
+          <!-- Socials-->
+          <div class="flex mt-20 space-x-6">
+            <!-- Github logo -->
+            <a href="https://github.com/rmoise"><img src="img/github_icon.svg" alt="github" /></a>
+            <!-- Twitter logo -->
+            <a href="https://twitter.com/RoderickMoise"><img src="img/twitter_icon.svg" alt="twitter" /></a>
+            <!-- LinkedIn logo -->
+            <a href="https://www.linkedin.com/in/roderickmoise/"><img src="img/linkedin_icon.svg" alt="linkedin" /></a>
+            <!-- Medium logo -->
+            <a href="https://medium.com/@roderickfmoise"><img src="img/medium_icon.svg" alt="medium" /></a>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
+  </div>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="js/script.js"></script>
-  </body>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
 </html>
