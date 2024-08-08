@@ -18,22 +18,23 @@
 </head>
 
 <body class="font-poppins pb-12">
-  <!-- Navbar -->
-  <nav class="fixed z-40 top-0 mx-auto py-6 w-full bg-white">
-    <!-- Flex container -->
-    <div class="flex items-center justify-between px-4 2xl:px-48 lg:px-8 w-full z-[1]">
-      <!-- Logo -->
-      <div class="pt-2">
-        <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
-      </div>
-      <!-- Menu items -->
-      <div class="hidden lg:flex space-x-6">
-      </div>
-      <!-- Button -->
-      <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
-        Contact
-      </a>
-  </nav>
+<!-- Navbar -->
+<nav class="fixed z-50 top-0 mx-auto py-6 w-full bg-white">
+  <!-- Flex container -->
+  <div class="flex items-center justify-between px-4 2xl:px-48 lg:px-8 w-full z-[1]">
+    <!-- Logo -->
+    <div class="pt-2">
+      <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
+    </div>
+    <!-- Menu items -->
+    <div class="hidden lg:flex space-x-6">
+    </div>
+    <!-- Button -->
+    <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
+      Contact
+    </a>
+  </div>
+</nav>
 
   <!-- Title Section -->
   <section class="">
@@ -154,17 +155,18 @@
       </div>
     </section>
 
-    <section class="relative overflow-hidden bg-slate-100 w-screen 2xl:pt-20  xl:pt-28 md:pt-28  py-10">
+    <!-- Carousel Section -->
+    <section class="relative overflow-hidden bg-slate-100 w-screen 2xl:pt-20 xl:pt-28 md:pt-28 py-10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 2xl:-mb-40 lg:px-14 text-center">
         <div id="indicators-carousel" class="relative w-full mt-6 mb-2" data-carousel="static">
           <div class="flex space-x-6 justify-between items-center mb-2">
             <h3 class="text-xl font-bold">Website - Desktop</h3>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.kyto.de/" class="md:block lg:pl-0 text-green hover:text-linkHover -mb-3">
+            <a target="_blank" rel="noopener noreferrer" href="https://www.kyto.de/" class="relative z-40 underline text-black hover:text-darkGrayishBlue -mb-3">
               Live Preview
             </a>
           </div>
           <!-- Carousel wrapper -->
-          <div class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px]">
+          <div class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px] z-10">
             <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
               <p class="text-gray-400 text-left">Homepage</p>
@@ -208,7 +210,7 @@
           </div>
 
           <!-- Slider controls -->
-          <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+          <button type="button" class="absolute top-0 left-0 z-20 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
             <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
               <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -216,7 +218,7 @@
               <span class="sr-only">Previous</span>
             </span>
           </button>
-          <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+          <button type="button" class="absolute top-0 right-0 z-20 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
             <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
               <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -227,6 +229,8 @@
         </div>
       </div>
     </section>
+
+
 
     <section class="relative overflow-hidden bg-slate-100 md:pb-20 pb-10 w-screen">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-14 text-center">
