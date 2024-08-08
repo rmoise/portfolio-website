@@ -156,170 +156,180 @@
 
     <!-- Carousel Section -->
     <section class="relative overflow-hidden bg-slate-100 w-screen 2xl:pt-20 xl:pt-28 md:pt-28 py-10">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 2xl:-mb-40 lg:px-14 text-center">
+      <div class="mx-auto max-w-7xl px-4 text-center">
         <div id="indicators-carousel" class="relative w-full mt-6 mb-2" data-carousel="static">
-          <div class="flex space-x-6 justify-between items-center mb-2">
-            <h3 class="text-xl font-bold">Website - Desktop</h3>
-            <a target="_blank" rel="noopener noreferrer" href="https://www.kyto.de/" class="relative z-40 underline text-black hover:text-darkGrayishBlue -mb-3">
-              Live Preview
-            </a>
+          <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center mb-8">
+            <div>
+              <h3 class="text-xl font-bold mb-4">Website - Desktop</h3>
+            </div>
+            <div>
+              <a target="_blank" rel="noopener noreferrer" href="https://www.kyto.de/" class="relative z-40 underline text-black hover:text-darkGrayishBlue">
+                Live Preview
+              </a>
+            </div>
           </div>
           <!-- Carousel wrapper -->
-          <div class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px] z-10">
+          <div class="relative h-56 overflow-hidden rounded md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px] z-10">
             <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-              <p class="text-gray-400 text-left">Homepage</p>
-              <img src="img/Kyto-laptop-01.png" alt="..." />
+              <p class="text-gray-500 text-center mb-2">Homepage</p>
+              <img src="img/Kyto-laptop-01.png" alt="..." class="w-full" />
             </div>
             <!-- Item 2 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400 text-left">Kyto Platform Engine Page</p>
-              <img src="img/Kyto-laptop-02.png" alt="..." />
+              <p class="text-gray-500 text-center mb-2">Kyto Platform Engine Page</p>
+              <img src="img/Kyto-laptop-02.png" alt="..." class="w-full" />
             </div>
             <!-- Item 3 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400 text-left">Kyto Website Engine Page</p>
-              <img src="img/Kyto-laptop-03.png" alt="..." />
+              <p class="text-gray-500 text-center mb-2">Kyto Website Engine Page</p>
+              <img src="img/Kyto-laptop-03.png" alt="..." class="w-full" />
             </div>
             <!-- Item 4 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400 text-left">Contact Page</p>
-              <img src="img/Kyto-laptop-04.png" alt="..." />
+              <p class="text-gray-500 text-center mb-2">Contact Page</p>
+              <img src="img/Kyto-laptop-04.png" alt="..." class="w-full" />
             </div>
             <!-- Item 5 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400 text-left">Careers Page</p>
-              <img src="img/Kyto-laptop-05.png" alt="..." />
+              <p class="text-gray-500 text-center mb-2">Careers Page</p>
+              <img src="img/Kyto-laptop-05.png" alt="..." class="w-full" />
             </div>
             <!-- Item 6 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400 text-left">Partners Page</p>
-              <img src="img/Kyto-laptop-06.png" alt="..." />
+              <p class="text-gray-500 text-center mb-2">Partners Page</p>
+              <img src="img/Kyto-laptop-06.png" alt="..." class="w-full" />
             </div>
             <!-- Item 7 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400 text-left">Blog Page</p>
-              <img src="img/Kyto-laptop-07.png" alt="..." />
+              <p class="text-gray-500 text-center mb-2">Blog Page</p>
+              <img src="img/Kyto-laptop-07.png" alt="..." class="w-full" />
             </div>
             <!-- Item 8 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400 text-left">Blog Article Page</p>
-              <img src="img/Kyto-laptop-08.png" alt="..." />
+              <p class="text-gray-500 text-center mb-2">Blog Article Page</p>
+              <img src="img/Kyto-laptop-08.png" alt="..." class="w-full" />
             </div>
+
+            <!-- Slider controls -->
+            <button type="button" class="absolute top-1/2 left-0 transform -translate-y-1/2 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span class="sr-only">Previous</span>
+              </span>
+            </button>
+            <button type="button" class="absolute top-1/2 right-0 transform -translate-y-1/2 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+              <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+                <span class="sr-only">Next</span>
+              </span>
+            </button>
           </div>
-
-          <!-- Slider controls -->
-          <button type="button" class="absolute top-0 left-0 z-20 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-              <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-              <span class="sr-only">Previous</span>
-            </span>
-          </button>
-          <button type="button" class="absolute top-0 right-0 z-20 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-              <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-              <span class="sr-only">Next</span>
-            </span>
-          </button>
         </div>
       </div>
     </section>
 
 
 
-    <section class="relative overflow-hidden bg-slate-100 md:pb-20 pb-10 w-screen">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-14 text-center">
-        <div class="mx-auto text-left">
-          <h3 class="text-xl font-bold">Website - Mobile</h3>
-          <img src="img/kyto-mobile.png" class="mx-auto lg:w-screen object-cover" />
-        </div>
-      </div>
-    </section>
 
     <section class="2xl:pt-20 2xl:-mb-24 xl:pt-28 xl:mb-28 md:pt-20 md:mb-16 py-10">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-14 text-center">
-        <div id="indicators-carousel" class="relative w-full" data-carousel="static">
-          <h3 class="text-xl font-bold">Kyto Platform Engine App</h3>
+      <div class="mx-auto max-w-7xl px-4 text-center">
+        <div id="indicators-carousel-2" class="relative w-full" data-carousel="static">
+          <div class="mb-8">
+            <h3 class="text-xl font-bold">Kyto Platform Engine App</h3>
+          </div>
           <!-- Carousel wrapper -->
-          <div class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px]">
+          <div class="relative h-56 overflow-hidden rounded-lg md:h-[420px] lg:h-[540px] xl:h-[650px] 2xl:h-[850px] flex items-center justify-center">
+            <!-- Items -->
+            <div class="absolute inset-0 flex items-center justify-between px-4">
+              <!-- Slider controls -->
+              <button type="button" class="absolute top-1/2 left-0 transform -translate-y-1/2 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+                  <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                  </svg>
+                  <span class="sr-only">Previous</span>
+                </span>
+              </button>
+              <button type="button" class="absolute top-1/2 right-0 transform -translate-y-1/2 z-30 flex items-center justify-center px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+                  <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                  <span class="sr-only">Next</span>
+                </span>
+              </button>
+              </div>
             <!-- Item 1 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400">Product Catalogue - new product</p>
-              <img src="img/Kyto-laptop-platform-07.png" alt="..." />
+              <p class="text-gray-500 mb-2">Product Catalogue - new product</p>
+              <img src="img/Kyto-laptop-platform-07.png" alt="..." class="w-full object-contain" />
             </div>
             <!-- Item 2 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400">Product Catalogue - tile view</p>
-              <img src="img/Kyto-laptop-platform-01.png" alt="..." />
+              <p class="text-gray-500 mb-2">Product Catalogue - tile view</p>
+              <img src="img/Kyto-laptop-platform-01.png" alt="..." class="w-full object-contain" />
             </div>
             <!-- Item 3 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400">Product Catalogue - accordion</p>
-              <img src="img/Kyto-laptop-platform-02.png" alt="..." />
+              <p class="text-gray-500 mb-2">Product Catalogue - accordion</p>
+              <img src="img/Kyto-laptop-platform-02.png" alt="..." class="w-full object-contain" />
             </div>
             <!-- Item 4 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400">Product Catalogue - list view</p>
-              <img src="img/Kyto-laptop-platform-03.png" alt="..." />
+              <p class="text-gray-500 mb-2">Product Catalogue - list view</p>
+              <img src="img/Kyto-laptop-platform-03.png" alt="..." class="w-full object-contain" />
             </div>
             <!-- Item 5 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-              <p class="text-gray-400">Product Data Details</p>
-              <img src="img/Kyto-laptop-platform-04.png" alt="..." />
+              <p class="text-gray-500 mb-2">Product Data Details</p>
+              <img src="img/Kyto-laptop-platform-04.png" alt="..." class="w-full object-contain" />
             </div>
             <!-- Item 6 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400">Company Profile</p>
-              <img src="img/Kyto-laptop-platform-05.png" alt="..." />
+              <p class="text-gray-500 mb-2">Company Profile</p>
+              <img src="img/Kyto-laptop-platform-05.png" alt="..." class="w-full object-contain" />
             </div>
             <!-- Item 7 -->
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
-              <p class="text-gray-400">Data Synchronization</p>
-              <img src="img/Kyto-laptop-platform-06.png" alt="..." />
+              <p class="text-gray-500 mb-2">Data Synchronization</p>
+              <img src="img/Kyto-laptop-platform-06.png" alt="..." class="w-full object-contain" />
             </div>
           </div>
-
-          <!-- Slider controls -->
-          <button type="button" class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-              <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-              </svg>
-              <span class="sr-only">Previous</span>
-            </span>
-          </button>
-          <button type="button" class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-            <span class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-gray-800/30 group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
-              <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-              </svg>
-              <span class="sr-only">Next</span>
-            </span>
-          </button>
         </div>
       </div>
     </section>
 
+
+
+
+
+
     <section class="relative overflow-hidden bg-slate-100 pb-10 md:pt-40 pt-20 w-screen">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-14 text-center">
+      <div class="mx-auto max-w-7xl px-4 text-center">
         <div class="mx-auto text-center">
-          <h3 class="text-xl -mt-12 md:-mt-20 font-bold">
-            Kyto Website Engine App
-          </h3>
-          <p class="text-gray-400">Dashboard</p>
-          <img src="img/Kyto-laptop-website-engine-01.png" class="mt-1 md:mt-2 mx-auto lg:w-screen object-cover" />
+          <div class="mb-8">
+            <h3 class="text-xl -mt-12 md:-mt-20 font-bold">
+
+              Kyto Website Engine App
+            </h3>
+          </div>
+          <p class="text-gray-500">Dashboard</p>
+          <img src="img/Kyto-laptop-website-engine-01.png" class="mt-2 mx-auto lg:w-screen object-cover" />
         </div>
       </div>
     </section>
 
     <section class="md:py-20 py-10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center">
-        <h3 class="text-xl font-bold">Stationary</h3>
-        <p class="text-gray-400">Letterhead and business card</p>
+        <div class="mb-8">
+          <h3 class="text-xl font-bold">Stationary</h3>
+        </div>
+        <p class="text-gray-500">Letterhead and business card</p>
         <img src="img/Kyto-Stationery.png" class="mx-auto -mt-2 lg:w-1/2 object-cover" />
         <img src="img/Business_Card_Mockup_4.png" class="mx-auto overflow-hidden rounded-xl md:mb-7 mb-3 -mt-3 lg:w-1/2 object-cover" />
         <img src="img/Business_Card_Mockup_5.png" class="mx-auto overflow-hidden rounded-xl lg:w-1/2 object-cover" />
@@ -329,9 +339,11 @@
     <section class="relative overflow-hidden bg-slate-100 md:py-20 py-10 w-screen">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4">
         <div class="mx-auto text-center">
-          <h3 class="text-xl font-bold">Stickers</h3>
+          <div class="mb-8">
+            <h3 class="text-xl font-bold">Stickers</h3>
+          </div>
         </div>
-        <div class="mt-4">
+        <div>
           <img src="img/Kyto_Stickers-01.png" class="mx-auto lg:w-1/2 object-cover" />
         </div>
       </div>
@@ -340,7 +352,9 @@
     <section class="relative overflow-hidden bg-white md:pt-20 py-10 w-screen">
       <div class="mx-auto max-w-7xl px-14 sm:px-6 lg:px-14 relative">
         <div class="max-w-2xl md:mx-auto text-center xl:max-w-none">
-          <h3 class="text-xl mb-2 font-bold">Desktop Wallpaper</h3>
+          <div class="mb-8">
+            <h3 class="text-xl mb-2 font-bold">Desktop Wallpaper</h3>
+          </div>
         </div>
         <div class="mt-4 overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10">
           <img src="img/Kyto_Posters_2-03.png" class="" />
