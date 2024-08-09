@@ -163,7 +163,7 @@
     <section class="w-full">
       <h2 id="about" class="secondary-title text-3xl font-bold">About me</h2>
 
-      <p class="my-6 w-full text-gray-500">
+      <p class="my-6 w-full text-gray-600">
         Creative and analytical professional with over 10 years of graphic design experience, 4 years in UI/UX design, and 1 year expertise in fullstack web development. Proven ability to enhance user engagement and brand presence through user-centric digital products and high-quality technical solutions.
       </p>
     </section>
@@ -172,8 +172,12 @@
 
   <!-- Portfolio section -->
   <div class=" container mt-32 flex justify-between items-center mx-auto px-4 md:px-10 lg:px-10 w-full">
-    <section class="w-full flex justify-center">
-      <h2 id="portfolio" class="secondary-title text-3xl font-bold">Portfolio</h2>
+    <section class="w-full">
+      <div class=" flex justify-center">
+        <h2 id="portfolio" class=" secondary-title text-3xl font-bold">Portfolio</h2>
+      </div>
+      <p class="my-6 w-full text-center text-gray-600">
+        Discover a diverse collection of design and brand systems, along with web development projects, showcased in my portfolio. These works reflect my expertise in creating impactful solutions across various companies and personal endeavors throughout my career.</p>
     </section>
   </div>
 
@@ -191,20 +195,14 @@
   </div>
   <div id="default-tab-content">
     <div class="hidden p-4 rounded-lg" id="design-tab-content" role="tabpanel" aria-labelledby="profile-tab">
-      <p class="text-sm text-gray-500 dark:text-gray-500"><!-- Work section-->
-      <div class="container mt-8 flex justify-between items-center mx-auto px-4 md:px-10 2xl:px-48 lg:px-10 w-full">
+      <p class="text-sm text-gray-600"><!-- Work section-->
+      <div class="container mt-8 md:mt-16 xl:mt-16 flex justify-between items-center mx-auto px-4 md:px-10 2xl:px-48 lg:px-10 w-full">
         <section class="w-full">
-          <h2 id="design" class="text-3xl font-bold mb-6">
+          <h3 id="design" class="text-2xl font-bold">
             Design Systems
-          </h2>
-          <p class="text-gray-500">
-            Discover a diverse collection of design and brand systems showcased
-            in my portfolio, reflecting my expertise in creating impactful
-            solutions throughout my career at various companies and personal
-            endeavors.
-          </p>
+          </h3>
 
-          <div class="space-y-12 my-16">
+          <div class="space-y-12 mt-8">
             <!-- project 1 -->
             <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
               <!-- Project image-->
@@ -214,7 +212,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">Kyto</h3>
+                <h3 class="text-2xl font-semibold">Kyto</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">Design System</div>
@@ -223,7 +221,7 @@
                   <div class="badge">Prototyping</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   Founded in 2013, Kyto specializes in B2B portal marketing, managing global customer data through a central cloud-based solution.
                 </p>
                 <div class="flex">
@@ -243,7 +241,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">Smunch</h3>
+                <h3 class="text-2xl font-semibold">Smunch</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">Design System</div>
@@ -252,7 +250,7 @@
                   <div class="badge">Prototyping</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   Smunch is a startup based in Berlin that wants to make it easy
                   for companies to provide healthy, mindful food for their
                   employees.
@@ -274,7 +272,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">coGalleries</h3>
+                <h3 class="text-2xl font-semibold">coGalleries</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">Design System</div>
@@ -283,7 +281,7 @@
                   <div class="badge">Prototyping</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   coGalleries is a creative travel company offering unique private art tours and cultural trips.
 
                 </p>
@@ -303,7 +301,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">
+                <h3 class="text-2xl font-semibold">
                   PFF
                 </h3>
 
@@ -315,7 +313,7 @@
                   <div class="badge">Prototyping</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   The app helps users make friends by taking personality quizzes, viewing results, and chatting with people who have similar traits.
                 </p>
                 <div class="flex">
@@ -332,17 +330,14 @@
       </p>
     </div>
     <div class="hidden p-4 rounded-lg " id="dev-tab-content" role="tabpanel" aria-labelledby="dashboard-tab">
-      <p class="text-sm text-gray-500 dark:text-gray-400"><!-- Work section-->
-      <div class="container mt-8 flex justify-between items-center mx-auto px-4 2xl:px-48 lg:px-10 w-full">
+      <p class="text-sm text-gray-600"><!-- Work section-->
+      <div class="container mt-8 md:mt-16 xl:mt-16 flex justify-between items-center mx-auto px-4 2xl:px-48 lg:px-10 w-full">
         <section class="w-full">
-          <h2 id="dev" class="text-3xl font-bold">
+          <h2 id="dev" class="text-2xl font-bold">
             Web Development
           </h2>
-          <p class="text-gray-500 section-paragraph">
-            Below are a few projects I've worked on.
-          </p>
 
-          <div class="space-y-12 my-16">
+          <div class="space-y-12 mt-8">
             <!-- project 1 -->
             <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
               <!-- Project image-->
@@ -352,7 +347,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">Doc Manager</h3>
+                <h3 class="text-2xl font-semibold">Doc Manager</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">React</div>
@@ -363,7 +358,7 @@
                   <div class="badge">PostgreSQL</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   This app, built with React and ASP.NET Core, manages documents with PostgreSQL and Azure Blob Storage, offering secure upload, preview, and sharing.
 
                 </p>
@@ -383,7 +378,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">Doc Manager API</h3>
+                <h3 class="text-2xl font-semibold">Doc Manager API</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">ASP.NET</div>
@@ -393,7 +388,7 @@
                   <div class="badge">C#</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   This API uses PostgreSQL and Azure Blob Storage for secure document management, including authentication, upload, preview, and sharing.
                 </p>
                 <div class="md:flex">
@@ -413,7 +408,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">Pokédex</h3>
+                <h3 class="text-2xl font-semibold">Pokédex</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">JavaScript</div>
@@ -423,7 +418,7 @@
                   <div class="badge">CSS3</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   This Pokédex web app, built with HTML, CSS, and JavaScript, loads data from an API for detailed Pokémon information.
                 </p>
                 <div class="flex">
@@ -448,7 +443,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">myFlix React</h3>
+                <h3 class="text-2xl font-semibold">myFlix React</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">React</div>
@@ -457,7 +452,7 @@
                   <div class="badge">Netlify</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   This single-page, responsive application (SPA) is the
                   client-side for an application called myFlix based on its
                   existing server-side code (REST API and database).
@@ -486,7 +481,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">myFlix API</h3>
+                <h3 class="text-2xl font-semibold">myFlix API</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">Node.js</div>
@@ -495,7 +490,7 @@
                   <div class="badge">Heroku</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   This API powers a movie app, giving users info on films, directors, and genres.
 
                 </p>
@@ -522,7 +517,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">myFlix Angular</h3>
+                <h3 class="text-2xl font-semibold">myFlix Angular</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">Angular</div>
@@ -530,7 +525,7 @@
                   <div class="badge">TypeScript</div>
                 </div>
 
-                <p class="text-gray-500">
+                <p class="text-gray-600">
                   Utilizing the same movie API as with the React app, this SPA is
                   built with Angular.
                 </p>
@@ -554,7 +549,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">Meet</h3>
+                <h3 class="text-2xl font-semibold">Meet</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">React</div>
@@ -566,7 +561,7 @@
                   <div class="badge">Bootstrap</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   Meet App is a serverless PWA built with React and TDD, using Google Calendar API to fetch upcoming events.
                 </p>
                 <div class="flex">
@@ -593,7 +588,7 @@
 
               <!-- Project info-->
               <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
-                <h3 class="text-3xl font-semibold">Chat</h3>
+                <h3 class="text-2xl font-semibold">Chat</h3>
 
                 <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
                   <div class="badge">React Native</div>
@@ -604,7 +599,7 @@
                   <div class="badge">PWA</div>
                 </div>
 
-                <p class="mb-4 text-gray-500">
+                <p class="mb-4 text-gray-600">
                   Chat App, built with React Native, offers a chat interface with image and location sharing on mobile devices
                 </p>
                 <div class="flex">
@@ -635,7 +630,7 @@
         <h1 id="contact" class="secondary-title text-3xl font-bold">
           Contact me
         </h1>
-        <p class="section-paragraph text-gray-500">
+        <p class="section-paragraph text-gray-600">
           Please use the form below to send me a message. I'll be happy to hear
           from you.
         </p>
