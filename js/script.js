@@ -46,11 +46,11 @@ function showNotification(message, type = 'success') {
   notification.classList.remove('hidden');
 
   if (type === 'error') {
-    notification.classList.remove('bg-green-500');
+    notification.classList.remove('bg-green');
     notification.classList.add('bg-red-500');
   } else {
     notification.classList.remove('bg-red-500');
-    notification.classList.add('bg-green-500');
+    notification.classList.add('bg-green');
   }
 
   setTimeout(() => {
