@@ -2,6 +2,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
@@ -14,17 +15,22 @@ const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+// Use CORS middleware
+app.use(cors());
+
+// Parse incoming request bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files from the "public" directory
-app.use(express.static(`${__dirname}/public`));
+// Serve static files (e.g., CSS, JS) from the root directory
+app.use(express.static(__dirname));
 
 // Serve the HTML form at the root
 app.get('/', (req, res) => {
   res.sendFile(`${__dirname}/index.html`);
 });
 
+// Handle form submission
 app.post('/api/send-email', async (req, res) => {
   const { name, email, message } = req.body;
 

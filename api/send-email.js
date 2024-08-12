@@ -1,14 +1,19 @@
-// Importing required packages
+import express from 'express';
+import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+dotenv.config();
 
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/api/send-email', async (req, res) => {
   const { name, email, message } = req.body;
 
-  // Set up your SMTP server or use a service like SendGrid
   const transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
@@ -19,7 +24,7 @@ export default async function handler(req, res) {
 
   const mailOptions = {
     from: email,
-    to: 'roderickfmoise@gmail.com', // Replace with your email address
+    to: 'roderickfmoise@gmail.com',
     subject: `Contact Form Submission from ${name}`,
     text: message,
     html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p>`
@@ -29,7 +34,11 @@ export default async function handler(req, res) {
     await transporter.sendMail(mailOptions);
     res.status(200).json({ message: 'Message sent successfully' });
   } catch (error) {
-    console.error('Error sending email:', error); // Log the error
+    console.error('Error sending email:', error);
     res.status(500).json({ error: 'Failed to send message' });
   }
-}
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
