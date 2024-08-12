@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', '*'); // Adjust this if needed
+    res.setHeader('Access-Control-Allow-Origin', 'https://www.rmoise.com'); // Adjust this if needed
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.status(200).end();
