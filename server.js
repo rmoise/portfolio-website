@@ -1,36 +1,22 @@
 import express from 'express';
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import cors from 'cors';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 
 dotenv.config();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
-// Get the current directory
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+app.use(cors({
+  origin: 'https://www.rmoise.com', // Replace with your frontend URL
+  methods: ['GET', 'POST'],
+}));
 
-// Use CORS middleware
-app.use(cors());
-
-// Parse incoming request bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Serve static files (e.g., CSS, JS) from the root directory
-app.use(express.static(__dirname));
-
-// Serve the HTML form at the root
-app.get('/', (req, res) => {
-  res.sendFile(`${__dirname}/index.html`);
-});
-
-// Handle form submission
 app.post('/api/send-email', async (req, res) => {
   const { name, email, message } = req.body;
 
@@ -38,8 +24,8 @@ app.post('/api/send-email', async (req, res) => {
     service: 'Gmail',
     auth: {
       user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS
-    }
+      pass: process.env.EMAIL_PASS,
+    },
   });
 
   const mailOptions = {
@@ -47,7 +33,7 @@ app.post('/api/send-email', async (req, res) => {
     to: 'roderickfmoise@gmail.com',
     subject: `Contact Form Submission from ${name}`,
     text: message,
-    html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p>`
+    html: `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Message:</strong> ${message}</p>`,
   };
 
   try {
