@@ -36,3 +36,38 @@ formButton.addEventListener('click', () => {
   resetForm();
   alert("it works")
 })
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('Name'),
+      email: formData.get('Email'),
+      message: formData.get('Message'),
+    };
+
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      alert('Your message has been sent!');
+      form.reset();
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was an error sending your message. Please try again.');
+    }
+  });
+});
