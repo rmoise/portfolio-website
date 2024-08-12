@@ -1,7 +1,8 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
-  // Allow CORS preflight requests
+  console.log('Received request:', req.method, req.body);
+
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
@@ -13,11 +14,11 @@ export default async function handler(req, res) {
     const { name, email, message } = req.body;
 
     if (!name || !email || !message) {
+      console.log('Validation error:', req.body);
       return res.status(400).json({ error: 'All fields are required' });
     }
 
     try {
-      // Create a transporter object using SMTP transport
       const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -26,7 +27,6 @@ export default async function handler(req, res) {
         },
       });
 
-      // Set up email data
       const mailOptions = {
         from: email,
         to: process.env.EMAIL_USER,
@@ -34,9 +34,7 @@ export default async function handler(req, res) {
         text: `Message from ${name} (${email}):\n\n${message}`,
       };
 
-      // Send email
       await transporter.sendMail(mailOptions);
-
       res.status(200).json({ message: 'Email sent successfully' });
     } catch (error) {
       console.error('Error sending email:', error);
