@@ -1,10 +1,11 @@
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
-  console.log('Received request:', req.method, req.body);
-
+  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.status(200).end();
     return;
@@ -14,7 +15,6 @@ export default async function handler(req, res) {
     const { name, email, message } = req.body;
 
     if (!name || !email || !message) {
-      console.log('Validation error:', req.body);
       return res.status(400).json({ error: 'All fields are required' });
     }
 
