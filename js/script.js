@@ -1,12 +1,14 @@
-const btn = document.getElementById('menu-btn')
-const nav = document.getElementById('menu')
+// Toggle the menu visibility on button click
+const btn = document.getElementById('menu-btn');
+const nav = document.getElementById('menu');
 
 btn.addEventListener('click', () => {
-  btn.classList.toggle('open')
-  nav.classList.toggle('flex')
-  nav.classList.toggle('hidden')
-})
+  btn.classList.toggle('open');
+  nav.classList.toggle('flex');
+  nav.classList.toggle('hidden');
+});
 
+// Update the navigation dots based on the closest section to the top
 function updateList() {
   const titles = [...document.querySelectorAll('h1, h2')].sort((a, b) => {
     return Math.abs(a.getBoundingClientRect().top) - Math.abs(b.getBoundingClientRect().top);
@@ -20,23 +22,24 @@ function updateList() {
 updateList();
 window.addEventListener('scroll', () => {
   updateList();
-})
+});
 
-
-const formButton = document.getElementsById('form-btn');
+// Reset the form fields
+const formButton = document.getElementById('form-btn');
 
 function resetForm() {
-  document.getElementsById('form-name').value = null;
-  document.getElementsById('form-email').value = null;
-  document.getElementsById('form-message') = null;
+  document.getElementById('form-name').value = '';
+  document.getElementById('form-email').value = '';
+  document.getElementById('form-message').value = '';
 }
 
-resetForm();
-formButton.addEventListener('click', () => {
+formButton.addEventListener('click', (event) => {
+  event.preventDefault();
   resetForm();
-  alert("it works")
-})
+  alert("Form has been reset!");
+});
 
+// Handle form submission
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form');
 
@@ -45,9 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const formData = new FormData(form);
     const data = {
-      name: formData.get('Name'),
-      email: formData.get('Email'),
-      message: formData.get('Message'),
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message'),
     };
 
     try {
