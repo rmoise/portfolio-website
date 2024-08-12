@@ -63,13 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        // Read the error response from the server
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Network response was not ok');
       }
 
       alert('Your message has been sent!');
       form.reset();
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error:', error); // Log error details to the console
       alert('There was an error sending your message. Please try again.');
     }
   });
