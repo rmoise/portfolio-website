@@ -41,7 +41,7 @@ formButton.addEventListener('click', (event) => {
 
 // Handle form submission
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.getElementById('contact-form');
+  const form = document.querySelector('form');
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault(); // Prevent the default form submission
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      const response = await fetch('https://portfolio-site-cv3j6dd6b-roderick-moises-projects.vercel.app/api/send-email', {
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
