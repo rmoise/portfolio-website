@@ -3,14 +3,15 @@ import nodemailer from 'nodemailer';
 export default async function handler(req, res) {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    res.setHeader('Access-Control-Allow-Origin', 'https://www.rmoise.com'); // Adjust this if needed
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Origin', 'https://www.rmoise.com'); // Adjust to your frontend URL
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.status(200).end();
     return;
   }
 
+  // Handle POST requests
   if (req.method === 'POST') {
     // Log the incoming request body for debugging
     console.log('Received request body:', req.body);

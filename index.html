@@ -631,21 +631,23 @@
       <h1 id="contact" class="secondary-title text-3xl font-bold">Contact me</h1>
       <p class="section-paragraph text-gray-600">Please use the form below to send me a message. I'll be happy to hear from you.</p>
       <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
-      <form class="space-y-8 input-form" action="https://portfolio-site-gold-six.vercel.app/api/send-email" method="POST">
-        <div>
-          <label for="form-name" class="block mb-4 text-xl font-bold">Your name</label>
-          <input type="text" name="name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
-        </div>
-        <div>
-          <label for="form-email" class="block mb-4 text-xl font-bold">Your email</label>
-          <input type="email" name="email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
-        </div>
-        <div>
-          <label for="form-message" class="block mb-4 text-xl font-bold">Your message</label>
-          <textarea name="message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
-        </div>
-        <button type="submit" class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Send it!</button>
-      </form>
+      <form id="contact-form" class="space-y-8 input-form">
+  <div>
+    <label for="form-name" class="block mb-4 text-xl font-bold">Your name</label>
+    <input type="text" name="name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+  </div>
+  <div>
+    <label for="form-email" class="block mb-4 text-xl font-bold">Your email</label>
+    <input type="email" name="email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+  </div>
+  <div>
+    <label for="form-message" class="block mb-4 text-xl font-bold">Your message</label>
+    <textarea name="message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
+  </div>
+  <button type="submit" class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Send it!</button>
+</form>
+
+
 
 
 
