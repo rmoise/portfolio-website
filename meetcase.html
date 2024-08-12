@@ -396,33 +396,26 @@
     </section>
 
 
-    <!-- Contact form-->
-    <div class=" container mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full">
+    <!-- Your contact form HTML -->
+    <div class="container mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full">
         <section class="w-full">
-            <h1 id="contact" class="secondary-title text-3xl font-bold">
-                Contact me
-            </h1>
-            <p class="section-paragraph text-gray-600">
-                Please use the form below to send me a message. I'll be happy to hear
-                from you.
-            </p>
-
+            <h1 id="contact" class="secondary-title text-3xl font-bold">Contact me</h1>
+            <p class="section-paragraph text-gray-600">Please use the form below to send me a message. I'll be happy to hear from you.</p>
             <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
-                <form class="space-y-8 input-form" action="https://formspree.io/f/mnqyjrrp" method="POST">
+                <form class="space-y-8 input-form">
                     <div>
-                        <label class="block mb-4 text-xl font-bold">Your name</label>
-                        <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+                        <label for="form-name" class="block mb-4 text-xl font-bold">Your name</label>
+                        <input type="text" name="name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
                     </div>
                     <div>
-                        <label for="email" class="block mb-4 text-xl font-bold">Your email</label>
-                        <input type="email" name="Email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+                        <label for="form-email" class="block mb-4 text-xl font-bold">Your email</label>
+                        <input type="email" name="email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
                     </div>
                     <div>
-                        <label class="block mb-4 text-xl font-bold">Your message</label>
-                        <textarea name="Message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
+                        <label for="form-message" class="block mb-4 text-xl font-bold">Your message</label>
+                        <textarea name="message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
                     </div>
-                    <button type="form-btn" type="submit" class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Send it!</button>
-
+                    <button type="submit" class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Send it!</button>
                 </form>
 
                 <!-- Contact info-->
@@ -445,6 +438,11 @@
                 </div>
             </div>
         </section>
+    </div>
+    </div>
+    <!-- Notification Container -->
+    <div id="notification" class="fixed bottom-4 right-4 hidden bg-green-500 text-white p-4 rounded-lg shadow-lg">
+        <p id="notification-message">Notification message</p>
     </div>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
