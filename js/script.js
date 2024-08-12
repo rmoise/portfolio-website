@@ -65,13 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) {
         // Read the error response from the server
         const errorData = await response.json();
+        console.error('Error response from server:', errorData); // Log server response error
         throw new Error(errorData.error || 'Network response was not ok');
       }
 
       alert('Your message has been sent!');
       form.reset();
     } catch (error) {
-      console.error('Error:', error); // Log error details to the console
+      console.error('Error during form submission:', error); // Log client-side error
       alert('There was an error sending your message. Please try again.');
     }
   });
