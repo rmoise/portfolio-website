@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000;
 
 // Configure CORS
 app.use(cors({
-  origin: ['https://www.rmoise.com', 'http://localhost:3000'],
+  origin: ['https://www.rmoise.com', 'http://127.0.0.1:5500'], // Added 127.0.0.1:5500
   methods: ['GET', 'POST'],
 }));
 
