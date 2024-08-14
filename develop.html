@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="img/favicon-32x32.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <title>Roderick's Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.css" rel="stylesheet" />
+</head>
+
+<body class="font-poppins pb-12">
+  <!-- Navbar -->
+  <nav class="fixed z-10 top-0 mx-auto py-6 w-full bg-white">
+    <!-- Flex container -->
+    <div class="flex items-center justify-between px-4 2xl:px-48 lg:px-8 w-full z-[1]">
+      <!-- Logo -->
+      <div class="pt-2">
+        <a href="index.html"><img id="home" src="img/rm_logo.svg" alt="logo" class="h-8" /></a>
+      </div>
+      <!-- Menu items -->
+      <div class="hidden lg:flex space-x-6">
+        <a href="#about" class="hover:text-darkGrayishBlue">About me</a>
+        <a href="index.html" class="hover:text-darkGrayishBlue">Design Systems</a>
+        <a href="#web" class="hover:text-darkGrayishBlue">Web Development</a>
+      </div>
+      <!-- Button -->
+      <a href="#contact" class="hidden lg:block p-3 px-6 pt-2 text-black bg-green rounded-full baseline hover:bg-brightGreen">
+        Contact
+      </a>
+
+      <!-- Hamburger Icon -->
+      <button id="menu-btn" class="block hamburger lg:hidden focus:outline-none">
+        <span class="hamburger-top"></span>
+        <span class="hamburger-middle"></span>
+        <span class="hamburger-bottom"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="lg:hidden">
+      <div id="menu" class="flex-col items-center hidden self-end py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto sm:self-center left-0 right-0 drop-shadow-md">
+        <a href="#about" class="hover:text-darkGrayishBlue">About me</a>
+        <a href="index.html" class="hover:text-darkGrayishBlue">Design Systems</a>
+        <a href="#web" class="hover:text-darkGrayishBlue">Web Development</a>
+        <a href="#contact" class="hover:text-darkGrayishBlue">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+  <!-- Work section-->
+  <div class=" mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 lg:px-10 w-full">
+    <section class="w-full">
+      <h2 id="web" class="secondary-title text-4xl font-bold">
+        Web Development Projects
+      </h2>
+      <p class="section-paragraph">
+        Below are a few projects I've worked on.
+      </p>
+
+      <div class="space-y-12 my-16">
+        <!-- project 1 -->
+        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
+          <!-- Project image-->
+          <div class="mb-6 px-6 lg:mb-0 justify-center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-app"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/document-management-app-screenshot.png" alt="Pokémon app" /></a>
+          </div>
+
+          <!-- Project info-->
+          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
+            <h3 class="text-3xl font-semibold">Document Management App</h3>
+
+            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
+              <div class="badge">React</div>
+              <div class="badge">Tailwind</div>
+              <div class="badge">ASP.NET</div>
+              <div class="badge">C#</div>
+              <div class="badge">Azure Blob Storage</div>
+              <div class="badge">PostgreSQL</div>
+            </div>
+
+            <p class="mb-4">
+              This document management app is a web and mobile application developed using React for the frontend and ASP.NET Core for the backend. It integrates PostgreSQL for database management and Azure Blob Storage for document storage. The app features user authentication, document upload, preview, download tracking, and secure sharing with expiration controls, all accessible through a user-friendly interface.
+
+            </p>
+            <div class="md:flex">
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-app" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- project 2 -->
+        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
+          <!-- Project image-->
+          <div class="mb-6 px-6 lg:mb-0 justify-center">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-api"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/document-management-api-screenshot.png" alt="Pokémon app" /></a>
+          </div>
+
+          <!-- Project info-->
+          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
+            <h3 class="text-3xl font-semibold">Document Management API</h3>
+
+            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
+              <div class="badge">ASP.NET</div>
+              <div class="badge">Azure Blob Storage</div>
+              <div class="badge">PostgreSQL</div>
+              <div class="badge">Postman</div>
+              <div class="badge">C#</div>
+            </div>
+
+            <p class="mb-4">
+              This API integrates PostgreSQL for database management and Azure Blob Storage for document storage. The app features user authentication, document upload, preview, download tracking, and secure sharing with expiration controls
+            </p>
+            <div class="md:flex">
+
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-api" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- project 3 -->
+        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
+          <!-- Project image-->
+          <div class="mb-6 px-6 lg:mb-0">
+            <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/simple-js-app/"><img src="img/pokedex.png" alt="" class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" /></a>
+          </div>
+
+          <!-- Project info-->
+          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
+            <h3 class="text-3xl font-semibold">Pokédex App</h3>
+
+            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
+              <div class="badge">JavaScript</div>
+              <div class="badge">Bootstrap</div>
+              <div class="badge">Jquery</div>
+              <div class="badge">HTML5</div>
+              <div class="badge">CSS3</div>
+            </div>
+
+            <p class="mb-4">
+              This Pokédex is a web application built with HTML, CSS, and
+              primarily JavaScript, which loads data from an external API and
+              enables the viewing of that data in detail.
+            </p>
+            <div class="md:flex">
+              <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/simple-js-app/" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Live Preview
+              </a>
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/simple-js-app" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                GitHub
+              </a>
+              <a rel="noopener noreferrer" href="pokemoncase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Case Study
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- project 4 -->
+        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
+          <!-- Project image-->
+          <div class="mb-6 px-6 lg:mb-0">
+            <a target="_blank" rel="noopener noreferrer" href="https://myflix-movie-client-react.netlify.app/"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/myFlix.png" alt="" /></a>
+          </div>
+
+          <!-- Project info-->
+          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
+            <h3 class="text-3xl font-semibold">myFlix React App</h3>
+
+            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
+              <div class="badge">React</div>
+              <div class="badge">Redux</div>
+              <div class="badge">Bootstrap</div>
+              <div class="badge">Netlify</div>
+            </div>
+
+            <p class="mb-4">
+              This single-page, responsive application (SPA) is the
+              client-side for an application called myFlix based on its
+              existing server-side code (REST API and database).
+            </p>
+            <div class="md:flex">
+              <a target="_blank" rel="noopener noreferrer" href="https://myflix-movie-client-react.netlify.app/" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Live Preview
+              </a>
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix-client" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                GitHub
+              </a>
+              <br>
+              <a rel="noopener noreferrer" href="myflixcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Case Study
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- project 5 -->
+        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
+          <!-- Project image-->
+          <div class="mb-6 px-6 lg:mb-0">
+            <a target="_blank" rel="noopener noreferrer" href="https://myflix-firstapi-app.herokuapp.com/documentation"><img src="img/movie-api2.png" alt="" class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" /></a>
+          </div>
+
+          <!-- Project info-->
+          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
+            <h3 class="text-3xl font-semibold">myFlix API</h3>
+
+            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
+              <div class="badge">Node.js</div>
+              <div class="badge">Express</div>
+              <div class="badge">MongoDB</div>
+              <div class="badge">Heroku</div>
+            </div>
+
+            <p class="mb-4">
+              This API is the server-side component of a movies web
+              application. The web application provides users with access to
+              information about different movies, the director, and genres.
+            </p>
+            <div class="md:flex">
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix_api?tab=readme-ov-file#endpoint-documentation" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Documentation
+              </a>
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix_api" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                GitHub
+              </a>
+              <a rel="noopener noreferrer" href="myflixcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Case Study
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- project 6 -->
+        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
+          <!-- Project image-->
+          <div class="mb-6 px-6 lg:mb-0">
+            <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/myFlix-Angular-client/welcome"><img src="img/myFlix-angular.png" alt="myFlix Angular App" class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" /></a>
+          </div>
+
+          <!-- Project info-->
+          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
+            <h3 class="text-3xl font-semibold">myFlix Angular App</h3>
+
+            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
+              <div class="badge">Angular</div>
+              <div class="badge">Angular Material UI</div>
+              <div class="badge">TypeScript</div>
+            </div>
+
+            <p>
+              Utilizing the same movie API as with the React app, this SPA is
+              built with Angular.
+            </p>
+            <div class="flex">
+              <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/myFlix-Angular-client/welcome" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Live Preview
+              </a>
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix-Angular-client" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- project 7 -->
+        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
+          <!-- Project image-->
+          <div class="mb-6 px-6 lg:mb-0">
+            <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/meet/"><img class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" src="img/meet-app.png" alt="meet app" /></a>
+          </div>
+
+          <!-- Project info-->
+          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
+            <h3 class="text-3xl font-semibold">Meet App</h3>
+
+            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
+              <div class="badge">React</div>
+              <div class="badge">Recharts</div>
+              <div class="badge">Enzyme</div>
+              <div class="badge">AWS</div>
+              <div class="badge">Google cloud platform</div>
+              <div class="badge">Jest</div>
+              <div class="badge">Bootstrap</div>
+            </div>
+
+            <p class="mb-4">
+              Meet App is a serverless, progressive web application (PWA)
+              built with React using a test-driven development (TDD)
+              technique. The application uses the Google Calendar API to fetch
+              upcoming events.
+            </p>
+            <div class="md:flex">
+              <a target="_blank" rel="noopener noreferrer" href="https://rmoise.github.io/meet/" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Live Preview
+              </a>
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/meet" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                GitHub
+              </a>
+              <br>
+              <a rel="noopener noreferrer" href="meetcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Case Study
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- project 8 -->
+        <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
+          <!-- Project image-->
+          <div class="mb-6 px-6 lg:mb-0">
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/Chat-App"><img src="img/Chat-App.png" alt="chat app" class="border w-full h-48 lg:h-72 object-cover shadow-lg rounded-lg" /></a>
+          </div>
+
+          <!-- Project info-->
+          <div class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2">
+            <h3 class="text-3xl font-semibold">Chat App</h3>
+
+            <div class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8">
+              <div class="badge">React Native</div>
+              <div class="badge">Expo</div>
+              <div class="badge">Gifted Chats</div>
+              <div class="badge">Android Studio</div>
+              <div class="badge">Google Firebase</div>
+              <div class="badge">PWA</div>
+            </div>
+
+            <p class="mb-4">
+              Chat App was built for mobile devices using React Native. The
+              app provides users with a chat interface and options to share
+              images and their location.
+            </p>
+            <div class="flex">
+              <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/Chat-App" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                GitHub
+              </a>
+              <a rel="noopener noreferrer" href="chatappcase.html" class="md:block p-3 px-6 pt-2 lg:pl-0 text-green hover:text-linkHover">
+                Case Study
+              </a>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
+  </div>
+
+  <!-- Contact form-->
+  <div class=" mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full">
+    <section class="w-full">
+      <h1 id="contact" class="secondary-title text-4xl font-bold">
+        Contact me
+      </h1>
+      <p class="section-paragraph">
+        Please use the form below to send me a message. I'll be happy to hear
+        from you. Thanks!!!
+      </p>
+
+      <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
+        <form class="space-y-8 input-form" action="https://formspree.io/f/mnqyjrrp" method="POST">
+          <div>
+            <label class="block mb-4 text-xl font-bold">Your name</label>
+            <input type="text" name="Name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+          </div>
+          <div>
+            <label for="email" class="block mb-4 text-xl font-bold">Your email</label>
+            <input type="email" name="Email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+          </div>
+          <div>
+            <label class="block mb-4 text-xl font-bold">Your message</label>
+            <textarea name="Message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
+          </div>
+          <button id="form-btn" type="submit" class="px-6 py-2 bg-green rounded-full font-bold hover:bg-brightGreen">
+            Send it!
+          </button>
+        </form>
+
+        <!-- Contact info-->
+        <div class="mt-12">
+          <p>+49 163 7126279</p>
+          <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
+          <a href="img/Roderick-Moise-CV-UI-UX-Designer.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
+          <!-- Socials-->
+          <div class="flex mt-20 space-x-6">
+            <!-- Github logo -->
+            <a href="https://github.com/rmoise"><img src="img/github_icon.svg" alt="github" /></a>
+            <!-- Twitter logo -->
+            <a href="https://twitter.com/RoderickMoise"><img src="img/twitter_icon.svg" alt="twitter" /></a>
+            <!-- LinkedIn logo -->
+            <a href="https://www.linkedin.com/in/roderickmoise/"><img src="img/linkedin_icon.svg" alt="linkedin" /></a>
+            <!-- Medium logo -->
+            <a href="https://medium.com/@roderickfmoise"><img src="img/medium_icon.svg" alt="medium" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="js/script.js"></script>
+</body>
+
+</html>

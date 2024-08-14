@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="img/favicon-32x32.png" />
+  <link rel="stylesheet" href="css/main.css" />
+  <title>Roderick's Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+
+</head>
+
+<body class="font-poppins pb-12">
+  <!-- Navbar -->
+  <nav class="bg-white fixed w-full z-20 top-0 start-0">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="img/rm_logo.svg" class="h-8" alt="RM Logo" />
+      </a>
+      <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-multi-level" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+        </svg>
+      </button>
+      <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
+        <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
+
+          <li>
+            <a href="index.html#about" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-darkGrayishBlue md:p-0">About</a>
+          </li>
+          <li>
+            <button id="portfolioDropdownButton" data-dropdown-toggle="portfolioDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-darkGrayishBlue md:p-0 md:w-auto">
+              Portfolio
+              <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+              </svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div id="portfolioDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+              <ul class="py-2 text-sm text-gray-700 ">
+
+                <!-- Design Systems Dropdown -->
+                <li>
+                  <button id="designSystemsDropdownButton" data-dropdown-toggle="designSystemsDropdown" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100">
+                    Design Systems
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                    </svg>
+                  </button>
+                  <!-- Design Systems Dropdown Content -->
+                  <div id="designSystemsDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
+                    <ul class="py-2 text-sm text-gray-700 ">
+                      <li>
+                        <a href="kytocase.html" class="block px-4 py-2 hover:bg-gray-100 ">Kyto</a>
+                      </li>
+                      <li>
+                        <a href="smunchcase.html" class="block px-4 py-2 hover:bg-gray-100">Smunch</a>
+                      </li>
+                      <li>
+                        <a href="cogalleriescase.html" class="block px-4 py-2 hover:bg-gray-100 ">coGalleries</a>
+                      </li>
+                      <li>
+                        <a href="pffcase.html" class="block px-4 py-2 hover:bg-gray-100">PFF</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+                <!-- Second Dropdown -->
+                <li>
+                  <button id="anotherDropdownButton" data-dropdown-toggle="anotherDropdown" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 ">
+                    Web Dev
+                    <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                    </svg>
+                  </button>
+                  <!-- Another Dropdown Content -->
+                  <div id="anotherDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                    <ul class="py-2 text-sm text-gray-700 ">
+                      <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-app" class="block px-4 py-2 hover:bg-gray-100 ">Doc Manager</a>
+                      </li>
+                      <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-api" class="block px-4 py-2 hover:bg-gray-100 ">Doc Manager API</a>
+                      </li>
+                      <li>
+                        <a href="pokemoncase.html" class="block px-4 py-2 hover:bg-gray-100 ">Pokedex</a>
+                      </li>
+                      <li>
+                        <a href="myflixcase.html" class="block px-4 py-2 hover:bg-gray-100">myFlix React</a>
+                      </li>
+                      <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix-Angular-client" class="block px-4 py-2 hover:bg-gray-100 ">myFlix Angular</a>
+                      </li>
+                      <li>
+                        <a href="meetcase.html" class="block px-4 py-2 hover:bg-gray-100 ">Meet</a>
+                      </li>
+                      <li>
+                        <a href="chatappcase.html" class="block px-4 py-2 hover:bg-gray-100">Chat</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <a href="#contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-darkGrayishBlue md:p-0">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Title Section -->
+  <section>
+    <div class="md:flex-nowrap mt-40 mb-24 px-4 md:px-14 lg:px-24 w-full">
+      <!-- Left item -->
+      <div>
+        <h1 id="header" class="font-bold text-5xl text-center">
+          <span>Smunch</span>
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <main>
+    <!-- Purpose & Context Section -->
+    <section>
+      <div class="md:w-full mb-8 2xl:px-96 xl:px-72 lg:px-48">
+        <!-- Left item -->
+        <div class="flex flex-col px-4 md:px-14 lg:px-24 md:w-full">
+          <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+            <h2 class="secondary-title text-3xl font-bold">Challenge</h2>
+
+            <p class="mt-4 md:mb-0">
+              The goal was to create a new brand identity and better app
+              usability that could resonate in today's busy market. When
+              designing the logo I wanted to achieve speed and implementation
+              and to do that I believe it’s best to set some boundaries to
+              allow the mind to wander in a creative direction. The
+              limitations set for this logo was that it had to be associated
+              with food and tech due to Smunch mainly being a
+              software\delivery food based company.
+            </p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Purpose & Context Section -->
+    <section>
+      <div class="md:w-full mb-8 2xl:px-96 xl:px-72 lg:px-48">
+        <!-- Left item -->
+        <div class="flex flex-col px-4 md:px-14 lg:px-24 md:w-full">
+          <figure class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg">
+            <h2 class="secondary-title text-3xl font-bold">Solution</h2>
+
+            <p class="mt-4 md:mb-0">
+              Before implementing design I did some research on Smunch's
+              competitors and found purple to be the ideal color for the
+              brand. The previous logo looked a bit outdated and the icon
+              didn’t really connect with the company’s philosophy. The
+              philosophy that ordering Smunch should be as simple as clicking
+              a button. What inspired the logos direction was a reference to
+              the videogame pacman. This reference came to mind because of the
+              simplistic nature of the game and the playfulness attitude of
+              the team at Smunch. The pacman game plays mainly on
+              winning/eating by pushing a button therefore I felt there was a
+              creative connection there. Though the logo appears to be
+              abstract I believe the redesign reveals more of a purpose behind
+              the design decision that I made.
+            </p>
+            <p class="mt-4 md:mb-0">
+              Before designing the app I did some user testing and user
+              research to get a better understanding of how people used the
+              older version of the app. After feedback was given I worked on
+              creating working prototypes through invision.
+            </p>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section class="md:pb-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <div class="text-center mt-16 mb-8">
+          <h3 class="text-xl font-bold">Logo</h3>
+        </div>
+        <img src="img/Untitled-23.jpg" class="border-2 xl:p-3 md:p-3 rounded-xl mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section class="md:pb-5 pt-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <div class="text-center mt-16 mb-8">
+          <h3 class="text-xl font-bold">Design System</h3>
+        </div>
+        <img src="img/Smunch_Brand_Guidelines.png" class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section class="md:pb-5 pt-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <div class="text-center mt-16 mb-4">
+          <h3 class="text-xl font-bold">Website - Desktop</h3>
+        </div>
+
+        <p class="text-gray-600 text-center mb-8">Homepage</p>
+
+        <img src="img/Mockup7.jpg" class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover" />
+        <p class="text-gray-600 text-center mt-16 mb-8">Order Process</p>
+
+        <img src="img/Mockup (1).jpg" class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section class="md:pb-5 pt-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <div class="text-center mt-16 mb-4">
+          <h3 class="text-xl font-bold">Website - Mobile</h3>
+        </div>
+        <p class="text-gray-600 mb-2 text-center mb-8">Mobile view - homepage</p>
+
+        <img src="img/02---iPhone-XS-Front.jpg" class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover" />
+        <p class="text-gray-600 text-center mt-16 mb-8">Mobile view - order process</p>
+
+        <img src="img/02---iPhone-XS-Front2.jpg" class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover w-400" />
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section class="md:pb-5 pt-5">
+      <div class="px-4 md:px-14 lg:px-24">
+        <div class="text-center mt-16 mb-8">
+          <h3 class="text-xl font-bold">Van Signage Design</h3>
+        </div>
+
+        <img src="img/iMac-Flat-Mockup3_1_.jpg" class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
+
+    <!-- Work section-->
+    <section>
+      <div class="px-4 md:px-14 lg:px-24">
+        <div class="text-center mt-16 mb-8">
+          <h3 class="text-xl font-bold mb-2">T-Shirt Design</h3>
+        </div>
+
+        <img src="img/Untitled-26.jpg" class="rounded-xl mx-auto lg:w-2/3 object-cover" />
+      </div>
+    </section>
+
+    <section class="md:py-20 py-10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center">
+        <!-- Previous Button -->
+        <a href="kytocase.html" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+          Previous
+        </a>
+
+        <!-- Next Button -->
+        <a href="cogalleriescase.html" class="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700">
+          Next
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Your contact form HTML -->
+  <div class="container mt-32 flex justify-between items-center mx-auto px-4 2xl:px-48 md:px-10 lg:px-10 w-full">
+    <section class="w-full">
+      <h1 id="contact" class="secondary-title text-3xl font-bold">Contact me</h1>
+      <p class="section-paragraph text-gray-600">Please use the form below to send me a message. I'll be happy to hear from you.</p>
+      <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
+        <form class="space-y-8 input-form">
+          <div>
+            <label for="form-name" class="block mb-4 text-xl font-bold">Your name</label>
+            <input type="text" name="name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+          </div>
+          <div>
+            <label for="form-email" class="block mb-4 text-xl font-bold">Your email</label>
+            <input type="email" name="email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
+          </div>
+          <div>
+            <label for="form-message" class="block mb-4 text-xl font-bold">Your message</label>
+            <textarea name="message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
+          </div>
+          <button type="submit" class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Send it!</button>
+        </form>
+
+        <!-- Contact info-->
+        <div class="mt-12">
+          <p>+49 163 7126279</p>
+          <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
+          <a href="img/Roderick-Moise-CV-Designer-Developer.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
+
+          <!-- Socials-->
+          <div class="flex mt-20 space-x-6">
+            <!-- Github logo -->
+            <a href="https://github.com/rmoise"><img src="img/github_icon.svg" alt="github" /></a>
+            <!-- Twitter logo -->
+            <a href="https://twitter.com/RoderickMoise"><img src="img/twitter_icon.svg" alt="twitter" /></a>
+            <!-- LinkedIn logo -->
+            <a href="https://www.linkedin.com/in/roderickmoise/"><img src="img/linkedin_icon.svg" alt="linkedin" /></a>
+            <!-- Medium logo -->
+            <a href="https://medium.com/@roderickfmoise"><img src="img/medium_icon.svg" alt="medium" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  </div>
+  <!-- Notification Container -->
+  <div id="notification" class="fixed bottom-4 right-4 hidden bg-brightGreen text-black p-4 rounded-lg shadow-lg">
+    <p id="notification-message">Notification message</p>
+  </div>
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+</body>
+
+</html>
