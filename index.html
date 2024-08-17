@@ -13,7 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
-  
 </head>
 
 <body class="font-poppins pb-12">
@@ -38,10 +37,10 @@
       <div :class="{'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen}" class="w-full lg:flex lg:ml-auto lg:w-auto lg:mt-0">
         <ul class="flex flex-col w-full space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
           <li>
-            <a href="#" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
+            <a href="#about" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
           </li>
           <li>
-            <a href="#" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
+            <a href="#expertise" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
           </li>
           <!-- dropdown -->
           <li x-data="{ dropdownOpen: false }" class="relative">
@@ -198,10 +197,10 @@
           </li>
           <!-- other links -->
           <li>
-            <a href="recent-visuals" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
+            <a href="#recent-visuals" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
           </li>
           <li>
-            <a href="testimonials" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
+            <a href="#testimonials" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
           </li>
           <li>
             <a href="#contact" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>

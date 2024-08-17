@@ -12,106 +12,182 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 </head>
 
 <body class="font-poppins pb-12">
     <!-- Navbar -->
-    <nav class="bg-white fixed w-full z-20 top-0 start-0">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="index.html" class="flex items-center space-x-3 rtl:space-x-reverse">
-                <img src="img/rm_logo.svg" class="h-8" alt="RM Logo" />
+    <nav class="bg-white fixed top-0 left-0 w-full z-50" x-data="{ navbarOpen: false }" @click.away="navbarOpen = false" x-init="$watch('navbarOpen', value => document.body.classList.toggle('no-scroll', value))">
+        <!-- container -->
+        <div class="container flex flex-wrap px-4 py-2 mx-auto">
+            <!-- logo -->
+            <a href="index.html" class="inline-flex items-center p-2">
+                <img src="img/rm_logo.svg" alt="Logo" class="h-8">
             </a>
-            <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="navbar-multi-level" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15" />
+            <!-- toggler btn -->
+            <button class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md outline-none lg:hidden focus:outline-none" @click="navbarOpen = !navbarOpen">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{'hidden': navbarOpen, 'block': !navbarOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{'block': navbarOpen, 'hidden': !navbarOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
-                <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white">
-
+            <!-- menu -->
+            <div :class="{'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen}" class="w-full lg:flex lg:ml-auto lg:w-auto lg:mt-0">
+                <ul class="flex flex-col w-full space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
                     <li>
-                        <a href="index.html#about" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-darkGrayishBlue md:p-0">About</a>
+                        <a href="index.html#about" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
                     </li>
                     <li>
-                        <a href="index.html#expertise" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-darkGrayishBlue md:p-0">Expertise</a>
+                        <a href="index.html#expertise" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
                     </li>
-                    <li>
-                        <button id="portfolioDropdownButton" data-dropdown-toggle="portfolioDropdown" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-darkGrayishBlue md:p-0 md:w-auto">
+                    <!-- dropdown -->
+                    <li x-data="{ dropdownOpen: false }" class="relative">
+                        <button class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full lg:w-auto" @click="dropdownOpen = !dropdownOpen">
                             Portfolio
-                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': dropdownOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
-                        <!-- Dropdown menu -->
-                        <div id="portfolioDropdown" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
-                            <ul class="py-2 text-sm text-gray-700 ">
-
-                                <!-- Design Systems Dropdown -->
-                                <li>
-                                    <button id="designSystemsDropdownButton" data-dropdown-toggle="designSystemsDropdown" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100">
+                        <!-- dropdown menu for mobile -->
+                        <div class="block lg:hidden mt-2 bg-white rounded-md" x-show="dropdownOpen" @click.away="dropdownOpen = false">
+                            <ul class="space-y-2">
+                                <!-- categories dropdown -->
+                                <li x-data="{ categoriesOpen: false }">
+                                    <button class="flex items-center w-full px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100" @click="categoriesOpen = !categoriesOpen">
                                         Design Systems
-                                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': categoriesOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
-                                    <!-- Design Systems Dropdown Content -->
-                                    <div id="designSystemsDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
-                                        <ul class="py-2 text-sm text-gray-700 ">
+                                    <!-- nested categories dropdown menu -->
+                                    <div class="mt-1 bg-white rounded-md" x-show="categoriesOpen" @click.away="categoriesOpen = false">
+                                        <ul class="space-y-2">
                                             <li>
-                                                <a href="kytocase.html" class="block px-4 py-2 hover:bg-gray-100 ">Kyto</a>
+                                                <a href="kytocase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a>
                                             </li>
                                             <li>
-                                                <a href="smunchcase.html" class="block px-4 py-2 hover:bg-gray-100">Smunch</a>
+                                                <a href="smunchcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a>
                                             </li>
                                             <li>
-                                                <a href="cogalleriescase.html" class="block px-4 py-2 hover:bg-gray-100 ">coGalleries</a>
+                                                <a href="cogalleriescase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a>
                                             </li>
                                             <li>
-                                                <a href="organize.html" class="block px-4 py-2 hover:bg-gray-100">Organize</a>
+                                                <a href="organize.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a>
                                             </li>
                                             <li>
-                                                <a href="pffcase.html" class="block px-4 py-2 hover:bg-gray-100">PFF</a>
+                                                <a href="pffcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">PFF</a>
                                             </li>
                                             <li>
-                                                <a href="stak.html" class="block px-4 py-2 hover:bg-gray-100">Stak</a>
+                                                <a href="stak.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a>
                                             </li>
                                         </ul>
                                     </div>
                                 </li>
-
-                                <!-- Second Dropdown -->
-                                <li>
-                                    <button id="anotherDropdownButton" data-dropdown-toggle="anotherDropdown" class="flex items-center justify-between w-full px-4 py-2 hover:bg-gray-100 ">
+                                <!-- brands dropdown -->
+                                <li x-data="{ nestedDropdownOpen: false }">
+                                    <button class="flex items-center w-full px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100" @click="nestedDropdownOpen = !nestedDropdownOpen">
                                         Web Dev
-                                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': nestedDropdownOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
-                                    <!-- Another Dropdown Content -->
-                                    <div id="anotherDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
-                                        <ul class="py-2 text-sm text-gray-700 ">
+                                    <!-- nested brands dropdown menu -->
+                                    <div class="mt-1 bg-white rounded-md" x-show="nestedDropdownOpen" @click.away="nestedDropdownOpen = false">
+                                        <ul class="space-y-2">
                                             <li>
-                                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-app" class="block px-4 py-2 hover:bg-gray-100 ">Doc Manager</a>
+                                                <a target="_blank" href="https://github.com/rmoise/document-management-app" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a>
                                             </li>
                                             <li>
-                                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/document-management-api" class="block px-4 py-2 hover:bg-gray-100 ">Doc Manager API</a>
+                                                <a target="_blank" href="https://github.com/rmoise/document-management-api" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a>
                                             </li>
                                             <li>
-                                                <a href="pokemoncase.html" class="block px-4 py-2 hover:bg-gray-100 ">Pokedex</a>
+                                                <a href="pokemoncase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokedex</a>
                                             </li>
                                             <li>
-                                                <a href="myflixcase.html" class="block px-4 py-2 hover:bg-gray-100">myFlix React</a>
+                                                <a href="myflixcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a>
                                             </li>
                                             <li>
-                                                <a target="_blank" rel="noopener noreferrer" href="https://github.com/rmoise/myFlix-Angular-client" class="block px-4 py-2 hover:bg-gray-100 ">myFlix Angular</a>
+                                                <a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a>
                                             </li>
                                             <li>
-                                                <a href="meetcase.html" class="block px-4 py-2 hover:bg-gray-100 ">Meet</a>
+                                                <a href="meetcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a>
                                             </li>
                                             <li>
-                                                <a href="chatappcase.html" class="block px-4 py-2 hover:bg-gray-100">Chat</a>
+                                                <a href="chatappcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- dropdown menu for desktop -->
+                        <div class="absolute z-10 hidden lg:block bg-white rounded-md shadow-lg lg:w-48 mt-2" x-show="dropdownOpen" @click.away="dropdownOpen = false">
+                            <ul class="space-y-2">
+                                <!-- categories dropdown -->
+                                <li x-data="{ categoriesOpen: false }">
+                                    <button class="flex items-center w-full px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100" @click="categoriesOpen = !categoriesOpen">
+                                        Design Systems
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': categoriesOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <!-- nested categories dropdown menu -->
+                                    <div class="mt-1 bg-white rounded-md shadow-lg" x-show="categoriesOpen" @click.away="categoriesOpen = false">
+                                        <ul class="space-y-2">
+                                            <li>
+                                                <a href="kytocase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a>
+                                            </li>
+                                            <li>
+                                                <a href="smunchcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a>
+                                            </li>
+                                            <li>
+                                                <a href="cogalleriescase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a>
+                                            </li>
+                                            <li>
+                                                <a href="organize.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a>
+                                            </li>
+                                            <li>
+                                                <a href="pffcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">PFF</a>
+                                            </li>
+                                            <li>
+                                                <a href="stak.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <!-- brands dropdown -->
+                                <li x-data="{ nestedDropdownOpen: false }">
+                                    <button class="flex items-center w-full px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100" @click="nestedDropdownOpen = !nestedDropdownOpen">
+                                        Web Dev
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': nestedDropdownOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                        </svg>
+                                    </button>
+                                    <!-- nested brands dropdown menu -->
+                                    <div class="mt-1 bg-white rounded-md shadow-lg" x-show="nestedDropdownOpen" @click.away="nestedDropdownOpen = false">
+                                        <ul class="space-y-2">
+                                            <li>
+                                                <a target="_blank" href="https://github.com/rmoise/document-management-app" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="https://github.com/rmoise/document-management-api" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a>
+                                            </li>
+                                            <li>
+                                                <a href="pokemoncase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokedex</a>
+                                            </li>
+                                            <li>
+                                                <a href="myflixcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a>
+                                            </li>
+                                            <li>
+                                                <a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a>
+                                            </li>
+                                            <li>
+                                                <a href="meetcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a>
+                                            </li>
+                                            <li>
+                                                <a href="chatappcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -119,14 +195,15 @@
                             </ul>
                         </div>
                     </li>
+                    <!-- other links -->
                     <li>
-                        <a href="index.html#recent-visual-works" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-darkGrayishBlue md:p-0">Recent Visual Works</a>
+                        <a href="index.html#recent-visuals" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
                     </li>
                     <li>
-                        <a href="index.html#testimonials" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-darkGrayishBlue md:p-0">Testimonials</a>
+                        <a href="index.html#testimonials" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
                     </li>
                     <li>
-                        <a href="#contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:text-darkGrayishBlue md:p-0">Contact</a>
+                        <a href="#contact" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
                     </li>
                 </ul>
             </div>
