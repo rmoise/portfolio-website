@@ -21,13 +21,17 @@
     .transition-transform {
       transition: transform 0.3s ease;
     }
-  </style>
 
+    .menu-expand {
+      height: 100vh;
+      /* Full viewport height */
+      overflow-y: auto;
+      /* Allows scrolling if the content exceeds viewport height */
+    }
+  </style>
 </head>
 
-
 <body class="font-poppins pb-12">
-
   <!-- Navbar -->
   <nav class="bg-white fixed top-0 left-0 w-full z-50" x-data="{ navbarOpen: false }">
     <!-- container -->
@@ -46,13 +50,13 @@
         </svg>
       </button>
       <!-- menu -->
-      <div class="w-full mt-2 lg:flex lg:ml-auto lg:w-auto lg:mt-0 relative" :class="{'hidden': !navbarOpen, 'flex': navbarOpen}" @click.away="navbarOpen = false">
+      <div :class="{'menu-expand': navbarOpen, 'hidden': !navbarOpen}" class="w-full mt-2 lg:flex lg:ml-auto lg:w-auto lg:mt-0 relative" @click.away="navbarOpen = false">
         <ul class="flex flex-col w-full space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
           <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
+            <a href="#" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
           </li>
           <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
+            <a href="#" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
           </li>
           <!-- dropdown -->
           <li x-data="{ dropdownOpen: false }" class="relative">
@@ -77,22 +81,22 @@
                   <div class="mt-1 bg-white rounded-md" x-show="categoriesOpen" @click.away="categoriesOpen = false">
                     <ul class="space-y-2">
                       <li>
-                        <a href="kytocase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a>
+                        <a href="kytocase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a>
                       </li>
                       <li>
-                        <a href="smunchcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a>
+                        <a href="smunchcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a>
                       </li>
                       <li>
-                        <a href="cogalleriescase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a>
+                        <a href="cogalleriescase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a>
                       </li>
                       <li>
-                        <a href="organize.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a>
+                        <a href="organize.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a>
                       </li>
                       <li>
-                        <a href="pffcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">PFF</a>
+                        <a href="pffcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">PFF</a>
                       </li>
                       <li>
-                        <a href="stak.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a>
+                        <a href="stak.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a>
                       </li>
                     </ul>
                   </div>
@@ -109,25 +113,25 @@
                   <div class="mt-1 bg-white rounded-md" x-show="nestedDropdownOpen" @click.away="nestedDropdownOpen = false">
                     <ul class="space-y-2">
                       <li>
-                        <a target="_blank" href="https://github.com/rmoise/document-management-app" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a>
+                        <a target="_blank" href="https://github.com/rmoise/document-management-app" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a>
                       </li>
                       <li>
-                        <a target="_blank" href="https://github.com/rmoise/document-management-api" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a>
+                        <a target="_blank" href="https://github.com/rmoise/document-management-api" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a>
                       </li>
                       <li>
-                        <a href="pokemoncase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokedex</a>
+                        <a href="pokemoncase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokedex</a>
                       </li>
                       <li>
-                        <a href="myflixcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a>
+                        <a href="myflixcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a>
                       </li>
                       <li>
-                        <a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a>
+                        <a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a>
                       </li>
                       <li>
-                        <a href="meetcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a>
+                        <a href="meetcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a>
                       </li>
                       <li>
-                        <a href="chatappcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a>
+                        <a href="chatappcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a>
                       </li>
                     </ul>
                   </div>
@@ -149,22 +153,22 @@
                   <div class="mt-1 bg-white rounded-md shadow-lg" x-show="categoriesOpen" @click.away="categoriesOpen = false">
                     <ul class="space-y-2">
                       <li>
-                        <a href="kytocase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a>
+                        <a href="kytocase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a>
                       </li>
                       <li>
-                        <a href="smunchcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a>
+                        <a href="smunchcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a>
                       </li>
                       <li>
-                        <a href="cogalleriescase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a>
+                        <a href="cogalleriescase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a>
                       </li>
                       <li>
-                        <a href="organize.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a>
+                        <a href="organize.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a>
                       </li>
                       <li>
-                        <a href="pffcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">PFF</a>
+                        <a href="pffcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">PFF</a>
                       </li>
                       <li>
-                        <a href="stak.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a>
+                        <a href="stak.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a>
                       </li>
                     </ul>
                   </div>
@@ -181,25 +185,25 @@
                   <div class="mt-1 bg-white rounded-md shadow-lg" x-show="nestedDropdownOpen" @click.away="nestedDropdownOpen = false">
                     <ul class="space-y-2">
                       <li>
-                        <a target="_blank" href="https://github.com/rmoise/document-management-app" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a>
+                        <a target="_blank" href="https://github.com/rmoise/document-management-app" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a>
                       </li>
                       <li>
-                        <a target="_blank" href="https://github.com/rmoise/document-management-api" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a>
+                        <a target="_blank" href="https://github.com/rmoise/document-management-api" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a>
                       </li>
                       <li>
-                        <a href="pokemoncase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokedex</a>
+                        <a href="pokemoncase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokedex</a>
                       </li>
                       <li>
-                        <a href="myflixcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a>
+                        <a href="myflixcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a>
                       </li>
                       <li>
-                        <a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a>
+                        <a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a>
                       </li>
                       <li>
-                        <a href="meetcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a>
+                        <a href="meetcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a>
                       </li>
                       <li>
-                        <a href="chatappcase.html" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a>
+                        <a href="chatappcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a>
                       </li>
                     </ul>
                   </div>
@@ -209,13 +213,13 @@
           </li>
           <!-- other links -->
           <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
+            <a href="#" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
           </li>
           <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
+            <a href="#" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
           </li>
           <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
+            <a href="#contact" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
           </li>
         </ul>
       </div>
