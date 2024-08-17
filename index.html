@@ -14,24 +14,20 @@
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
   <style>
-    .rotate-180 {
-      transform: rotate(180deg);
-    }
-
-    .transition-transform {
-      transition: transform 0.3s ease;
-    }
-
+    /* Ensure the menu expands to full height and is scrollable */
     .menu-expand {
       height: 100vh;
-      /* Full viewport height */
       overflow-y: auto;
-      /* Allows scrolling if the content exceeds viewport height */
+    }
+
+    /* Prevent scrolling on the body when menu is open */
+    .no-scroll {
+      overflow: hidden;
     }
   </style>
 </head>
 
-<body class="font-poppins pb-12">
+<body x-data="{ navbarOpen: false }" :class="{ 'no-scroll': navbarOpen }" class="font-poppins pb-12">
   <!-- Navbar -->
   <nav class="bg-white fixed top-0 left-0 w-full z-50" x-data="{ navbarOpen: false }">
     <!-- container -->
@@ -219,7 +215,7 @@
             <a href="#" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
           </li>
           <li>
-            <a href="#contact" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
+            <a href="#" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
           </li>
         </ul>
       </div>
