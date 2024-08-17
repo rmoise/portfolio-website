@@ -895,6 +895,26 @@ video {
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 
+
+.rotate-180 {
+      transform: rotate(180deg);
+    }
+
+    .transition-transform {
+      transition: transform 0.3s ease;
+    }
+
+    .menu-expand {
+      height: 100vh;
+      /* Full viewport height */
+      overflow-y: auto;
+      /* Allows scrolling if the content exceeds viewport height */
+    }
+
+    .no-scroll {
+      overflow: hidden;
+    }
+
 .object-cover {
   -o-object-fit: cover;
   object-fit: cover;
