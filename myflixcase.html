@@ -38,12 +38,7 @@
             <!-- Menu for Desktop -->
             <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
                 <ul class="flex flex-row space-x-2">
-                    <li>
-                        <a href="index.html#about" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('about') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
-                    </li>
-                    <li>
-                        <a href="index.html#expertise" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('expertise') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
-                    </li>
+
                     <!-- Dropdown for Desktop -->
                     <li x-data="{ dropdownOpen: false }" @click.away="dropdownOpen = false" class="relative">
                         <button @click="dropdownOpen = !dropdownOpen" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
@@ -100,12 +95,7 @@
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="index.html#recent-visuals" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('recent-visuals') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
-                    </li>
-                    <li>
-                        <a href="#testimonials" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('testimonials') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
-                    </li>
+
                     <li>
                         <a href="#contact" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
                     </li>
@@ -113,13 +103,8 @@
             </div>
             <!-- Menu for Mobile -->
             <div x-cloak :class="{ 'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen }" class="lg:hidden w-full">
-                <ul class="flex flex-col space-y-2 px-4 py-2">
-                    <li>
-                        <a href="index.html#about" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('about') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
-                    </li>
-                    <li>
-                        <a href="index.html#expertise" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('expertise') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
-                    </li>
+                <ul class="border-t flex flex-col space-y-2 px-4 py-2">
+
                     <!-- Dropdown for Mobile -->
                     <li class="relative">
                         <button @click="toggleDropdown()" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
@@ -174,12 +159,8 @@
                             </ul>
                         </div>
                     </li>
-                    <li>
-                        <a href="index.html#recent-visuals" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('recent-visuals') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
-                    </li>
-                    <li>
-                        <a href="index.html#testimonials" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('testimonials') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
-                    </li>
+
+
                     <li>
                         <a href="#contact" @click.prevent="handleContactClick()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
                             Contact

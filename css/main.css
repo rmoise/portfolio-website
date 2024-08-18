@@ -951,6 +951,57 @@ body.no-scroll {
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+.subnav-wrapper {
+  /* Make sure the subnav container is horizontally scrollable */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  white-space: nowrap; /* Prevent wrapping of the list items */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.subnav-wrapper::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for WebKit browsers */
+}
+
+.subnav-wrapper ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.subnav-wrapper li {
+  display: inline-block;
+}
+
+/* Optional: Customize underline styles */
+.underline {
+    text-decoration: underline;
+}
+
+.font-semibold {
+    font-weight: 600;
+}
+
+/* Container for the sub-navigation that should be scrollable horizontally */
+.subnav-container {
+    overflow-x: auto; /* Allow horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of child elements */
+    display: flex; /* Align child elements in a row */
+}
+
+/* Style for sub-navigation links */
+.subnav a {
+    display: inline-block; /* Ensure links are inline for scrolling */
+    padding: 0 15px; /* Adjust padding as needed */
+    text-decoration: none;
+    color: #000; /* Adjust color as needed */
+}
+
+/* Highlight active link */
+.subnav a.active {
+    font-weight: bold;
+    color: #007bff; /* Highlight color */
+}
 
 
 .object-cover {

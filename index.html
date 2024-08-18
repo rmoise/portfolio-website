@@ -36,12 +36,7 @@
       <!-- Menu for Desktop -->
       <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
         <ul class="flex flex-row space-x-2">
-          <li>
-            <a href="index.html#about" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('about') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
-          </li>
-          <li>
-            <a href="index.html#expertise" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('expertise') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
-          </li>
+
           <!-- Dropdown for Desktop -->
           <li x-data="{ dropdownOpen: false }" @click.away="dropdownOpen = false" class="relative">
             <button @click="dropdownOpen = !dropdownOpen" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
@@ -98,12 +93,7 @@
               </ul>
             </div>
           </li>
-          <li>
-            <a href="#recent-visuals" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('recent-visuals') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
-          </li>
-          <li>
-            <a href="#testimonials" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('testimonials') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
-          </li>
+
           <li>
             <a href="#contact" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
           </li>
@@ -111,13 +101,8 @@
       </div>
       <!-- Menu for Mobile -->
       <div x-cloak :class="{ 'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen }" class="lg:hidden w-full">
-        <ul class="flex flex-col space-y-2 px-4 py-2">
-          <li>
-            <a href="#about" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('about') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
-          </li>
-          <li>
-            <a href="#expertise" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('expertise') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
-          </li>
+        <ul class="border-t flex flex-col space-y-2 px-4 py-2">
+
           <!-- Dropdown for Mobile -->
           <li class="relative">
             <button @click="toggleDropdown()" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
@@ -172,12 +157,8 @@
               </ul>
             </div>
           </li>
-          <li>
-            <a href="#recent-visuals" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('recent-visuals') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
-          </li>
-          <li>
-            <a href="#testimonials" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('testimonials') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
-          </li>
+
+
           <li>
             <a href="#contact" @click.prevent="handleContactClick()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
               Contact
@@ -187,6 +168,31 @@
       </div>
     </div>
   </nav>
+
+<nav class="bg-white border-t border-b fixed w-full">
+  <div class="max-w-screen-xl px-4 py-3 mx-auto relative">
+    <div class="flex items-center">
+      <!-- Menu -->
+      <div class="subnav-wrapper overflow-auto">
+        <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
+          <li><a href="#about" class="text-gray-900 dark:text-white hover:underline">About</a></li>
+          <li><a href="#expertise" class="text-gray-900 dark:text-white hover:underline">Expertise</a></li>
+          <li><a href="#portfolio" class="text-gray-900 dark:text-white hover:underline">Portfolio</a></li>
+          <li><a href="#recent-visuals" class="text-gray-900 dark:text-white hover:underline">Recent Visuals</a></li>
+          <li><a href="#testimonials" class="text-gray-900 dark:text-white hover:underline">Testimonials</a></li>
+        </ul>
+      </div>
+
+      <!-- Stronger Gradient Fade-Out -->
+      <div class="absolute inset-y-0 right-0 w-16 pointer-events-none">
+        <div class="h-full bg-gradient-to-l from-white via-white/90 to-transparent"></div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
 
 
   <section class="mt-16  bg-white container mx-auto px-4 md:px-10 lg:px-10 py-16">
@@ -201,7 +207,7 @@
       </div>
 
       <!-- Image -->
-      <div class="flex justify-center md:justify-end w-full md:w-1/2 mb-8 md:mb-0">
+      <div class="mt-16 flex justify-center md:justify-end w-full md:w-1/2 mb-8 md:mb-0">
         <img src="img/roderick-moise.jpg" alt="Roderick Moise" class="rounded-lg w-3/4 md:w-96" />
       </div>
     </div>
