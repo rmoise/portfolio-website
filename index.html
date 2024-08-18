@@ -37,10 +37,10 @@
       <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
         <ul class="flex flex-row space-x-2">
           <li>
-            <a href="#about" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('about') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
+            <a href="index.html#about" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('about') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
           </li>
           <li>
-            <a href="#expertise" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('expertise') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
+            <a href="index.html#expertise" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('expertise') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
           </li>
           <!-- Dropdown for Desktop -->
           <li x-data="{ dropdownOpen: false }" @click.away="dropdownOpen = false" class="relative">
@@ -51,7 +51,7 @@
               </svg>
             </button>
             <!-- Dropdown Menu for Desktop -->
-            <div x-show="dropdownOpen" class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48" x-transition>
+<div x-show="dropdownOpen" x-cloak class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48" x-transition>
               <ul class="space-y-2">
                 <!-- Categories Dropdown -->
                 <li>
@@ -124,7 +124,7 @@
               </svg>
             </button>
             <!-- Dropdown Menu for Mobile -->
-            <div x-show="dropdownOpen" class="lg:hidden mt-2 bg-white rounded-md" x-transition>
+<div x-show="dropdownOpen" x-cloak class="lg:hidden mt-2 bg-white rounded-md" x-transition>
               <ul class="space-y-2">
                 <!-- Categories Dropdown -->
                 <li>
@@ -170,14 +170,18 @@
             </div>
           </li>
           <li>
-            <a href="#recent-work" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('recent-work') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Work</a>
+            <a href="#recent-visuals" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('recent-visuals') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
           </li>
           <li>
-            <a href="#contact" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
+            <a href="#testimonials" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('testimonials') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
+          </li>
+          <li>
+            <a href="#contact" @click.prevent="handleContactClick()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
+              Contact
+            </a>
           </li>
         </ul>
       </div>
-
     </div>
   </nav>
 

@@ -941,6 +941,16 @@ body.no-scroll {
   z-index: 1000; /* Ensure it is above other content */
 }
 
+/* Hide elements with x-cloak until Alpine.js initializes */
+[x-cloak] {
+  display: none;
+}
+
+/* Transition styles for smooth appearance */
+.x-transition {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
 
 
 .object-cover {
