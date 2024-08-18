@@ -29,7 +29,7 @@
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg x-cloak xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
@@ -51,7 +51,7 @@
               </svg>
             </button>
             <!-- Dropdown Menu for Desktop -->
-<div x-show="dropdownOpen" x-cloak class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48" x-transition>
+            <div x-show="dropdownOpen" x-cloak class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48" x-transition>
               <ul class="space-y-2">
                 <!-- Categories Dropdown -->
                 <li>
@@ -124,7 +124,7 @@
               </svg>
             </button>
             <!-- Dropdown Menu for Mobile -->
-<div x-show="dropdownOpen" x-cloak class="lg:hidden mt-2 bg-white rounded-md" x-transition>
+            <div x-show="dropdownOpen" x-cloak class="lg:hidden mt-2 bg-white rounded-md" x-transition>
               <ul class="space-y-2">
                 <!-- Categories Dropdown -->
                 <li>
