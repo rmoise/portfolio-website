@@ -878,8 +878,9 @@ video {
 }
 
 .bg-green {
-  background-color: #01f3ab;
+  background-color: rgba(0, 254, 176, var(--tw-bg-opacity)); /* #00FEB0 with opacity 0.15 */
 }
+
 
 .bg-brightGreen {
   background-color: #a2f4db;

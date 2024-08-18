@@ -126,10 +126,7 @@ document.addEventListener('alpine:init', () => {
         },
 
         initializeScrollObserver() {
-            const navLinks = document.querySelectorAll('nav a[href^="#"]');
-            const sections = Array.from(navLinks)
-                .map(link => document.querySelector(link.getAttribute('href')))
-                .filter(el => el);
+            const sections = this.subNavLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(el => el);
 
             const options = {
                 root: null,
@@ -139,52 +136,37 @@ document.addEventListener('alpine:init', () => {
 
             const observer = new IntersectionObserver((entries) => {
                 let currentActiveIndex = this.lastActiveIndex;
-                let nextSectionIndex = -1;
 
                 entries.forEach(entry => {
+                    const index = sections.indexOf(entry.target);
                     if (entry.isIntersecting) {
-                        const index = sections.indexOf(entry.target);
                         if (index !== -1) {
                             currentActiveIndex = index;
                         }
                     }
                 });
 
-                const scrollPosition = window.scrollY + window.innerHeight / 2;
-
-                sections.forEach((section, index) => {
-                    if (section.offsetTop > scrollPosition) {
-                        nextSectionIndex = index;
-                        return;
-                    }
-                });
-
+                // Scrolling up logic: highlight previous link early
                 if (window.scrollY < this.lastScrollY) {
                     if (this.lastActiveIndex !== -1 && entries[0].boundingClientRect.top > 0) {
                         currentActiveIndex = this.lastActiveIndex - 1;
                     }
                 }
 
-                navLinks.forEach((link, index) => {
-                    link.classList.remove('underline', 'font-semibold');
-                });
+                // Remove active class from all sub-nav links
+                this.subNavLinks.forEach(link => link.classList.remove('underline', 'font-semibold'));
 
                 if (currentActiveIndex > -1) {
-                    navLinks[currentActiveIndex].classList.add('underline', 'font-semibold');
+                    const activeLink = this.subNavLinks[currentActiveIndex];
+                    activeLink.classList.add('underline', 'font-semibold');
                     this.scrollSubNav(currentActiveIndex);
                 }
 
                 this.lastActiveIndex = currentActiveIndex;
                 this.lastScrollY = window.scrollY;
-
-                console.log('Scroll Position:', scrollPosition);
-                console.log('Active Index:', currentActiveIndex);
-                console.log('Next Section Index:', nextSectionIndex);
             }, options);
 
-            sections.forEach(section => {
-                observer.observe(section);
-            });
+            sections.forEach(section => observer.observe(section));
         }
     }));
 });

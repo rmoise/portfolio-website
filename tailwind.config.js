@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./*.html',],
+  content: ['./*.html'],
   theme: {
     screens: {
       sm: '480px',
@@ -10,8 +10,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        green:'#00FEB0',
-            brightGreen:'#a2f4db',
+        green: '#00FEB0', // Define the custom color
+        brightGreen: '#a2f4db',
         brightRed: 'hsl(12, 88%, 59%)',
         brightRedLight: 'hsl(12, 88%, 69%)',
         brightRedSupLight: 'hsl(12, 88%, 95%)',
@@ -33,6 +33,13 @@ module.exports = {
       padding: {
         '1/3': '33.33333%',
         '2/3': '66.66667%'
+      },
+      opacity: {
+        '15': '0.15', // Add custom opacity value
+        '25': '0.25',
+        '50': '0.5',
+        '75': '0.75',
+        '100': '1',
       },
     }
   },

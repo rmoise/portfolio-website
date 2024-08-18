@@ -169,26 +169,31 @@
     </div>
   </nav>
 
-  <nav class="bg-white border-t border-b fixed w-full">
+  <nav class="bg-white border-t fixed w-full">
     <div class="max-w-screen-xl px-4 py-3 mx-auto relative">
       <div class="flex items-center">
         <!-- Menu -->
-        <div class="subnav-wrapper overflow-auto">
+        <div class="ml-auto subnav-wrapper overflow-auto">
           <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm sub-nav-container">
-            <li><a href="#about" class="text-gray-900  hover:underline subnav-link">About</a></li>
-            <li><a href="#expertise" class="text-gray-900  hover:underline subnav-link">Expertise</a></li>
-            <li><a href="#portfolio" class="text-gray-900  hover:underline subnav-link">Portfolio</a></li>
-            <li><a href="#recent-visuals" class="text-gray-900  hover:underline subnav-link">Recent Visuals</a></li>
-            <li><a href="#testimonials" class="text-gray-900  hover:underline subnav-link">Testimonials</a></li>
+            <li><a href="#about" class="text-gray-900 hover:underline subnav-link">About</a></li>
+            <li><a href="#expertise" class="text-gray-900 hover:underline subnav-link">Expertise</a></li>
+            <li><a href="#portfolio" class="text-gray-900 hover:underline subnav-link">Portfolio</a></li>
+            <li><a href="#recent-visuals" class="text-gray-900 hover:underline subnav-link">Recent Visuals</a></li>
+            <li><a href="#testimonials" class="text-gray-900 hover:underline subnav-link">Testimonials</a></li>
+
+
           </ul>
         </div>
 
-        <!-- Right Gradient Fade-Out -->
-        <div class="absolute inset-y-0 right-0 w-16 pointer-events-none right-gradient">
+
+        <!-- Right Gradient Fade-Out for Mobile Only -->
+        <div class="absolute inset-y-0 right-0 w-16 pointer-events-none right-gradient md:hidden">
           <div class="h-full bg-gradient-to-l from-white via-white/90 to-transparent"></div>
         </div>
       </div>
+    </div>
   </nav>
+
 
 
 
@@ -207,8 +212,8 @@
       </div>
 
       <!-- Image -->
-      <div class="mt-8 flex justify-center md:justify-end w-full md:w-1/2 mb-8 md:mb-0">
-        <img src="img/roderick-moise.jpg" alt="Roderick Moise" class="rounded-lg w-3/4 md:w-96" />
+      <div class=" lg:mt-16 xl:mt-16 md:mt-16 flex justify-center md:justify-end w-full md:w-1/2 mb-8 md:mb-0">
+        <img src="img/roderick-moise.jpg" alt="Roderick Moise" class="rounded-lg w-3/4 xl:w-96" />
       </div>
     </div>
 
