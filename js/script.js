@@ -1,18 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const subNavContainer = document.querySelector('.subnav-wrapper');
+  const rightGradient = document.querySelector('.right-gradient');
+  const testimonialsLink = document.querySelector('a[href="#testimonials"]');
+  const recentVisualsLink = document.querySelector('a[href="#recent-visuals"]');
+
+  // Smooth scroll to section on "Contact" button click
+  const contactButton = document.querySelector('nav a[href="#contact"]');
+  if (contactButton) {
+    contactButton.addEventListener('click', function (e) {
+      e.preventDefault(); // Prevent default action
+
+      const targetElement = document.querySelector('#contact');
+      if (targetElement) {
+        const headerHeight = document.querySelector('nav').offsetHeight || 0;
+        const additionalOffset = 80; // Adjust this value as needed
+
+        // Calculate scroll position
+        const scrollToPosition = targetElement.offsetTop - headerHeight - additionalOffset;
+
+        // Smooth scrolling
+        window.scrollTo({
+          top: scrollToPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  }
+
+  // Smooth scroll to section on sub-nav link click
+  document.querySelectorAll('.sub-nav-container a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+
+      if (targetElement) {
+        const headerHeight = document.querySelector('nav').offsetHeight || 0;
+        const additionalOffset = 60; // Adjust this value as needed
+
+        const scrollToPosition = targetElement.offsetTop - headerHeight - additionalOffset;
+
+        window.scrollTo({
+          top: scrollToPosition,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+
   function scrollSubNavToActiveLink(activeLink) {
     if (activeLink) {
-      const subNavContainer = document.querySelector('.subnav-wrapper');
       const containerRect = subNavContainer.getBoundingClientRect();
       const linkRect = activeLink.getBoundingClientRect();
 
-      // Calculate the offset to center the active link within the container
       const linkCenter = linkRect.left + linkRect.width / 2;
       const containerCenter = containerRect.left + containerRect.width / 2;
-
-      // Determine the offset to center the active link
       const offset = linkCenter - containerCenter;
 
-      // Adjust the scroll position to center the link
       subNavContainer.scrollLeft += offset;
     }
   }
@@ -41,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      navLinks.forEach((link, index) => {
+      navLinks.forEach(link => {
         link.classList.remove('active');
       });
 
@@ -49,6 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeLink = navLinks[currentActiveIndex];
         activeLink.classList.add('active');
         scrollSubNavToActiveLink(activeLink);
+
+        // Adjust gradient visibility based on visibility of Recent Visuals or Testimonials links
+        const isRecentVisualsVisible = isLinkFullyVisible(recentVisualsLink);
+        const isTestimonialsVisible = isLinkFullyVisible(testimonialsLink);
+
+        if (isRecentVisualsVisible || isTestimonialsVisible) {
+          rightGradient.style.display = 'none';
+        } else {
+          rightGradient.style.display = 'block';
+        }
       }
     }, options);
 
@@ -57,5 +111,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function isLinkFullyVisible(link) {
+    const linkRect = link.getBoundingClientRect();
+    const containerRect = subNavContainer.getBoundingClientRect();
+
+    return linkRect.right <= containerRect.right && linkRect.left >= containerRect.left;
+  }
+
   initializeScrollObserver();
+
+  // Listen for horizontal scroll in the subnav-wrapper
+  subNavContainer.addEventListener('scroll', () => {
+    const isRecentVisualsVisible = isLinkFullyVisible(recentVisualsLink);
+    const isTestimonialsVisible = isLinkFullyVisible(testimonialsLink);
+
+    // Check if either Recent Visuals or Testimonials links are fully visible in the container
+    if (isRecentVisualsVisible || isTestimonialsVisible) {
+      rightGradient.style.display = 'none';
+    } else {
+      rightGradient.style.display = 'block';
+    }
+  });
 });

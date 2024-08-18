@@ -985,6 +985,7 @@ body.no-scroll {
 /* Container for the sub-navigation that should be scrollable horizontally */
 .subnav-wrapper {
   overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent line breaks inside */
   position: relative; /* Positioning context for the gradient overlay */
 }
 
@@ -1016,6 +1017,15 @@ body.no-scroll {
   list-style: none; /* Remove list bullets */
   padding: 0;
   margin: 0;
+}
+
+
+.right-gradient {
+  position: absolute;
+  inset-y-0 right-0;
+  width: 50px;
+  pointer-events: none;
+  transition: display 0.3s ease-in-out;
 }
 
 
