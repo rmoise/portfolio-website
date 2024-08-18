@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     notification.classList.remove('hidden');
 
+    // Clear previous background classes
+    notification.classList.remove('bg-green', 'bg-brightGreen', 'bg-red-500');
+
     if (type === 'error') {
-      notification.classList.remove('bg-green', 'bg-brightGreen');
       notification.classList.add('bg-red-500');
     } else {
-      notification.classList.remove('bg-red-500');
       notification.classList.add('bg-green', 'bg-brightGreen');
     }
 
@@ -94,23 +95,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Smooth Scroll Handling
+  function smoothScrollTo(targetId, offset = 80) {
+    const targetElement = document.querySelector(targetId);
+    if (targetElement) {
+      const headerHeight = document.querySelector('nav').offsetHeight || 0;
+      const scrollToPosition = targetElement.offsetTop - headerHeight - offset;
+
+      window.scrollTo({
+        top: scrollToPosition,
+        behavior: 'smooth'
+      });
+    }
+  }
+
+  // Smooth scroll to section on "Contact" button click
   const contactButton = document.querySelector('nav a[href="#contact"]');
   if (contactButton) {
     contactButton.addEventListener('click', function (e) {
-      e.preventDefault(); // Prevent default action
-
-      const targetElement = document.querySelector('#contact');
-      if (targetElement) {
-        const headerHeight = document.querySelector('nav').offsetHeight || 0;
-        const additionalOffset = 80; // Adjust this value as needed
-
-        const scrollToPosition = targetElement.offsetTop - headerHeight - additionalOffset;
-
-        window.scrollTo({
-          top: scrollToPosition,
-          behavior: 'smooth'
-        });
-      }
+      e.preventDefault();
+      smoothScrollTo('#contact', 80);
     });
   }
 
@@ -119,19 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-
-      if (targetElement) {
-        const headerHeight = document.querySelector('nav').offsetHeight || 0;
-        const additionalOffset = 60; // Adjust this value as needed
-
-        const scrollToPosition = targetElement.offsetTop - headerHeight - additionalOffset;
-
-        window.scrollTo({
-          top: scrollToPosition,
-          behavior: 'smooth'
-        });
-      }
+      smoothScrollTo(targetId, 60);
     });
   });
 
