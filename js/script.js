@@ -1,10 +1,78 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const subNavContainer = document.querySelector('.subnav-wrapper');
-  const rightGradient = document.querySelector('.right-gradient');
-  const testimonialsLink = document.querySelector('a[href="#testimonials"]');
-  const recentVisualsLink = document.querySelector('a[href="#recent-visuals"]');
+  // Menu Button Handling
+  const menuButton = document.querySelector('[data-collapse-toggle]');
+  const menu = document.getElementById('navbar-multi-level');
 
-  // Smooth scroll to section on "Contact" button click
+  if (menuButton && menu) {
+    function closeMenu() {
+      menuButton.setAttribute('aria-expanded', 'false');
+      menu.classList.add('hidden');
+      console.log('Menu closed');
+    }
+
+    menuButton.addEventListener('click', (event) => {
+      event.stopPropagation(); // Prevent click event from propagating to document
+      // Let Flowbite handle the menu toggling
+    });
+
+    function handleClickOutside(event) {
+      if (!menuButton.contains(event.target) && !menu.contains(event.target)) {
+        closeMenu();
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('touchend', handleClickOutside); // Handle touch events on mobile
+
+    menu.addEventListener('click', (event) => {
+      event.stopPropagation();
+    });
+  }
+
+  // Initial scroll into view for hash links
+  const hash = window.location.hash;
+  if (hash) {
+    setTimeout(() => {
+      document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  }
+
+  // Form Handling
+  const form = document.querySelector('form');
+  if (form) {
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault(); // Prevent default form submission
+
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const response = await fetch('https://portfolio-site-gold-six.vercel.app/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          console.log('Form submitted successfully');
+          form.reset();
+        } else {
+          console.error('Form submission failed');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+      }
+
+      // Optionally handle post-submit behavior
+      setTimeout(() => {
+        console.log('Form submission timeout handling');
+      }, 5000);
+    });
+  }
+
+  // Smooth Scroll Handling
   const contactButton = document.querySelector('nav a[href="#contact"]');
   if (contactButton) {
     contactButton.addEventListener('click', function (e) {
@@ -15,10 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerHeight = document.querySelector('nav').offsetHeight || 0;
         const additionalOffset = 80; // Adjust this value as needed
 
-        // Calculate scroll position
         const scrollToPosition = targetElement.offsetTop - headerHeight - additionalOffset;
 
-        // Smooth scrolling
         window.scrollTo({
           top: scrollToPosition,
           behavior: 'smooth'
@@ -50,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function scrollSubNavToActiveLink(activeLink) {
     if (activeLink) {
+      const subNavContainer = document.querySelector('.subnav-wrapper');
       const containerRect = subNavContainer.getBoundingClientRect();
       const linkRect = activeLink.getBoundingClientRect();
 
@@ -95,13 +162,19 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollSubNavToActiveLink(activeLink);
 
         // Adjust gradient visibility based on visibility of Recent Visuals or Testimonials links
-        const isRecentVisualsVisible = isLinkFullyVisible(recentVisualsLink);
-        const isTestimonialsVisible = isLinkFullyVisible(testimonialsLink);
+        const rightGradient = document.querySelector('.right-gradient');
+        const testimonialsLink = document.querySelector('a[href="#testimonials"]');
+        const recentVisualsLink = document.querySelector('a[href="#recent-visuals"]');
 
-        if (isRecentVisualsVisible || isTestimonialsVisible) {
-          rightGradient.style.display = 'none';
-        } else {
-          rightGradient.style.display = 'block';
+        if (rightGradient && testimonialsLink && recentVisualsLink) {
+          const isRecentVisualsVisible = isLinkFullyVisible(recentVisualsLink);
+          const isTestimonialsVisible = isLinkFullyVisible(testimonialsLink);
+
+          if (isRecentVisualsVisible || isTestimonialsVisible) {
+            rightGradient.style.display = 'none';
+          } else {
+            rightGradient.style.display = 'block';
+          }
         }
       }
     }, options);
@@ -113,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function isLinkFullyVisible(link) {
     const linkRect = link.getBoundingClientRect();
-    const containerRect = subNavContainer.getBoundingClientRect();
+    const containerRect = document.querySelector('.subnav-wrapper').getBoundingClientRect();
 
     return linkRect.right <= containerRect.right && linkRect.left >= containerRect.left;
   }
@@ -121,15 +194,21 @@ document.addEventListener('DOMContentLoaded', () => {
   initializeScrollObserver();
 
   // Listen for horizontal scroll in the subnav-wrapper
-  subNavContainer.addEventListener('scroll', () => {
-    const isRecentVisualsVisible = isLinkFullyVisible(recentVisualsLink);
-    const isTestimonialsVisible = isLinkFullyVisible(testimonialsLink);
+  const subNavContainer = document.querySelector('.subnav-wrapper');
+  const rightGradient = document.querySelector('.right-gradient');
+  const testimonialsLink = document.querySelector('a[href="#testimonials"]');
+  const recentVisualsLink = document.querySelector('a[href="#recent-visuals"]');
 
-    // Check if either Recent Visuals or Testimonials links are fully visible in the container
-    if (isRecentVisualsVisible || isTestimonialsVisible) {
-      rightGradient.style.display = 'none';
-    } else {
-      rightGradient.style.display = 'block';
-    }
-  });
+  if (subNavContainer && rightGradient && testimonialsLink && recentVisualsLink) {
+    subNavContainer.addEventListener('scroll', () => {
+      const isRecentVisualsVisible = isLinkFullyVisible(recentVisualsLink);
+      const isTestimonialsVisible = isLinkFullyVisible(testimonialsLink);
+
+      if (isRecentVisualsVisible || isTestimonialsVisible) {
+        rightGradient.style.display = 'none';
+      } else {
+        rightGradient.style.display = 'block';
+      }
+    });
+  }
 });
