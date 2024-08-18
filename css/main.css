@@ -915,6 +915,34 @@ video {
       overflow: hidden;
     }
 
+.menu-item.active {
+  font-weight: bold;
+  background-color: #e0e0e0; /* Highlight color for active state */
+  cursor: default; /* Optional: prevent pointer cursor */
+}
+.menu-item[aria-disabled="true"] {
+  pointer-events: none; /* Optional: prevent clicks on disabled items */
+}
+
+/* Styles for mobile scroll lock */
+body.no-scroll {
+  overflow: hidden; /* Prevent scrolling on the main body */
+}
+
+.menu-scrollable {
+  overflow-y: auto; /* Allow vertical scrolling on the menu */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  position: fixed; /* Fix the menu in place */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Full height to cover the viewport */
+  background: white; /* Ensure visibility of content */
+  z-index: 1000; /* Ensure it is above other content */
+}
+
+
+
 .object-cover {
   -o-object-fit: cover;
   object-fit: cover;

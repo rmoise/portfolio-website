@@ -9,24 +9,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to close the menu
   function closeMenu() {
-    if (menuButton.getAttribute('aria-expanded') === 'true') {
-      menuButton.setAttribute('aria-expanded', 'false');
-      menu.classList.add('hidden');
-      console.log('Menu closed');
-    }
+    menuButton.setAttribute('aria-expanded', 'false');
+    menu.classList.add('hidden');
+    console.log('Menu closed');
   }
 
   // Handle menu button clicks
   menuButton.addEventListener('click', (event) => {
     event.stopPropagation(); // Prevent click event from propagating to document
-    const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
-    if (!isExpanded) {
-      menuButton.setAttribute('aria-expanded', 'true');
-      menu.classList.remove('hidden');
-      console.log('Menu opened');
-    } else {
-      closeMenu();
-    }
+    // Let Flowbite handle the menu toggling
   });
 
   // Handle clicks outside the menu to close it
@@ -113,4 +104,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 5000);
     }
   }
+
 });

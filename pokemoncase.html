@@ -11,199 +11,176 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js" defer></script>
 </head>
 
 <body class="font-poppins pb-12">
     <!-- Navbar -->
-    <nav class="bg-white fixed top-0 left-0 w-full z-50" x-data="{ navbarOpen: false }" @click.away="navbarOpen = false" x-init="$watch('navbarOpen', value => document.body.classList.toggle('no-scroll', value))">
-        <!-- container -->
+    <nav x-data="navbar()" x-init="init()" class="bg-white fixed top-0 left-0 w-full z-50">
+        <!-- Container -->
         <div class="container flex flex-wrap px-4 py-2 mx-auto">
-            <!-- logo -->
+            <!-- Logo -->
             <a href="index.html" class="inline-flex items-center p-2">
                 <img src="img/rm_logo.svg" alt="Logo" class="h-8">
             </a>
-            <!-- toggler btn -->
-            <button class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md outline-none lg:hidden focus:outline-none" @click="navbarOpen = !navbarOpen">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{'hidden': navbarOpen, 'block': !navbarOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <!-- Toggler Btn -->
+            <button class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden" @click="toggleNavbar()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{'block': navbarOpen, 'hidden': !navbarOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
             </button>
-            <!-- menu -->
-            <div :class="{'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen}" class="w-full lg:flex lg:ml-auto lg:w-auto lg:mt-0">
-                <ul class="flex flex-col w-full space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
+            <!-- Menu for Desktop -->
+            <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
+                <ul class="flex flex-row space-x-2">
                     <li>
-                        <a href="index.html#about" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
+                        <a href="index.html#about" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('about') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
                     </li>
                     <li>
-                        <a href="index.html#expertise" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
+                        <a href="index.html#expertise" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('expertise') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
                     </li>
-                    <!-- dropdown -->
-                    <li x-data="{ dropdownOpen: false }" class="relative">
-                        <button class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full lg:w-auto" @click="dropdownOpen = !dropdownOpen">
+                    <!-- Dropdown for Desktop -->
+                    <li x-data="{ dropdownOpen: false }" @click.away="dropdownOpen = false" class="relative">
+                        <button @click="dropdownOpen = !dropdownOpen" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
                             Portfolio
-                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': dropdownOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': dropdownOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                             </svg>
                         </button>
-                        <!-- dropdown menu for mobile -->
-                        <div class="block lg:hidden mt-2 bg-white rounded-md" x-show="dropdownOpen" @click.away="dropdownOpen = false">
+                        <!-- Dropdown Menu for Desktop -->
+                        <div x-show="dropdownOpen" class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48" x-transition>
                             <ul class="space-y-2">
-                                <!-- categories dropdown -->
-                                <li x-data="{ categoriesOpen: false }">
-                                    <button class="flex items-center w-full px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100" @click="categoriesOpen = !categoriesOpen">
+                                <!-- Categories Dropdown -->
+                                <li>
+                                    <button @click="toggleCategories()" :class="{ 'bg-gray-100 text-black': isActive('design-systems') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
                                         Design Systems
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': categoriesOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': categoriesOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
-                                    <!-- nested categories dropdown menu -->
-                                    <div class="mt-1 bg-white rounded-md" x-show="categoriesOpen" @click.away="categoriesOpen = false">
+                                    <div x-show="categoriesOpen" class="mt-1 bg-white rounded-md shadow-lg" x-transition>
                                         <ul class="space-y-2">
-                                            <li>
-                                                <a href="kytocase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a>
-                                            </li>
-                                            <li>
-                                                <a href="smunchcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a>
-                                            </li>
-                                            <li>
-                                                <a href="cogalleriescase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a>
-                                            </li>
-                                            <li>
-                                                <a href="organize.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a>
-                                            </li>
-                                            <li>
-                                                <a href="pffcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">PFF</a>
-                                            </li>
-                                            <li>
-                                                <a href="stak.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a>
-                                            </li>
+                                            <!-- Nested Links -->
+                                            <li><a href="kytocase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('kytocase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a></li>
+                                            <li><a href="smunchcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a></li>
+                                            <li><a href="cogalleriescase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a></li>
+                                            <li><a href="organize.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('organize') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a></li>
+                                            <li><a href="pffcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('pffcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pffcase</a></li>
+                                            <li><a href="stak.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('stak') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a></li>
                                         </ul>
                                     </div>
                                 </li>
-                                <!-- brands dropdown -->
-                                <li x-data="{ nestedDropdownOpen: false }">
-                                    <button class="flex items-center w-full px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100" @click="nestedDropdownOpen = !nestedDropdownOpen">
+
+                                <!-- Web Dev Dropdown -->
+                                <li>
+                                    <button @click="toggleNestedDropdown()" :class="{ 'bg-gray-100 text-black': isActive('web-dev') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
                                         Web Dev
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': nestedDropdownOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': nestedDropdownOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
-                                    <!-- nested brands dropdown menu -->
-                                    <div class="mt-1 bg-white rounded-md" x-show="nestedDropdownOpen" @click.away="nestedDropdownOpen = false">
+                                    <div x-show="nestedDropdownOpen" class="mt-1 bg-white rounded-md" x-transition>
                                         <ul class="space-y-2">
-                                            <li>
-                                                <a target="_blank" href="https://github.com/rmoise/document-management-app" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://github.com/rmoise/document-management-api" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a>
-                                            </li>
-                                            <li>
-                                                <a href="pokemoncase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokedex</a>
-                                            </li>
-                                            <li>
-                                                <a href="myflixcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a>
-                                            </li>
-                                            <li>
-                                                <a href="meetcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a>
-                                            </li>
-                                            <li>
-                                                <a href="chatappcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a>
-                                            </li>
+                                            <li><a target="_blank" href="https://github.com/rmoise/document-management-app" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager </a></li>
+                                            <li><a target="_blank" href="https://github.com/rmoise/document-management-api" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API </a></li>
+                                            <li><a href="pokemoncase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokédex App</a></li>
+                                            <li><a href="myflixcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a></li>
+                                            <li><a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular </a></li>
+                                            <li><a href="meetcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('meetcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a></li>
+                                            <li><a href="chatappcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a></li>
                                         </ul>
                                     </div>
                                 </li>
+
                             </ul>
                         </div>
-                        <!-- dropdown menu for desktop -->
-                        <div class="absolute z-10 hidden lg:block bg-white rounded-md shadow-lg lg:w-48 mt-2" x-show="dropdownOpen" @click.away="dropdownOpen = false">
+                    </li>
+                    <li>
+                        <a href="index.html#recent-visuals" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('recent-visuals') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
+                    </li>
+                    <li>
+                        <a href="#contact" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- Menu for Mobile -->
+            <div :class="{ 'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen }" class="lg:hidden w-full">
+                <ul class="flex flex-col space-y-2 px-4 py-2">
+                    <li>
+                        <a href="index.html#about" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('about') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
+                    </li>
+                    <li>
+                        <a href="index.html#expertise" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('expertise') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
+                    </li>
+                    <!-- Dropdown for Mobile -->
+                    <li class="relative">
+                        <button @click="toggleDropdown()" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
+                            Portfolio
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': dropdownOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <!-- Dropdown Menu for Mobile -->
+                        <div x-show="dropdownOpen" class="lg:hidden mt-2 bg-white rounded-md" x-transition>
                             <ul class="space-y-2">
-                                <!-- categories dropdown -->
-                                <li x-data="{ categoriesOpen: false }">
-                                    <button class="flex items-center w-full px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100" @click="categoriesOpen = !categoriesOpen">
+                                <!-- Categories Dropdown -->
+                                <li>
+                                    <button @click="toggleCategories()" :class="{ 'bg-gray-100 text-black': isActive('design-systems') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
                                         Design Systems
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': categoriesOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': categoriesOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
-                                    <!-- nested categories dropdown menu -->
-                                    <div class="mt-1 bg-white rounded-md shadow-lg" x-show="categoriesOpen" @click.away="categoriesOpen = false">
+                                    <div x-show="categoriesOpen" class="mt-1 bg-white rounded-md" x-transition>
                                         <ul class="space-y-2">
-                                            <li>
-                                                <a href="kytocase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a>
-                                            </li>
-                                            <li>
-                                                <a href="smunchcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a>
-                                            </li>
-                                            <li>
-                                                <a href="cogalleriescase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a>
-                                            </li>
-                                            <li>
-                                                <a href="organize.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a>
-                                            </li>
-                                            <li>
-                                                <a href="pffcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">PFF</a>
-                                            </li>
-                                            <li>
-                                                <a href="stak.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a>
-                                            </li>
+                                            <!-- Nested Links -->
+                                            <li><a href="kytocase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('kytocase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a></li>
+                                            <li><a href="smunchcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a></li>
+                                            <li><a href="cogalleriescase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a></li>
+                                            <li><a href="organize.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('organize') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a></li>
+                                            <li><a href="pffcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('pffcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pffcase</a></li>
+                                            <li><a href="stak.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('stak') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a></li>
                                         </ul>
                                     </div>
                                 </li>
-                                <!-- brands dropdown -->
-                                <li x-data="{ nestedDropdownOpen: false }">
-                                    <button class="flex items-center w-full px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100" @click="nestedDropdownOpen = !nestedDropdownOpen">
+                                <!-- Web Dev Dropdown -->
+                                <li>
+                                    <button @click="toggleNestedDropdown()" :class="{ 'bg-gray-100 text-black': isActive('web-dev') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
                                         Web Dev
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': nestedDropdownOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': nestedDropdownOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
-                                    <!-- nested brands dropdown menu -->
-                                    <div class="mt-1 bg-white rounded-md shadow-lg" x-show="nestedDropdownOpen" @click.away="nestedDropdownOpen = false">
+                                    <div x-show="nestedDropdownOpen" class="mt-1 bg-white rounded-md" x-transition>
                                         <ul class="space-y-2">
-                                            <li>
-                                                <a target="_blank" href="https://github.com/rmoise/document-management-app" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://github.com/rmoise/document-management-api" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a>
-                                            </li>
-                                            <li>
-                                                <a href="pokemoncase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokedex</a>
-                                            </li>
-                                            <li>
-                                                <a href="myflixcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a>
-                                            </li>
-                                            <li>
-                                                <a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a>
-                                            </li>
-                                            <li>
-                                                <a href="meetcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a>
-                                            </li>
-                                            <li>
-                                                <a href="chatappcase.html" @click="navbarOpen = false" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a>
-                                            </li>
+                                            <li><a target="_blank" href="https://github.com/rmoise/document-management-app" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a></li>
+                                            <li><a target="_blank" href="https://github.com/rmoise/document-management-api" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a></li>
+                                            <li><a href="pokemoncase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokédex App</a></li>
+                                            <li><a href="myflixcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a></li>
+                                            <li><a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a></li>
+                                            <li><a href="meetcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('meetcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a></li>
+                                            <li><a href="chatappcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a></li>
                                         </ul>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                     </li>
-                    <!-- other links -->
                     <li>
-                        <a href="index.html#recent-visuals" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
+                        <a href="index.html#recent-visuals" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('recent-visuals') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
                     </li>
                     <li>
-                        <a href="index.html#testimonials" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
+                        <a href="index.html#testimonials" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('testimonials') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
                     </li>
                     <li>
-                        <a href="#contact" @click="navbarOpen = false" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
+                        <a href="#contact" @click.prevent="handleContactClick()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
+                            Contact
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -539,6 +516,7 @@
     </div>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="js/navbar.js"></script>
     <script src="js/script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
