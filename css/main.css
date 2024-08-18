@@ -880,6 +880,40 @@ video {
 .bg-green {
   background-color: rgba(0, 254, 176, var(--tw-bg-opacity)); /* #00FEB0 with opacity 0.15 */
 }
+/* Ensure the navigation and its content are styled properly */
+nav {
+  position: relative; /* Ensure relative positioning for child elements */
+}
+
+.subnav-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 2rem; /* Adjust as needed */
+  padding-right: 2rem; /* Adjust as needed */
+}
+
+/* Make sure the border spans the entire width of the viewport */
+.full-width-border-b {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw; /* Full viewport width */
+  border-bottom: 1px solid #e5e7eb; /* Tailwind's default border-gray-200 */
+  box-sizing: border-box; /* Include border in width calculation */
+  z-index: 1; /* Ensure it sits above other content */
+  display: none; /* Hidden by default */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Visible state of the border */
+.full-width-border-b.visible {
+  display: block; /* Show border when it has the 'visible' class */
+}
+
+/* Ensure the navigation container does not constrain width of subnav-wrapper */
+.relative {
+  overflow: visible; /* Allow overflow of child elements */
+}
 
 
 .bg-brightGreen {
