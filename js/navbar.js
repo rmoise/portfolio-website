@@ -5,20 +5,26 @@ document.addEventListener('alpine:init', () => {
         categoriesOpen: false,
         nestedDropdownOpen: false,
         currentPage: '',
-        lastActiveIndex: -1, // Track the last active index
-        subNavContainer: null, // Container for horizontal scrolling
-        subNavLinks: [], // Sub-navigation links
+        lastActiveIndex: -1,
+        subNavContainer: null,
+        subNavLinks: [],
+        lastScrollY: 0, // Track the last scroll position
 
         init() {
             this.currentPage = this.getCurrentPage();
+
+            // Ensure the portfolio dropdown is open by default on mobile
             this.dropdownOpen = this.shouldExpandDropdown('portfolio') || window.innerWidth < 1024;
+
+            // Default behavior for other dropdowns
             this.categoriesOpen = this.shouldExpandDropdown('design-systems');
             this.nestedDropdownOpen = this.shouldExpandDropdown('web-dev');
 
-            // Initialize sub-navigation container and links for horizontal scrolling
+            // Initialize sub-navigation container and links
             this.subNavContainer = document.querySelector('.sub-nav-container');
             this.subNavLinks = Array.from(document.querySelectorAll('.sub-nav-container a'));
 
+            // Initialize scroll observer
             this.initializeScrollObserver();
         },
 
@@ -91,16 +97,18 @@ document.addEventListener('alpine:init', () => {
         scrollToSection(section) {
             const element = document.querySelector(section);
             if (element) {
+                console.log('Scrolling to:', section);
+                console.log('Element position:', element.getBoundingClientRect());
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                this.closeNavbar(true); // Pass true to not close dropdowns
+                this.closeNavbar(true);
             } else {
                 console.error(`Element ${section} not found`);
             }
         },
 
         handleContactClick() {
-            this.scrollToSection('#contact'); // Scroll to the contact section
-            this.closeNavbar(true); // Pass true to prevent closing of dropdowns
+            this.scrollToSection('#contact');
+            this.closeNavbar(true);
         },
 
         scrollSubNav(activeIndex) {
@@ -110,11 +118,9 @@ document.addEventListener('alpine:init', () => {
                     const containerRect = this.subNavContainer.getBoundingClientRect();
                     const linkRect = activeLink.getBoundingClientRect();
 
-                    // Scroll the container if the link is out of view
-                    const offset = linkRect.left - containerRect.left;
-                    if (offset < 0 || offset + linkRect.width > containerRect.width) {
-                        this.subNavContainer.scrollLeft = offset + this.subNavContainer.scrollLeft;
-                    }
+                    // Calculate the position to center the active link within the container
+                    const offset = linkRect.left - containerRect.left - containerRect.width / 2 + linkRect.width / 2;
+                    this.subNavContainer.scrollLeft += offset;
                 }
             }
         },
@@ -123,16 +129,16 @@ document.addEventListener('alpine:init', () => {
             const navLinks = document.querySelectorAll('nav a[href^="#"]');
             const sections = Array.from(navLinks)
                 .map(link => document.querySelector(link.getAttribute('href')))
-                .filter(el => el); // Ensure valid elements
+                .filter(el => el);
 
             const options = {
-                root: null, // Use the viewport as the root
-                rootMargin: '0px 0px -50% 0px', // Adjust this margin as needed
-                threshold: 0.5 // Trigger when at least 50% of the section is visible
+                root: null,
+                rootMargin: '0px 0px -50% 0px',
+                threshold: 0.5
             };
 
             const observer = new IntersectionObserver((entries) => {
-                let currentActiveIndex = this.lastActiveIndex; // Default to last active index
+                let currentActiveIndex = this.lastActiveIndex;
                 let nextSectionIndex = -1;
 
                 entries.forEach(entry => {
@@ -144,8 +150,8 @@ document.addEventListener('alpine:init', () => {
                     }
                 });
 
-                // Determine next section index
                 const scrollPosition = window.scrollY + window.innerHeight / 2;
+
                 sections.forEach((section, index) => {
                     if (section.offsetTop > scrollPosition) {
                         nextSectionIndex = index;
@@ -153,21 +159,24 @@ document.addEventListener('alpine:init', () => {
                     }
                 });
 
-                // Highlight active link
+                if (window.scrollY < this.lastScrollY) {
+                    if (this.lastActiveIndex !== -1 && entries[0].boundingClientRect.top > 0) {
+                        currentActiveIndex = this.lastActiveIndex - 1;
+                    }
+                }
+
                 navLinks.forEach((link, index) => {
                     link.classList.remove('underline', 'font-semibold');
                 });
 
-                // Add underline to the current active link
                 if (currentActiveIndex > -1) {
                     navLinks[currentActiveIndex].classList.add('underline', 'font-semibold');
-                    this.scrollSubNav(currentActiveIndex); // Scroll sub-navigation to active link
+                    this.scrollSubNav(currentActiveIndex);
                 }
 
-                // Store the current active index
                 this.lastActiveIndex = currentActiveIndex;
+                this.lastScrollY = window.scrollY;
 
-                // Debugging logs
                 console.log('Scroll Position:', scrollPosition);
                 console.log('Active Index:', currentActiveIndex);
                 console.log('Next Section Index:', nextSectionIndex);
