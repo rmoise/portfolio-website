@@ -1,50 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const menuButton = document.querySelector('[data-collapse-toggle]');
-  const menu = document.getElementById('navbar-multi-level');
-
-  if (!menuButton || !menu) {
-    console.error('Menu button or menu not found');
-    return;
-  }
-
-  // Function to close the menu
-  function closeMenu() {
-    menuButton.setAttribute('aria-expanded', 'false');
-    menu.classList.add('hidden');
-    console.log('Menu closed');
-  }
-
-  // Handle menu button clicks
-  menuButton.addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent click event from propagating to document
-    // Let Flowbite handle the menu toggling
-  });
-
-  // Handle clicks outside the menu to close it
-  function handleClickOutside(event) {
-    if (!menuButton.contains(event.target) && !menu.contains(event.target)) {
-      closeMenu();
-    }
-  }
-
-  // Add event listeners for clicks and touch events to close the menu
-  document.addEventListener('click', handleClickOutside);
-  document.addEventListener('touchend', handleClickOutside); // Handle touch events on mobile
-
-  // Prevent clicks inside the menu from closing it
-  menu.addEventListener('click', (event) => {
-    event.stopPropagation();
-  });
-
-  // Initial scroll into view for hash links
-  const hash = window.location.hash;
-  if (hash) {
-    setTimeout(() => {
-      document.querySelector(hash)?.scrollIntoView({ behavior: 'smooth' });
-    }, 100);
-  }
-
-  // Form handling logic
   const form = document.querySelector('form');
   if (form) {
     form.addEventListener('submit', async (event) => {
@@ -61,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         const response = await fetch('https://portfolio-site-gold-six.vercel.app/api/send-email', {
-          method: 'POST',
+          method: 'POST', // Ensure this is POST
           headers: {
             'Content-Type': 'application/json',
           },
@@ -104,5 +58,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 5000);
     }
   }
-
 });
