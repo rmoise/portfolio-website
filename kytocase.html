@@ -112,7 +112,7 @@
         </ul>
       </div>
       <!-- Menu for Mobile -->
-      <div :class="{ 'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen }" class="lg:hidden w-full">
+      <div x-cloak :class="{ 'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen }" class="lg:hidden w-full">
         <ul class="flex flex-col space-y-2 px-4 py-2">
           <li>
             <a href="index.html#about" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('about') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
