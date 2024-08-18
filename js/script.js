@@ -1,18 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Utility Function to Show Notifications
-  function showNotification(message, type = 'success') {
-    const notification = document.createElement('div');
-    notification.className = `notification ${type === 'error' ? 'bg-red-500' : 'bg-green bg-brightGreen'}`;
-    notification.innerText = message;
+  // Notification Handling
+  const notification = document.querySelector('.notification'); // Ensure this element exists in your HTML
 
-    document.body.appendChild(notification);
+  function showNotification(message, type = 'success') {
+    if (!notification) return; // Exit if no notification element
+
+    notification.classList.remove('hidden');
+
+    if (type === 'error') {
+      notification.classList.remove('bg-green', 'bg-brightGreen');
+      notification.classList.add('bg-red-500');
+    } else {
+      notification.classList.remove('bg-red-500');
+      notification.classList.add('bg-green', 'bg-brightGreen');
+    }
+
+    notification.textContent = message; // Set notification message
 
     setTimeout(() => {
       notification.classList.add('hidden');
-      setTimeout(() => {
-        notification.remove();
-      }, 300); // Wait for hiding animation to complete
-    }, 5000); // Show notification for 5 seconds
+    }, 5000); // Hide after 5 seconds
   }
 
   // Menu Button Handling
@@ -74,20 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (response.ok) {
           console.log('Form submitted successfully');
           form.reset();
-          showNotification('Form submitted successfully', 'success');
+          showNotification('Form submitted successfully!', 'success');
         } else {
           console.error('Form submission failed');
-          showNotification('Form submission failed', 'error');
+          showNotification('Form submission failed. Please try again.', 'error');
         }
       } catch (error) {
         console.error('Error submitting form:', error);
-        showNotification('Error submitting form', 'error');
+        showNotification('An error occurred. Please try again later.', 'error');
       }
-
-      // Optionally handle post-submit behavior
-      setTimeout(() => {
-        console.log('Form submission timeout handling');
-      }, 5000);
     });
   }
 
