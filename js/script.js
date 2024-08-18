@@ -1,4 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Utility Function to Show Notifications
+  function showNotification(message, type = 'success') {
+    const notification = document.createElement('div');
+    notification.className = `notification ${type === 'error' ? 'bg-red-500' : 'bg-green bg-brightGreen'}`;
+    notification.innerText = message;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+      notification.classList.add('hidden');
+      setTimeout(() => {
+        notification.remove();
+      }, 300); // Wait for hiding animation to complete
+    }, 5000); // Show notification for 5 seconds
+  }
+
   // Menu Button Handling
   const menuButton = document.querySelector('[data-collapse-toggle]');
   const menu = document.getElementById('navbar-multi-level');
@@ -58,11 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (response.ok) {
           console.log('Form submitted successfully');
           form.reset();
+          showNotification('Form submitted successfully', 'success');
         } else {
           console.error('Form submission failed');
+          showNotification('Form submission failed', 'error');
         }
       } catch (error) {
         console.error('Error submitting form:', error);
+        showNotification('Error submitting form', 'error');
       }
 
       // Optionally handle post-submit behavior
