@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Notification Handling
-  const notification = document.querySelector('.notification'); // Ensure this element exists in your HTML
+  const notification = document.querySelector('#notification'); // Use ID selector
 
   function showNotification(message, type = 'success') {
     if (!notification) return; // Exit if no notification element
@@ -16,7 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
       notification.classList.add('bg-green', 'bg-brightGreen');
     }
 
-    notification.textContent = message; // Set notification message
+    const messageElement = notification.querySelector('#notification-message');
+    if (messageElement) {
+      messageElement.textContent = message; // Set notification message
+    }
 
     setTimeout(() => {
       notification.classList.add('hidden');
