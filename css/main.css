@@ -983,24 +983,39 @@ body.no-scroll {
 }
 
 /* Container for the sub-navigation that should be scrollable horizontally */
-.subnav-container {
-    overflow-x: auto; /* Allow horizontal scrolling */
-    white-space: nowrap; /* Prevent wrapping of child elements */
-    display: flex; /* Align child elements in a row */
+.subnav-wrapper {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  position: relative; /* Positioning context for the gradient overlay */
 }
 
-/* Style for sub-navigation links */
-.subnav a {
-    display: inline-block; /* Ensure links are inline for scrolling */
-    padding: 0 15px; /* Adjust padding as needed */
-    text-decoration: none;
-    color: #000; /* Adjust color as needed */
+/* Gradient overlay on the left side */
+.subnav-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px; /* Width of the gradient overlay */
+  height: 100%;
+  pointer-events: none; /* Make sure this does not interfere with scrolling */
 }
 
-/* Highlight active link */
-.subnav a.active {
-    font-weight: bold;
-    color: #007bff; /* Highlight color */
+/* Gradient overlay on the right side */
+.subnav-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px; /* Width of the gradient overlay */
+  height: 100%;
+  pointer-events: none; /* Make sure this does not interfere with scrolling */
+}
+
+/* Ensure the sub-nav container is positioned correctly for gradient overlays */
+.sub-nav-container {
+  display: flex; /* Align child elements in a row */
+  list-style: none; /* Remove list bullets */
+  padding: 0;
+  margin: 0;
 }
 
 

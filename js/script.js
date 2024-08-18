@@ -1,61 +1,61 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const form = document.querySelector('form');
-  if (form) {
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
+  function scrollSubNavToActiveLink(activeLink) {
+    if (activeLink) {
+      const subNavContainer = document.querySelector('.subnav-wrapper');
+      const containerRect = subNavContainer.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
 
-      const formData = new FormData(form);
-      const data = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        message: formData.get('message'),
-      };
+      // Calculate the offset to center the active link within the container
+      const linkCenter = linkRect.left + linkRect.width / 2;
+      const containerCenter = containerRect.left + containerRect.width / 2;
 
-      console.log('Submitting form with data:', data);
+      // Determine the offset to center the active link
+      const offset = linkCenter - containerCenter;
 
-      try {
-        const response = await fetch('https://portfolio-site-gold-six.vercel.app/api/send-email', {
-          method: 'POST', // Ensure this is POST
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(data),
-        });
+      // Adjust the scroll position to center the link
+      subNavContainer.scrollLeft += offset;
+    }
+  }
 
-        if (!response.ok) {
-          const errorData = await response.json();
-          console.error('Error response from server:', errorData);
-          throw new Error(errorData.error || 'Network response was not ok');
+  function initializeScrollObserver() {
+    const navLinks = document.querySelectorAll('.sub-nav-container a');
+    const sections = Array.from(navLinks)
+      .map(link => document.querySelector(link.getAttribute('href')))
+      .filter(el => el);
+
+    const options = {
+      root: null,
+      rootMargin: '0px 0px -50% 0px',
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      let currentActiveIndex = -1;
+
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = sections.indexOf(entry.target);
+          if (index !== -1) {
+            currentActiveIndex = index;
+          }
         }
+      });
 
-        showNotification('Your message has been sent successfully!');
-        form.reset();
-      } catch (error) {
-        console.error('Error during form submission:', error);
-        showNotification('There was an error sending your message. Please try again.', 'error');
+      navLinks.forEach((link, index) => {
+        link.classList.remove('active');
+      });
+
+      if (currentActiveIndex > -1) {
+        const activeLink = navLinks[currentActiveIndex];
+        activeLink.classList.add('active');
+        scrollSubNavToActiveLink(activeLink);
       }
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
     });
   }
 
-  function showNotification(message, type = 'success') {
-    const notification = document.getElementById('notification');
-    const messageElement = document.getElementById('notification-message');
-
-    if (notification && messageElement) {
-      messageElement.textContent = message;
-      notification.classList.remove('hidden');
-
-      if (type === 'error') {
-        notification.classList.remove('bg-brightGreen');
-        notification.classList.add('bg-red-500');
-      } else {
-        notification.classList.remove('bg-red-500');
-        notification.classList.add('bg-brightGreen');
-      }
-
-      setTimeout(() => {
-        notification.classList.add('hidden');
-      }, 5000);
-    }
-  }
+  initializeScrollObserver();
 });
