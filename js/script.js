@@ -23,47 +23,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
   }
 
-  // Menu Button Handling
-  const menuButton = document.querySelector('[data-collapse-toggle]');
-  const menu = document.getElementById('navbar-multi-level');
-
-  if (menuButton && menu) {
-    function closeMenu() {
-      menuButton.setAttribute('aria-expanded', 'false');
-      menu.classList.add('hidden');
-      console.log('Menu closed');
-    }
-
-    menuButton.addEventListener('click', (event) => {
-      event.stopPropagation();
-    });
-
-    function handleClickOutside(event) {
-      if (!menuButton.contains(event.target) && !menu.contains(event.target)) {
-        closeMenu();
-      }
-    }
-
-    document.addEventListener('click', handleClickOutside);
-    document.addEventListener('touchend', handleClickOutside);
-
-    menu.addEventListener('click', (event) => {
-      event.stopPropagation();
-    });
-  }
-
   // Smooth Scroll Handling
   function smoothScrollTo(targetId, offset = 80) {
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
-      const headerHeight = document.querySelector('nav').offsetHeight || 0;
+      const headerHeight = document.querySelector('nav')?.offsetHeight || 0;
       const scrollToPosition = targetElement.offsetTop - headerHeight - offset;
 
       window.scrollTo({
         top: scrollToPosition,
         behavior: 'smooth'
       });
+    } else {
+      console.error(`Target element ${targetId} not found.`);
     }
+  }
+
+  // Smooth scroll to section on "View my Projects" button click
+  const viewProjectsButton = document.querySelector('a[href="#portfolio"]');
+  if (viewProjectsButton) {
+    viewProjectsButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      smoothScrollTo('#portfolio', 60);
+    });
   }
 
   // Smooth scroll to section on "Contact" button click
@@ -84,17 +66,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Smooth scroll to section on button container link click
+  document.querySelectorAll('.button-container a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      smoothScrollTo(targetId, 60);
+    });
+  });
+
   function scrollSubNavToActiveLink(activeLink) {
     if (activeLink) {
       const subNavContainer = document.querySelector('.subnav-wrapper');
-      const containerRect = subNavContainer.getBoundingClientRect();
-      const linkRect = activeLink.getBoundingClientRect();
+      if (subNavContainer) {
+        const containerRect = subNavContainer.getBoundingClientRect();
+        const linkRect = activeLink.getBoundingClientRect();
 
-      const linkCenter = linkRect.left + linkRect.width / 2;
-      const containerCenter = containerRect.left + containerRect.width / 2;
-      const offset = linkCenter - containerCenter;
+        const linkCenter = linkRect.left + linkRect.width / 2;
+        const containerCenter = containerRect.left + containerRect.width / 2;
+        const offset = linkCenter - containerCenter;
 
-      subNavContainer.scrollLeft += offset;
+        subNavContainer.scrollLeft += offset;
+      }
     }
   }
 
@@ -156,7 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function isLinkFullyVisible(link) {
     const linkRect = link.getBoundingClientRect();
-    const containerRect = document.querySelector('.subnav-wrapper').getBoundingClientRect();
+    const containerRect = document.querySelector('.subnav-wrapper')?.getBoundingClientRect();
+
+    if (!containerRect) {
+      console.error('Subnav wrapper not found.');
+      return false;
+    }
 
     return linkRect.right <= containerRect.right && linkRect.left >= containerRect.left;
   }
@@ -170,26 +168,27 @@ document.addEventListener('DOMContentLoaded', () => {
   if (headline) headline.classList.add('initial-hidden');
   if (image) image.classList.add('initial-hidden');
 
-  // Add 'visible' class to trigger the transition
   setTimeout(() => {
     if (headline) headline.classList.add('visible');
     if (image) image.classList.add('visible');
   }, 100); // Delay to allow page rendering
 
-  // Full-width Border Bottom Handling
-  const subNavWrapper = document.querySelector('.subnav-wrapper');
-  const fullWidthBorder = document.querySelector('.full-width-border-b');
+  // Ensure no unwanted scroll handling or dynamic positioning affects the button
+  const subNav = document.getElementById('sub-nav');
+  const buttonContainer = document.querySelector('.button-container');
 
-  function handleScroll() {
-    if (window.scrollY > subNavWrapper.offsetTop) {
-      fullWidthBorder.classList.add('visible');
-    } else {
-      fullWidthBorder.classList.remove('visible');
-    }
+  if (subNav && buttonContainer) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > subNav.offsetHeight) {
+        // Remove this line to avoid fixed positioning
+        buttonContainer.style.position = 'relative';
+      } else {
+        buttonContainer.style.position = 'relative';
+      }
+    });
+  } else {
+    console.error('Sub-nav or Button container not found.');
   }
-
-  handleScroll();
-  window.addEventListener('scroll', handleScroll);
 
   // Form Handling
   const form = document.querySelector('form');

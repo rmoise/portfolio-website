@@ -4,179 +4,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nested Dropdown Menu</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Navbar Example</title>
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
   <style>
-    .rotate-180 {
-      transform: rotate(180deg);
+    /* Add your styles here */
+    body {
+      margin: 0;
+      padding: 0;
     }
 
-    .transition-transform {
-      transition: transform 0.3s ease;
+    #main-nav {
+      background: blue;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    #sub-nav {
+      background: red;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 60px;
+      /* Adjust based on your navbar height */
+      left: 0;
+    }
+
+    .content {
+      margin-top: 120px;
+      /* Adjust based on combined height of navbar and subnav */
     }
   </style>
 </head>
 
-<body class="bg-gray-100">
+<body>
+  <div x-data="navbarData()">
+    <nav id="main-nav">
+      <!-- Main navigation content -->
+    </nav>
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50" x-data="{ navbarOpen: false }">
-    <!-- container -->
-    <div class="container flex flex-wrap px-4 py-2 mx-auto">
-      <!-- logo -->
-      <a href="#" class="inline-flex items-center p-2">
-        <img src="img/rm_logo.svg" alt="Logo" class="h-8">
-      </a>
-      <!-- toggler btn -->
-      <button class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md outline-none lg:hidden focus:outline-none" @click="navbarOpen = !navbarOpen">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
+    <nav id="sub-nav" :class="{ 'fixed': isSubnavFixed }">
+      <!-- Sub navigation content -->
+      <button @click="dropdownOpen = !dropdownOpen" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }">
+        Portfolio
       </button>
-      <!-- menu -->
-      <div class="w-full mt-2 lg:flex lg:ml-auto lg:w-auto lg:mt-0 relative" :class="{'hidden': !navbarOpen, 'flex': navbarOpen}" @click.away="navbarOpen = false">
-        <ul class="flex flex-col w-full space-y-2 lg:flex-row lg:space-y-0 lg:space-x-2">
-          <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">About</a>
-          </li>
-          <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Expertise</a>
-          </li>
-          <!-- dropdown -->
-          <li x-data="{ dropdownOpen: false }" class="relative">
-            <button class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full lg:w-auto" @click="dropdownOpen = !dropdownOpen">
-              Portfolio
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': dropdownOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <!-- dropdown menu for mobile -->
-            <div class="block lg:hidden mt-2 bg-white rounded-md" x-show="dropdownOpen" @click.away="dropdownOpen = false">
-              <ul class="space-y-2">
-                <!-- categories dropdown -->
-                <li x-data="{ categoriesOpen: false }">
-                  <button class="flex items-center w-full px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black" @click="categoriesOpen = !categoriesOpen">
-                    Design Systems
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': categoriesOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <!-- nested categories dropdown menu -->
-                  <div class="mt-1 bg-white rounded-md" x-show="categoriesOpen" @click.away="categoriesOpen = false">
-                    <ul class="space-y-2">
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Category 1</a>
-                      </li>
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Category 2</a>
-                      </li>
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Category 3</a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <!-- brands dropdown -->
-                <li x-data="{ nestedDropdownOpen: false }">
-                  <button class="flex items-center w-full px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black" @click="nestedDropdownOpen = !nestedDropdownOpen">
-                    Web Development
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': nestedDropdownOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <!-- nested brands dropdown menu -->
-                  <div class="mt-1 bg-white rounded-md" x-show="nestedDropdownOpen" @click.away="nestedDropdownOpen = false">
-                    <ul class="space-y-2">
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Brand 1</a>
-                      </li>
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Brand 2</a>
-                      </li>
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Brand 3</a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <!-- dropdown menu for desktop -->
-            <div class="absolute z-10 hidden lg:block bg-white rounded-md shadow-lg lg:w-48 mt-2" x-show="dropdownOpen" @click.away="dropdownOpen = false">
-              <ul class="space-y-2">
-                <!-- categories dropdown -->
-                <li x-data="{ categoriesOpen: false }">
-                  <button class="flex items-center w-full px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black" @click="categoriesOpen = !categoriesOpen">
-                    Design Systems
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': categoriesOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <!-- nested categories dropdown menu -->
-                  <div class="mt-1 bg-white rounded-md shadow-lg" x-show="categoriesOpen" @click.away="categoriesOpen = false">
-                    <ul class="space-y-2">
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Category 1</a>
-                      </li>
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Category 2</a>
-                      </li>
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Category 3</a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-                <!-- brands dropdown -->
-                <li x-data="{ nestedDropdownOpen: false }">
-                  <button class="flex items-center w-full px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black" @click="nestedDropdownOpen = !nestedDropdownOpen">
-                    Web Development
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{'rotate-180': nestedDropdownOpen}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <!-- nested brands dropdown menu -->
-                  <div class="mt-1 bg-white rounded-md shadow-lg" x-show="nestedDropdownOpen" @click.away="nestedDropdownOpen = false">
-                    <ul class="space-y-2">
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Brand 1</a>
-                      </li>
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Brand 2</a>
-                      </li>
-                      <li>
-                        <a href="#" class="block px-4 py-2 font-medium text-gray-600 rounded-md hover:bg-gray-100 hover:text-black">Brand 3</a>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <!-- other links -->
-          <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Recent Visuals</a>
-          </li>
-          <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Testimonials</a>
-          </li>
-          <li>
-            <a href="#" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
-          </li>
-        </ul>
+      <button @click="toggleCategories()" :class="{ 'bg-gray-100 text-black': isActive('design-systems') }">
+        Design Systems
+      </button>
+      <div x-show="categoriesOpen" class="mt-1 bg-white rounded-md shadow-lg" x-transition>
+        <!-- Categories content -->
       </div>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- Page content -->
-  <div class="pt-16">
-    <div class="container mx-auto px-4 py-6">
-      <h1 class="text-2xl font-bold">Page Content</h1>
-      <p class="mt-4">This is where the page content goes. Make sure there's enough content to see the navbar's behavior.</p>
+    <div class="content">
+      <!-- Page content -->
     </div>
   </div>
 
+  <script>
+    function navbarData() {
+      return {
+        dropdownOpen: false,
+        categoriesOpen: false,
+        nestedDropdownOpen: false,
+        isSubnavFixed: false,
+        isActive(section) {
+          return window.location.pathname.includes(section);
+        },
+        toggleCategories() {
+          this.categoriesOpen = !this.categoriesOpen;
+        },
+        toggleNestedDropdown() {
+          this.nestedDropdownOpen = !this.nestedDropdownOpen;
+        },
+        handleScroll() {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          const navbarHeight = document.querySelector('#main-nav').offsetHeight;
+          this.isSubnavFixed = scrollTop > navbarHeight;
+        }
+      }
+    }
+
+    window.addEventListener('scroll', function () {
+      Alpine.store('navbarData').handleScroll();
+    });
+  </script>
 </body>
 
 </html>

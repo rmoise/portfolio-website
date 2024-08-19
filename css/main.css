@@ -878,54 +878,7 @@ video {
 }
 
 .bg-green {
-  background-color: rgba(0, 254, 176, var(--tw-bg-opacity)); /* #00FEB0 with opacity 0.15 */
-}
-/* Ensure the navigation and its content are styled properly */
-nav {
-  position: relative; /* Ensure relative positioning for child elements */
-}
-
-.subnav-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  padding-left: 2rem; /* Adjust as needed */
-  padding-right: 2rem; /* Adjust as needed */
-}
-
-/* Make sure the border spans the entire width of the viewport */
-.full-width-border-b {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100vw; /* Full viewport width */
-  border-bottom: 1px solid #e5e7eb; /* Tailwind's default border-gray-200 */
-  box-sizing: border-box; /* Include border in width calculation */
-  z-index: 1; /* Ensure it sits above other content */
-  display: none; /* Hidden by default */
-  transition: opacity 0.3s ease-in-out; /* Smooth transition */
-}
-
-/* Visible state of the border */
-.full-width-border-b.visible {
-  display: block; /* Show border when it has the 'visible' class */
-}
-
-/* Ensure the navigation container does not constrain width of subnav-wrapper */
-.relative {
-  overflow: visible; /* Allow overflow of child elements */
-}
-
-/* CSS File */
-.initial-hidden {
-  opacity: 0;
-  transform: translateY(20px); /* Move elements down initially */
-  transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition for opacity and transform */
-}
-
-
-.visible {
-  opacity: 1;
-  transform: translateY(0); /* Move elements to their final position */
+  background-color: #01f3ab;
 }
 
 .bg-brightGreen {
@@ -942,144 +895,96 @@ nav {
   background-color: rgb(241 245 249 / var(--tw-bg-opacity));
 }
 
-
-.rotate-180 {
-      transform: rotate(180deg);
-    }
-
-    .transition-transform {
-      transition: transform 0.3s ease;
-    }
-
-    .menu-expand {
-      height: 100vh;
-      /* Full viewport height */
-      overflow-y: auto;
-      /* Allows scrolling if the content exceeds viewport height */
-    }
-
-    .no-scroll {
-      overflow: hidden;
-    }
-
-.menu-item.active {
-  font-weight: bold;
-  background-color: #e0e0e0; /* Highlight color for active state */
-  cursor: default; /* Optional: prevent pointer cursor */
-}
-.menu-item[aria-disabled="true"] {
-  pointer-events: none; /* Optional: prevent clicks on disabled items */
-}
-
-/* Styles for mobile scroll lock */
-body.no-scroll {
-  overflow: hidden; /* Prevent scrolling on the main body */
-}
-
-.menu-scrollable {
-  overflow-y: auto; /* Allow vertical scrolling on the menu */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-  position: fixed; /* Fix the menu in place */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; /* Full height to cover the viewport */
-  background: white; /* Ensure visibility of content */
-  z-index: 1000; /* Ensure it is above other content */
-}
-
-/* Hide elements with x-cloak until Alpine.js initializes */
-[x-cloak] {
-  display: none;
-}
-
-/* Transition styles for smooth appearance */
-.x-transition {
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.subnav-wrapper {
-  /* Make sure the subnav container is horizontally scrollable */
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-  white-space: nowrap; /* Prevent wrapping of the list items */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-}
-
-.subnav-wrapper::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for WebKit browsers */
-}
-
-.subnav-wrapper ul {
-  display: flex;
-  padding: 0;
-  margin: 0;
-}
-
-.subnav-wrapper li {
-  display: inline-block;
-}
-
-/* Optional: Customize underline styles */
-.underline {
-    text-decoration: underline;
-}
-
-.font-semibold {
-    font-weight: 600;
-}
-
-/* Container for the sub-navigation that should be scrollable horizontally */
-.subnav-wrapper {
-  overflow-x: auto; /* Enable horizontal scrolling */
-  white-space: nowrap; /* Prevent line breaks inside */
-  position: relative; /* Positioning context for the gradient overlay */
-}
-
-/* Gradient overlay on the left side */
-.subnav-wrapper::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50px; /* Width of the gradient overlay */
-  height: 100%;
-  pointer-events: none; /* Make sure this does not interfere with scrolling */
-}
-
-/* Gradient overlay on the right side */
-.subnav-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50px; /* Width of the gradient overlay */
-  height: 100%;
-  pointer-events: none; /* Make sure this does not interfere with scrolling */
-}
-
-/* Ensure the sub-nav container is positioned correctly for gradient overlays */
-.sub-nav-container {
-  display: flex; /* Align child elements in a row */
-  list-style: none; /* Remove list bullets */
-  padding: 0;
-  margin: 0;
-}
-
-
-.right-gradient {
-  position: absolute;
-  inset-y-0 right-0;
-  width: 50px;
-  pointer-events: none;
-  transition: display 0.3s ease-in-out;
-}
-
-
 .object-cover {
   -o-object-fit: cover;
   object-fit: cover;
 }
+
+#main-nav {
+    width: 100%;
+    position: fixed; /* Default position at the top */
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease, position 0.3s ease;
+    z-index: 50; /* Ensure main-nav is above other content */
+}
+
+#sub-nav {
+       background-color: #f8f9fa;
+    position: fixed;
+    z-index: 20;
+    width: 100%;
+    top: 0;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* Hide scrollbars but allow scrolling */
+.subnav-wrapper {
+    overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.subnav-wrapper::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and newer versions of Edge */
+}
+
+/* Ensure consistent button width on mobile */
+.button-style {
+    width: 100%; /* Full width on mobile */
+}
+
+@media (min-width: 768px) {
+    .button-style {
+        width: auto; /* Auto width on larger screens */
+    }
+}
+
+
+/* Ensure the items are horizontally scrollable */
+.sub-nav-container {
+    display: flex;
+    flex-direction: row; /* Ensures items are arranged horizontally */
+    flex-wrap: nowrap; /* Prevents wrapping to the next line */
+    align-items: center; /* Centers items vertically */
+}
+
+.subnav-link {
+    display: block;
+    padding: 0 16px; /* Adjust the padding as needed */
+    text-decoration: none;
+    color: #333; /* Adjust to match your design */
+    white-space: nowrap; /* Ensures text does not wrap to the next line */
+}
+
+.button-container {
+  /* Ensure no fixed positioning */
+  position: relative; /* Or static if that fits better */
+  top: auto;
+  left: auto;
+  width: auto;
+  z-index: auto;
+  /* No need for transition unless you want smooth changes */
+}
+
+.initial-hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.visible {
+  opacity: 1;
+}
+
+[x-cloak] {
+    display: none;
+}
+
+
+.full-width-border-b {
+    border-bottom: 1px solid #e0e0e0; /* Same as the border-top */
+}
+
 
 .p-3 {
   padding: 0.75rem;
