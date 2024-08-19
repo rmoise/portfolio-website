@@ -169,7 +169,7 @@
     </div>
   </nav>
 
-<nav class="bg-white border-t fixed w-full transition-colors duration-300 ease-in-out">
+<nav class="bg-white border-t fixed z-20 w-full transition-colors duration-300 ease-in-out">
   <div class="max-w-screen-xl px-4 py-3 mx-auto relative">
     <div class="flex items-center">
       <!-- Menu -->
@@ -201,9 +201,9 @@
 
 
   <section class="mt-16  bg-white container mx-auto px-4 md:px-10 lg:px-10 py-16">
-    <div class="flex flex-col-reverse md:flex-row items-center gap-8">
+    <div class="mt-8  flex flex-col-reverse md:flex-row items-center gap-8 relative z-10">
       <!-- Headline and Description -->
-      <div class="flex flex-col w-full md:w-1/2 mb-8 md:mb-0">
+      <div id="headline" class="flex flex-col w-full md:w-1/2 mb-8 md:mb-0 initial-hidden">
         <h1 class="font-extrabold text-4xl md:text-4xl lg:text-5xl xl:text-6xl text-center md:text-left">
           Hi,<br />
           I'm Roderick, <br />
@@ -212,7 +212,7 @@
       </div>
 
       <!-- Image -->
-      <div class=" xl:mt-16 lg:mt-16 md:mt-16 flex justify-center md:justify-end w-full md:w-1/2 mb-8 md:mb-0">
+      <div id="image" class="  flex justify-center md:justify-end w-full md:w-1/2 mb-8 md:mb-0 initial-hidden">
         <img src="img/roderick-moise.jpg" alt="Roderick Moise" class="rounded-lg w-3/4 xl:w-96" />
       </div>
     </div>

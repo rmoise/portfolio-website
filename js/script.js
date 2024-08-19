@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Scroll Subnav to Active Link
   function scrollSubNavToActiveLink(activeLink) {
     if (activeLink) {
       const subNavContainer = document.querySelector('.subnav-wrapper');
@@ -99,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Intersection Observer for Scroll-based Active Link Handling
   function initializeScrollObserver() {
     const navLinks = document.querySelectorAll('.sub-nav-container a');
     const sections = Array.from(navLinks)
@@ -164,6 +162,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initializeScrollObserver();
+
+  // Page Load Animation
+  const headline = document.getElementById('headline');
+  const image = document.getElementById('image');
+
+  if (headline) headline.classList.add('initial-hidden');
+  if (image) image.classList.add('initial-hidden');
+
+  // Add 'visible' class to trigger the transition
+  setTimeout(() => {
+    if (headline) headline.classList.add('visible');
+    if (image) image.classList.add('visible');
+  }, 100); // Delay to allow page rendering
 
   // Full-width Border Bottom Handling
   const subNavWrapper = document.querySelector('.subnav-wrapper');

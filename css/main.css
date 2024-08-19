@@ -915,6 +915,18 @@ nav {
   overflow: visible; /* Allow overflow of child elements */
 }
 
+/* CSS File */
+.initial-hidden {
+  opacity: 0;
+  transform: translateY(20px); /* Move elements down initially */
+  transition: opacity 1s ease-out, transform 1s ease-out; /* Smooth transition for opacity and transform */
+}
+
+
+.visible {
+  opacity: 1;
+  transform: translateY(0); /* Move elements to their final position */
+}
 
 .bg-brightGreen {
   background-color: #a2f4db;
