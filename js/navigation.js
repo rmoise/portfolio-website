@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const mainNavHeight = mainNav.offsetHeight;
             const scrollThreshold = 5;
 
-            console.log('Scroll Y:', scrollY);
-            console.log('Last Scroll Position:', scrollPosition);
-
             if (scrollY > mainNavHeight) {
                 if (scrollY > scrollPosition + scrollThreshold) {
                     mainNav.style.transform = `translateY(-${mainNavHeight}px)`;
@@ -36,12 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleMobileMenu() {
         isMenuOpen = !isMenuOpen;
 
-        console.log('Toggling menu, isMenuOpen:', isMenuOpen);
-
         if (isMenuOpen) {
             // Store current scroll position
             scrollPosition = window.scrollY;
-            console.log('Opening menu, stored scroll position:', scrollPosition);
 
             // Lock the body scroll
             body.style.overflow = 'hidden';
@@ -54,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenu.classList.add('open');
             mainNav.style.transform = 'translateY(0)'; // Ensure main nav is visible
         } else {
-            // Unlock the body scroll and restore scroll position
+            // Unlock the body scroll and restore scroll position immediately
             body.style.overflow = '';
             body.style.position = '';
             body.style.top = '';
@@ -62,16 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
             body.style.width = '';
             body.style.height = '';
 
-            // Debugging information before restoring
-            console.log('Closing menu, restoring scroll position:', scrollPosition);
-
-            // Delay scroll restoration
-            setTimeout(() => {
-                window.scrollTo(0, scrollPosition);
-                console.log('Scroll restored to:', scrollPosition);
-            }, 100); // Adjust timeout if necessary
-
             mobileMenu.classList.remove('open');
+
+            // Restore scroll position without delay
+            window.scrollTo(0, scrollPosition);
         }
     }
 

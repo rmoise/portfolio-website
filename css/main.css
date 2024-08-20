@@ -1260,11 +1260,6 @@ video {
     var(--tw-sepia) var(--tw-drop-shadow);
 }
 
-html,
-body {
-  scroll-behavior: smooth;
-}
-
 .left-50 {
   left: 50%;
 }
