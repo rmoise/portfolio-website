@@ -900,57 +900,93 @@ video {
   object-fit: cover;
 }
 
+/* Main Navigation Styles */
 #main-nav {
     width: 100%;
-    position: fixed; /* Default position at the top */
+    position: fixed;
     top: 0;
     left: 0;
-    transition: transform 0.3s ease, position 0.3s ease;
     z-index: 50; /* Ensure main-nav is above other content */
+    transition: transform 0.4s ease-in-out, position 0.3s ease;
 }
 
-/* Basic styles for sub-nav */
+/* Sub Navigation Styles */
 #sub-nav {
-    position: fixed; /* Ensures it stays in place */
+    position: fixed;
     top: 60px; /* Adjust this if necessary */
     width: 100%;
     background: #F9FAFB; /* Or any background color */
     z-index: 49; /* Ensure it's below the main-nav */
-    display: block; /* Ensure it is displayed */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
 }
 
-/* Main Nav and Sub Nav Transition */
-#main-nav {
-    transition: top 0.4s ease-out; /* Ease out when hiding */
+/* Lock scrolling on the body when the menu is open */
+.body-scroll-lock {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
 }
 
-#main-nav.show {
-    transition: top 0.4s ease-in; /* Ease in when showing */
+/* Lock the main-nav position */
+.main-nav-scroll-lock {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+    z-index: 999; /* Below the mobile menu */
+    transform: translateY(0);
 }
 
-/* Sub Nav Transition */
-#sub-nav {
-    transition: top 0.2s ease-in-out; /* Faster transition for sub-nav */
-}
-
-/* Mobile Menu Animation */
+/* Mobile Menu Styles */
 .mobile-menu {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 2000;
-    display: none;
-    overflow-y: auto;
+    height: 100vh; /* Full viewport height */
+    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
+    z-index: 2000; /* Ensure it's above the main-nav */
+    display: none; /* Hidden by default */
+    overflow-y: auto; /* Allow vertical scrolling if content overflows */
     transform: translateY(-100%); /* Start off-screen */
-    transition: transform 0.4s ease-in-out;
+    transition: transform 0.4s ease-in-out; /* Slide in from the top */
 }
 
+/* Show the menu when toggled */
 .mobile-menu.open {
     display: block;
     transform: translateY(0); /* Slide in from the top */
+}
+
+/* Ensure the main-nav (logo and hamburger) is below the menu when open */
+.main-nav-scroll-lock {
+    z-index: 1000; /* Below the mobile menu */
+}
+
+/* Additional Styling for the mobile menu content */
+.mobile-menu-content {
+    padding-top: 60px; /* Adjust to give space for the menu items */
+    text-align: center;
+    color: white;
+    font-size: 18px;
+}
+
+/* Lock the sub-nav position */
+.sub-nav-scroll-lock {
+    position: fixed !important;
+    top: 0 !important;
+    width: 100% !important;
+}
+
+/* Transition Effects */
+#main-nav.show {
+    transition: top 0.4s ease-in; /* Ease in when showing */
+}
+
+#main-nav,
+#sub-nav {
+    transition: transform 0.3s ease-in-out; /* Smooth sliding for navs */
+    will-change: transform; /* Optimize for performance */
 }
 
 /* Sub Nav Fixed State */
@@ -960,26 +996,6 @@ video {
     width: 100%;
     z-index: 999; /* Just below the main-nav */
 }
-
-/* Ensure the main-nav does not jump on mobile */
-@media only screen and (max-width: 768px) {
-    #main-nav {
-        transition: top 0.4s ease-out;
-    }
-    #sub-nav {
-        transition: top 0.3s ease-in-out, opacity 0.3s ease-in-out;
-        opacity: 0;
-    }
-    .sub-nav-fixed {
-        opacity: 1;
-        transform: translateY(0);
-    }
-    .mobile-menu.open {
-        display: block;
-        transform: translateY(0);
-    }
-}
-
 
 /* Smooth transition of sub-nav heading */
 .sub-nav-heading {
@@ -992,22 +1008,6 @@ video {
     width: 100%;
     z-index: 999; /* Just below the main-nav */
 }
-
-/* Example of a fade-in animation for main-nav */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.main-nav-scroll-lock {
-    animation: fadeIn 0.4s ease-in-out;
-    z-index: 1000;
-}
-
 
 /* Hide scrollbars but allow scrolling */
 .subnav-wrapper {
@@ -1031,42 +1031,30 @@ video {
     }
 }
 
-/* Lock the body scrolling when the menu is open */
-.body-scroll-lock {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    top: 0;
+/* Example of a fade-in animation for main-nav */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-/* Lock the main-nav position */
 .main-nav-scroll-lock {
-    position: fixed !important;
-    top: 0 !important;
-    width: 100% !important; /* Ensure it spans the full width */
+    animation: fadeIn 0.4s ease-in-out;
+    z-index: 1000;
 }
 
-/* Mobile Menu */
+/* Mobile Menu Animation */
 .mobile-menu {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%; /* Cover the entire viewport */
-    background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent background */
-    z-index: 2000; /* Ensure it's above the main-nav */
-    display: none; /* Hidden by default */
-    overflow-y: auto; /* Allow scrolling within the menu if content overflows */
+    transform: translateY(-100%); /* Start off-screen */
+    transition: transform 0.4s ease-in-out;
 }
 
-/* Show the menu when toggled */
 .mobile-menu.open {
     display: block;
-}
-
-/* Ensure the main-nav (logo and hamburger) is below the menu when open */
-.main-nav-scroll-lock {
-    z-index: 1000; /* Below the mobile menu */
+    transform: translateY(0); /* Slide in from the top */
 }
 
 /* Additional Styling for the menu content */
@@ -1077,14 +1065,6 @@ video {
     font-size: 18px;
 }
 
-
-
-/* Lock the sub-nav position */
-.sub-nav-scroll-lock {
-    position: fixed !important;
-    top: 0 !important;
-    width: 100% !important; /* Ensure it spans the full width */
-}
 
 
 

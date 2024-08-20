@@ -18,24 +18,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (scrollY > mainNavHeight) {
                 if (isScrollingDown) {
-                    mainNav.classList.remove('show');
-                    mainNav.style.top = `-${mainNavHeight}px`;
-                    subNav.classList.add('sub-nav-fixed');
-                    subNav.style.top = '0';
-                    subNav.style.opacity = '1';
+                    mainNav.style.transform = `translateY(-${mainNavHeight}px)`;
+                    subNav.style.transform = `translateY(-${mainNavHeight}px)`;
                 } else if (isScrollingUp) {
-                    mainNav.classList.add('show');
-                    mainNav.style.top = '0';
-                    subNav.classList.add('sub-nav-fixed');
-                    subNav.style.top = `${mainNavHeight}px`;
-                    subNav.style.opacity = '1';
+                    mainNav.style.transform = 'translateY(0)';
+                    subNav.style.transform = 'translateY(0)';
                 }
             } else {
-                mainNav.classList.add('show');
-                mainNav.style.top = '0';
-                subNav.classList.remove('sub-nav-fixed');
-                subNav.style.top = `${mainNavHeight}px`;
-                subNav.style.opacity = '1';
+                mainNav.style.transform = 'translateY(0)';
+                subNav.style.transform = 'translateY(0)';
             }
         }
     }
@@ -47,25 +38,16 @@ document.addEventListener('DOMContentLoaded', function() {
             body.classList.add('body-scroll-lock');
             mainNav.classList.add('main-nav-scroll-lock');
             mobileMenu.classList.add('open');
-            mainNav.style.position = 'fixed';
-            mainNav.style.top = '0';
-            mainNav.style.width = '100%';
-            mainNav.style.zIndex = '1000';
-            body.style.overflow = 'hidden';
-            window.scrollTo(0, 0);
+            mainNav.style.transform = 'translateY(0)';
         } else {
             body.classList.remove('body-scroll-lock');
             mainNav.classList.remove('main-nav-scroll-lock');
             mobileMenu.classList.remove('open');
-            mainNav.style.position = '';
-            mainNav.style.top = '';
-            mainNav.style.width = '';
-            mainNav.style.zIndex = '';
-            body.style.overflow = '';
+            mainNav.style.transform = '';
         }
     }
 
     togglerBtn.addEventListener('click', toggleMobileMenu);
     window.addEventListener('scroll', handleScroll);
-    handleScroll();  // Initialize scroll effects
+    handleScroll(); // Initialize scroll effects
 });
