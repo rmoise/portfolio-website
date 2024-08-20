@@ -1,3 +1,4 @@
+// script2.js
 document.addEventListener('alpine:init', () => {
     Alpine.data('navbar', () => ({
         navbarOpen: false,
@@ -8,23 +9,15 @@ document.addEventListener('alpine:init', () => {
         lastActiveIndex: -1,
         subNavContainer: null,
         subNavLinks: [],
-        lastScrollY: 0, // Track the last scroll position
+        lastScrollY: 0,
 
         init() {
             this.currentPage = this.getCurrentPage();
-
-            // Ensure the portfolio dropdown is open by default on mobile
             this.dropdownOpen = this.shouldExpandDropdown('portfolio') || window.innerWidth < 1024;
-
-            // Default behavior for other dropdowns
             this.categoriesOpen = this.shouldExpandDropdown('design-systems');
             this.nestedDropdownOpen = this.shouldExpandDropdown('web-dev');
-
-            // Initialize sub-navigation container and links
             this.subNavContainer = document.querySelector('.sub-nav-container');
             this.subNavLinks = Array.from(document.querySelectorAll('.sub-nav-container a'));
-
-            // Initialize scroll observer
             this.initializeScrollObserver();
         },
 
@@ -48,10 +41,21 @@ document.addEventListener('alpine:init', () => {
 
         toggleNavbar() {
             this.navbarOpen = !this.navbarOpen;
-            document.body.classList.toggle('no-scroll', this.navbarOpen);
             const menu = document.getElementById('navbar-multi-level');
             if (menu) {
                 menu.classList.toggle('menu-scrollable', this.navbarOpen);
+            }
+
+            if (this.navbarOpen) {
+                // Store current scroll position
+                document.body.dataset.scrollPosition = window.scrollY;
+                // Lock the body scroll
+                document.body.classList.add('no-scroll');
+            } else {
+                // Restore the body scroll
+                document.body.classList.remove('no-scroll');
+                const scrollPosition = document.body.dataset.scrollPosition || 0;
+                window.scrollTo(0, parseInt(scrollPosition, 10));
             }
         },
 
@@ -97,8 +101,6 @@ document.addEventListener('alpine:init', () => {
         scrollToSection(section) {
             const element = document.querySelector(section);
             if (element) {
-                console.log('Scrolling to:', section);
-                console.log('Element position:', element.getBoundingClientRect());
                 element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 this.closeNavbar(true);
             } else {
@@ -117,8 +119,6 @@ document.addEventListener('alpine:init', () => {
                 if (activeLink) {
                     const containerRect = this.subNavContainer.getBoundingClientRect();
                     const linkRect = activeLink.getBoundingClientRect();
-
-                    // Calculate the position to center the active link within the container
                     const offset = linkRect.left - containerRect.left - containerRect.width / 2 + linkRect.width / 2;
                     this.subNavContainer.scrollLeft += offset;
                 }
@@ -127,16 +127,13 @@ document.addEventListener('alpine:init', () => {
 
         initializeScrollObserver() {
             const sections = this.subNavLinks.map(link => document.querySelector(link.getAttribute('href'))).filter(el => el);
-
             const options = {
                 root: null,
                 rootMargin: '0px 0px -50% 0px',
                 threshold: 0.5
             };
-
             const observer = new IntersectionObserver((entries) => {
                 let currentActiveIndex = this.lastActiveIndex;
-
                 entries.forEach(entry => {
                     const index = sections.indexOf(entry.target);
                     if (entry.isIntersecting) {
@@ -146,16 +143,13 @@ document.addEventListener('alpine:init', () => {
                     }
                 });
 
-                // Scrolling up logic: highlight previous link early
                 if (window.scrollY < this.lastScrollY) {
                     if (this.lastActiveIndex !== -1 && entries[0].boundingClientRect.top > 0) {
                         currentActiveIndex = this.lastActiveIndex - 1;
                     }
                 }
 
-                // Remove active class from all sub-nav links
                 this.subNavLinks.forEach(link => link.classList.remove('underline', 'font-semibold'));
-
                 if (currentActiveIndex > -1) {
                     const activeLink = this.subNavLinks[currentActiveIndex];
                     activeLink.classList.add('underline', 'font-semibold');
