@@ -25,7 +25,7 @@
         <img src="img/rm_logo.svg" alt="Logo" class="h-8">
       </a>
       <!-- Toggler Btn -->
-      <button type="button" class="toggler-btn inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden" @click="toggleNavbar()">
+      <button type="button" class="menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden" @click="toggleNavbar()">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -99,11 +99,11 @@
           </li>
         </ul>
       </div>
-      <!-- Menu for Mobile -->
-      <div x-cloak :class="{ 'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen }" class="mobile-menu lg:hidden w-full">
-        <ul class="border-t flex flex-col space-y-2 px-4 py-2">
+      <!-- Mobile Menu -->
+      <div x-show="navbarOpen" x-cloak class="mobile-menu lg:hidden fixed inset-0 top-16 bg-white z-40 overflow-y-auto" x-transition>
+        <ul class="space-y-2 p-4">
 
-          <!-- Dropdown for Mobile -->
+          <!-- Portfolio Dropdown -->
           <li class="relative">
             <button @click="toggleDropdown()" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
               Portfolio
@@ -111,7 +111,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
               </svg>
             </button>
-            <!-- Dropdown Menu for Mobile -->
+            <!-- Dropdown Menu for Portfolio -->
             <div x-show="dropdownOpen" x-cloak class="lg:hidden mt-2 bg-white rounded-md" x-transition>
               <ul class="space-y-2">
                 <!-- Categories Dropdown -->
@@ -134,6 +134,7 @@
                     </ul>
                   </div>
                 </li>
+
                 <!-- Web Dev Dropdown -->
                 <li>
                   <button @click="toggleNestedDropdown()" :class="{ 'bg-gray-100 text-black': isActive('web-dev') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
@@ -154,20 +155,18 @@
                     </ul>
                   </div>
                 </li>
+
+                <!-- Contact Link in Mobile Menu -->
+                <li>
+                  <a href="#contact" @click.prevent="handleContactClick()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
+                    Contact
+                  </a>
+                </li>
               </ul>
             </div>
-          </li>
-
-
-          <li>
-            <a href="#contact" @click.prevent="handleContactClick()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
-              Contact
-            </a>
-          </li>
-        </ul>
       </div>
-    </div>
   </nav>
+
 
   <nav id="sub-nav">
     <div class="max-w-screen-xl px-4 py-3 mx-auto relative">

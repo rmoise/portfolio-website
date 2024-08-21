@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainNav = document.getElementById('main-nav');
     const subNav = document.getElementById('sub-nav');
     const body = document.body;
-    const togglerBtn = document.querySelector('.toggler-btn');
     const mobileMenu = document.querySelector('.mobile-menu');
+    const menuButton = document.querySelector('.menu-button'); // Make sure to have a button to open the menu
     let isMenuOpen = false;
     let scrollPosition = 0;
 
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileMenu.classList.add('open');
             mainNav.style.transform = 'translateY(0)'; // Ensure main nav is visible
         } else {
-            // Unlock the body scroll and restore scroll position immediately
+            // Unlock the body scroll and restore scroll position
             body.style.overflow = '';
             body.style.position = '';
             body.style.top = '';
@@ -58,12 +58,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
             mobileMenu.classList.remove('open');
 
-            // Restore scroll position without delay
+            // Restore scroll position
             window.scrollTo(0, scrollPosition);
         }
     }
 
-    togglerBtn.addEventListener('click', toggleMobileMenu);
+    // Event listener for menu button to toggle the mobile menu
+    if (menuButton) {
+        menuButton.addEventListener('click', toggleMobileMenu);
+    }
+
+    // Add an event listener for clicks on mobile menu links
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            // Prevent default behavior if the menu is open
+            if (isMenuOpen) {
+                e.preventDefault();
+                toggleMobileMenu();
+                setTimeout(() => {
+                    // Scroll to the section after closing the menu
+                    window.location.href = this.href;
+                }, 300); // Delay to allow menu transition
+            }
+        });
+    });
+
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initialize scroll effects
 });

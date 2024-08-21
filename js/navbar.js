@@ -1,4 +1,3 @@
-// script2.js
 document.addEventListener('alpine:init', () => {
     Alpine.data('navbar', () => ({
         navbarOpen: false,
@@ -49,14 +48,27 @@ document.addEventListener('alpine:init', () => {
             if (this.navbarOpen) {
                 // Store current scroll position
                 document.body.dataset.scrollPosition = window.scrollY;
+
                 // Lock the body scroll
                 document.body.classList.add('no-scroll');
+
+                // Restore dropdown states if needed
+                this.restoreDropdownStates();
             } else {
-                // Restore the body scroll
+                // Unlock the body scroll
                 document.body.classList.remove('no-scroll');
+
+                // Restore the body scroll
                 const scrollPosition = document.body.dataset.scrollPosition || 0;
                 window.scrollTo(0, parseInt(scrollPosition, 10));
             }
+        },
+
+        restoreDropdownStates() {
+            // Restore the state of dropdowns
+            this.dropdownOpen = this.shouldExpandDropdown('portfolio') || window.innerWidth < 1024;
+            this.categoriesOpen = this.shouldExpandDropdown('design-systems');
+            this.nestedDropdownOpen = this.shouldExpandDropdown('web-dev');
         },
 
         toggleDropdown() {
