@@ -915,7 +915,8 @@ video {
     position: fixed;
     top: 60px; /* Adjust this if necessary */
     width: 100%;
-    background: #F9FAFB; /* Or any background color */
+     backdrop-filter: blur(10px); /* Apply blur effect */
+  background-color: rgba(249, 250, 251, 0.7); /* 70% opacity */
     z-index: 49; /* Ensure it's below the main-nav */
     transition: transform 0.3s ease-in-out; /* Smooth transition */
 }
@@ -1029,6 +1030,7 @@ video {
 /* Ensure consistent button width on mobile */
 .button-style {
     width: 100%; /* Full width on mobile */
+
 }
 
 @media (min-width: 768px) {
@@ -1072,27 +1074,52 @@ video {
 }
 
 
-
-
-
-
-
-
-/* Ensure the items are horizontally scrollable */
-.sub-nav-container {
-    display: flex;
-    flex-direction: row; /* Ensures items are arranged horizontally */
-    flex-wrap: nowrap; /* Prevents wrapping to the next line */
-    align-items: center; /* Centers items vertically */
+/* Base style for sub-navigation links */
+.subnav-link {
+  transition: color 0.3s ease, transform 0.3s ease;
+  color: gray;
 }
 
 .subnav-link {
-    display: block;
-    padding: 0 16px; /* Adjust the padding as needed */
-    text-decoration: none;
-    color: #333; /* Adjust to match your design */
-    white-space: nowrap; /* Ensures text does not wrap to the next line */
+  white-space: nowrap; /* Prevents the text from wrapping onto a new line */
+  overflow: hidden; /* Ensures the text does not overflow the container */
+  text-overflow: ellipsis; /* Adds ellipsis if text is too long */
+      padding: 10px 5px; /* Adjust padding as needed */
+          scroll-snap-align: center; /* Optional: Ensures snapping effect */
+
+
 }
+
+/* Highlight the active link */
+.subnav-link.active {
+  font-weight: bold; /* Optional: to emphasize the active link */
+}
+
+/* Ensure subnav container fits horizontally */
+.sub-nav-container {
+  display: flex;
+  overflow-x: auto; /* Allows horizontal scrolling */
+  scroll-behavior: smooth; /* Smooth scrolling */
+  width: 100%; /* Full width */
+      scroll-snap-type: x mandatory; /* Optional: Ensures snapping effect */
+
+
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.sub-nav-container {
+    overflow-x: scroll; /* Allow horizontal scrolling */
+    scrollbar-width: none; /* Firefox */
+}
+
+.sub-nav-container::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.scroll-snap-type {
+    scroll-snap-type: x mandatory;
+}
+
 
 .button-container {
   /* Ensure no fixed positioning */
@@ -1138,6 +1165,8 @@ video {
 .image-animate {
   animation: fadeIn 1.2s ease-out forwards;
 }
+
+
 
 
 [x-cloak] {
