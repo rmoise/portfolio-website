@@ -165,13 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const headline = document.getElementById('headline');
   const image = document.getElementById('image');
 
-  if (headline) headline.classList.add('initial-hidden');
-  if (image) image.classList.add('initial-hidden');
-
-  setTimeout(() => {
-    if (headline) headline.classList.add('visible');
-    if (image) image.classList.add('visible');
-  }, 100); // Delay to allow page rendering
+  if (headline) {
+    headline.classList.add('initial-hidden');
+    setTimeout(() => headline.classList.add('headline-animate'), 100);
+  }
+  if (image) {
+    image.classList.add('initial-hidden');
+    setTimeout(() => image.classList.add('image-animate'), 100);
+  }
 
   // Ensure no unwanted scroll handling or dynamic positioning affects the button
   const subNav = document.getElementById('sub-nav');
@@ -180,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (subNav && buttonContainer) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > subNav.offsetHeight) {
-        // Remove this line to avoid fixed positioning
         buttonContainer.style.position = 'relative';
       } else {
         buttonContainer.style.position = 'relative';

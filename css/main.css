@@ -1104,14 +1104,41 @@ video {
   /* No need for transition unless you want smooth changes */
 }
 
+/* Initial hidden state */
 .initial-hidden {
   opacity: 0;
-  transition: opacity 0.5s ease;
+  transform: translateY(20px); /* Optional: slide in from below */
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
+/* Visible state */
 .visible {
   opacity: 1;
+  transform: translateY(0);
 }
+
+/* Optional: additional styles for animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Headline Animation */
+.headline-animate {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Image Animation */
+.image-animate {
+  animation: fadeIn 1.2s ease-out forwards;
+}
+
 
 [x-cloak] {
     display: none;
