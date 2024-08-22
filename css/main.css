@@ -900,292 +900,6 @@ video {
   object-fit: cover;
 }
 
-/* Main Navigation Styles */
-#main-nav {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 50; /* Ensure main-nav is above other content */
-  transition: transform 0.4s ease-in-out, position 0.3s ease;
-}
-
-/* Base styles for desktop */
-#sub-nav {
-  position: fixed;
-  top: 64px; /* Adjust this if necessary */
-  width: 100%;
-  backdrop-filter: blur(10px); /* Apply blur effect for desktop */
-  -webkit-backdrop-filter: blur(10px); /* Safari support */
-  background-color: rgba(
-    249,
-    250,
-    251,
-    0.8
-  ); /* Semi-transparent background for desktop */
-  z-index: 49; /* Ensure it's below the main-nav */
-  transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out; /* Smooth transitions */
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-  /* Adjust this breakpoint as necessary */
-  #sub-nav {
-    backdrop-filter: none; /* Disable blur effect on mobile */
-    -webkit-backdrop-filter: none; /* Safari support */
-    background-color: #f9fafb; /* Solid color background for mobile */
-  }
-}
-
-/* Lock scrolling on the body when the menu is open */
-.body-scroll-lock {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-}
-
-/* Lock the main-nav position */
-.main-nav-scroll-lock {
-  position: fixed !important;
-  top: 0 !important;
-  width: 100% !important;
-  z-index: 999; /* Below the mobile menu */
-  transform: translateY(0);
-}
-
-/* Mobile Menu Styles */
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh; /* Full viewport height */
-  background-color: white; /* Semi-transparent background */
-  z-index: 2000; /* Ensure it's above the main-nav */
-  display: none; /* Hidden by default */
-  overflow-y: auto; /* Allow vertical scrolling if content overflows */
-  transform: translateY(-100%); /* Start off-screen */
-  transition: transform 0.4s ease-in-out; /* Slide infrom the top */
-}
-
-/* Show the menu when toggled */
-.mobile-menu.open {
-  display: block;
-  transform: translateY(0); /* Slide in from the top */
-}
-
-/* Ensure the main-nav (logo and hamburger) is below the menu when open */
-.main-nav-scroll-lock {
-  z-index: 1000; /* Below the mobile menu */
-}
-
-/* Additional Styling for the mobile menu content */
-.mobile-menu-content {
-  padding-top: 60px; /* Adjust to give space for the menu items */
-  text-align: center;
-  color: white;
-  font-size: 18px;
-}
-
-/* Lock the sub-nav position */
-.sub-nav-scroll-lock {
-  position: fixed !important;
-  top: 0 !important;
-  width: 100% !important;
-}
-
-/* Transition Effects */
-#main-nav.show {
-  transition: top 0.4s ease-in; /* Ease in when showing */
-}
-
-#main-nav,
-#sub-nav {
-  transition: transform 0.3s ease-in-out; /* Smooth sliding for navs */
-  will-change: transform; /* Optimize for performance */
-}
-
-/* Sub Nav Fixed State */
-.sub-nav-fixed {
-  position: fixed;
-  top: 0; /* Directly at the top of the viewport */
-  width: 100%;
-  z-index: 999; /* Just below the main-nav */
-}
-
-/* Smooth transition of sub-nav heading */
-.sub-nav-heading {
-  transition: all 0.4s ease-in-out;
-}
-
-.sub-nav-fixed {
-  position: fixed;
-  top: 60px; /* Adjust based on main-nav height */
-  width: 100%;
-  z-index: 999; /* Just below the main-nav */
-}
-
-/* Hide scrollbars but allow scrolling */
-.subnav-wrapper {
-  overflow-x: auto; /* Allows horizontal scrolling if content overflows */
-  scrollbar-width: none; /* For Firefox */
-  -ms-overflow-style: none; /* For Internet Explorer and Edge */
-}
-
-.subnav-wrapper {
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  position: relative;
-  width: 100%; /* Ensure full width of parent container */
-}
-
-.subnav-wrapper::-webkit-scrollbar {
-  display: none; /* For Chrome, Safari, and newer versions of Edge */
-}
-
-/* Ensure consistent button width on mobile */
-.button-style {
-  width: 100%; /* Full width on mobile */
-}
-
-@media (min-width: 768px) {
-  .button-style {
-    width: auto; /* Auto width on larger screens */
-  }
-}
-
-/* Example of a fade-in animation for main-nav */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.main-nav-scroll-lock {
-  animation: fadeIn 0.4s ease-in-out;
-  z-index: 1000;
-}
-
-/* Mobile Menu Animation */
-.mobile-menu {
-  transform: translateY(-100%); /* Start off-screen */
-  transition: transform 0.4s ease-in-out;
-}
-
-.mobile-menu.open {
-  display: block;
-  transform: translateY(0); /* Slide in from the top */
-}
-
-/* Additional Styling for the menu content */
-.mobile-menu-content {
-  padding-top: 60px; /* Adjust to give space for the menu items */
-  text-align: center;
-  color: white;
-  font-size: 18px;
-}
-
-/* Base style for sub-navigation links */
-.subnav-link {
-  transition: color 0.3s ease, transform 0.3s ease;
-  color: gray;
-}
-
-.subnav-link {
-  white-space: nowrap; /* Prevents the text from wrapping onto a new line */
-  overflow: hidden; /* Ensures the text does not overflow the container */
-  text-overflow: ellipsis; /* Adds ellipsis if text is too long */
-  scroll-snap-align: center; /* Optional: Ensures snapping effect */
-}
-
-/* Highlight the active link */
-.subnav-link.active {
-  font-weight: bold; /* Optional: to emphasize the active link */
-}
-
-/* Ensure subnav container fits horizontally */
-.sub-nav-container {
-  display: flex; /* Aligns children in a row */
-  overflow-x: auto; /* Allows horizontal scrolling */
-  scroll-behavior: smooth; /* Smooth scrolling */
-  min-width: 400px; /* Or adjust as needed */
-  scroll-snap-type: x mandatory; /* Optional: Ensures snapping effect */
-  white-space: nowrap; /* Ensure links are not wrapping */
-}
-
-/* Hide scrollbar for Chrome, Safari, and Edge */
-.sub-nav-container {
-  scrollbar-width: none; /* Firefox */
-}
-
-.sub-nav-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
-}
-
-.scroll-snap-type {
-  scroll-snap-type: x mandatory;
-}
-
-.button-container {
-  /* Ensure no fixed positioning */
-  position: relative; /* Or static if that fits better */
-  top: auto;
-  left: auto;
-  width: auto;
-  z-index: auto;
-  /* No need for transition unless you want smooth changes */
-}
-
-/* Initial hidden state */
-.initial-hidden {
-  opacity: 0;
-  transform: translateY(20px); /* Optional: slide in from below */
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-/* Visible state */
-.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Optional: additional styles for animations */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Headline Animation */
-.headline-animate {
-  animation: fadeIn 1s ease-out forwards;
-}
-
-/* Image Animation */
-.image-animate {
-  animation: fadeIn 1.2s ease-out forwards;
-}
-
-[x-cloak] {
-  display: none;
-}
-
-.full-width-border-b {
-  border-bottom: 1px solid #e0e0e0; /* Same as the border-top */
-}
-
 .p-3 {
   padding: 0.75rem;
 }
@@ -1625,40 +1339,157 @@ video {
   }
 }
 
-.no-scroll {
-  overflow: hidden;
-  /* Ensure no other rules are applied that could lock the page */
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Optional: slide in from below */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* Example CSS to check */
-body.no-scroll {
-  overflow: hidden;
+/* Main navigation styles */
+#main-nav {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  transition: transform 0.4s ease-in-out, position 0.3s ease;
 }
 
-/* Sub Navigation Gradient Styles */
+/* Sub-navigation styles */
+#sub-nav {
+  position: fixed;
+  top: 64px; /* Adjust based on main-nav height */
+  width: 100%;
+  backdrop-filter: blur(10px); /* Apply blur effect for desktop */
+  -webkit-backdrop-filter: blur(10px); /* Safari support */
+  background-color: rgba(249, 250, 251, 0.8); /* Semi-transparent background */
+  z-index: 49; /* Ensure it's below the main-nav */
+  transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+}
+@media (max-width: 768px) {
+  #sub-nav {
+    backdrop-filter: none; /* Disable blur effect on mobile */
+    -webkit-backdrop-filter: none; /* Safari support */
+    background-color: #f9fafb; /* Solid color background for mobile */
+  }
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  background-color: white; /* Background color */
+  z-index: 2000;
+  display: none; /* Hidden by default */
+  overflow-y: auto;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease-in-out;
+}
+.mobile-menu.open {
+  display: block;
+  transform: translateY(0);
+}
+
+/* Sub-navigation container */
+.sub-nav-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  position: relative;
+  min-width: 400px;
+  -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
+  touch-action: pan-x; /* Allow horizontal panning */
+  scrollbar-width: none; /* Firefox */
+}
+.sub-nav-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Mobile button styles */
+.button-style {
+  width: auto; /* Auto width on larger screens */
+}
+@media (max-width: 768px) {
+  .button-style {
+    width: 100%; /* Full width on mobile */
+  }
+}
+
+/* Scroll locking */
+.no-scroll,
+.body-scroll-lock {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}
+
+/* Sub-nav fixed and scrolling lock */
+.sub-nav-fixed {
+  position: fixed;
+  top: 60px; /* Adjust based on main-nav height */
+  width: 100%;
+  z-index: 999;
+}
+
+/* Gradient effects */
 .gradient-left,
 .gradient-right {
   position: absolute;
   top: 0;
   height: 100%;
-  width: 20px; /* Adjust as needed */
+  width: 20px;
   pointer-events: none;
   transition: opacity 0.3s ease;
-  z-index: 10; /* Ensure it is above other elements */
+  z-index: 10;
 }
-
 .gradient-left {
   left: 0;
   background: linear-gradient(to right, rgba(249, 250, 251, 0.5), transparent);
 }
-
 .gradient-right {
   right: 0;
   background: linear-gradient(to left, rgba(249, 250, 251, 0.5), transparent);
 }
-
-/* Show gradients when content overflows */
 .subnav-gradient-left.visible,
 .subnav-gradient-right.visible {
   opacity: 1;
+}
+
+/* Animation classes */
+.headline-animate,
+.image-animate {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+/* Scroll snap effect (optional) */
+.scroll-snap-type {
+  scroll-snap-type: x mandatory;
+}
+
+/* Transition Effects */
+#main-nav.show {
+  transition: top 0.4s ease-in; /* Ease in when showing */
+}
+
+#main-nav,
+#sub-nav {
+  transition: transform 0.3s ease-in-out; /* Smooth sliding for navs */
+  will-change: transform; /* Optimize for performance */
+}
+
+.subnav-wrapper::-webkit-scrollbar {
+  display: none;
+  /* Hide scrollbar */
 }

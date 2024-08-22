@@ -4,104 +4,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sub Navigation with Arrow</title>
   <style>
-    /* Sub Navigation Styles */
-    #sub-nav {
-      position: fixed;
-      top: 60px;
-      /* Adjust this if necessary */
-      width: 100%;
-      backdrop-filter: blur(10px);
-      /* Apply blur effect */
-      background-color: rgba(249, 250, 251, 0.9);
-      /* Adjust opacity */
-      z-index: 49;
-      /* Ensure it's below the main-nav */
-      transition: transform 0.3s ease-in-out;
-      /* Smooth transition */
-      overflow: hidden;
-      /* Ensure no overflow issues */
-    }
-
-    .subnav-wrapper {
-      position: relative;
-      max-width: 1200px;
-      /* Adjust as needed */
-      margin: 0 auto;
-      padding: 1rem;
-    }
-
-    .arrow-container {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 0;
-      height: 0;
-      display: none;
-      /* Hide by default, show only on mobile */
-    }
-
-    .arrow-container::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 0;
-      border-left: 12px solid transparent;
-      border-right: 12px solid transparent;
-      border-top: 12px solid rgba(249, 250, 251, 0.9);
-      /* Match the background color */
-      position: relative;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    /* Media query for mobile screens */
-    @media (max-width: 767px) {
-      .arrow-container {
-        display: block;
-      }
-    }
-
-    ul {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
+    .sub-nav-container {
       display: flex;
-      justify-content: center;
-      gap: 1rem;
+      overflow-x: auto;
+      /* Ensure horizontal scrolling */
+      -webkit-overflow-scrolling: touch;
+      /* Smooth scrolling on iOS */
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* Internet Explorer and Edge */
+      width: 300px;
+      /* Example width */
+      height: 50px;
+      /* Example height */
+      background-color: #f0f0f0;
+      /* Background color for visibility */
     }
 
-    li {
-      margin: 0;
+    .sub-nav-container::-webkit-scrollbar {
+      display: none;
+      /* Hide scrollbar */
     }
 
-    a {
-      text-decoration: none;
-      color: #333;
-    }
-
-    a:hover {
-      text-decoration: underline;
+    .item {
+      flex: 0 0 auto;
+      /* Prevent flex items from shrinking */
+      width: 100px;
+      /* Example item width */
+      height: 50px;
+      /* Example item height */
+      background-color: #ddd;
+      /* Item background color */
+      margin-right: 10px;
+      /* Spacing between items */
     }
   </style>
 </head>
 
 <body>
-  <nav id="sub-nav">
-    <div class="subnav-wrapper">
-      <ul class="sub-nav-container">
-        <li><a href="#about">About</a></li>
-        <li><a href="#expertise">Expertise</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#recent-visuals">Recent Visuals</a></li>
-        <li><a href="#testimonials">Testimonials</a></li>
-      </ul>
-      <div class="arrow-container"></div>
-    </div>
-  </nav>
+  <div class="sub-nav-container">
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+    <div class="item">Item 5</div>
+  </div>
 </body>
 
 </html>
