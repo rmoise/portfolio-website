@@ -1371,6 +1371,8 @@ video {
   background-color: rgba(249, 250, 251, 0.8); /* Semi-transparent background */
   z-index: 49; /* Ensure it's below the main-nav */
   transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
+    overflow: hidden; /* This might prevent scrolling */
+
 }
 @media (max-width: 768px) {
   #sub-nav {
@@ -1405,14 +1407,21 @@ video {
   overflow-x: auto;
   white-space: nowrap;
   position: relative;
-  min-width: 400px;
+  min-width: 100%;
   -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
   touch-action: pan-x; /* Allow horizontal panning */
   scrollbar-width: none; /* Firefox */
 }
-.sub-nav-container::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+
+.item {
+  flex: 0 0 auto; /* Prevent shrinking */
+  width: 100px; /* Adjust width as necessary */
+  height: 50px; /* Adjust height as necessary */
+  margin-right: 10px; /* Space between items */
+    padding: 10px; /* Increase touch area */
+
 }
+
 
 /* Mobile button styles */
 .button-style {
