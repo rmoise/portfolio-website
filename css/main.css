@@ -1118,7 +1118,6 @@ video {
   min-width: 600px; /* Or adjust as needed */
   scroll-snap-type: x mandatory; /* Optional: Ensures snapping effect */
   white-space: nowrap; /* Ensure links are not wrapping */
-  overflow-x: auto; /* Enable horizontal scrolling */
 }
 
 /* Hide scrollbar for Chrome, Safari, and Edge */
