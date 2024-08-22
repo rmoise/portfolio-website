@@ -1,33 +1,47 @@
-document.addEventListener('DOMContentLoaded', function() {
-  const subNavWrapper = document.querySelector('.subnav-wrapper');
+document.addEventListener('DOMContentLoaded', function () {
+  const subNavContainer = document.querySelector('.sub-nav-container');
   const gradientLeft = document.querySelector('.gradient-left');
   const gradientRight = document.querySelector('.gradient-right');
 
-  function checkOverflow() {
-    if (!subNavWrapper || !gradientLeft || !gradientRight) return; // Prevent errors if elements are not found
+  function updateGradients() {
+    const scrollLeft = subNavContainer.scrollLeft;
+    const maxScrollLeft = subNavContainer.scrollWidth - subNavContainer.clientWidth;
 
-    // Calculate the total width of content and container
-    const isOverflowing = subNavWrapper.scrollWidth > subNavWrapper.clientWidth;
-    const scrollLeft = subNavWrapper.scrollLeft;
-    const scrollWidth = subNavWrapper.scrollWidth;
-    const clientWidth = subNavWrapper.clientWidth;
+    const activeNavItem = subNavContainer.querySelector('li.active');
+    const lastNavItem = subNavContainer.querySelector('li:last-child');
 
-    console.log('scrollLeft:', scrollLeft);
-    console.log('scrollWidth:', scrollWidth);
-    console.log('clientWidth:', clientWidth);
-    console.log('isOverflowing:', isOverflowing);
+    // Directly check if the last item is active or very close to the end
+    if (activeNavItem === lastNavItem || scrollLeft >= maxScrollLeft - 1) {
+      gradientRight.classList.remove('visible');
+    } else {
+      gradientRight.classList.add('visible');
+    }
 
-    // Show gradients based on overflow
-    gradientLeft.style.opacity = (scrollLeft > 0 && isOverflowing) ? 1 : 0;
-    gradientRight.style.opacity = ((scrollWidth - scrollLeft > clientWidth) && isOverflowing) ? 1 : 0;
+    // Show or hide the left gradient based on the scroll position
+    if (scrollLeft > 0) {
+      gradientLeft.classList.add('visible');
+    } else {
+      gradientLeft.classList.remove('visible');
+    }
   }
 
   // Initial check
-  checkOverflow();
+  updateGradients();
 
-  // Check on window resize
-  window.addEventListener('resize', checkOverflow);
+  // Update gradients on scroll
+  subNavContainer.addEventListener('scroll', updateGradients);
 
-  // Check on scroll
-  subNavWrapper.addEventListener('scroll', checkOverflow);
+  // Update gradients on window resize
+  window.addEventListener('resize', updateGradients);
+
+  // Update gradients when active state changes
+  const observer = new MutationObserver(updateGradients);
+  observer.observe(subNavContainer, { childList: true, subtree: true, attributes: true });
+
+  // Force update when the last item becomes active
+  document.querySelectorAll('.sub-nav-container li').forEach(item => {
+    item.addEventListener('click', () => {
+      setTimeout(updateGradients, 100); // Slight delay to ensure scroll position settles
+    });
+  });
 });
