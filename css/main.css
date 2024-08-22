@@ -1525,3 +1525,19 @@ video {
 .initial-hidden {
   visibility: hidden; /* Hide elements initially */
 }
+
+
+/* Base button styles */
+.button-hover-up {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-hover-up:hover {
+  transform: translateY(-3px); /* Slight upward movement */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Optional: Add shadow on hover */
+}
+
+.button-hover-up:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px; /* Optional: Add focus ring */
+}
