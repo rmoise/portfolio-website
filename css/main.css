@@ -913,10 +913,10 @@ video {
 /* Sub Navigation Styles */
 #sub-nav {
     position: fixed;
-    top: 60px; /* Adjust this if necessary */
+    top: 64px; /* Adjust this if necessary */
     width: 100%;
      backdrop-filter: blur(10px); /* Apply blur effect */
-  background-color: rgba(249, 250, 251, 0.7); /* 70% opacity */
+  background-color: rgba(249, 250, 251, 0.8); /* 70% opacity */
     z-index: 49; /* Ensure it's below the main-nav */
     transition: transform 0.3s ease-in-out; /* Smooth transition */
 }
@@ -1084,7 +1084,6 @@ video {
   white-space: nowrap; /* Prevents the text from wrapping onto a new line */
   overflow: hidden; /* Ensures the text does not overflow the container */
   text-overflow: ellipsis; /* Adds ellipsis if text is too long */
-      padding: 10px 5px; /* Adjust padding as needed */
           scroll-snap-align: center; /* Optional: Ensures snapping effect */
 
 
