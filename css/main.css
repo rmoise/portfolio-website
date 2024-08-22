@@ -1339,11 +1339,6 @@ video {
   }
 }
 
-
-
-
-
-
 /* Keyframes for fade-in animation */
 @keyframes fadeIn {
   from {
@@ -1376,8 +1371,7 @@ video {
   background-color: rgba(249, 250, 251, 0.8); /* Semi-transparent background */
   z-index: 49; /* Ensure it's below the main-nav */
   transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
-    overflow: hidden; /* This might prevent scrolling */
-
+  overflow: hidden; /* This might prevent scrolling */
 }
 @media (max-width: 768px) {
   #sub-nav {
@@ -1415,6 +1409,7 @@ video {
   -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
   touch-action: pan-x; /* Allow horizontal panning */
   scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 .item {
@@ -1422,10 +1417,8 @@ video {
   width: 100px; /* Adjust width as necessary */
   height: 50px; /* Adjust height as necessary */
   margin-right: 10px; /* Space between items */
-    padding: 10px; /* Increase touch area */
-
+  padding: 10px; /* Increase touch area */
 }
-
 
 /* Mobile button styles */
 .button-style {
@@ -1495,7 +1488,7 @@ video {
     min-width: 100%; /* Full width on mobile */
   }
 
-    .gradient-left,
+  .gradient-left,
   .gradient-right {
     display: block; /* Show gradients */
   }
