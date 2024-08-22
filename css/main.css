@@ -1115,7 +1115,7 @@ video {
   display: flex; /* Aligns children in a row */
   overflow-x: auto; /* Allows horizontal scrolling */
   scroll-behavior: smooth; /* Smooth scrolling */
-  min-width: 600px; /* Or adjust as needed */
+  min-width: 400px; /* Or adjust as needed */
   scroll-snap-type: x mandatory; /* Optional: Ensures snapping effect */
   white-space: nowrap; /* Ensure links are not wrapping */
 }
