@@ -222,4 +222,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // Reveal elements after the page has fully loaded
+  window.addEventListener('load', () => {
+    const headline = document.getElementById('headline');
+    const image = document.getElementById('image');
+
+    if (headline) {
+      headline.classList.remove('initial-hidden');
+    }
+    if (image) {
+      image.classList.remove('initial-hidden');
+    }
+  });
 });

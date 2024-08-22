@@ -1527,3 +1527,11 @@ video {
   display: none;
   /* Hide scrollbar */
 }
+
+[x-cloak] {
+    display: none;
+}
+
+.initial-hidden {
+  visibility: hidden; /* Hide elements initially */
+}
