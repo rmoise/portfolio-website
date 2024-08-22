@@ -910,22 +910,25 @@ video {
     transition: transform 0.4s ease-in-out, position 0.3s ease;
 }
 
-/* Sub Navigation Styles */
+/* Base styles for desktop */
 #sub-nav {
     position: fixed;
     top: 64px; /* Adjust this if necessary */
     width: 100%;
-    backdrop-filter: blur(6px); /* Apply a subtle blur effect */
-    -webkit-backdrop-filter: blur(6px); /* Safari */
-    background-color: rgba(249, 250, 251, 0.8); /* 80% opacity for better blending */
+    backdrop-filter: blur(10px); /* Apply blur effect for desktop */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    background-color: rgba(249, 250, 251, 0.8); /* Semi-transparent background for desktop */
     z-index: 49; /* Ensure it's below the main-nav */
     transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out; /* Smooth transitions */
 }
 
-/* Fallback for browsers that do not support backdrop-filter */
-#sub-nav {
-    background-color: rgba(249, 250, 251, 0.8); /* Same as above */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds a slight shadow for visual depth */
+/* Mobile styles */
+@media (max-width: 768px) { /* Adjust this breakpoint as necessary */
+    #sub-nav {
+        backdrop-filter: none; /* Disable blur effect on mobile */
+        -webkit-backdrop-filter: none; /* Safari support */
+        background-color: #F9FAFB; /* Solid color background for mobile */
+    }
 }
 
 
