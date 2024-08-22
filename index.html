@@ -171,13 +171,13 @@
   <nav id="sub-nav">
     <div class="max-w-screen-xl px-4 py-3 mx-auto relative">
       <div class="flex items-center justify-center relative">
-        <!-- Gradient overlays positioned outside the subnav-wrapper -->
-        <div class="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-transparent via-gray-100/10 to-transparent pointer-events-none md:hidden"></div>
-        <div class="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-transparent via-gray-100/10 to-transparent pointer-events-none md:hidden"></div>
+        <!-- Gradient overlays positioned over the subnav-wrapper -->
+        <div class="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-transparent via-[#F9FAFB] to-transparent pointer-events-none gradient-left"></div>
+        <div class="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-transparent via-[#F9FAFB] to-transparent pointer-events-none gradient-right"></div>
 
         <div class="relative overflow-hidden w-[300px] md:w-auto">
           <!-- Content container -->
-          <div class="flex overflow-auto subnav-wrapper">
+          <div class="flex overflow-auto subnav-wrapper relative">
             <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm sub-nav-container">
               <li><a href="#about" class="text-gray-900 hover:underline subnav-link">About</a></li>
               <li><a href="#expertise" class="text-gray-900 hover:underline subnav-link">Expertise</a></li>
@@ -190,6 +190,7 @@
       </div>
     </div>
   </nav>
+
 
 
 
@@ -1006,6 +1007,7 @@
   <script src="https://smtpjs.com/v3/smtp.js"></script>
   <script src="js/navigation.js"></script>
   <script src="js/navbar.js"></script>
+    <script src="js/gradient.js"></script>
   <script src="js/script.js"></script>
 
 </body>
