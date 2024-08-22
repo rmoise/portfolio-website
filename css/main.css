@@ -1407,7 +1407,7 @@ video {
   overflow-x: auto;
   white-space: nowrap;
   position: relative;
-  min-width: 100%;
+  min-width: 400px;
   -webkit-overflow-scrolling: touch; /* Enable momentum scrolling on iOS */
   touch-action: pan-x; /* Allow horizontal panning */
   scrollbar-width: none; /* Firefox */
