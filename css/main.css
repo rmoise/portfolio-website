@@ -1596,6 +1596,10 @@ video {
 
     .parallax-content {
       text-align: center;
+        height: 100%; /* Full height of the parallax container */
+  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  padding: 20px; /* Optional: Add padding as needed */
       z-index: 2;
       /* Ensure content is above the background */
     }
