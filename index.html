@@ -193,8 +193,8 @@
   <!-- Parallax Section -->
   <section class="parallax bg-white" id="parallax">
     <div class="parallax-content">
-      <section class="mt-16  container mx-auto px-4 md:px-10 lg:px-10 py-16">
-        <div class="md:mt-8 lg:mt-8 xl:mt-8 mt-4  flex flex-col-reverse md:flex-row items-center gap-8 relative z-10">
+      <section class="mt-4 container mx-auto px-4 md:px-10 lg:px-10 py-16">
+        <div class="md:mt-8 lg:mt-8 xl:mt-8 mt-16  flex flex-col-reverse md:flex-row items-center gap-8 relative z-10">
           <!-- Headline and Description -->
           <div id="headline" class="flex flex-col w-full md:w-1/2 mb-8 md:mb-0 initial-hidden">
             <h1 class="font-extrabold text-4xl md:text-4xl lg:text-5xl xl:text-6xl text-center md:text-left">
@@ -231,7 +231,7 @@
 
 
         <!-- Social Media Section -->
-        <section class="mt-16">
+        <section class="mt-8 xl:mt-16 lg:mt-16 md:mt-16">
           <div class="flex space-x-4 items-center justify-center md:justify-start xl:justify-start">
             <span class="text-gray-600">
               Follow me on:
@@ -265,10 +265,10 @@
   </section>
 
   <!-- Main Content -->
-  <div class="main-content">
+  <section class="main-content">
     <!-- About me section -->
-    <div class=" container mt-16 flex justify-between items-center mx-auto px-4 md:px-10 lg:px-10 w-full">
-      <section class="w-full">
+    <div class=" container flex justify-between items-center mx-auto px-4 md:px-10 lg:px-10 w-full">
+      <section class="mt-20 w-full">
         <h2 id="about" class="secondary-title text-3xl font-bold">About me</h2>
 
         <p class="mt-6 w-full text-gray-600">
@@ -278,7 +278,7 @@
     </div>
     <!-- Expertise section -->
     <section class="bg-white">
-      <div class=" my-32 px-4 mx-auto max-w-screen-xl lg:px-6">
+      <div class=" my-24 px-4 mx-auto max-w-screen-xl lg:px-6">
         <div class="flex justify-center">
           <h2 id="expertise" class="secondary-title text-3xl mb-8 font-bold">Expertise</h2>
         </div>
@@ -317,7 +317,7 @@
     </section>
 
     <!-- Portfolio section -->
-    <div class=" container mt-32 flex justify-between items-center mx-auto px-4 md:px-10 lg:px-10 w-full">
+    <div class=" container mt-20 flex justify-between items-center mx-auto px-4 md:px-10 lg:px-10 w-full">
       <section class="w-full">
         <div class=" flex justify-center">
           <h2 id="portfolio" class=" secondary-title text-3xl font-bold">Portfolio</h2>
@@ -329,7 +329,7 @@
 
     <!-- Projects section -->
     <div class="container flex justify-center items-center mx-auto  border-b border-gray-200
-                ">
+            ">
       <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" data-tabs-active-classes="text-black hover:text-black text-black hover:text-black border-black border-text-green" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
         <li class="me-2 rounded-t-lg" role="presentation">
           <button class="text-base font-bold inline-block p-4 border-b-2 rounded-t-lg" id="design-tab" data-tabs-target="#design-tab-content" type="button" role="tab" aria-controls="profile" aria-selected="false">Design Systems</button>
@@ -825,8 +825,8 @@
     </div>
 
     <!-- Recent Visuals-->
-    <section class=" bg-white container mx-auto px-4 md:px-10 lg:px-10 py-16">
-      <div class="flex mt-32 justify-center">
+    <section class=" bg-white container mx-auto px-4 md:px-10 lg:px-10 pt-24">
+      <div class="flex justify-center">
         <h2 id="recent-visuals" class="secondary-title text-3xl mb-8 font-bold">Recent Visuals</h2>
       </div>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -871,8 +871,8 @@
     </section>
 
     <!-- Testimonials -->
-    <section class="bg-white mt-32">
-      <div class=" px-4 mx-auto max-w-screen-xl lg:px-6">
+    <section class=" bg-white container mx-auto px-4 md:px-10 lg:px-10 pt-24">
+      <div>
         <div class="flex justify-center">
           <h2 id="testimonials" class="secondary-title text-3xl mb-8 font-bold">Testimonials</h2>
         </div>
@@ -922,7 +922,7 @@
 
     <!-- Your contact form HTML -->
     <section class=" bg-white container mx-auto px-4 md:px-10 lg:px-10 py-16">
-      <div class="mt-32">
+      <div class="mt-20">
         <h1 id="contact" class="secondary-title text-3xl font-bold">Contact me</h1>
         <p class="section-paragraph text-gray-600">Please use the form below to send me a message. I'll be happy to hear from you.</p>
         <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
@@ -972,33 +972,44 @@
         </div>
       </div>
     </section>
-  </div>
-
-
+  </section>
 
   <script>
-    document.addEventListener('scroll', function () {
+   document.addEventListener('scroll', function () {
       const parallax = document.getElementById('parallax');
       const scrollTop = window.pageYOffset;
-
-      // Get the height of the parallax section and window height
       const parallaxHeight = parallax.offsetHeight;
-      const windowHeight = window.innerHeight;
+      const viewportHeight = window.innerHeight;
+      const isMobile = window.innerWidth <= 768;
 
-      // Determine when the user has scrolled past the parallax section
-      const startParallax = parallaxHeight - windowHeight;
-
-      if (scrollTop > startParallax) {
-        const speedFactor = 0.3;
-        parallax.style.transform = `translateY(${(scrollTop - startParallax) * speedFactor}px)`;
+      if (isMobile) {
+        if (scrollTop + viewportHeight >= parallaxHeight) {
+          const speedFactor = 0.3;
+          const offset = scrollTop - parallaxHeight + viewportHeight;
+          parallax.style.transform = `translateY(${offset * speedFactor}px)`;
+        } else {
+          parallax.style.transform = 'translateY(0)';
+        }
+      } else {
+        if (scrollTop >= parallaxHeight) {
+          const speedFactor = 0.3;
+          parallax.style.transform = `translateY(${(scrollTop - parallaxHeight) * speedFactor}px)`;
+        } else {
+          parallax.style.transform = 'translateY(0)';
+        }
       }
-    });
+
+
+      });
+
   </script>
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/script.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/gradient.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>
