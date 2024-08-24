@@ -7,7 +7,28 @@ document.addEventListener('DOMContentLoaded', function() {
     let isMenuOpen = false;
     let scrollPosition = 0;
 
+    function handleScroll() {
+        if (!isMenuOpen) {
+            const scrollY = window.scrollY;
+            const mainNavHeight = mainNav.offsetHeight;
+            const scrollThreshold = 5;
 
+            if (scrollY > mainNavHeight) {
+                if (scrollY > scrollPosition + scrollThreshold) {
+                    mainNav.style.transform = `translateY(-${mainNavHeight}px)`;
+                    subNav.style.transform = `translateY(-${mainNavHeight}px)`;
+                } else if (scrollY < scrollPosition - scrollThreshold) {
+                    mainNav.style.transform = 'translateY(0)';
+                    subNav.style.transform = 'translateY(0)';
+                }
+            } else {
+                mainNav.style.transform = 'translateY(0)';
+                subNav.style.transform = 'translateY(0)';
+            }
+
+            scrollPosition = scrollY;
+        }
+    }
 
     function toggleMobileMenu() {
         isMenuOpen = !isMenuOpen;
@@ -62,5 +83,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
- 
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initialize scroll effects
 });
