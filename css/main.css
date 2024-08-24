@@ -1584,13 +1584,8 @@ video {
   }
 }
 
-/* Override for smaller screens (mobile) */
-@media (max-width: 767px) {
-  .parallax {
-    height: 100vh; /* Adjust height as needed */
-    overflow: auto; /* Allow scrolling within the parallax section */
-  }
-}
+
+
 
 
 
