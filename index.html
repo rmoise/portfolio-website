@@ -976,18 +976,19 @@
   </section>
 
   <script>
-    // JavaScript for parallax effect
+    // JavaScript for parallax effect with delay
     function updateParallax() {
       const parallax = document.getElementById('parallax');
       const scrollTop = window.pageYOffset;
       const parallaxHeight = parallax.offsetHeight;
       const viewportHeight = window.innerHeight;
       const isMobile = window.innerWidth <= 768;
+      const mobileDelay = 100; // Delay before the parallax effect starts on mobile, in pixels
 
       if (isMobile) {
-        if (scrollTop + viewportHeight >= parallaxHeight) {
+        if (scrollTop + viewportHeight >= parallaxHeight + mobileDelay) {
           const speedFactor = 0.3;
-          const offset = scrollTop - parallaxHeight + viewportHeight;
+          const offset = scrollTop - parallaxHeight + viewportHeight - mobileDelay;
           parallax.style.transform = `translateY(${Math.max(0, offset * speedFactor)}px)`;
         } else {
           parallax.style.transform = 'translateY(0)';
