@@ -1368,7 +1368,7 @@ video {
   width: 100%;
   backdrop-filter: blur(10px); /* Apply blur effect for desktop */
   -webkit-backdrop-filter: blur(10px); /* Safari support */
-  background-color: rgba(248, 250, 252,  0.8); /* Semi-transparent background */
+  background-color: rgba(248, 250, 252, 0.8); /* Semi-transparent background */
   z-index: 49; /* Ensure it's below the main-nav */
   transition: transform 0.3s ease-in-out, backdrop-filter 0.3s ease-in-out;
   overflow: hidden; /* This might prevent scrolling */
@@ -1429,7 +1429,6 @@ video {
     width: 100%; /* Full width on mobile */
   }
 }
-
 
 /* Sub-nav fixed and scrolling lock */
 .sub-nav-fixed {
@@ -1519,13 +1518,12 @@ video {
 }
 
 [x-cloak] {
-    display: none;
+  display: none;
 }
 
 .initial-hidden {
   visibility: hidden; /* Hide elements initially */
 }
-
 
 /* Base button styles */
 .button-hover-up {
@@ -1565,14 +1563,12 @@ body {
   justify-content: center;
   overflow: hidden;
   transition: transform 0.3s ease-out;
-    will-change: transform;
-      transform: translateZ(0); /* Forces GPU acceleration */
-
-
+  will-change: transform;
+  transform: translateZ(0); /* Forces GPU acceleration */
 }
 
 .parallax::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -1581,11 +1577,11 @@ body {
   z-index: 2;
 }
 
- .parallax-content {
-      text-align: center;
-      z-index: 2;
-      /* Ensure content is above the background */
-    }
+.parallax-content {
+  text-align: center;
+  z-index: 2;
+  /* Ensure content is above the background */
+}
 
 /* Main Content */
 .main-content {
@@ -1610,27 +1606,36 @@ body {
   }
 }
 
- /* Scroll Icon Styles */
-    .scroll-icon {
-      margin-top: 2rem;
-      text-align: center;
-    }
+/* Scroll Icon Styles */
+.scroll-icon {
+  margin-top: 2rem;
+  text-align: center;
+}
 
-    .scroll-icon svg {
-      width: 24px;
-      height: 24px;
-      fill: #000;
-      animation: bounce 1.5s infinite;
-    }
+.scroll-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: #000;
+  animation: bounce 1.5s infinite;
+}
 
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-      }
-      40% {
-        transform: translateY(-10px);
-      }
-      60% {
-        transform: translateY(-5px);
-      }
-    }
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Ensure it's positioned above other content */
+#notification {
+  z-index: 9999; /* High value to ensure it's on top */
+}
