@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const notification = document.querySelector('#notification');
     if (!notification) return;
 
-    notification.classList.remove('hidden');
-    notification.classList.remove('bg-green', 'bg-brightGreen', 'bg-red-500');
+    notification.classList.remove('hidden', 'bg-green', 'bg-brightGreen', 'bg-red-500');
 
     if (type === 'error') {
       notification.classList.add('bg-red-500');
@@ -23,15 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 5000);
   }
 
-  // Smooth Scroll Handling
-  function smoothScrollTo(targetId, offset = 80) {
+  // Smooth scrolling function with refined offset
+  function smoothScrollTo(targetId, offset = 60) {
     const targetElement = document.querySelector(targetId);
     if (targetElement) {
-      const headerHeight = document.querySelector('nav')?.offsetHeight || 0;
-      const scrollToPosition = targetElement.offsetTop - headerHeight - offset;
+      const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+      const subNavHeight = document.querySelector('#sub-nav')?.offsetHeight || 0;
+      const targetRect = targetElement.getBoundingClientRect();
+      const currentScrollY = window.scrollY;
+      const targetPosition = targetRect.top + currentScrollY - headerHeight - subNavHeight - offset;
 
       window.scrollTo({
-        top: scrollToPosition,
+        top: targetPosition,
         behavior: 'smooth'
       });
     } else {
@@ -39,12 +41,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Smooth scroll to section on "View my Projects" button click
+   // Smooth scroll to section on "View my Projects" button click
   const viewProjectsButton = document.querySelector('a[href="#portfolio"]');
   if (viewProjectsButton) {
     viewProjectsButton.addEventListener('click', function (e) {
       e.preventDefault();
-      smoothScrollTo('#portfolio', 60);
+      smoothScrollTo('#portfolio', 80);
     });
   }
 
@@ -53,35 +55,42 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactButton) {
     contactButton.addEventListener('click', function (e) {
       e.preventDefault();
-      smoothScrollTo('#contact', 80);
+      smoothScrollTo('#contact', 80); // Extra space adjustment for contact button
     });
+  } else {
+    console.error('Contact button not found.');
   }
 
-  // Smooth scroll to section on sub-nav link click
-  document.querySelectorAll('.sub-nav-container a[href^="#"]').forEach(anchor => {
+  // Smooth scroll to section on other button clicks
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
-      smoothScrollTo(targetId, 60);
+      const extraOffset = targetId === '#contact' ? 80 : 60; // Adjust offset based on link
+      smoothScrollTo(targetId, extraOffset);
     });
   });
 
-  // Smooth scroll to section on button container link click
-  document.querySelectorAll('.button-container a[href^="#"]').forEach(anchor => {
+  // Handle sub-navigation link clicks
+  document.querySelectorAll('#sub-nav a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      const targetId = this.getAttribute('href');
-      smoothScrollTo(targetId, 60);
+      const targetId = this.getAttribute('href').substring(1);
+      smoothScrollTo(`#${targetId}`, 80); // Adjust offset as needed
+
+      // Update active link style
+      document.querySelectorAll('#sub-nav a').forEach(link => link.classList.remove('active'));
+      this.classList.add('active');
     });
   });
 
+  // Function to scroll sub-nav to active link
   function scrollSubNavToActiveLink(activeLink) {
     if (activeLink) {
-      const subNavContainer = document.querySelector('.subnav-wrapper');
+      const subNavContainer = document.querySelector('.sub-nav-container');
       if (subNavContainer) {
         const containerRect = subNavContainer.getBoundingClientRect();
         const linkRect = activeLink.getBoundingClientRect();
-
         const linkCenter = linkRect.left + linkRect.width / 2;
         const containerCenter = containerRect.left + containerRect.width / 2;
         const offset = linkCenter - containerCenter;
@@ -91,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Initialize Intersection Observer for active links
   function initializeScrollObserver() {
     const navLinks = document.querySelectorAll('.sub-nav-container a');
     const sections = Array.from(navLinks)
@@ -133,11 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const isRecentVisualsVisible = isLinkFullyVisible(recentVisualsLink);
           const isTestimonialsVisible = isLinkFullyVisible(testimonialsLink);
 
-          if (isRecentVisualsVisible || isTestimonialsVisible) {
-            rightGradient.style.display = 'none';
-          } else {
-            rightGradient.style.display = 'block';
-          }
+          rightGradient.style.display = (isRecentVisualsVisible || isTestimonialsVisible) ? 'none' : 'block';
         }
       }
     }, options);
@@ -149,10 +155,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function isLinkFullyVisible(link) {
     const linkRect = link.getBoundingClientRect();
-    const containerRect = document.querySelector('.subnav-wrapper')?.getBoundingClientRect();
+    const containerRect = document.querySelector('.sub-nav-container')?.getBoundingClientRect();
 
     if (!containerRect) {
-      console.error('Subnav wrapper not found.');
+      console.error('Subnav container not found.');
       return false;
     }
 
@@ -161,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initializeScrollObserver();
 
-  // Page Load Animation
+  // Page load animation
   const headline = document.getElementById('headline');
   const image = document.getElementById('image');
 
@@ -174,23 +180,19 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => image.classList.add('image-animate'), 100);
   }
 
-  // Ensure no unwanted scroll handling or dynamic positioning affects the button
+  // Handle sub-nav and button container positioning
   const subNav = document.getElementById('sub-nav');
   const buttonContainer = document.querySelector('.button-container');
 
   if (subNav && buttonContainer) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > subNav.offsetHeight) {
-        buttonContainer.style.position = 'relative';
-      } else {
-        buttonContainer.style.position = 'relative';
-      }
+      buttonContainer.style.position = (window.scrollY > subNav.offsetHeight) ? 'relative' : 'relative';
     });
   } else {
     console.error('Sub-nav or Button container not found.');
   }
 
-  // Form Handling
+  // Form handling
   const form = document.querySelector('form');
   if (form) {
     form.addEventListener('submit', async (event) => {
@@ -225,9 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Reveal elements after the page has fully loaded
   window.addEventListener('load', () => {
-    const headline = document.getElementById('headline');
-    const image = document.getElementById('image');
-
     if (headline) {
       headline.classList.remove('initial-hidden');
     }
