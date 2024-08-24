@@ -974,6 +974,34 @@
     </section>
   </section>
 
+<script>document.addEventListener('DOMContentLoaded', () => {
+    // Function to manage scrolling behavior
+    function manageScrolling() {
+      const parallax = document.querySelector('.parallax');
+      const mainContent = document.querySelector('.main-content'); // The main content section
+
+      if (parallax && mainContent) {
+        // Check if the parallax is the viewport height
+        const isFixed = window.getComputedStyle(parallax).position === 'fixed';
+        const parallaxHeight = parallax.offsetHeight;
+
+        // Adjust scroll behavior based on height and position
+        if (isFixed && window.innerHeight <= parallaxHeight) {
+          // Allow scrolling to continue to the main content
+          mainContent.style.marginTop = `${parallaxHeight}px`; // Push the main content down
+        } else {
+          mainContent.style.marginTop = '0'; // Default margin
+        }
+      }
+    }
+
+    // Initial setup
+    manageScrolling();
+
+    // Handle window resize to adjust scrolling behavior
+    window.addEventListener('resize', manageScrolling);
+  });</script>
+
 
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
