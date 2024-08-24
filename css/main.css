@@ -1564,34 +1564,34 @@ video {
       /* Ensure the overlay is above the background */
     }
 
-    /* Base styles for the parallax section */
+   /* Base styles for the parallax section */
 .parallax {
   position: fixed;
-  /* Fixed position to stay in place */
   width: 100%;
   background-size: cover;
-  z-index: 1;
-  /* Ensure it's below other content */
+  z-index: 1; /* Ensure it's below other content */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  /* Ensure no overflow from content */
 }
 
-/* Apply 100vh only for screens wider than 768px (typical breakpoint for tablets and above) */
+/* Apply 100vh only for screens wider than 768px */
 @media (min-width: 768px) {
   .parallax {
     height: 100vh;
+    overflow: hidden; /* Prevent scrolling within the parallax section */
   }
 }
 
-/* Optional: Override height for smaller screens (mobile) if needed */
+/* Override for smaller screens (mobile) */
 @media (max-width: 767px) {
   .parallax {
-    height: auto; /* Or any other value or style suitable for mobile */
+    height: 100vh; /* Adjust height as needed */
+    overflow: auto; /* Allow scrolling within the parallax section */
   }
 }
+
 
 
     .parallax-content {
