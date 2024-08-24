@@ -1611,3 +1611,27 @@ body {
   }
 }
 
+ /* Scroll Icon Styles */
+    .scroll-icon {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .scroll-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: #000;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-10px);
+      }
+      60% {
+        transform: translateY(-5px);
+      }
+    }
