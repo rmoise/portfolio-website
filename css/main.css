@@ -1455,7 +1455,7 @@ video {
 }
 .gradient-right {
   right: 0;
-  background: linear-gradient(to left, rgba(249, 250, 251, 0.5), transparent);
+  background: linear-gradient(to left, rgba(249, 250, 251, 1), transparent);
 }
 /* Initial State: Gradients Hidden */
 .gradient-left,

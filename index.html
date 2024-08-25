@@ -172,8 +172,8 @@
     <div class="max-w-screen-xl px-4 py-3 mx-auto relative">
       <div class="flex items-center justify-center relative">
         <!-- Gradient overlays positioned over the subnav-wrapper -->
-        <div class="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-transparent via-[#F9FAFB] to-transparent pointer-events-none gradient-left"></div>
-        <div class="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-transparent via-[#F9FAFB] to-transparent pointer-events-none gradient-right"></div>
+        <div class="absolute inset-y-0 left-[73%] w-[50%] -ml-[100%] bg-gradient-to-r from-transparent via-[#F9FAFB] to-transparent pointer-events-none gradient-left"></div>
+        <div class="absolute inset-y-0 right-[73%] w-[50%] -mr-[100%] bg-gradient-to-l from-transparent via-[#F9FAFB] to-transparent pointer-events-none gradient-right"></div>
 
         <div class="relative overflow-hidden w-[300px] md:w-auto">
           <!-- Content container -->
@@ -190,13 +190,14 @@
       </div>
     </div>
   </nav>
+
   <!-- Parallax Section -->
   <section class="parallax bg-white" id="parallax">
     <div class="parallax-content">
       <section class="mt-4 md:mt-16 lg:mt-16 xl:mt-16 container mx-auto px-4 md:px-10 lg:px-10 py-16">
         <div class="md:mt-8 lg:mt-8 xl:mt-8 mt-16  flex flex-col-reverse md:flex-row items-center gap-8 relative z-10">
           <!-- Gradient Background -->
-          <div aria-hidden="true" class="absolute top-[670px] inset-0 grid grid-cols-2 -space-x-75 opacity-50 dark:opacity-30">
+          <div aria-hidden="true" class="absolute top-[670px] inset-0 grid grid-cols-2 -space-x-75 opacity-50 z-0">
             <div class="h-80 bg-gradient-to-br from-[var(--custom-green)] to-brightGreen blur-[106px]"></div>
             <div class="h-40 bg-gradient-to-r from-[var(--custom-green)] to-brightGreen blur-[106px]"></div>
           </div>
@@ -210,13 +211,13 @@
           </div>
 
           <!-- Image -->
-          <div id="image" class="  flex justify-center md:justify-end w-full md:w-1/2 initial-hidden">
+          <div id="image" class="  flex justify-center md:justify-end w-full md:w-1/2 initial-hidden z-10">
             <img src="img/roderick-moise.jpg" alt="Roderick Moise" class="rounded-lg w-3/4 xl:w-96" />
           </div>
         </div>
 
         <!-- Buttons Section -->
-        <section class="flex flex-col md:flex-row md:justify-start gap-4">
+        <section class="flex flex-col md:flex-row md:justify-start gap-4 z-10">
           <!-- View my Projects Button -->
           <a href="#portfolio" class="button-hover-up inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg bg-green hover:bg-[#01e1a1] focus:ring-4 focus:ring-blue-300 w-full md:w-auto">
             View my Projects
