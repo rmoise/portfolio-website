@@ -1450,14 +1450,13 @@ video {
   z-index: 10;
 }
 .gradient-left {
-  background: linear-gradient(to right, rgba(249, 250, 251, 0.9), rgba(249, 250, 251, 0.5), rgba(249, 250, 251, 0));
+  left: 0;
+  background: linear-gradient(to right, rgba(249, 250, 251, 1), transparent);
 }
-
 .gradient-right {
-  background: linear-gradient(to left, rgba(249, 250, 251, 0.9), rgba(249, 250, 251, 0.5), rgba(249, 250, 251, 0));
+  right: 0;
+  background: linear-gradient(to left, rgba(249, 250, 251, 1), transparent);
 }
-
-
 /* Initial State: Gradients Hidden */
 .gradient-left,
 .gradient-right {
