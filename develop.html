@@ -2,348 +2,47 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roderick's Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="shortcut icon" href="img/favicon-32x32.png" />
   <link rel="stylesheet" href="css/main.css" />
+  <title>Roderick's Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js" defer></script>
-
+  <style>
+    .tab-indicator {
+      transition: left 0.3s ease, width 0.3s ease;
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Navbar -->
-  <nav id="main-nav" x-data="navbar()" x-init="init()" class="bg-white fixed top-0 left-0 w-full z-50">
-    <!-- Container -->
-    <div class="container flex flex-wrap px-4 py-2 mx-auto">
-      <!-- Logo -->
-      <a href="index.html" class="inline-flex items-center p-2">
-        <img src="img/rm_logo.svg" alt="Logo" class="h-8">
-      </a>
-      <!-- Toggler Btn -->
-      <button type="button" class="menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden" @click="toggleNavbar()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        <svg x-cloak xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 transition-transform" :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-      <!-- Menu for Desktop -->
-      <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
-        <ul class="flex flex-row space-x-2">
+  <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
+    <div class="text-center">
+      <h2 class="text-3xl font-bold text-gray-800 md:text-4xl xl:text-5xl">Explore Our Features</h2>
+      <p class="mx-auto mt-6 text-gray-700md:w-3/4 lg:w-3/5">Discover the benefits and capabilities of our solution, tailored to suit your needs.</p>
 
-          <!-- Dropdown for Desktop -->
-          <li x-data="{ dropdownOpen: false }" @click.away="dropdownOpen = false" class="relative">
-            <button @click="dropdownOpen = !dropdownOpen" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
-              Portfolio
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': dropdownOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <!-- Dropdown Menu for Desktop -->
-            <div x-show="dropdownOpen" x-cloak class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48" x-transition>
-              <ul class="space-y-2">
-                <!-- Categories Dropdown -->
-                <li>
-                  <button @click="toggleCategories()" :class="{ 'bg-gray-100 text-black': isActive('design-systems') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
-                    Design Systems
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': categoriesOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <div x-show="categoriesOpen" class="mt-1 bg-white rounded-md shadow-lg" x-transition>
-                    <ul class="space-y-2">
-                      <!-- Nested Links -->
-                      <li><a href="kytocase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('kytocase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a></li>
-                      <li><a href="smunchcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a></li>
-                      <li><a href="cogalleriescase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a></li>
-                      <li><a href="organize.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('organize') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a></li>
-                      <li><a href="pffcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('pffcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pffcase</a></li>
-                      <li><a href="stak.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('stak') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a></li>
-                    </ul>
-                  </div>
-                </li>
-
-                <!-- Web Dev Dropdown -->
-                <li>
-                  <button @click="toggleNestedDropdown()" :class="{ 'bg-gray-100 text-black': isActive('web-dev') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
-                    Web Dev
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': nestedDropdownOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <div x-show="nestedDropdownOpen" class="mt-1 bg-white rounded-md" x-transition>
-                    <ul class="space-y-2">
-                      <li><a target="_blank" href="https://github.com/rmoise/document-management-app" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager </a></li>
-                      <li><a target="_blank" href="https://github.com/rmoise/document-management-api" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API </a></li>
-                      <li><a href="pokemoncase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokédex App</a></li>
-                      <li><a href="myflixcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a></li>
-                      <li><a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular </a></li>
-                      <li><a href="meetcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('meetcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a></li>
-                      <li><a href="chatappcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a></li>
-                    </ul>
-                  </div>
-                </li>
-
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <a href="#contact" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Contact</a>
-          </li>
-        </ul>
-      </div>
-      <!-- Mobile Menu -->
-      <div x-show="navbarOpen" x-cloak class="mobile-menu lg:hidden fixed inset-0 top-16 bg-white z-40 overflow-y-auto" x-transition>
-        <ul class="space-y-2 p-4">
-
-          <!-- Portfolio Dropdown -->
-          <li class="relative">
-            <button @click="toggleDropdown()" :class="{ 'bg-gray-100 text-black': isActive('portfolio') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
-              Portfolio
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': dropdownOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            <!-- Dropdown Menu for Portfolio -->
-            <div x-show="dropdownOpen" x-cloak class="lg:hidden mt-2 bg-white rounded-md" x-transition>
-              <ul class="space-y-2">
-                <!-- Categories Dropdown -->
-                <li>
-                  <button @click="toggleCategories()" :class="{ 'bg-gray-100 text-black': isActive('design-systems') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
-                    Design Systems
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': categoriesOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <div x-show="categoriesOpen" class="mt-1 bg-white rounded-md" x-transition>
-                    <ul class="space-y-2">
-                      <!-- Nested Links -->
-                      <li><a href="kytocase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('kytocase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Kyto</a></li>
-                      <li><a href="smunchcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Smunch</a></li>
-                      <li><a href="cogalleriescase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">coGalleries</a></li>
-                      <li><a href="organize.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('organize') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Organize</a></li>
-                      <li><a href="pffcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('pffcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pffcase</a></li>
-                      <li><a href="stak.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('stak') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Stak</a></li>
-                    </ul>
-                  </div>
-                </li>
-
-                <!-- Web Dev Dropdown -->
-                <li>
-                  <button @click="toggleNestedDropdown()" :class="{ 'bg-gray-100 text-black': isActive('web-dev') }" class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full">
-                    Web Dev
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-2 transition-transform" :class="{ 'rotate-180': nestedDropdownOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <div x-show="nestedDropdownOpen" class="mt-1 bg-white rounded-md" x-transition>
-                    <ul class="space-y-2">
-                      <li><a target="_blank" href="https://github.com/rmoise/document-management-app" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager</a></li>
-                      <li><a target="_blank" href="https://github.com/rmoise/document-management-api" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Doc Manager API</a></li>
-                      <li><a href="pokemoncase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Pokédex App</a></li>
-                      <li><a href="myflixcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix React</a></li>
-                      <li><a target="_blank" href="https://github.com/rmoise/myFlix-Angular-client" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">myFlix Angular</a></li>
-                      <li><a href="meetcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('meetcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Meet</a></li>
-                      <li><a href="chatappcase.html" @click="closeNavbar()" :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }" class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">Chat</a></li>
-                    </ul>
-                  </div>
-                </li>
-
-                <!-- Contact Link in Mobile Menu -->
-                <li>
-                  <a href="#contact" @click.prevent="handleContactClick()" :class="{ 'bg-gray-100 text-black': isActive('contact') }" class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-      </div>
-  </nav>
-
-
-  <nav id="sub-nav" class="border-b">
-    <div class="max-w-screen-xl px-4 py-3 mx-auto relative">
-      <div class="flex items-center justify-center relative">
-        <!-- Gradient overlays positioned over the subnav-wrapper -->
-        <div class="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-transparent via-[#F9FAFB] to-transparent pointer-events-none gradient-left"></div>
-        <div class="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-transparent via-[#F9FAFB] to-transparent pointer-events-none gradient-right"></div>
-
-        <div class="relative overflow-hidden w-[300px] md:w-auto">
-          <!-- Content container -->
-          <div class="flex overflow-auto subnav-wrapper relative">
-            <ul class="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm sub-nav-container">
-              <li><a href="#about" class="text-gray-900 hover:underline subnav-link">About</a></li>
-              <li><a href="#expertise" class="text-gray-900 hover:underline subnav-link">Expertise</a></li>
-              <li><a href="#portfolio" class="text-gray-900 hover:underline subnav-link">Portfolio</a></li>
-              <li><a href="#recent-visuals" class="text-gray-900 hover:underline subnav-link">Recent Visuals</a></li>
-              <li><a href="#testimonials" class="text-gray-900 hover:underline subnav-link">Testimonials</a></li>
-            </ul>
-          </div>
-        </div>
+      <div role="tablist" aria-label="tabs" class="relative mx-auto mt-12 grid h-12 w-auto grid-cols-2 items-center gap-x-1 overflow-hidden rounded-full border border-gray-200 bg-gray-100 px-[3px] text-gray-600 sm:w-max">
+        <div class="tab-indicator absolute h-10 rounded-full bg-white shadow-md" style="left: 4px; width: 114px;"></div>
+        <button role="tab" aria-selected="true" aria-controls="panel-0" tabindex="0" title="Feature 1" class="tab relative block rounded-full py-2.5 px-4 hover:text-primary dark:hover:text-primaryLight">
+          <span class="m-auto block w-max text-sm font-medium tracking-wider">Design Systems</span>
+        </button>
+        <button role="tab" aria-selected="false" aria-controls="panel-1" tabindex="-1" title="Feature 2" class="tab relative block rounded-full py-2.5 px-4 hover:text-primary dark:hover:text-primaryLight">
+          <span class="m-auto block w-max text-sm font-medium tracking-wider">Web Development</span>
+        </button>
       </div>
     </div>
-  </nav>
-  <!-- Parallax Section -->
-  <section class="parallax bg-white">
-    <div class="parallax-content">
-      <section class="mt-16 container mx-auto px-4 md:px-10 lg:px-10 py-16">
-        <div class="md:mt-8 lg:mt-8 xl:mt-8 mt-16  flex flex-col-reverse md:flex-row items-center gap-8 relative z-10">
-          <!-- Headline and Description -->
-          <div id="headline" class="flex flex-col w-full md:w-1/2 mb-8 md:mb-0 initial-hidden">
-            <h1 class="font-extrabold text-4xl md:text-4xl lg:text-5xl xl:text-6xl text-center md:text-left">
-              Hi,<br />
-              I'm Roderick, <br />
-              <span class="text-green">Designer & Developer</span>
-            </h1>
-          </div>
-
-          <!-- Image -->
-          <div id="image" class="  flex justify-center md:justify-end w-full md:w-1/2 initial-hidden">
-            <img src="img/roderick-moise.jpg" alt="Roderick Moise" class="rounded-lg w-3/4 xl:w-96" />
-          </div>
-        </div>
-
-        <!-- Buttons Section -->
-        <section class="flex flex-col md:flex-row md:justify-start gap-4">
-          <!-- View my Projects Button -->
-          <a href="#portfolio" class="button-hover-up inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-black rounded-lg bg-green hover:bg-[#01e1a1] focus:ring-4 focus:ring-blue-300 w-full md:w-auto">
-            View my Projects
-            <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-            </svg>
-          </a>
-
-
-          <!-- Download my CV Button -->
-          <a href="img/Roderick-Moise-CV-Designer-Developer.pdf" class="button-hover-up inline-flex justify-center items-center py-3 px-5 text-sm font-medium text-gray-900 bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-100" target="_blank">
-            Download my CV
-          </a>
-
-        </section>
-
-
-
-        <!-- Social Media Section -->
-        <section class="mt-8 xl:mt-16 lg:mt-16 md:mt-16">
-          <div class="flex space-x-4 items-center justify-center md:justify-start xl:justify-start">
-            <span class="text-gray-600">
-              Follow me on:
-            </span>
-
-            <!-- LinkedIn Icon -->
-            <a target="_blank" href="https://www.linkedin.com/in/roderickmoise/" class="flex justify-center items-center w-8 h-8 rounded-full border lg:h-12 lg:w-12 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 transition-colors duration-300">
-              <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clip-rule="evenodd" />
-                <path d="M7.2 8.809H4V19.5h3.2V8.809Z" />
-              </svg>
-            </a>
-
-            <!-- GitHub Icon -->
-            <a target="_blank" href="https://github.com/rmoise" class="flex justify-center items-center w-8 h-8 rounded-full border lg:h-12 lg:w-12 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 transition-colors duration-300">
-              <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clip-rule="evenodd" />
-              </svg>
-            </a>
-
-            <!-- Twitter Icon -->
-            <a target="_blank" href="https://twitter.com/RoderickMoise" class="flex justify-center items-center w-8 h-8 rounded-full border lg:h-12 lg:w-12 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 transition-colors duration-300">
-              <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" />
-              </svg>
-            </a>
-          </div>
-        </section>
-      </section>
-    </div>
-  </section>
-
-  <!-- Main Content -->
-  <section class="main-content">
-    <!-- About me section -->
-    <div class=" container flex justify-between items-center mx-auto px-4 md:px-10 lg:px-10 w-full">
-      <section class="mt-20 w-full">
-        <h2 id="about" class="secondary-title text-3xl font-bold">About me</h2>
-
-        <p class="mt-6 w-full text-gray-600">
-          Creative and analytical professional with over 10 years of graphic design experience, 4 years in UI/UX design, and 1 year expertise in fullstack web development. Proven ability to enhance user engagement and brand presence through user-centric digital products and high-quality technical solutions.
-        </p>
-      </section>
-    </div>
-    <!-- Expertise section -->
-    <section class="bg-white">
-      <div class=" my-32 px-4 mx-auto max-w-screen-xl lg:px-6">
-        <div class="flex justify-center">
-          <h2 id="expertise" class="secondary-title text-3xl mb-8 font-bold">Expertise</h2>
-        </div>
-        <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-          <div class="border p-8">
-            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-brightGreen lg:h-12 lg:w-12 dark:bg-primary-900">
-              <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a28.076 28.076 0 0 1-1.091 9M7.231 4.37a8.994 8.994 0 0 1 12.88 3.73M2.958 15S3 14.577 3 12a8.949 8.949 0 0 1 1.735-5.307m12.84 3.088A5.98 5.98 0 0 1 18 12a30 30 0 0 1-.464 6.232M6 12a6 6 0 0 1 9.352-4.974M4 21a5.964 5.964 0 0 1 1.01-3.328 5.15 5.15 0 0 0 .786-1.926m8.66 2.486a13.96 13.96 0 0 1-.962 2.683M7.5 19.336C9 17.092 9 14.845 9 12a3 3 0 1 1 6 0c0 .749 0 1.521-.031 2.311M12 12c0 3 0 6-2 9" />
-              </svg>
-
-            </div>
-            <h3 class="mb-2 text-xl font-bold">Brand Identity</h3>
-            <p class="text-gray-600">Crafting distinct brand identities through strategic design and visual storytelling to elevate and unify brands.</p>
-          </div>
-          <div class="border p-8">
-            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-brightGreen lg:h-12 lg:w-12 dark:bg-primary-900">
-              <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                <path fill-rule="evenodd" d="M14 4.182A4.136 4.136 0 0 1 16.9 3c1.087 0 2.13.425 2.899 1.182A4.01 4.01 0 0 1 21 7.037c0 1.068-.43 2.092-1.194 2.849L18.5 11.214l-5.8-5.71 1.287-1.31.012-.012Zm-2.717 2.763L6.186 12.13l2.175 2.141 5.063-5.218-2.141-2.108Zm-6.25 6.886-1.98 5.849a.992.992 0 0 0 .245 1.026 1.03 1.03 0 0 0 1.043.242L10.282 19l-5.25-5.168Zm6.954 4.01 5.096-5.186-2.218-2.183-5.063 5.218 2.185 2.15Z" clip-rule="evenodd" />
-              </svg>
-
-            </div>
-            <h3 class="mb-2 text-xl font-bold">UI/UX Design</h3>
-            <p class="text-gray-600">Designing intuitive UI/UX to enhance user engagement and create seamless, impactful digital experiences.</p>
-          </div>
-          <div class="border p-8">
-            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-brightGreen lg:h-12 lg:w-12 dark:bg-primary-900">
-              <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14" />
-              </svg>
-            </div>
-            <h3 class="mb-2 text-xl font-bold">Web Development</h3>
-            <p class="text-gray-600">Crafting robust, responsive websites that blend modern tech with user-focused design for optimal performance.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Portfolio section -->
-    <div class=" container mt-32 flex justify-between items-center mx-auto px-4 md:px-10 lg:px-10 w-full">
-      <section class="w-full">
-        <div class=" flex justify-center">
-          <h2 id="portfolio" class=" secondary-title text-3xl font-bold">Portfolio</h2>
-        </div>
-        <p class="my-6 w-full text-center text-gray-600 mb-16">
-          Discover a diverse collection of design and brand systems, along with web development projects, showcased in my portfolio. These works reflect my expertise in creating impactful solutions across various companies and personal endeavors throughout my career.</p>
-      </section>
-    </div>
-
-    <!-- Projects section -->
-    <div class="container flex justify-center items-center mx-auto  border-b border-gray-200
-            ">
-      <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" data-tabs-active-classes="text-black hover:text-black text-black hover:text-black border-black border-text-green" data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
-        <li class="me-2 rounded-t-lg" role="presentation">
-          <button class="text-base font-bold inline-block p-4 border-b-2 rounded-t-lg" id="design-tab" data-tabs-target="#design-tab-content" type="button" role="tab" aria-controls="profile" aria-selected="false">Design Systems</button>
-        </li>
-        <li class="me-2 rounded-t-lg" role="presentation">
-          <button class="text-base font-bold inline-block p-4 border-b-2 rounded-t-lg  hover:text-gray-600 hover:border-gray-300  dark:hover:text-gray-300" id="dashboard-tab" data-tabs-target="#dev-tab-content" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Web Development</button>
-        </li>
-
-      </ul>
-    </div>
-    <div id="default-tab-content ">
-      <div class="hidden p-4 mt-10 rounded-lg" id="design-tab-content" role="tabpanel" aria-labelledby="profile-tab">
-        <p class="text-sm text-gray-600"><!-- Work section-->
-        <div class="container mt-8 flex justify-between items-center mx-auto px-4 md:px-10 2xl:px-48 lg:px-10 w-full">
+    <div class="mt-8">
+      <div class="relative">
+        <!-- Panel 0 for Feature 1 -->
+        <div class="panel block transition duration-500" id="panel-0">
+          <!-- Container for Feature 1 content -->
           <section class="w-full">
             <h3 id="design" class="text-2xl font-bold">
               Design Systems
@@ -398,9 +97,7 @@
                   </div>
 
                   <p class="mb-4 text-gray-600">
-                    Smunch is a startup based in Berlin that wants to make it easy
-                    for companies to provide healthy, mindful food for their
-                    employees.
+                    Smunch is a startup based in Berlin that wants to make it easy for companies to provide healthy, mindful food for their employees.
                   </p>
                   <div class="flex">
                     <a href="smunchcase.html" class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue">
@@ -430,7 +127,6 @@
 
                   <p class="mb-4 text-gray-600">
                     coGalleries is a creative travel company offering unique private art tours and cultural trips.
-
                   </p>
                   <div class="flex">
                     <a href="cogalleriescase.html" class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue">
@@ -439,6 +135,7 @@
                   </div>
                 </div>
               </div>
+
               <!-- project 4 -->
               <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
                 <!-- Project image-->
@@ -469,6 +166,7 @@
                   </div>
                 </div>
               </div>
+
               <!-- project 5 -->
               <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
                 <!-- Project image-->
@@ -500,6 +198,7 @@
                   </div>
                 </div>
               </div>
+
               <!-- project 6 -->
               <div class="w-full border border-nav py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2">
                 <!-- Project image-->
@@ -526,17 +225,13 @@
                     </a>
                   </div>
                 </div>
-              </div>
-
-            </div>
+              </div></div>
           </section>
         </div>
 
-        </p>
-      </div>
-      <div class="hidden p-4 rounded-lg mt-10" id="dev-tab-content" role="tabpanel" aria-labelledby="dashboard-tab">
-        <p class="text-sm text-gray-600"><!-- Work section-->
-        <div class="container mt-8 flex justify-between items-center mx-auto px-4 2xl:px-48 lg:px-10 w-full">
+        <!-- Panel 1 for Feature 2 -->
+        <div class="panel hidden transition duration-500" id="panel-1">
+          <!-- Content for Feature 2 -->
           <section class="w-full">
             <h2 id="dev" class="text-2xl font-bold">
               Web Development
@@ -820,168 +515,48 @@
             </div>
           </section>
         </div>
-        </p>
       </div>
     </div>
+  </div>
 
-    <!-- Recent Visuals-->
-    <section class=" bg-white container mx-auto px-4 md:px-10 lg:px-10 py-16">
-      <div class="flex mt-32 justify-center">
-        <h2 id="recent-visuals" class="secondary-title text-3xl mb-8 font-bold">Recent Visuals</h2>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tabs = document.querySelectorAll('.tab');
+      const panels = document.querySelectorAll('.panel');
+      const indicator = document.querySelector('.tab-indicator');
 
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_1b.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_2b.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_3d.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_4.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_5.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_6.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_7.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_8.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_9.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_10.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_11.png" alt="">
-        </div>
-        <div>
-          <img class="h-auto max-w-full rounded-lg" src="img/Baugasm_12c.png" alt="">
-        </div>
-      </div>
-    </section>
+      function updateTabIndicator() {
+        const selectedTab = document.querySelector('[aria-selected="true"]');
+        if (selectedTab) {
+          const rect = selectedTab.getBoundingClientRect();
+          const containerRect = selectedTab.parentElement.getBoundingClientRect();
+          const indicatorWidth = selectedTab.offsetWidth;
+          indicator.style.left = `${rect.left - containerRect.left}px`;
+          indicator.style.width = `${indicatorWidth}px`;
+        }
+      }
 
-    <!-- Testimonials -->
-    <section class="bg-white mt-32">
-      <div class=" px-4 mx-auto max-w-screen-xl lg:px-6">
-        <div class="flex justify-center">
-          <h2 id="testimonials" class="secondary-title text-3xl mb-8 font-bold">Testimonials</h2>
-        </div>
-        <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-          <div class="border p-8">
-            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12">
-              <img class="rounded-full w-9 h-9" src="img/1557924741235.jpeg" alt="profile picture">
-            </div>
-            <h3 class="mb-2 text-xl font-semibold ">Outstanding Design Talent</h3>
-            <p class="text-gray-600 ">"The services provided by Roderick are unique because he is capable of conceptualizing new design methods, has a strong design sense, and is a hard worker."</p>
-            <div class=" font-medium  text-left mt-4 rtl:text-right">
-              <div>Robin Resch</div>
-              <div class="text-sm text-gray-600 ">Founder of coGalleries</div>
-            </div>
-          </div>
-          <div class="border p-8">
-            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <img class="rounded-full w-9 h-9" src="img/1624139644141.jpeg" alt="profile picture">
-            </div>
-            <h3 class="mb-2 text-xl font-semibold">Independence & Adaptability</h3>
-            <p class="text-gray-600 ">
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function () {
+          tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+          tab.setAttribute('aria-selected', 'true');
 
-              "Roderick showed exceptional independence and adaptability, quickly adjusting to changes. His dedication, pioneering spirit, and strong work ethic greatly contributed to our success and consistently met high standards."</p>
-            <div class=" font-medium  text-left mt-4 rtl:text-right">
-              <div>Claudia Projic</div>
-              <div class="text-sm text-gray-600 ">Managing Director at Kyto</div>
-            </div>
-          </div>
-          <div class="border p-8">
-            <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <img class="rounded-full w-9 h-9" src="img/1516849364200.jpeg" alt="profile picture">
-            </div>
-            <h3 class="mb-2 text-xl font-semibold ">
+          const panelId = tab.getAttribute('aria-controls');
+          panels.forEach(p => {
+            p.classList.add('hidden');
+            p.classList.remove('block');
+          });
+          document.getElementById(panelId).classList.remove('hidden');
+          document.getElementById(panelId).classList.add('block');
 
-              Expert Knowledge & Solutions</h3>
-            <p class="text-gray-600 ">
+          updateTabIndicator();
+        });
+      });
 
-              "Mr. Moise applied extensive specialist knowledge confidently and skillfully, enhancing expertise through seminars and delivering committed, effective solutions."</p>
-            <div class=" font-medium  text-left mt-4 rtl:text-right">
-              <div>Christian Kapferer</div>
-              <div class="text-sm text-gray-600 ">Team Lead HR Business Partner at KARL STORZ</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Your contact form HTML -->
-    <section class=" bg-white container mx-auto px-4 md:px-10 lg:px-10 py-16">
-      <div class="mt-32">
-        <h1 id="contact" class="secondary-title text-3xl font-bold">Contact me</h1>
-        <p class="section-paragraph text-gray-600">Please use the form below to send me a message. I'll be happy to hear from you.</p>
-        <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-16">
-          <form class="space-y-8 input-form" method="POST">
-            <div>
-              <label for="form-name" class="block mb-4 text-xl font-bold">Your name</label>
-              <input type="text" name="name" id="form-name" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
-            </div>
-            <div>
-              <label for="form-email" class="block mb-4 text-xl font-bold">Your email</label>
-              <input type="email" name="email" id="form-email" class="w-full border border-input-border bg-slate-100 px-4 py-2" required />
-            </div>
-            <div>
-              <label for="form-message" class="block mb-4 text-xl font-bold">Your message</label>
-              <textarea name="message" id="form-message" class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none" placeholder="Type your message here..." required></textarea>
-            </div>
-            <button type="submit" class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Send it!</button>
-          </form>
-          <!-- Contact info -->
-          <div class="mt-12">
-            <p>+49 163 7126279</p>
-            <a href="mailto:roderickfmoise@gmail.com" class="underline mt-3 block">roderickfmoise@gmail.com</a>
-            <a href="img/Roderick-Moise-CV-Designer-Developer.pdf" target="_blank" class="underline mt-3 block"><b>Download my CV</b></a>
-            <!-- Socials -->
-            <div class="flex mt-16 space-x-6 items-center">
-              <!-- LinkedIn logo -->
-              <a target="_blank" href="https://www.linkedin.com/in/roderickmoise/">
-                <svg class="w-[32px] h-[32px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd" d="M12.51 8.796v1.697a3.738 3.738 0 0 1 3.288-1.684c3.455 0 4.202 2.16 4.202 4.97V19.5h-3.2v-5.072c0-1.21-.244-2.766-2.128-2.766-1.827 0-2.139 1.317-2.139 2.676V19.5h-3.19V8.796h3.168ZM7.2 6.106a1.61 1.61 0 0 1-.988 1.483 1.595 1.595 0 0 1-1.743-.348A1.607 1.607 0 0 1 5.6 4.5a1.601 1.601 0 0 1 1.6 1.606Z" clip-rule="evenodd" />
-                  <path d="M7.2 8.809H4V19.5h3.2V8.809Z" />
-                </svg>
-              </a>
-              <!-- Github logo -->
-              <a target="_blank" href="https://github.com/rmoise">
-                <svg class="w-[28px] h-[28px] text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                  <path fill-rule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clip-rule="evenodd" />
-                </svg>
-              </a>
-              <!-- Twitter logo -->
-              <a target="_blank" href="https://twitter.com/RoderickMoise">
-                <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </section>
-
-
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
-  <script src="js/navigation.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/gradient.js"></script>
-  <script src="js/script.js"></script>
+      // Initial call to position the indicator correctly
+      updateTabIndicator();
+    });
+  </script>
 </body>
 
 </html>
