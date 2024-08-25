@@ -1649,3 +1649,7 @@ body {
     .tab-indicator {
       transition: left 0.3s ease, width 0.3s ease;
     }
+
+    :root {
+    --custom-green: #01f3ab; /* Replace with your actual green hex code */
+}
