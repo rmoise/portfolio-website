@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const subNav = document.getElementById('sub-nav');
     const body = document.body;
     const mobileMenu = document.querySelector('.mobile-menu');
-    const menuButton = document.querySelector('.menu-button'); // Make sure to have a button to open the menu
+    const menuButton = document.querySelector('.menu-button'); // Button to open the menu
     let isMenuOpen = false;
     let scrollPosition = 0;
 
@@ -13,11 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const mainNavHeight = mainNav.offsetHeight;
             const scrollThreshold = 5;
 
+            // Ensure the transformation only affects the navigation bars
             if (scrollY > mainNavHeight) {
                 if (scrollY > scrollPosition + scrollThreshold) {
+                    // Translate up to hide
                     mainNav.style.transform = `translateY(-${mainNavHeight}px)`;
                     subNav.style.transform = `translateY(-${mainNavHeight}px)`;
                 } else if (scrollY < scrollPosition - scrollThreshold) {
+                    // Translate back down to show
                     mainNav.style.transform = 'translateY(0)';
                     subNav.style.transform = 'translateY(0)';
                 }
