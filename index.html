@@ -1365,9 +1365,12 @@
       }
     }
 
+    // Create a debounced version of the updateParallax function
+    const updateParallaxDebounced = debounce(updateParallax, 10);
+
     // Use requestAnimationFrame for smoother animations
     function onScrollOrResize() {
-      requestAnimationFrame(updateParallax);
+      requestAnimationFrame(updateParallaxDebounced);
     }
 
     // Add event listeners for scroll and resize events
