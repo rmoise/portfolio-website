@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon-32x32.png" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Roderick's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js" defer></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+        /* Hide scrollbar for mobile */
+        .scrollbar-hidden::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* For other browsers */
+        .scrollbar-hidden {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+       /* Ensure the slider container is positioned properly */
+#tools-slider {
+  overflow-x: auto;
+  white-space: nowrap;
+
+  scroll-behavior: smooth; /* Smooth scroll for clicking dots */
+}
+/* General styling for tool items */
+.tool-item {
+  display: inline-block;
+  width: 100%; /* Adjust based on your needs */
+  flex-shrink: 0;
+  /* Add other styling as needed */
+}
+
+/* Dots slider container (hidden by default) */
+#dots-container {
+ display: none !important; /* Hidden by default */  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+}
+
+/* Dot styling */
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: black;
+}
+
+
+/* Show dots only on mobile devices */
+@media (max-width: 768px) {
+  #dots-container {
+    display: flex !important; /* Show dots on mobile */
+  }
+}
+
+
+    </style>
+
+</head>
+
+<body class="bg-gray-100 text-gray-900">
+    <!-- Tools Section -->
+    <section class="relative container mx-auto px-4 md:px-10 lg:px-10 py-16">
+        <div class="relative mx-auto border-gray-200">
+            <div class="relative flex items-center">
+                <!-- Section Title -->
+                <span id="expertise" class="text-gray-500">Tools</span>
+                <!-- Line container for the right side -->
+                <div class="flex-grow border-t-2 border-gray-200 ml-4"></div>
+            </div>
+
+            <!-- Header and Description -->
+            <div class="mt-8 gap-4 sm:grid sm:grid-cols-2 md:gap-6 lg:gap-12">
+                <div class="w-full">
+                    <h2 class="md:text-3xl lg:text-3xl xl:3xl text-2xl secondary-title font-bold">Identity, UX & Web</h2>
+                </div>
+            </div>
+
+
+                    <!-- Tools Content -->
+                    <div class="mt-16">
+                        <section>
+                            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                                <!-- Horizontal scroll container for mobile -->
+                                <div class="relative overflow-x-auto md:overflow-x-visible">
+                                    <div id="tools-slider" class="flex md:grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+                                        <!-- Tool icons -->
+                                        <a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
+                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
+                                            </svg>
+                                        </a><a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
+                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
+                                            </svg>
+                                        </a><a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
+                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
+                                            </svg>
+                                        </a><a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
+                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
+                                            </svg>
+                                        </a><a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
+                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
+                                            </svg>
+                                        </a>
+                                        <!-- Repeat for other tools... -->
+                                    </div>
+                                </div>
+
+                                <!-- Dots Slider (Only visible on mobile) -->
+                                <div id="dots-container" class="-mb-16 dots-slider">
+                                    <!-- JavaScript will populate dots here -->
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+
+        </div>
+    </section>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('tools-slider');
+    const dotsContainer = document.getElementById('dots-container');
+    let containerWidth = slider.offsetWidth;
+
+    // Create dots based on the number of slides
+    function createDots() {
+      dotsContainer.innerHTML = ''; // Clear existing dots
+      const numDots = Math.ceil(slider.scrollWidth / containerWidth);
+      for (let i = 0; i < numDots; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        dot.dataset.index = i;
+        dotsContainer.appendChild(dot);
+      }
+      updateDots(); // Set the initial active dot
+    }
+
+    // Update dots based on scroll position
+    function updateDots() {
+      const scrollLeft = slider.scrollLeft;
+      const maxScrollLeft = slider.scrollWidth - containerWidth;
+      const numDots = dotsContainer.children.length;
+      const currentDotIndex = Math.round((scrollLeft / maxScrollLeft) * (numDots - 1));
+
+      Array.from(dotsContainer.children).forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentDotIndex);
+      });
+    }
+
+    // Handle dot clicks to scroll to the corresponding section
+    dotsContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains('dot')) {
+        const index = event.target.dataset.index;
+        const scrollTo = (slider.scrollWidth / dotsContainer.children.length) * index;
+        slider.scrollTo({
+          left: scrollTo,
+          behavior: 'smooth'
+        });
+      }
+    });
+
+    // Initialize dots and set up event listeners
+    createDots();
+    slider.addEventListener('scroll', updateDots);
+    window.addEventListener('resize', () => {
+      containerWidth = slider.offsetWidth; // Update container width on resize
+      createDots(); // Recalculate dots on resize
+      updateDots(); // Update dots position
+    });
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
+
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

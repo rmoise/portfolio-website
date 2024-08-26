@@ -16,75 +16,122 @@
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js" defer></script>
   <style>
-    .tab-indicator {
-      transition: left 0.3s ease, width 0.3s ease;
+    .feature-image {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-44%, -42%);
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .feature-content {
+      position: relative;
+    }
+
+    .hidden {
+      display: none;
     }
   </style>
 </head>
 
 <body>
-  <section class="relative py-32">
-    <!-- Gradient Background -->
-    <div aria-hidden="true" class="absolute inset-0 grid grid-cols-2 -space-x-52 opacity-50 dark:opacity-30">
-      <div class="h-60 bg-gradient-to-br from-[var(--custom-green)] to-brightGreen blur-[106px] "></div>
-      <div class="h-40 bg-gradient-to-r from-[var(--custom-green)] to-brightGreen blur-[106px] "></div>
-    </div>
+  <section id="features" aria-label="Features for running your books" class="relative overflow-hidden bg-blue-600 pb-28 pt-20 sm:py-32">
+    <!-- Background Image -->
+    <img alt="" loading="lazy" class="feature-image" src="https://via.placeholder.com/2245x1636?text=Background+Features">
 
-    <!-- Content Goes Here -->
-    <div class="relative mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
-      <div class="text-center">
-        <h2 class="text-3xl font-bold text-gray-800 dark:text-white md:text-4xl xl:text-5xl">A technology-first approach</h2>
-        <p class="mx-auto mt-6 text-gray-700 dark:text-gray-300 md:w-3/4 lg:w-3/5">
-          A growing team doesn't need to mean growing pains. Privacy, and the right tool for every step of your journey - Jira Software friction - company size.
-        </p>
+    <div class="feature-content mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <!-- Section Title and Description -->
+      <div class="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
+        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">Everything you need to run your books.</h2>
+        <p class="mt-6 text-lg text-blue-100">Well everything you need if you aren’t that picky about minor details like tax compliance.</p>
       </div>
 
-      <!-- Features Grid -->
-      <div class="mt-16 grid gap-8 sm:mx-auto sm:w-2/3 md:w-full md:grid-cols-2 lg:grid-cols-3">
-        <!-- First Feature -->
-        <div class="rounded-3xl border border-gray-100 bg-white p-8 py-12 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12">
-          <div class="space-y-12 text-center">
-            <img src="https://cdn-icons-png.flaticon.com/512/584/584796.png" class="mx-auto h-14 w-auto" alt="burger illustration">
-            <div class="space-y-6">
-              <h3 class="text-2xl font-semibold text-gray-800 transition dark:text-white">First feature</h3>
-              <p class="text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe nesciunt neque culpa hic illum ab qui error repellendus asperiores unde ut ipsam perferendis nemo fuga cum, eum consectetur, magnam doloremque!</p>
-              <a aria-label="read more" href="#" class="group relative mx-auto flex h-12 w-12 items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="relative h-5 w-5 text-gray-600 transition duration-300 group-hover:translate-x-1 dark:text-white">
-                  <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clip-rule="evenodd"></path>
-                </svg>
-              </a>
+      <!-- Feature Tabs -->
+      <div class="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0">
+        <div class="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
+          <div class="relative z-10 flex gap-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:gap-x-0 lg:gap-y-1 lg:whitespace-normal" role="tablist" aria-orientation="horizontal">
+            <!-- Tab 1 -->
+            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 bg-white lg:bg-white/10 lg:ring-1 lg:ring-inset lg:ring-white/10">
+              <h3>
+                <button class="tab-button font-display text-lg text-blue-600 lg:text-white" data-tab="panel-1" aria-selected="true" tabindex="0">
+                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Payroll
+                </button>
+              </h3>
+              <p class="mt-2 hidden text-sm lg:block text-white">Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.</p>
+            </div>
+            <!-- Tab 2 -->
+            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
+              <h3>
+                <button class="tab-button font-display text-lg text-blue-100 hover:text-white lg:text-white" data-tab="panel-2" aria-selected="false" tabindex="-1">
+                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Claim expenses
+                </button>
+              </h3>
+              <p class="mt-2 hidden text-sm lg:block text-blue-100 group-hover:text-white">All of your receipts organized into one place, as long as you don't mind typing in the data by hand.</p>
+            </div>
+            <!-- Tab 3 -->
+            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
+              <h3>
+                <button class="tab-button font-display text-lg text-blue-100 hover:text-white lg:text-white" data-tab="panel-3" aria-selected="false" tabindex="-1">
+                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>VAT handling
+                </button>
+              </h3>
+              <p class="mt-2 hidden text-sm lg:block text-blue-100 group-hover:text-white">We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.</p>
+            </div>
+            <!-- Tab 4 -->
+            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
+              <h3>
+                <button class="tab-button font-display text-lg text-blue-100 hover:text-white lg:text-white" data-tab="panel-4" aria-selected="false" tabindex="-1">
+                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Reporting
+                </button>
+              </h3>
+              <p class="mt-2 hidden text-sm lg:block text-blue-100 group-hover:text-white">Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.</p>
             </div>
           </div>
         </div>
 
-        <!-- Second Feature -->
-        <div class="rounded-3xl border border-gray-100 bg-white p-8 py-12 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12">
-          <div class="space-y-12 text-center">
-            <img src="https://cdn-icons-png.flaticon.com/512/6106/6106288.png" class="mx-auto h-14 w-auto" alt="burger illustration">
-            <div class="space-y-6">
-              <h3 class="text-2xl font-semibold text-gray-800 transition dark:text-white">Second feature</h3>
-              <p class="text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe nesciunt neque culpa hic illum ab qui error repellendus asperiores unde ut ipsam perferendis nemo fuga cum, eum consectetur, magnam doloremque!</p>
-              <a aria-label="read more" href="#" class="group relative mx-auto flex h-12 w-12 items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="relative h-5 w-5 text-gray-600 transition duration-300 group-hover:translate-x-1 dark:text-white">
-                  <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clip-rule="evenodd"></path>
-                </svg>
-              </a>
+        <!-- Tab Panels -->
+        <div class="lg:col-span-7">
+          <!-- Panel 1 -->
+          <div id="panel-1" role="tabpanel" class="tab-panel" aria-labelledby="tab-1">
+            <div class="relative sm:px-6 lg:hidden">
+              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
+              <p class="relative mx-auto max-w-2xl text-base text-white sm:text-center">Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.</p>
+            </div>
+            <div class="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+              <img alt="" class="w-full" src="img/Kyto-01.png">
             </div>
           </div>
-        </div>
-
-        <!-- Third Feature -->
-        <div class="rounded-3xl border border-gray-100 bg-white p-8 py-12 shadow-2xl shadow-gray-600/10 dark:border-gray-700 dark:bg-gray-800 dark:shadow-none sm:p-12">
-          <div class="space-y-12 text-center">
-            <img src="https://cdn-icons-png.flaticon.com/512/4727/4727266.png" class="mx-auto h-14 w-auto" alt="burger illustration">
-            <div class="space-y-6">
-              <h3 class="text-2xl font-semibold text-gray-800 transition dark:text-white">Third feature</h3>
-              <p class="text-gray-600 dark:text-gray-300">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe nesciunt neque culpa hic illum ab qui error repellendus asperiores unde ut ipsam perferendis nemo fuga cum, eum consectetur, magnam doloremque!</p>
-              <a aria-label="read more" href="#" class="group relative mx-auto flex h-12 w-12 items-center justify-center before:absolute before:inset-0 before:rounded-full before:border before:border-gray-200 before:bg-gray-50 before:bg-gradient-to-b before:transition-transform before:duration-300 hover:before:scale-105 active:duration-75 active:before:scale-95 dark:before:border-gray-700 dark:before:bg-gray-800">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="relative h-5 w-5 text-gray-600 transition duration-300 group-hover:translate-x-1 dark:text-white">
-                  <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 010 1.06l-7.5 7.5a.75.75 0 01-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 011.06-1.06l7.5 7.5z" clip-rule="evenodd"></path>
-                </svg>
-              </a>
+          <!-- Panel 2 -->
+          <div id="panel-2" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-2">
+            <div class="relative sm:px-6 lg:hidden">
+              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
+              <p class="relative mx-auto max-w-2xl text-base text-white sm:text-center">All of your receipts organized into one place, as long as you don't mind typing in the data by hand.</p>
+            </div>
+            <div class="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+              <img alt="" class="w-full" src="https://via.placeholder.com/2174x1464?text=Expenses">
+            </div>
+          </div>
+          <!-- Panel 3 -->
+          <div id="panel-3" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-3">
+            <div class="relative sm:px-6 lg:hidden">
+              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
+              <p class="relative mx-auto max-w-2xl text-base text-white sm:text-center">We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.</p>
+            </div>
+            <div class="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+              <img alt="" class="w-full" src="https://via.placeholder.com/2174x1464?text=VAT+Handling">
+            </div>
+          </div>
+          <!-- Panel 4 -->
+          <div id="panel-4" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-4">
+            <div class="relative sm:px-6 lg:hidden">
+              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
+              <p class="relative mx-auto max-w-2xl text-base text-white sm:text-center">Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.</p>
+            </div>
+            <div class="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
+              <img alt="" class="w-full" src="https://via.placeholder.com/2174x1464?text=Reporting">
             </div>
           </div>
         </div>
@@ -92,50 +139,48 @@
     </div>
   </section>
 
+<div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
+  <div class="rounded-lg overflow-hidden h-[156px] md:h-[278px] bg-white dark:bg-gray-800">
+    <img src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen.png" class="dark:hidden h-[156px] md:h-[278px] w-full rounded-lg" alt="">
+    <img src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen-dark.png" class="hidden dark:block h-[156px] md:h-[278px] w-full rounded-lg" alt="">
+  </div>
+</div>
+<div class="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl rounded-t-sm h-[17px] max-w-[351px] md:h-[21px] md:max-w-[597px]">
+  <div class="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-xl w-[56px] h-[5px] md:w-[96px] md:h-[8px] bg-gray-800"></div>
+</div>
+
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
-      const tabs = document.querySelectorAll('.tab');
-      const panels = document.querySelectorAll('.panel');
-      const indicator = document.querySelector('.tab-indicator');
-
-      function updateTabIndicator() {
-        const selectedTab = document.querySelector('[aria-selected="true"]');
-        if (selectedTab) {
-          const rect = selectedTab.getBoundingClientRect();
-          const containerRect = selectedTab.parentElement.getBoundingClientRect();
-          const indicatorWidth = selectedTab.offsetWidth;
-          indicator.style.left = `${rect.left - containerRect.left}px`;
-          indicator.style.width = `${indicatorWidth}px`;
-        }
-      }
+      const tabs = document.querySelectorAll('.tab-button');
+      const panels = document.querySelectorAll('.tab-panel');
 
       tabs.forEach(tab => {
         tab.addEventListener('click', function () {
+          const targetPanel = document.getElementById(this.getAttribute('data-tab'));
+
+          // Hide all panels
+          panels.forEach(panel => panel.classList.add('hidden'));
+
+          // Remove 'aria-selected' from all tabs
           tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-          tab.setAttribute('aria-selected', 'true');
+          // Add 'aria-selected' to clicked tab
+          this.setAttribute('aria-selected', 'true');
 
-          const panelId = tab.getAttribute('aria-controls');
-          panels.forEach(p => {
-            p.classList.add('hidden');
-            p.classList.remove('block');
-          });
-          document.getElementById(panelId).classList.remove('hidden');
-          document.getElementById(panelId).classList.add('block');
-
-          updateTabIndicator();
+          // Show the target panel
+          targetPanel.classList.remove('hidden');
         });
       });
-
-      // Initial call to position the indicator correctly
-      updateTabIndicator();
     });
   </script>
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+      <script src="./node_modules/preline/dist/preline.js"></script>
+     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
 </body>
 
 </html>

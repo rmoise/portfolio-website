@@ -1653,3 +1653,64 @@ body {
     :root {
     --custom-green: #01f3ab; /* Replace with your actual green hex code */
 }
+
+  /* Hide scrollbar for mobile */
+        .scrollbar-hidden::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* For other browsers */
+        .scrollbar-hidden {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+       /* Ensure the slider container is positioned properly */
+#tools-slider {
+  overflow-x: auto;
+  white-space: nowrap;
+
+  scroll-behavior: smooth; /* Smooth scroll for clicking dots */
+}
+/* General styling for tool items */
+.tool-item {
+  display: inline-block;
+  width: 100%; /* Adjust based on your needs */
+  flex-shrink: 0;
+  /* Add other styling as needed */
+}
+
+/* Dots slider container (hidden by default) */
+#dots-container {
+ display: none !important; /* Hidden by default */  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+}
+
+/* Dot styling */
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: black;
+}
+
+
+/* Show dots only on mobile devices */
+@media (max-width: 768px) {
+  #dots-container {
+    display: flex !important; /* Show dots on mobile */
+  }
+}
