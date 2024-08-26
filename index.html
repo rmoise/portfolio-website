@@ -1348,21 +1348,22 @@
       // Toggle overlay class based on scroll position
       parallax.classList.toggle('overlay', scrollTop > 0);
 
-      // Parallax effect logic
+      // Calculate the parallax effect based on scroll position
+      const speedFactor = 0.3;
+      let translateY = 0;
+
       if (window.innerWidth <= 768) {
-        if (scrollTop + windowHeight >= parallaxHeight + 100) {
-          const offset = scrollTop - parallaxHeight + windowHeight - 100;
-          parallax.style.transform = `translateY(${Math.max(0, offset * 0.3)}px)`;
-        } else {
-          parallax.style.transform = 'translateY(0)';
+        if (scrollTop + windowHeight > parallaxHeight) {
+          translateY = (scrollTop - parallaxHeight + windowHeight) * speedFactor;
         }
       } else {
-        if (scrollTop >= parallaxHeight) {
-          parallax.style.transform = `translateY(${Math.max(0, (scrollTop - parallaxHeight) * 0.3)}px)`;
-        } else {
-          parallax.style.transform = 'translateY(0)';
+        if (scrollTop > parallaxHeight) {
+          translateY = (scrollTop - parallaxHeight) * speedFactor;
         }
       }
+
+      // Apply the transform with a smooth transition
+      parallax.style.transform = `translateY(${Math.max(0, translateY)}px)`;
     }
 
     // Create a debounced version of the updateParallax function
@@ -1377,6 +1378,7 @@
     window.addEventListener('scroll', onScrollOrResize);
     window.addEventListener('resize', onScrollOrResize);
   </script>
+
 
 
 
