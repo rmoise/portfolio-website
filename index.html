@@ -1344,12 +1344,9 @@
       const scrollTop = window.pageYOffset;
       const parallaxHeight = parallax.offsetHeight;
       const windowHeight = window.innerHeight;
-
-      // Toggle overlay class based on scroll position
-      parallax.classList.toggle('overlay', scrollTop > 0);
+      const speedFactor = 0.3;
 
       // Calculate the parallax effect based on scroll position
-      const speedFactor = 0.3;
       let translateY = 0;
 
       if (window.innerWidth <= 768) {
