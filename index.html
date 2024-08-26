@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+  <link rel="preload" as="image" href="img/roderick-moise.jpg">
   <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js" defer></script>
 
 </head>
@@ -212,7 +213,7 @@
 
           <!-- Image -->
           <div id="image" class="  flex justify-center md:justify-end w-full md:w-1/2 initial-hidden z-10">
-            <img src="img/roderick-moise.jpg" alt="Roderick Moise" class="rounded-lg w-3/4 xl:w-96" />
+            <img src="img/roderick-moise.jpg" alt="Roderick Moise" class="rounded-lg w-3/4 xl:w-96 loading="eager" />
           </div>
         </div>
 
@@ -1342,40 +1343,38 @@
       const parallax = document.getElementById('parallax');
       const scrollTop = window.pageYOffset;
       const parallaxHeight = parallax.offsetHeight;
+      const windowHeight = window.innerHeight;
 
-      // Add overlay as soon as scrolling starts
-      if (scrollTop > 0) {
-        parallax.classList.add('overlay');
-      } else {
-        parallax.classList.remove('overlay');
-      }
+      // Toggle overlay class based on scroll position
+      parallax.classList.toggle('overlay', scrollTop > 0);
 
       // Parallax effect logic
       if (window.innerWidth <= 768) {
-        if (scrollTop + window.innerHeight >= parallaxHeight + 100) {
-          const speedFactor = 0.3;
-          const offset = scrollTop - parallaxHeight + window.innerHeight - 100;
-          parallax.style.transform = `translateY(${Math.max(0, offset * speedFactor)}px)`;
+        if (scrollTop + windowHeight >= parallaxHeight + 100) {
+          const offset = scrollTop - parallaxHeight + windowHeight - 100;
+          parallax.style.transform = `translateY(${Math.max(0, offset * 0.3)}px)`;
         } else {
           parallax.style.transform = 'translateY(0)';
         }
       } else {
         if (scrollTop >= parallaxHeight) {
-          const speedFactor = 0.3;
-          parallax.style.transform = `translateY(${Math.max(0, (scrollTop - parallaxHeight) * speedFactor)}px)`;
+          parallax.style.transform = `translateY(${Math.max(0, (scrollTop - parallaxHeight) * 0.3)}px)`;
         } else {
           parallax.style.transform = 'translateY(0)';
         }
       }
     }
 
-    // Create a debounced version of the updateParallax function
-    const updateParallaxDebounced = debounce(updateParallax, 10);
+    // Use requestAnimationFrame for smoother animations
+    function onScrollOrResize() {
+      requestAnimationFrame(updateParallax);
+    }
 
     // Add event listeners for scroll and resize events
-    window.addEventListener('scroll', updateParallaxDebounced);
-    window.addEventListener('resize', updateParallaxDebounced);
+    window.addEventListener('scroll', onScrollOrResize);
+    window.addEventListener('resize', onScrollOrResize);
   </script>
+
 
 
   <script>
