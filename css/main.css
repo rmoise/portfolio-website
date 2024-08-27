@@ -1792,8 +1792,6 @@ body {
   pointer-events: none; /* Ensure the element is not interactive when hidden */
 }
 
- @
-
 
 
 /* Define the keyframes for the shaking effect */
