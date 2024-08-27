@@ -1569,18 +1569,30 @@ body {
 
 .parallax::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0); /* Initially no overlay */
+
   z-index: 2;
   transition: background 0.3s ease; /* Smooth transition for overlay */
 }
 
 .parallax.overlay::before {
   background: rgba(249, 250, 251, 1); /* Dark overlay */
+
+}
+
+.gradient-bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 25%; /* Adjust height as needed */
+  z-index: -10; /* Ensure it stays behind content */
+  pointer-events: none; /* Ensure it does not capture mouse events */
 }
 
 .parallax-content {
