@@ -1598,6 +1598,8 @@ body {
   margin-top: 100vh;
 }
 
+
+
 /* Disable fixed position and adjust margin on mobile */
 @media (max-width: 768px) {
   .parallax {
@@ -1612,18 +1614,7 @@ body {
   }
 }
 
-/* Scroll Icon Styles */
-.scroll-icon {
-  margin-top: 2rem;
-  text-align: center;
-}
 
-.scroll-icon svg {
-  width: 24px;
-  height: 24px;
-  fill: #000;
-  animation: bounce 1.5s infinite;
-}
 
 @keyframes bounce {
   0%,
@@ -1640,6 +1631,10 @@ body {
     transform: translateY(-5px);
   }
 }
+
+.bounce {
+      animation: bounce 1.5s infinite;
+    }
 
 /* Ensure it's positioned above other content */
 #notification {
@@ -1782,4 +1777,61 @@ body {
     gap: 2rem;
   }
 }
+
+
+/* Initial visibility of scroll icon */
+#scroll-icon {
+  opacity: 1;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Class to hide scroll icon */
+.hidden-scroll {
+  opacity: 0;
+  visibility: hidden; /* Hide the element from layout and interactions */
+  pointer-events: none; /* Ensure the element is not interactive when hidden */
+}
+
+ @
+
+
+
+/* Define the keyframes for the shaking effect */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* Base styles for tool items */
+.tool-item {
+  border: 1px solid #e5e7eb; /* Slightly lighter border color */
+  border-radius: 1rem; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow */
+  transform-origin: center; /* Center the shaking effect */
+}
+
+/* Hover effect */
+.tool-item:hover {
+  animation: shake 0.5s ease; /* Apply shake animation on hover */
+}
+.tool-item-wrapper {
+  display: inline-block; /* Ensure it only takes up the space of its content */
+}
+
+/* Apply animation to the wrapper */
+.tool-item-wrapper:hover .tool-item {
+  animation: shake 0.5s ease;
+}
+
+/* Adjust for the parent container */
+.parent-container {
+  overflow: visible; /* Ensures animation is visible */
+  padding: 5px; /* Adds space around the container */
+
+}
+
 
