@@ -20,7 +20,7 @@
       position: absolute;
       left: 50%;
       top: 50%;
-      transform: translate(-44%, -42%);
+      transform: translate(-50%, -50%);
       width: 100%;
       height: auto;
       object-fit: cover;
@@ -33,6 +33,30 @@
 
     .hidden {
       display: none;
+    }
+
+    .tab-panel-container {
+      display: flex;
+      overflow-x: auto;
+      border-radius: 0.75rem;
+      background-color: #f9fafb;
+      /* Light background for better contrast */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .tab-panel-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 0.75rem;
+      object-fit: contain;
+    }
+
+    .tab-panel {
+      width: 100%;
+    }
+
+    .tab-content {
+      padding: 1rem;
     }
   </style>
 </head>
@@ -51,43 +75,39 @@
 
       <!-- Feature Tabs -->
       <div class="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0">
-        <div class="-mx-4 flex overflow-x-auto pb-4 sm:mx-0 sm:overflow-visible sm:pb-0 lg:col-span-5">
-          <div class="relative z-10 flex gap-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:gap-x-0 lg:gap-y-1 lg:whitespace-normal" role="tablist" aria-orientation="horizontal">
+        <div class="flex flex-col items-start lg:col-span-5">
+          <div class="relative z-10 flex flex-col gap-y-4 px-4 sm:px-0 lg:mx-0" role="tablist" aria-orientation="vertical">
             <!-- Tab 1 -->
-            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 bg-white lg:bg-white/10 lg:ring-1 lg:ring-inset lg:ring-white/10">
+            <div class="group relative rounded-lg p-6 bg-white/10 ring-1 ring-inset ring-white/10">
               <h3>
                 <button class="tab-button font-display text-lg text-blue-600 lg:text-white" data-tab="panel-1" aria-selected="true" tabindex="0">
-                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Payroll
+                  <span class="absolute inset-0 rounded-lg"></span>Payroll
                 </button>
               </h3>
-              <p class="mt-2 hidden text-sm lg:block text-white">Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.</p>
             </div>
             <!-- Tab 2 -->
-            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
+            <div class="group relative rounded-lg p-6 hover:bg-white/10 lg:hover:bg-white/5">
               <h3>
                 <button class="tab-button font-display text-lg text-blue-100 hover:text-white lg:text-white" data-tab="panel-2" aria-selected="false" tabindex="-1">
-                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Claim expenses
+                  <span class="absolute inset-0 rounded-lg"></span>Claim expenses
                 </button>
               </h3>
-              <p class="mt-2 hidden text-sm lg:block text-blue-100 group-hover:text-white">All of your receipts organized into one place, as long as you don't mind typing in the data by hand.</p>
             </div>
             <!-- Tab 3 -->
-            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
+            <div class="group relative rounded-lg p-6 hover:bg-white/10 lg:hover:bg-white/5">
               <h3>
                 <button class="tab-button font-display text-lg text-blue-100 hover:text-white lg:text-white" data-tab="panel-3" aria-selected="false" tabindex="-1">
-                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>VAT handling
+                  <span class="absolute inset-0 rounded-lg"></span>VAT handling
                 </button>
               </h3>
-              <p class="mt-2 hidden text-sm lg:block text-blue-100 group-hover:text-white">We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.</p>
             </div>
             <!-- Tab 4 -->
-            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
+            <div class="group relative rounded-lg p-6 hover:bg-white/10 lg:hover:bg-white/5">
               <h3>
                 <button class="tab-button font-display text-lg text-blue-100 hover:text-white lg:text-white" data-tab="panel-4" aria-selected="false" tabindex="-1">
-                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Reporting
+                  <span class="absolute inset-0 rounded-lg"></span>Reporting
                 </button>
               </h3>
-              <p class="mt-2 hidden text-sm lg:block text-blue-100 group-hover:text-white">Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.</p>
             </div>
           </div>
         </div>
@@ -95,61 +115,36 @@
         <!-- Tab Panels -->
         <div class="lg:col-span-7">
           <!-- Panel 1 -->
-          <div id="panel-1" role="tabpanel" class="tab-panel" aria-labelledby="tab-1">
-            <div class="relative sm:px-6 lg:hidden">
-              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
-              <p class="relative mx-auto max-w-2xl text-base text-white sm:text-center">Keep track of everyone's salaries and whether or not they've been paid. Direct deposit not supported.</p>
-            </div>
-            <div class="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
-              <img alt="" class="w-full" src="img/Kyto-01.png">
+          <div id="panel-1" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-1">
+            <div class="tab-panel-container">
+              <img alt="" src="img/Kyto-01.png">
             </div>
           </div>
+
           <!-- Panel 2 -->
           <div id="panel-2" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-2">
-            <div class="relative sm:px-6 lg:hidden">
-              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
-              <p class="relative mx-auto max-w-2xl text-base text-white sm:text-center">All of your receipts organized into one place, as long as you don't mind typing in the data by hand.</p>
-            </div>
-            <div class="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
-              <img alt="" class="w-full" src="https://via.placeholder.com/2174x1464?text=Expenses">
+            <div class="tab-panel-container">
+              <img alt="" src="https://via.placeholder.com/2174x1464?text=Expenses">
             </div>
           </div>
+
           <!-- Panel 3 -->
           <div id="panel-3" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-3">
-            <div class="relative sm:px-6 lg:hidden">
-              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
-              <p class="relative mx-auto max-w-2xl text-base text-white sm:text-center">We only sell our software to companies who don't deal with VAT at all, so technically we do all the VAT stuff they need.</p>
-            </div>
-            <div class="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
-              <img alt="" class="w-full" src="https://via.placeholder.com/2174x1464?text=VAT+Handling">
+            <div class="tab-panel-container">
+              <img alt="" src="https://via.placeholder.com/2174x1464?text=VAT+Handling">
             </div>
           </div>
+
           <!-- Panel 4 -->
           <div id="panel-4" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-4">
-            <div class="relative sm:px-6 lg:hidden">
-              <div class="absolute -inset-x-4 bottom-[-4.25rem] top-[-6.5rem] bg-white/10 ring-1 ring-inset ring-white/10 sm:inset-x-0 sm:rounded-t-xl"></div>
-              <p class="relative mx-auto max-w-2xl text-base text-white sm:text-center">Easily export your data into an Excel spreadsheet where you can do whatever the hell you want with it.</p>
-            </div>
-            <div class="mt-10 w-[45rem] overflow-hidden rounded-xl bg-slate-50 shadow-xl shadow-blue-900/20 sm:w-auto lg:mt-0 lg:w-[67.8125rem]">
-              <img alt="" class="w-full" src="https://via.placeholder.com/2174x1464?text=Reporting">
+            <div class="tab-panel-container">
+              <img alt="" src="https://via.placeholder.com/2174x1464?text=Reporting">
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-<div class="relative mx-auto border-gray-800 dark:border-gray-800 bg-gray-800 border-[8px] rounded-t-xl h-[172px] max-w-[301px] md:h-[294px] md:max-w-[512px]">
-  <div class="rounded-lg overflow-hidden h-[156px] md:h-[278px] bg-white dark:bg-gray-800">
-    <img src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen.png" class="dark:hidden h-[156px] md:h-[278px] w-full rounded-lg" alt="">
-    <img src="https://flowbite.s3.amazonaws.com/docs/device-mockups/laptop-screen-dark.png" class="hidden dark:block h-[156px] md:h-[278px] w-full rounded-lg" alt="">
-  </div>
-</div>
-<div class="relative mx-auto bg-gray-900 dark:bg-gray-700 rounded-b-xl rounded-t-sm h-[17px] max-w-[351px] md:h-[21px] md:max-w-[597px]">
-  <div class="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-xl w-[56px] h-[5px] md:w-[96px] md:h-[8px] bg-gray-800"></div>
-</div>
-
-
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -174,13 +169,11 @@
       });
     });
   </script>
-      <script src="./node_modules/preline/dist/preline.js"></script>
-     <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/script.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/script.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
 
 </html>
