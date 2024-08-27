@@ -1580,7 +1580,7 @@ body {
 }
 
 .parallax.overlay::before {
-  background: rgba(0, 0, 0, 0.03); /* Dark overlay */
+  background: rgba(249, 250, 251, 1); /* Dark overlay */
 }
 
 .parallax-content {
@@ -1714,3 +1714,72 @@ body {
     display: flex !important; /* Show dots on mobile */
   }
 }
+
+/* Base styles for buttons container */
+.buttons-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically by default */
+  gap: 1rem; /* Space between buttons */
+  width: 100%; /* Ensure the container takes full width */
+  align-items: center; /* Center align items by default */
+}
+
+/* For medium screens (768px) and up */
+@media (min-width: 768px) {
+  .buttons-container {
+    flex-direction: column; /* Stack buttons vertically on medium screens */
+  }
+}
+
+/* For large screens (1024px) and up */
+@media (min-width: 1024px) {
+  .buttons-container {
+    flex-direction: column; /* Ensure buttons stack vertically on large screens */
+  }
+}
+
+/* For extra-large screens (1440px) and up */
+@media (min-width: 1440px) {
+  .buttons-container {
+    flex-direction: row; /* Align buttons horizontally on extra-large screens */
+    justify-content: center; /* Center align items horizontally */
+    gap: 2rem; /* Adjust gap between buttons */
+  }
+}
+
+
+/* Example of increasing specificity */
+.parallax .buttons-container {
+  display: flex;
+  flex-direction: column; /* Default stacking on small screens */
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .parallax .buttons-container {
+    flex-direction: column; /* Stacking vertically on medium screens */
+        align-items: flex-start; /* Align buttons to the left on medium screens */
+
+  }
+}
+
+@media (min-width: 1024px) {
+  .parallax .buttons-container {
+    flex-direction: column; /* Still stacking vertically on larger screens */
+        align-items: flex-start; /* Align buttons to the left on medium screens */
+
+  }
+}
+
+@media (min-width: 1440px) {
+  .parallax .buttons-container {
+    flex-direction: row; /* Align horizontally on extra-large screens */
+    justify-content: center;
+        justify-content: flex-start; /* Align buttons to the left */
+
+    gap: 2rem;
+  }
+}
+
