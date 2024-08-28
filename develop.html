@@ -2,367 +2,161 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="img/favicon-32x32.png" />
-  <link rel="stylesheet" href="css/main.css" />
-  <title>Roderick's Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smooth Animation Example</title>
   <style>
-
-
-    .feature-content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      align-items: start;
-    }
-
-
-
-
-    /* Ensure the selected tab has a highlighted background */
-    .tab-button.active {
-      @apply bg-white text-black;
-    }
-
-
-
-    /* Apply styles for the tab wrapper */
-    .tab-buttons {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      overflow-x: auto;
-      white-space: nowrap;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .tab-buttons::-webkit-scrollbar {
-      display: none;
-    }
-
-    .tab-panel {
-      display: none;
-      flex: 2;
-      max-width: 90rem;
-      border-radius: 1rem;
-      padding: 0;
+    /* Basic styling */
+    body {
+      font-family: Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f0f0f0;
     }
 
-    .tab-panel img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      border-radius: 1rem;
+    .offer {
+      text-align: center;
+      max-width: 848px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    @media (min-width: 640px) {
-      .tab-panel {
-        width: 100%;
-      }
+    /* Hide elements initially with no visible state */
+    .hidden {
+      transform: translateY(20px);
+      opacity: 0;
+      visibility: hidden;
+      position: relative;
+      /* Ensure proper positioning for animation */
     }
 
-    @media (min-width: 1024px) {
-      .tab-buttons {
-        margin-right: 1rem;
+    /* Keyframes for nudging the headline */
+    @keyframes nudge-in {
+      from {
+        transform: translateY(10px);
+        /* Start closer to final position */
+        opacity: 0;
       }
 
-      .tab-panel {
-        margin-top: 0;
-      }
-
-      .feature-content {
-        gap: 1rem;
-      }
-    }
-
-    @media (min-width: 1440px) {
-      .tab-buttons {
-        grid-column: span 4;
-        margin: 0;
-      }
-
-      .feature-content {
-        grid-template-columns: repeat(12, 1fr);
-      }
-    }
-
-    @media (min-width: 2560px) {
-      .tab-buttons {
-        grid-column: span 4;
-        margin: 0;
+      to {
+        transform: translateY(0);
+        opacity: 1;
       }
     }
 
+    /* Keyframes for sliding up the paragraph */
+    @keyframes slide-up {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
 
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
+    /* Keyframes for smooth appearance (button) */
+    @keyframes appear {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
 
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
 
+    /* Styling for the elements */
+    .h1 {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
 
+    .medium-l {
+      font-size: 1.125rem;
+      margin-bottom: 32px;
+    }
+
+    .button-primary {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #007BFF;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+      /* Remove initial translateY to avoid initial position issues */
+    }
+
+    .button-primary:hover {
+      background-color: #0056b3;
+    }
+
+    /* Apply animations */
+    .animate-nudge-in {
+      animation: nudge-in 0.3s ease-in forwards;
+    }
+
+    .animate-slide-up-medium {
+      animation: slide-up 0.4s ease-in forwards;
+    }
+
+    .animate-appear {
+      animation: appear 0.4s ease-in forwards;
+    }
   </style>
 </head>
 
 <body>
-  <section id="features" aria-label="Features for running your books" class="relative overflow-hidden bg-blue-600 pb-28 pt-20 sm:py-32">
-    <div class="feature-content mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="max-w-2xl md:mx-auto md:text-center xl:max-w-none">
-        <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">Everything you need to run your books.</h2>
-      </div>
-      <div class="mt-16 grid grid-cols-1 items-center gap-y-2 pt-10 sm:gap-y-6 md:mt-20 lg:grid-cols-12 lg:pt-0">
-        <div class="tab-buttons col-span-1 lg:col-span-4">
-          <div class="relative z-10 flex gap-x-4 whitespace-nowrap px-4 sm:mx-auto sm:px-0 lg:mx-0 lg:block lg:gap-x-0 lg:gap-y-1 lg:whitespace-normal" role="tablist" aria-orientation="horizontal">
-            <!-- Tab 1 -->
-            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
-              <h3>
-                <button class="tab-button font-display text-lg text-black  lg:text-white" data-tab="panel-1" aria-selected="false" tabindex="-1">
-                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Payroll
-                </button>
-              </h3>
-            </div>
-            <!-- Tab 2 -->
-            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
-              <h3>
-                <button class="tab-button font-display text-lg text-black   lg:text-white" data-tab="panel-2" aria-selected="false" tabindex="-1">
-                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Claim expenses
-                </button>
-              </h3>
-            </div>
-            <!-- Tab 3 -->
-            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
-              <h3>
-                <button class="tab-button font-display text-lg text-black  lg:text-white" data-tab="panel-3" aria-selected="false" tabindex="-1">
-                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>VAT handling
-                </button>
-              </h3>
-            </div>
-            <!-- Tab 4 -->
-            <div class="group relative rounded-full px-4 py-1 lg:rounded-l-xl lg:rounded-r-none lg:p-6 hover:bg-white/10 lg:hover:bg-white/5">
-              <h3>
-                <button class="tab-button font-display text-lg text-black   lg:text-white" data-tab="panel-4" aria-selected="false" tabindex="-1">
-                  <span class="absolute inset-0 rounded-full lg:rounded-l-xl lg:rounded-r-none"></span>Reporting
-                </button>
-              </h3>
-            </div>
-          </div>
-        </div>
-        <!-- Tab Panels -->
-        <div class="lg:col-span-8">
-          <!-- Panel 1 -->
-          <div id="panel-1" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-1">
-            <img alt="Payroll" src="img/Kyto-01.png">
-          </div>
-          <!-- Panel 2 -->
-          <div id="panel-2" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-2">
-            <img alt="Claim expenses" src="https://via.placeholder.com/2174x1464?text=Expenses">
-          </div>
-          <!-- Panel 3 -->
-          <div id="panel-3" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-3">
-            <img alt="VAT Handling" src="https://via.placeholder.com/2174x1464?text=VAT+Handling">
-          </div>
-          <!-- Panel 4 -->
-          <div id="panel-4" role="tabpanel" class="tab-panel hidden" aria-labelledby="tab-4">
-            <img alt="Reporting" src="https://via.placeholder.com/2174x1464?text=Reporting">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="dark:bg-gray-100 dark:text-gray-800">
-    <div class="container px-6 py-12 mx-auto">
-      <div class="grid items-center gap-4 xl:grid-cols-5">
-        <div class="max-w-2xl mx-auto my-8 space-y-4 text-center xl:col-span-2 xl:text-left">
-          <h2 class="text-4xl font-bold">Duo assum utroque appetere an</h2>
-          <p class="dark:text-gray-600">Pri ex magna scaevola moderatius. Nullam accommodare no vix, est ei diceret alienum, et sit cetero malorum. Et sea iudico consequat, est sanctus adipisci ex.</p>
-        </div>
-        <div class="p-6 xl:col-span-3">
-          <div class="grid gap-4 md:grid-cols-2">
-            <div class="grid content-center gap-4">
-              <div class="p-6 rounded shadow-md dark:bg-gray-50">
-                <p>An audire commodo habemus cum. Ne sed corrumpit repudiandae. Tota aliquip democritum pro in, nec democritum intellegam ne. Propriae volutpat dissentiet ea sit, nec at lorem inani tritani, an ius populo perfecto vituperatoribus. Eu cum case modus salutandi, ut eum vocent sensibus reprehendunt.</p>
-                <div class="flex items-center mt-4 space-x-4">
-                  <img src="https://source.unsplash.com/50x50/?portrait?1" alt="" class="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500">
-                  <div>
-                    <p class="text-lg font-semibold">Leroy Jenkins</p>
-                    <p class="text-sm dark:text-gray-600">CTO of Company Co.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="p-6 rounded shadow-md dark:bg-gray-50">
-                <p>Sit wisi sapientem ut, pri civibus temporibus voluptatibus et, ius cu hinc fabulas. Nam meliore minimum et, regione convenire cum id. Ex pro eros mucius consectetuer, pro magna nulla nonumy ne, eam putent iudicabit consulatu cu.</p>
-                <div class="flex items-center mt-4 space-x-4">
-                  <img src="https://source.unsplash.com/50x50/?portrait?2" alt="" class="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500">
-                  <div>
-                    <p class="text-lg font-semibold">Leroy Jenkins</p>
-                    <p class="text-sm dark:text-gray-600">CTO of Company Co.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="grid content-center gap-4">
-              <div class="p-6 rounded shadow-md dark:bg-gray-50">
-                <p>Putant omnium elaboraret per ut. Id dicta tritani nominavi quo, mea id justo errem elaboraret. Agam mollis scripserit ea his, ut nec postea verear persecuti. Ea noster senserit eam, ferri omittantur ei nec. Id mel solet libris efficiantur, commune explicari et eos. Case movet ad est, sed tota vocent appetere ea.</p>
-                <div class="flex items-center mt-4 space-x-4">
-                  <img src="https://source.unsplash.com/50x50/?portrait?3" alt="" class="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500">
-                  <div>
-                    <p class="text-lg font-semibold">Leroy Jenkins</p>
-                    <p class="text-sm dark:text-gray-600">CTO of Company Co.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="p-6 rounded shadow-md dark:bg-gray-50">
-                <p>Te omnes virtute volutpat sed. Ei esse eros interesset vel, ei populo denique ocurreret vix, eu cum pertinax mandamus vituperatoribus. Solum nihil luptatum per ex, ei amet viderer eos. Ea illum labitur mnesarchum pro. Eius meis salutandi ei nam, alterum expetenda et nec. Expetenda intellegat at eum, per mazim sanctus honestatis ad. Ei noluisse invenire vix. Te ancillae patrioque qui, probo bonorum vivendum ex vim.</p>
-                <div class="flex items-center mt-4 space-x-4">
-                  <img src="https://source.unsplash.com/50x50/?portrait?4" alt="" class="w-12 h-12 bg-center bg-cover rounded-full dark:bg-gray-500">
-                  <div>
-                    <p class="text-lg font-semibold">Leroy Jenkins</p>
-                    <p class="text-sm dark:text-gray-600">CTO of Company Co.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="relative z-10 container mx-auto">
-    <!-- Header Section -->
-    <div class="mb-8 w-full text-center max-w-screen-lg mx-auto">
-      <div class="flex justify-center items-start md:items-center">
-        <div class="max-w-full">
-          <div class="inline-flex items-center px-3 py-1 rounded-full border border-black/20 bg-black/10 text-xs font-semibold text-black/60 transition-all duration-300 mb-4">
-            <span class="block py-1 leading-none">Designer</span>
-          </div>
-          <div class="text-2xl md:text-5xl font-bold tracking-tight text-[#A7C6DA] font-accent mb-6">
-            <span>Hi,I'm Roderick</span>
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#A7C6DA] to-[#01f3ab]">Designer & Developer</span>
-          </div>
-        </div>
-      </div>
-      <div class="text-center max-w-screen-lg mx-auto">
-        <p class="text-white/80 mb-4">
-          Leverage the power of open source software as a strategic advantage for your ecommerce project. Benefit from its versatility, cost efficiency, and continuous enhancements driven by our worldwide network of contributors.
-        </p>
-      </div>
-    </div>
-
-    <!-- Feature Cards Section -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <!-- Card 1 -->
-      <div class="bg-gradient-to-b from-[#01f3ab] to-transparent p-[1px] h-full overflow-hidden rounded-md">
-        <div class="bg-white p-8 h-full rounded-[inherit] transition-all">
-          <div class="mb-10">
-            <img src="https://a.storyblok.com/f/192301/512x512/4fe8bb526a/001-web-development.svg" alt="Web Development" class="w-full max-h-[60px] max-w-[150px] object-contain object-left filter brightness-0 invert contrast-105 hue-rotate-[170deg]" />
-          </div>
-          <h3 class="text-lg font-semibold text-white">Used by thousands of teams worldwide</h3>
-          <div class="mt-2">
-            <p class="text-white/80">
-              Our highly-acclaimed open-source software boasts a global community of thousands of developers ensuring exceptional collaboration, swift bug resolutions, and continuous enhancements. Best of all, it's cost-free when starting out!
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-gradient-to-b from-primary-300/40 to-transparent p-[1px] h-full overflow-hidden rounded-md">
-        <div class="bg-slate-900 p-8 h-full rounded-[inherit] transition-all">
-          <div class="mb-10">
-            <img src="https://a.storyblok.com/f/192301/683x683/47b681f615/002-shield.svg" alt="Shield" class="w-full max-h-[60px] max-w-[150px] object-contain object-left filter brightness-0 invert contrast-105 hue-rotate-[170deg]" />
-          </div>
-          <h3 class="text-lg font-semibold text-white">Built on the most-used tech stack worldwide</h3>
-          <div class="mt-2">
-            <p class="text-white/80">
-              Vendure's use of Node.js &amp; TypeScript with NestJS &amp; Angular brings outstanding performance, scalability, and developer-friendly features. Users can expect a smooth, efficient, and modern e-commerce experience thanks to these powerful technologies!
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-gradient-to-b from-primary-300/40 to-transparent p-[1px] h-full overflow-hidden rounded-md">
-        <div class="bg-slate-900 p-8 h-full rounded-[inherit] transition-all">
-          <div class="mb-10">
-            <img src="https://a.storyblok.com/f/192301/512x512/ab1849bc0f/003-patient.svg" alt="Developer Experience" class="w-full max-h-[60px] max-w-[150px] object-contain object-left filter brightness-0 invert contrast-105 hue-rotate-[170deg]" />
-          </div>
-          <h3 class="text-lg font-semibold text-white">Best-in-class developer experience</h3>
-          <div class="mt-2">
-            <p class="text-white/80">
-              Vendure is built by developers, for developers. We are obsessed with enhancing the efficiency and productivity of developers through our exceptional developer experience. Our goal is to streamline the development process for optimal results.
-            </p>
-          </div>
-        </div>
-      </div>
+  <div class="offer">
+    <div class="wrapper is-max-width-848-m-460 is-v-flex-center-start is-margin-bottom-40">
+      <h1 id="headline" class="h1 hidden">
+        <span class="is-accent">Boost Sales</span> With Our Strategy First Framework
+      </h1>
+      <p id="paragraph" class="medium-l hidden">
+        Forge delivers monthly sales and marketing solutions that are strategically designed to meet your objectives.
+      </p>
+      <a id="cta-button" href="https://calendly.com/" target="_blank" class="button-primary hidden">
+        Book a Free Consultation
+      </a>
     </div>
   </div>
 
-
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const tabs = document.querySelectorAll('.tab-button');
-      const panels = document.querySelectorAll('.tab-panel');
+    document.addEventListener("DOMContentLoaded", function () {
+      // Show headline
+      const headline = document.getElementById('headline');
+      headline.classList.remove('hidden');
+      headline.classList.add('animate-nudge-in');
 
-      function updateTabsAndPanels(activeTab) {
-        const targetPanel = document.getElementById(activeTab.getAttribute('data-tab'));
+      // Show paragraph after headline
+      setTimeout(() => {
+        const paragraph = document.getElementById('paragraph');
+        paragraph.classList.remove('hidden');
+        paragraph.classList.add('animate-slide-up-medium');
+      }, 300); // Shorter delay after headline
 
-        // Hide all panels
-        panels.forEach(panel => panel.classList.add('hidden'));
-
-        // Remove 'active' classes from all tabs
-        tabs.forEach(t => {
-          const parentDiv = t.closest('.group');
-          if (parentDiv) {
-            parentDiv.classList.remove('bg-white', 'lg:bg-white/10', 'lg:ring-1', 'lg:ring-inset', 'lg:ring-white/10', 'text-white');
-            parentDiv.classList.add('hover:bg-white/10', 'text-blue-100');
-          }
-        });
-
-        // Add 'active' classes to the clicked tab
-        const activeTabParentDiv = activeTab.closest('.group');
-        if (activeTabParentDiv) {
-          activeTabParentDiv.classList.add('bg-white', 'lg:bg-white/10', 'lg:ring-1', 'lg:ring-inset', 'lg:ring-white/10', 'text-white');
-          activeTabParentDiv.classList.remove('hover:bg-white/10', 'text-blue-100');
-        }
-
-        // Show the target panel
-        if (targetPanel) {
-          targetPanel.classList.remove('hidden');
-        }
-      }
-
-      tabs.forEach(tab => {
-        tab.addEventListener('click', function () {
-          updateTabsAndPanels(this);
-
-          // Update aria-selected attribute
-          tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-          this.setAttribute('aria-selected', 'true');
-        });
-      });
-
-      // Trigger the first tab to display its panel on load
-      if (tabs.length > 0) {
-        tabs[0].click();
-      }
+      // Show button after paragraph
+      setTimeout(() => {
+        const ctaButton = document.getElementById('cta-button');
+        ctaButton.classList.remove('hidden');
+        ctaButton.classList.add('animate-appear');
+      }, 700); // Shorter delay after paragraph
     });
   </script>
-  <script src="https://smtpjs.com/v3/smtp.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/script.js"></script>
+
 </body>
 
 </html>

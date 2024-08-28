@@ -15,211 +15,115 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js" defer></script>
-    <!-- Swiper CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-    <!-- Swiper JS -->
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
     <style>
-        /* Hide scrollbar for mobile */
-        .scrollbar-hidden::-webkit-scrollbar {
-            display: none;
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+
+        /* Scale and opacity animation */
+        @keyframes expandIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
 
-        /* For other browsers */
-        .scrollbar-hidden {
-            -ms-overflow-style: none;
-            /* IE and Edge */
-            scrollbar-width: none;
-            /* Firefox */
+        /* Apply the animation to the cards */
+        .illustration-card {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: expandIn 0.5s ease-out forwards;
         }
-
-       /* Ensure the slider container is positioned properly */
-#tools-slider {
-  overflow-x: auto;
-  white-space: nowrap;
-
-  scroll-behavior: smooth; /* Smooth scroll for clicking dots */
-}
-/* General styling for tool items */
-.tool-item {
-  display: inline-block;
-  width: 100%; /* Adjust based on your needs */
-  flex-shrink: 0;
-  /* Add other styling as needed */
-}
-
-/* Dots slider container (hidden by default) */
-#dots-container {
- display: none !important; /* Hidden by default */  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 5px;
-  padding: 10px;
-}
-
-/* Dot styling */
-.dot {
-  width: 10px;
-  height: 10px;
-  background-color: gray;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.dot.active {
-  background-color: black;
-}
-
-
-/* Show dots only on mobile devices */
-@media (max-width: 768px) {
-  #dots-container {
-    display: flex !important; /* Show dots on mobile */
-  }
-}
-
-
     </style>
-
 </head>
 
-<body class="bg-gray-100 text-gray-900">
-    <!-- Tools Section -->
-    <section class="relative container mx-auto px-4 md:px-10 lg:px-10 py-16">
-        <div class="relative mx-auto border-gray-200">
-            <div class="relative flex items-center">
-                <!-- Section Title -->
-                <span id="expertise" class="text-gray-500">Tools</span>
-                <!-- Line container for the right side -->
-                <div class="flex-grow border-t-2 border-gray-200 ml-4"></div>
+<body class="bg-gray-100">
+
+    <section class="pt-16 mt-36 md:mt-24">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center justify-center max-w-xl mx-auto mb-12">
+                <h2 class="text-4xl font-bold text-center mb-5 leading-tight">
+                    Innovative<br>
+                    <span class="text-blue-600">Solutions</span> Hub
+                </h2>
+                <p class="text-lg text-center text-gray-700">
+                    From strategic consulting to seamless execution, we're your partners in unlocking unparalleled success. Elevate your business experience with our dynamic services.
+                </p>
             </div>
 
-            <!-- Header and Description -->
-            <div class="mt-8 gap-4 sm:grid sm:grid-cols-2 md:gap-6 lg:gap-12">
-                <div class="w-full">
-                    <h2 class="md:text-3xl lg:text-3xl xl:3xl text-2xl secondary-title font-bold">Identity, UX & Web</h2>
+              <!-- Cards Grid -->
+            <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
+                <!-- Card 1 -->
+                <div class="illustration-card bg-gradient-to-b from-[#01f3ab] to-transparent p-[1px] h-full overflow-hidden rounded-md">
+                    <div class="bg-white p-8 h-full rounded-[inherit] transition-all">
+                        <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-brightGreen lg:h-12 lg:w-12 dark:bg-primary-900">
+                            <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a28.076 28.076 0 0 1-1.091 9M7.231 4.37a8.994 8.994 0 0 1 12.88 3.73M2.958 15S3 14.577 3 12a8.949 8.949 0 0 1 1.735-5.307m12.84 3.088A5.98 5.98 0 0 1 18 12a30 30 0 0 1-.464 6.232M6 12a6 6 0 0 1 9.352-4.974M4 21a5.964 5.964 0 0 1 1.01-3.328 5.15 5.15 0 0 0 .786-1.926m8.66 2.486a13.96 13.96 0 0 1-.962 2.683M7.5 19.336C9 17.092 9 14.845 9 12a3 3 0 1 1 6 0c0 .749 0 1.521-.031 2.311M12 12c0 3 0 6-2 9" />
+                            </svg>
+                        </div>
+                        <h3 class="mb-2 text-xl font-bold">Brand Identity</h3>
+                        <p class="text-gray-600">Crafting distinct brand identities through strategic design and visual storytelling to elevate and unify brands.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="illustration-card bg-gradient-to-b from-[#01f3ab] to-transparent p-[1px] h-full overflow-hidden rounded-md">
+                    <div class="bg-white p-8 h-full rounded-[inherit] transition-all">
+                        <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-brightGreen lg:h-12 lg:w-12 dark:bg-primary-900">
+                            <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M14 4.182A4.136 4.136 0 0 1 16.9 3c1.087 0 2.13.425 2.899 1.182A4.01 4.01 0 0 1 21 7.037c0 1.068-.43 2.092-1.194 2.849L18.5 11.214l-5.8-5.71 1.287-1.31.012-.012Zm-2.717 2.763L6.186 12.13l2.175 2.141 5.063-5.218-2.141-2.108Zm-6.25 6.886-1.98 5.849a.992.992 0 0 0 .245 1.026 1.03 1.03 0 0 0 1.043.242L10.282 19l-5.25-5.168Zm6.954 4.01 5.096-5.186-2.218-2.183-5.063 5.218 2.185 2.15Z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <h3 class="mb-2 text-xl font-bold">UI/UX Design</h3>
+                        <p class="text-gray-600">Designing intuitive UI/UX to enhance user engagement and create seamless, impactful digital experiences.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="illustration-card bg-gradient-to-b from-[#01f3ab] to-transparent p-[1px] h-full overflow-hidden rounded-md">
+                    <div class="bg-white p-8 h-full rounded-[inherit] transition-all">
+                        <div class="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-brightGreen lg:h-12 lg:w-12 dark:bg-primary-900">
+                            <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 8-4 4 4 4m8 0 4-4-4-4m-2-3-4 14" />
+                            </svg>
+                        </div>
+                        <h3 class="mb-2 text-xl font-bold">Web Development</h3>
+                        <p class="text-gray-600">Crafting robust, responsive websites that blend modern tech with user-focused design for optimal performance.</p>
+                    </div>
                 </div>
             </div>
 
-
-                    <!-- Tools Content -->
-                    <div class="mt-16">
-                        <section>
-                            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                                <!-- Horizontal scroll container for mobile -->
-                                <div class="relative overflow-x-auto md:overflow-x-visible">
-                                    <div id="tools-slider" class="flex md:grid md:grid-cols-2 xl:grid-cols-4 gap-8">
-                                        <!-- Tool icons -->
-                                        <a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
-                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
-                                            </svg>
-                                        </a><a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
-                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
-                                            </svg>
-                                        </a><a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
-                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
-                                            </svg>
-                                        </a><a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
-                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
-                                            </svg>
-                                        </a><a href="#" class="tool-item flex-shrink-0 border border-solid border-gray-200 shadow-sm h-24 rounded-2xl w-24 md:w-auto flex justify-center items-center">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50">
-                                                <path d="M25 2v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 18v14h-7c-3.855 0-7-3.145-7-7 0-3.855 3.145-7 7-7H25zM25 34v7c0 3.855-3.145 7-7 7s-7-3.145-7-7c0-3.855 3.145-7 7-7H25zM41 9c0 3.855-3.145 7-7 7h-7V2h7C37.855 2 41 5.145 41 9zM34 18A7 7 0 1034 32 7 7 0 1034 18z"></path>
-                                            </svg>
-                                        </a>
-                                        <!-- Repeat for other tools... -->
-                                    </div>
-                                </div>
-
-                                <!-- Dots Slider (Only visible on mobile) -->
-                                <div id="dots-container" class="-mb-16 dots-slider">
-                                    <!-- JavaScript will populate dots here -->
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-
-
+            <div class="flex justify-center mt-8">
+                <a href="/services" class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-700 transition duration-300 ease-in-out">
+                    View All Services
+                </a>
+            </div>
         </div>
     </section>
-  <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('tools-slider');
-    const dotsContainer = document.getElementById('dots-container');
-    let containerWidth = slider.offsetWidth;
 
-    // Create dots based on the number of slides
-    function createDots() {
-      dotsContainer.innerHTML = ''; // Clear existing dots
-      const numDots = Math.ceil(slider.scrollWidth / containerWidth);
-      for (let i = 0; i < numDots; i++) {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        dot.dataset.index = i;
-        dotsContainer.appendChild(dot);
-      }
-      updateDots(); // Set the initial active dot
-    }
 
-    // Update dots based on scroll position
-    function updateDots() {
-      const scrollLeft = slider.scrollLeft;
-      const maxScrollLeft = slider.scrollWidth - containerWidth;
-      const numDots = dotsContainer.children.length;
-      const currentDotIndex = Math.round((scrollLeft / maxScrollLeft) * (numDots - 1));
 
-      Array.from(dotsContainer.children).forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentDotIndex);
-      });
-    }
-
-    // Handle dot clicks to scroll to the corresponding section
-    dotsContainer.addEventListener('click', (event) => {
-      if (event.target.classList.contains('dot')) {
-        const index = event.target.dataset.index;
-        const scrollTo = (slider.scrollWidth / dotsContainer.children.length) * index;
-        slider.scrollTo({
-          left: scrollTo,
-          behavior: 'smooth'
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll('.illustration-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = 1;
+                    card.style.transform = "scale(1)";
+                }, index * 100); // Staggered animation delay
+            });
         });
-      }
-    });
-
-    // Initialize dots and set up event listeners
-    createDots();
-    slider.addEventListener('scroll', updateDots);
-    window.addEventListener('resize', () => {
-      containerWidth = slider.offsetWidth; // Update container width on resize
-      createDots(); // Recalculate dots on resize
-      updateDots(); // Update dots position
-    });
-  });
-</script>
-
-
-
-
-
-
-
-
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
-
-
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/script.js"></script>
+    </script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/script.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
 </body>
 
 </html>
