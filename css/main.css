@@ -1549,6 +1549,24 @@ body {
   font-family: Poppins, sans-serif;
 }
 
+.parallax-background {
+  position: fixed; /* Background is fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #f9fafb; /* Fixed background color */
+  z-index: -1; /* Ensure it stays behind content */
+    opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease-out; /* Smooth transition for showing/hiding */
+
+}
+
+/* Show the parallax background when scrolling */
+.parallax-background.show {
+  opacity: 1;
+}
+
 /* Parallax Section */
 .parallax {
   position: fixed;
@@ -1582,6 +1600,7 @@ body {
 
 .parallax.overlay::before {
   background: rgba(249, 250, 251, 1); /* Dark overlay */
+    position: fixed;
 
 }
 

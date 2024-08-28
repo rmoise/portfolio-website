@@ -197,6 +197,7 @@
 
   <!-- Parallax Section -->
   <section class="parallax bg-white" id="parallax">
+  <div class="parallax-background"></div>
 
     <div class="parallax-content">
       <section class="pt-24 container mx-auto px-4 md:px-10 ">
@@ -272,15 +273,15 @@
           </div>
         </div>
 
-        <section class="mt-8 ">
+        <section class="mt-8">
           <!-- Scroll Icon Container -->
-          <div class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden md:flex items-center justify-center">
-            <a href="#about" id="scroll-icon" class="w-8 h-8  text-black flex items-center justify-center transition-opacity duration-300  z-50 bounce ">
+          <div class="fixed bottom-10 left-1/2 transform -translate-x-1/2 hidden md:flex items-center justify-center z-50">
+            <a href="#about" id="scroll-icon" class="w-8 h-8 text-black flex items-center justify-center transition-opacity duration-300 bounce">
               <i class="fas fa-chevron-down text-base"></i>
             </a>
           </div>
-
         </section>
+
       </section>
     </div>
 
@@ -1388,156 +1389,153 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const slider = document.getElementById('tools-slider');
-      const dotsContainer = document.getElementById('dots-container');
-      let containerWidth = slider.offsetWidth;
+        const slider = document.getElementById('tools-slider');
+        const dotsContainer = document.getElementById('dots-container');
+        let containerWidth = slider.offsetWidth;
 
-      // Create dots based on the number of slides
-      function createDots() {
-        dotsContainer.innerHTML = ''; // Clear existing dots
-        const numDots = Math.ceil(slider.scrollWidth / containerWidth);
-        for (let i = 0; i < numDots; i++) {
-          const dot = document.createElement('div');
-          dot.classList.add('dot');
-          dot.dataset.index = i;
-          dotsContainer.appendChild(dot);
+        // Create dots based on the number of slides
+        function createDots() {
+          dotsContainer.innerHTML = ''; // Clear existing dots
+          const numDots = Math.ceil(slider.scrollWidth / containerWidth);
+          for (let i = 0; i < numDots; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dot.dataset.index = i;
+            dotsContainer.appendChild(dot);
+          }
+          updateDots(); // Set the initial active dot
         }
-        updateDots(); // Set the initial active dot
-      }
 
-      // Update dots based on scroll position
-      function updateDots() {
-        const scrollLeft = slider.scrollLeft;
-        const maxScrollLeft = slider.scrollWidth - containerWidth;
-        const numDots = dotsContainer.children.length;
-        const currentDotIndex = Math.round((scrollLeft / maxScrollLeft) * (numDots - 1));
+        // Update dots based on scroll position
+        function updateDots() {
+          const scrollLeft = slider.scrollLeft;
+          const maxScrollLeft = slider.scrollWidth - containerWidth;
+          const numDots = dotsContainer.children.length;
+          const currentDotIndex = Math.round((scrollLeft / maxScrollLeft) * (numDots - 1));
 
-        Array.from(dotsContainer.children).forEach((dot, index) => {
-          dot.classList.toggle('active', index === currentDotIndex);
+          Array.from(dotsContainer.children).forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentDotIndex);
+          });
+        }
+
+        // Handle dot clicks to scroll to the corresponding section
+        dotsContainer.addEventListener('click', (event) => {
+          if (event.target.classList.contains('dot')) {
+            const index = event.target.dataset.index;
+            const scrollTo = (slider.scrollWidth / dotsContainer.children.length) * index;
+            slider.scrollTo({
+              left: scrollTo,
+              behavior: 'smooth'
+            });
+          }
         });
-      }
 
-      // Handle dot clicks to scroll to the corresponding section
-      dotsContainer.addEventListener('click', (event) => {
-        if (event.target.classList.contains('dot')) {
-          const index = event.target.dataset.index;
-          const scrollTo = (slider.scrollWidth / dotsContainer.children.length) * index;
-          slider.scrollTo({
-            left: scrollTo,
-            behavior: 'smooth'
-          });
-        }
-      });
-
-      // Initialize dots and set up event listeners
-      createDots();
-      slider.addEventListener('scroll', updateDots);
-      window.addEventListener('resize', () => {
-        containerWidth = slider.offsetWidth; // Update container width on resize
-        createDots(); // Recalculate dots on resize
-        updateDots(); // Update dots position
-      });
-    });
-  </script>
-  <script>
-    // Debounce function to limit the rate at which a function is executed
-    function debounce(func, wait) {
-      let timeout;
-      return function (...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-      };
-    }
-
-    // Update parallax effect
-    function updateParallax() {
-      const parallax = document.getElementById('parallax');
-      const scrollTop = window.pageYOffset;
-      const parallaxHeight = parallax.offsetHeight;
-      const windowHeight = window.innerHeight;
-      const speedFactor = 0.3;
-
-       // Disable parallax effect on mobile
-      if (window.innerWidth <= 425) {
-        parallax.style.transform = 'none';
-        return;  // Exit the function, so no translateY is applied
-      }
-
-      // Toggle overlay class based on scroll position
-      parallax.classList.toggle('overlay', scrollTop > 0);
-
-      // Calculate the parallax effect based on scroll position
-      let translateY = 0;
-
-      if (window.innerWidth <= 768) {
-        if (scrollTop + windowHeight > parallaxHeight) {
-          translateY = (scrollTop - parallaxHeight + windowHeight) * speedFactor;
-        }
-      } else {
-        if (scrollTop > parallaxHeight) {
-          translateY = (scrollTop - parallaxHeight) * speedFactor;
-        }
-      }
-
-      // Apply the transform with a smooth transition
-      parallax.style.transform = `translateY(${Math.max(0, translateY)}px)`;
-    }
-
-    // Create a debounced version of the updateParallax function
-    const updateParallaxDebounced = debounce(updateParallax, 10);
-
-    // Use requestAnimationFrame for smoother animations
-    function onScrollOrResize() {
-      requestAnimationFrame(updateParallaxDebounced);
-    }
-
-    // Add event listeners for scroll and resize events
-    window.addEventListener('scroll', onScrollOrResize);
-    window.addEventListener('resize', onScrollOrResize);
-
-
-  </script>
-
-
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const tabs = document.querySelectorAll('.tab');
-      const panels = document.querySelectorAll('.panel');
-      const indicator = document.querySelector('.tab-indicator');
-
-      function updateTabIndicator() {
-        const selectedTab = document.querySelector('[aria-selected="true"]');
-        if (selectedTab) {
-          const rect = selectedTab.getBoundingClientRect();
-          const containerRect = selectedTab.parentElement.getBoundingClientRect();
-          const indicatorWidth = selectedTab.offsetWidth;
-          indicator.style.left = `${rect.left - containerRect.left}px`;
-          indicator.style.width = `${indicatorWidth}px`;
-        }
-      }
-
-      tabs.forEach(tab => {
-        tab.addEventListener('click', function () {
-          tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
-          tab.setAttribute('aria-selected', 'true');
-
-          const panelId = tab.getAttribute('aria-controls');
-          panels.forEach(p => {
-            p.classList.add('hidden');
-            p.classList.remove('block');
-          });
-          document.getElementById(panelId).classList.remove('hidden');
-          document.getElementById(panelId).classList.add('block');
-
-          updateTabIndicator();
+        // Initialize dots and set up event listeners
+        createDots();
+        slider.addEventListener('scroll', updateDots);
+        window.addEventListener('resize', () => {
+          containerWidth = slider.offsetWidth; // Update container width on resize
+          createDots(); // Recalculate dots on resize
+          updateDots(); // Update dots position
         });
       });
 
-      // Initial call to position the indicator correctly
-      updateTabIndicator();
-    });
+      // Debounce function to limit the rate at which a function is executed
+      function debounce(func, wait) {
+        let timeout;
+        return function (...args) {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => func.apply(this, args), wait);
+        };
+      }
+
+     function updateParallax() {
+        const parallaxContent = document.querySelector('.parallax-content');
+        const parallaxBackground = document.querySelector('.parallax-background');
+        const scrollTop = window.pageYOffset;
+        const speedFactor = 0.1; // Adjust this value to control the speed of the parallax effect
+
+        // Toggle visibility of parallax background based on scroll position
+        if (scrollTop > 0) {
+          parallaxBackground.classList.add('show');
+        } else {
+          parallaxBackground.classList.remove('show');
+        }
+
+        // Disable parallax effect only for screens smaller than 768px
+        if (window.innerWidth < 768) {
+          parallaxContent.style.transform = 'none'; // Disable parallax effect for small screens
+          return; // Exit here to prevent further parallax-related calculations
+        }
+
+        // Apply parallax effect to content for tablets and larger screens
+        let translateY = 0;
+        if (scrollTop > 0) {
+          translateY = scrollTop * speedFactor;
+        }
+        parallaxContent.style.transform = `translateY(${translateY}px)`;
+      }
+
+      // Wrap the parallax update function with requestAnimationFrame for smoother performance
+      function onScroll() {
+        requestAnimationFrame(updateParallax);
+      }
+
+      // Attach the scroll event listener
+      window.addEventListener('scroll', onScroll);
+
+
+
+
+        // Create a debounced version of the updateParallax function
+        const updateParallaxDebounced = debounce(updateParallax, 10);
+
+        // Use requestAnimationFrame for smoother animations
+        function onScrollOrResize() {
+          requestAnimationFrame(updateParallaxDebounced);
+        }
+
+        // Add event listeners for scroll and resize events
+        window.addEventListener('scroll', onScrollOrResize);
+        window.addEventListener('resize', onScrollOrResize);
+
+      document.addEventListener('DOMContentLoaded', function () {
+        const tabs = document.querySelectorAll('.tab');
+        const panels = document.querySelectorAll('.panel');
+        const indicator = document.querySelector('.tab-indicator');
+
+        function updateTabIndicator() {
+          const selectedTab = document.querySelector('[aria-selected="true"]');
+          if (selectedTab) {
+            const rect = selectedTab.getBoundingClientRect();
+            const containerRect = selectedTab.parentElement.getBoundingClientRect();
+            const indicatorWidth = selectedTab.offsetWidth;
+            indicator.style.left = `${rect.left - containerRect.left}px`;
+            indicator.style.width = `${indicatorWidth}px`;
+          }
+        }
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', function () {
+            tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+            tab.setAttribute('aria-selected', 'true');
+
+            const panelId = tab.getAttribute('aria-controls');
+            panels.forEach(p => {
+              p.classList.add('hidden');
+              p.classList.remove('block');
+            });
+            document.getElementById(panelId).classList.remove('hidden');
+            document.getElementById(panelId).classList.add('block');
+
+            updateTabIndicator();
+          });
+        });
+
+        // Initial call to position the indicator correctly
+        updateTabIndicator();
+      });
+
   </script>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
