@@ -1618,11 +1618,15 @@ body {
     position: relative;
     height: auto;
     overflow: hidden;
+    background-attachment: scroll; /* Disable parallax effect */
+    transform: none; /* Remove any transform that might be affecting the position */
   }
 
   .main-content {
     margin-top: 0;
     padding-top: 0;
+     position: relative;  /* Ensure it stacks properly */
+    z-index: 1;          /* Ensure it stays above the parallax content */
   }
 }
 

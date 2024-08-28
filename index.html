@@ -1456,6 +1456,13 @@
       const parallaxHeight = parallax.offsetHeight;
       const windowHeight = window.innerHeight;
       const speedFactor = 0.3;
+
+       // Disable parallax effect on mobile
+      if (window.innerWidth <= 425) {
+        parallax.style.transform = 'none';
+        return;  // Exit the function, so no translateY is applied
+      }
+
       // Toggle overlay class based on scroll position
       parallax.classList.toggle('overlay', scrollTop > 0);
 
