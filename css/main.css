@@ -1528,11 +1528,27 @@ video {
 /* Base button styles */
 .button-hover-up {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
 
 .button-hover-up:hover {
   transform: translateY(-3px); /* Slight upward movement */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Optional: Add shadow on hover */
+
+}
+/* Hover effects */
+.button-hover-up:hover {
+  background-color: #01e1a1;
+  transform: translateY(-2px);
+}
+
+/* SVG hover animation */
+.button-hover-up svg {
+  transition: transform 0.3s;
+}
+
+.button-hover-up:hover svg {
+  transform: translateX(4px);
 }
 
 .button-hover-up:focus {
@@ -1868,3 +1884,10 @@ body {
 }
 
 
+.button svg {
+  transition: transform 0.3s;
+}
+
+.button:hover svg {
+  transform: translateX(4px);
+}
