@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Gallery with Interactive Thumbnails</title>
+    <!-- Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Swiper.js CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
+    <style>
+      /* Custom styles */
+      .large-image-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        /* Maintains 16:9 ratio */
+      }
+
+      .large-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Ensures image maintains its aspect ratio and fills the container */
+      }
+
+      .thumbnail {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        flex: 1 1 0;
+        /* Allow flex items to grow and shrink */
+      }
+
+      .thumbnail:hover {
+        opacity: 0.8;
+      }
+
+      .thumbnail.selected {
+        border: 2px solid #000;
+        /* Highlight selected thumbnail */
+      }
+
+      .thumbnail-container {
+        display: flex;
+        gap: 0.5rem;
+        /* Space between thumbnails */
+        width: 100%;
+        /* Ensure thumbnails span the full width of the large image */
+        overflow-x: auto;
+        /* Allow horizontal scrolling if needed */
+      }
+
+      .thumbnail-container img {
+        width: calc((100% - 0.5rem * 4) / 5);
+        /* Adjust width for 5 thumbnails including gaps */
+        height: auto;
+        object-fit: cover;
+      }
+
+      @media (max-width: 1024px) {
+        .desktop-only {
+          display: none;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .mobile-only {
+          display: none;
+        }
+      }
+
+      .swiper-slide img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .swiper-container {
+        position: relative;
+      }
+
+      .swiper-pagination {
+        display: flex;
+        justify-content: center;
+        /* Center dots horizontally */
+        padding: 0 10px;
+        position: static;
+        /* Ensure the pagination is in the normal document flow */
+        margin-top: 10px;
+        /* Space between the image and dots */
+      }
+
+      .swiper-pagination-bullet {
+        background: #000;
+        /* Color of the pagination bullets */
+      }
+
+      @media (max-width: 1024px) {
+        .swiper-button-next,
+        .swiper-button-prev {
+          display: none;
+          /* Hide navigation arrows on mobile */
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Container with 12-column grid -->
+    <div class="container mx-auto px-4 sm:px-8 lg:px-12">
+      <!-- Section 1 -->
+      <section class="grid grid-cols-12 gap-8 py-8">
+        <div class="col-span-12 lg:col-span-6">
+          <!-- Content for first half -->
+        </div>
+        <div class="col-span-12 lg:col-span-6">
+          <!-- Content for second half -->
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section class="grid grid-cols-12 gap-8 py-8">
+        <div class="col-span-12 lg:col-span-4">
+          <!-- Content for first column -->
+        </div>
+        <div class="col-span-12 lg:col-span-4">
+          <!-- Content for second column -->
+        </div>
+        <div class="col-span-12 lg:col-span-4">
+          <!-- Content for third column -->
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section class="py-8">
+        <div class="flex flex-col items-center">
+          <!-- Full-width content centered -->
+        </div>
+      </section>
+    </div>
+
+    <!-- Swiper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script>
+      // Initialize Swiper with a new name
+      var swiper4 = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+      })
+
+      // JavaScript to handle thumbnail clicks
+      document.querySelectorAll('.thumbnail').forEach((thumbnail) => {
+        thumbnail.addEventListener('click', () => {
+          // Remove 'selected' class from all thumbnails
+          document
+            .querySelectorAll('.thumbnail')
+            .forEach((thumb) => thumb.classList.remove('selected'))
+
+          // Add 'selected' class to the clicked thumbnail
+          thumbnail.classList.add('selected')
+
+          // Update the large image source with the selected thumbnail's image
+          document.getElementById('largeImage').src = thumbnail.dataset.image
+        })
+      })
+
+      // Set the default selected thumbnail
+      document.querySelector('.thumbnail.selected').click()
+    </script>
+  </body>
+</html>

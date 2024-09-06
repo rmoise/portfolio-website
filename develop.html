@@ -1,298 +1,414 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="img/favicon-32x32.png" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Roderick's Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js"
+      defer
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Container for the slider */
+      .slider-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        max-width: 960px;
+        /* Increased max-width */
+        margin: 20px auto;
+        position: relative;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="shortcut icon" href="img/favicon-32x32.png" />
-  <link rel="stylesheet" href="css/main.css" />
-  <title>Roderick's Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-  <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js" defer></script>
-
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
-  <style>
-    /* Define the button styles */
-.button {
-  background-color: var(--color--accent-color); /* Replace with actual color value if needed */
-  color: #fff;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
-  border-radius: 8px;
-  padding: 15px 25px;
-  font-family: 'IBM Plex Sans Hebrew', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  transition: transform 0.425s, box-shadow 0.25s, background-color 0.45s;
-  box-shadow: inset 0 4px 2.5px rgba(255, 255, 255, 0.14);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.button:hover {
-  background-color: #01e1a1; /* Adjust if needed */
-  box-shadow: inset 0 4px 5px rgba(0, 0, 0, 0.2);
-}
-
-.button svg {
-  transition: transform 0.3s;
-}
-
-.button:hover svg {
-  transform: translateX(4px);
-}
-
-    .swiper-container {
-      position: relative;
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    .swiper-slide {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 780px;
-      max-width: 100%;
-      box-sizing: border-box;
-    }
-
-    .swiper-slide img {
-      width: 100%;
-      height: auto;
-      border-radius: 1.5rem;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-      /* Adjust shadow to move it up */
-    }
-
-    .swiper-slide .caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(248, 250, 252, 1) 0%, rgba(248, 250, 252,  0.9) 60%);
-      /* Stronger white gradient */
-      color: #000;
-      padding: 20px;
-      text-align: center;
-      border-bottom-left-radius: 1.5rem;
-      border-bottom-right-radius: 1.5rem;
-      z-index: 5;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      width: 60px;
-      height: 50px;
-      /* Adjust height as needed */
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 5px;
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-      color: #4A4A4A;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 10;
-    }
-
-    .swiper-button-next {
-      right: -20px;
-      /* Adjust to place it outside the container if desired */
-    }
-
-    .swiper-button-prev {
-      left: -20px;
-      /* Adjust to place it outside the container if desired */
-    }
-
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-      font-family: SwiperIcons;
-      font-size: 24px;
-    }
-
-    .swiper-button-next::after {
-      content: '▶';
-      /* Right arrow */
-    }
-
-    .swiper-button-prev::after {
-      content: '◀';
-      /* Left arrow */
-    }
-
-    .swiper-pagination {
-      position: relative;
-      bottom: 10px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      margin-top: 30px;
-      z-index: 10;
-    }
-
-    .swiper-pagination-bullet {
-      background: #4A4A4A;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      opacity: 0.7;
-      transition: background 0.3s, opacity 0.3s;
-    }
-
-    .swiper-pagination-bullet-active {
-      background: #01f3ab;
-      opacity: 1;
-    }
-
-    .swiper-slide-prev,
-    .swiper-slide-next {
-      opacity: 0.5;
-    }
-
-    .swiper-slide-active {
-      opacity: 1;
-    }
-
-    @media (max-width: 768px) {
-      .swiper-slide {
+      /* Image container */
+      .image-container {
+        position: relative;
         width: 100%;
+        overflow: hidden;
+        padding-bottom: 67%;
+        /* 16:9 aspect ratio (9 / 16 = 0.5625, converted to percentage) */
+        /* Adjust to make the slider slightly larger */
       }
 
-      .swiper-slide .caption {
+      /* Slider images wrapper */
+      .slider-images {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      /* Slider image container */
+      .slider-image {
+        position: relative;
+        min-width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Slider images */
+      .slider-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        /* Adjusted to ensure images cover the container */
+      }
+
+      /* Caption Styling */
+      .caption {
+        position: absolute;
+        bottom: 30px;
+        /* Adjust as needed */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.3);
+        /* Lighter semi-transparent background */
+        color: #fff;
+        /* White text color */
+        padding: 5px 10px;
+        /* Padding for readability */
+        border-radius: 3px;
+        /* Slightly rounded corners */
+        font-family: 'Poppins', sans-serif;
+        /* Font style to match your site */
         font-size: 14px;
-        padding: 5px;
+        /* Smaller font size */
+        text-align: center;
+        max-width: 80%;
+        /* Prevents caption from stretching too wide */
+        box-sizing: border-box;
+        z-index: 1;
+        /* Ensure caption is above image */
+        backdrop-filter: blur(5px);
+        /* Optional: Adds a subtle blur effect to the background */
       }
 
-      .swiper-button-next,
-      .swiper-button-prev {
-        display: none;
-        /* Hide arrows on mobile */
+      /* Controls container */
+      .controls-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+        z-index: 2;
+        /* Ensure controls are above captions */
       }
-    }
-  </style>
-</head>
 
-<body class="bg-slate-100">
+      /* Dots container (left side) */
+      .dots-container {
+        display: flex;
+        gap: 8px;
+        /* Increased gap */
+        margin-left: 20px;
+      }
 
-  <!-- View my Projects Button -->
-  <a href="#portfolio" class="button inline-flex justify-center items-center text-base font-medium text-center rounded-lg">
-    View my Projects
-    <svg class="w-3.5 h-3.5 ml-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-    </svg>
-  </a>
+      /* Dot styling */
+      .dot {
+        width: 10px;
+        /* Increased dot size */
+        height: 10px;
+        border-radius: 50%;
+        background-color: #333;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
 
-  <section class="py-32">
-    <div class="max-w-7xl mx-auto px-4">
-      <!-- Title and Subtitle Section -->
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <h2 class="text-4xl font-bold mb-4">Online payments</h2>
-        <h3 class="text-2xl text-gray-500">Start your business with a breeze using our prebuilt payment page</h3>
-      </div>
+      .dot.active {
+        background-color: #555;
+      }
 
-      <!-- Swiper Carousel Section -->
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <!-- Slide 1 -->
-          <div class="swiper-slide">
-            <img class="" src="img/Kyto-01.png" alt="Payment UI">
-            <div class="caption">Payment UI Overview</div>
+      .dot:hover {
+        background-color: #777;
+      }
+
+      /* Arrows container (right side) */
+      .arrows-container {
+        display: flex;
+        gap: 12px;
+        /* Increased gap */
+        margin-right: 20px;
+      }
+
+      /* Arrow styling */
+      .arrow {
+        cursor: pointer;
+        font-size: 18px;
+        /* Decreased font size */
+        /* Previously 22px, now 18px for smaller arrows */
+        color: #333;
+        transition: color 0.3s;
+      }
+
+      .arrow:hover {
+        color: #555;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .controls-container {
+          margin-top: 10px;
+        }
+
+        .arrow {
+          font-size: 16px;
+          /* Adjusted font size for smaller screens */
+          /* Previously 20px, now 16px for smaller screens */
+        }
+
+        .dot {
+          width: 8px;
+          height: 8px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- First Slider Container -->
+    <div class="slider-container" id="slider1">
+      <!-- Image Container -->
+      <div class="image-container">
+        <div class="slider-images">
+          <div class="slider-image bg-slate-100 rounded-3xl">
+            <img
+              src="img/Kyto-laptop-mockup-01o.jpg"
+              class="rounded-3xl"
+              alt="Image 1"
+            />
+            <div class="caption">Homepage</div>
           </div>
-          <!-- Slide 2 -->
-          <div class="swiper-slide">
-            <img class="" src="https://cdn.prod.website-files.com/666ed6a5e87367d7b162380b/668543fb1b3dfd78dc7cae64_Landing-A__UI-2.webp" alt="Payment UI">
-            <div class="caption">Simple Payment Flow</div>
+          <div class="slider-image bg-slate-100 rounded-3xl">
+            <img
+              src="img/kyto-iPhone-Mockup.jpg"
+              class="rounded-3xl"
+              alt="Image 2"
+            />
+            <div class="caption">Platform Engine Page</div>
           </div>
-          <!-- Slide 3 -->
-          <div class="swiper-slide">
-            <img class="" src="https://cdn.prod.website-files.com/666ed6a5e87367d7b162380b/668543fb1b3dfd78dc7cae64_Landing-A__UI-2.webp" alt="Payment UI">
-            <div class="caption">Responsive Design</div>
-          </div>
-          <!-- Slide 4 -->
-          <div class="swiper-slide">
-            <img class="" src="https://cdn.prod.website-files.com/666ed6a5e87367d7b162380b/668543fb1b3dfd78dc7cae64_Landing-A__UI-2.webp" alt="Payment UI">
-            <div class="caption">Customizable UI</div>
+          <div class="slider-image">
+            <img
+              src="img/kyto-iPhone-Mockup-02.jpg"
+              class="rounded-3xl"
+              alt="Image 3"
+            />
+            <div class="caption">Caption for Image 3</div>
           </div>
         </div>
-        <!-- Add Navigation -->
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
       </div>
 
-      <!-- Add Pagination -->
-      <div class="swiper-pagination"></div>
+      <!-- Controls Container -->
+      <div class="controls-container">
+        <!-- Dots Container (left side) -->
+        <div class="dots-container">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+          <div class="dot" data-index="2"></div>
+        </div>
 
-      <!-- Text and Link Section -->
-      <div class="text-center max-w-3xl mx-auto mt-8">
-        <p class="text-lg text-gray-600 mb-4">All payments are processed within 24 hours or less. Collect payments to your preferred bank account or wallet.</p>
-        <a href="#" class="inline-flex items-center text-base font-medium text-purple-600 hover:text-purple-800">
-          Learn more
-          <img src="https://cdn.prod.website-files.com/666ed6a5e87367d7b162380b/666fec6dca9175f9c7645cd9_Vectors-Wrapper.svg" alt="arrow" class="ml-2 w-5 h-5">
-        </a>
+        <!-- Arrows Container (right side) -->
+        <div class="arrows-container">
+          <span class="arrow left-arrow"
+            ><i class="fas fa-chevron-left"></i
+          ></span>
+          <span class="arrow right-arrow"
+            ><i class="fas fa-chevron-right"></i
+          ></span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Swiper JS -->
-  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 'auto',
-        centeredSlides: true,
-        spaceBetween: 30,
-        loop: true,
-        autoplay: {
-          delay: 5000,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
+    <!-- Second Slider Container -->
+    <div class="slider-container" id="slider2">
+      <!-- Image Container -->
+      <div class="image-container">
+        <div class="slider-images">
+          <div class="slider-image">
+            <img
+              src="img/UI Elements - Colors.png"
+              class="rounded-3xl"
+              alt="Image 1"
+            />
+            <div class="caption">Caption for Image 1</div>
+          </div>
+          <div class="slider-image">
+            <img
+              src="img/UI-Elements-Gradients.png"
+              class="rounded-3xl"
+              alt="Image 2"
+            />
+            <div class="caption">Caption for Image 2</div>
+          </div>
+          <div class="slider-image">
+            <img
+              src="img/UI Elements - Typography.png"
+              class="rounded-3xl"
+              alt="Image 3"
+            />
+            <div class="caption">Caption for Image 3</div>
+          </div>
+        </div>
+      </div>
 
-        keyboard: {
-          enabled: true, // Enables keyboard control
-          onlyInViewport: true, // Allows keyboard navigation only when the carousel is in the viewport
-        },
-        on: {
-          init: function () {
-            // Ensure the central slide is visible
-            this.slideToLoop(this.slides.length - 1, 0);
-          },
-          slideChange: function () {
-            // Ensure slides are updated correctly
-            this.updateSlidesClasses();
-          },
-          transitionEnd: function () {
-            // Ensure proper slide visibility after transition
-            this.updateSlidesClasses();
-          },
-        },
-      });
-    });
-  </script>
+      <!-- Controls Container -->
+      <div class="controls-container">
+        <!-- Dots Container (left side) -->
+        <div class="dots-container">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+          <div class="dot" data-index="2"></div>
+        </div>
 
-</body>
+        <!-- Arrows Container (right side) -->
+        <div class="arrows-container">
+          <span class="arrow left-arrow"
+            ><i class="fas fa-chevron-left"></i
+          ></span>
+          <span class="arrow right-arrow"
+            ><i class="fas fa-chevron-right"></i
+          ></span>
+        </div>
+      </div>
+    </div>
 
+    <script>
+      function initializeSlider(sliderId) {
+        const sliderContainer = document.getElementById(sliderId)
+        const sliderImages = sliderContainer.querySelector('.slider-images')
+        const images = sliderContainer.querySelectorAll('.slider-image')
+        const dots = sliderContainer.querySelectorAll('.dot')
+        let currentIndex = 0
+        let startX,
+          isDragging = false
+
+        function updateSlider(index) {
+          sliderImages.style.transform = `translateX(-${index * 100}%)`
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === index)
+          })
+        }
+
+        function nextSlide() {
+          currentIndex = currentIndex < images.length - 1 ? currentIndex + 1 : 0
+          updateSlider(currentIndex)
+        }
+
+        function prevSlide() {
+          currentIndex = currentIndex > 0 ? currentIndex - 1 : images.length - 1
+          updateSlider(currentIndex)
+        }
+
+        sliderContainer
+          .querySelector('.left-arrow')
+          .addEventListener('click', prevSlide)
+        sliderContainer
+          .querySelector('.right-arrow')
+          .addEventListener('click', nextSlide)
+
+        dots.forEach((dot) => {
+          dot.addEventListener('click', (e) => {
+            const index = parseInt(e.target.dataset.index, 10)
+            updateSlider(index)
+            currentIndex = index
+          })
+        })
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowRight') {
+            nextSlide()
+          } else if (e.key === 'ArrowLeft') {
+            prevSlide()
+          }
+        })
+
+        // Swipe support using basic touch events
+        const imageContainer = sliderContainer.querySelector('.image-container')
+
+        imageContainer.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX
+        })
+
+        imageContainer.addEventListener('touchend', (e) => {
+          const endX = e.changedTouches[0].clientX
+          const diffX = endX - startX
+
+          if (Math.abs(diffX) > 50) {
+            // Adjust sensitivity if needed
+            if (diffX < 0) {
+              nextSlide()
+            } else {
+              prevSlide()
+            }
+          }
+        })
+
+        // Mouse drag support
+        imageContainer.addEventListener('mousedown', (e) => {
+          startX = e.clientX
+          isDragging = true
+          imageContainer.style.cursor = 'grabbing'
+          e.preventDefault() // Prevent default drag preview
+        })
+
+        imageContainer.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const endX = e.clientX
+            const diffX = endX - startX
+
+            if (Math.abs(diffX) > 50) {
+              // Adjust sensitivity if needed
+              if (diffX < 0) {
+                nextSlide()
+              } else {
+                prevSlide()
+              }
+              isDragging = false // End dragging
+              imageContainer.style.cursor = 'grab'
+            }
+          }
+        })
+
+        imageContainer.addEventListener('mouseup', () => {
+          isDragging = false // End dragging
+          imageContainer.style.cursor = 'grab'
+        })
+
+        imageContainer.addEventListener('mouseleave', () => {
+          isDragging = false // End dragging
+          imageContainer.style.cursor = 'grab'
+        })
+
+        // Initialize the slider
+        updateSlider(currentIndex)
+      }
+
+      // Initialize both sliders
+      initializeSlider('slider1')
+      initializeSlider('slider2')
+    </script>
+  </body>
 </html>

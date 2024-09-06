@@ -1,17 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./*.html', 'node_modules/preline/dist/*.js',],
+  important: true, // Add this line to enable !important globally
 
+  content: [
+    './index.html',
+    './src/**/*.{html,js}',
+    'node_modules/flowbite/**/*.js',
+    'node_modules/preline/dist/*.js',
+  ],
   theme: {
-    screens: {
-      sm: '480px',
-      md: '768px',
-      lg: '976px',
-      xl: '1440px'
-    },
     extend: {
       colors: {
-        green: '#00FEB0', // Define the custom color
+        green: '#00FEB0',
         brightGreen: '#a2f4db',
         brightRed: 'hsl(12, 88%, 59%)',
         brightRedLight: 'hsl(12, 88%, 69%)',
@@ -26,23 +26,21 @@ module.exports = {
         selectedText: '#A3A3FF',
         nav: '#404053',
         secondary: '#9191A4',
-        linkHover: '#001eff'
+        linkHover: '#001eff',
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif']
+        poppins: ['Poppins', 'sans-serif'],
       },
-      padding: {
-        '1/3': '33.33333%',
-        '2/3': '66.66667%'
+      fontSize: {
+        '3xl': ['2rem', '2.5rem'], // 32px font size with 40px line height
+        base: ['1rem', '1.75rem'], // 16px font size with 28px line height
+        lg: ['1.125rem', '2rem'], // 18px font size with 32px line height
+        sm: ['0.875rem', '1.5rem'], // 14px font size with 24px line height
+        '5xl': ['3rem', '3.5rem'], // 48px font size with 56px line height
+        '6xl': ['4rem', '4.5rem'], // 64px font size with 72px line height
+        '7xl': ['4.5rem', '5rem'], // 72px font size with 80px line height
       },
-      opacity: {
-        '15': '0.15', // Add custom opacity value
-        '25': '0.25',
-        '50': '0.5',
-        '75': '0.75',
-        '100': '1',
-      },
-    }
+    },
   },
-  plugins: [ require('preline/plugin'),],
+  plugins: [require('preline/plugin'), require('flowbite/plugin')],
 }
