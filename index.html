@@ -633,20 +633,19 @@
           >
             <!-- Image Section -->
 
-           <!-- Image Section with Animation -->
-<div id="image" class="w-full md:w-1/2 flex justify-center">
-  <div
-    class="relative w-full max-w-[250px] sm:max-w-[300px] md:max-w-[400px] aspect-square overflow-hidden rounded-md transition-all duration-300 group hover:rounded-xl"
-  >
-    <img
-      src="img/Herr-Moise-2.png"
-      alt="Roderick Moise"
-      class="object-cover w-full h-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-      loading="eager"
-    />
-  </div>
-</div>
-
+            <!-- Image Section with Animation -->
+            <div id="image" class="w-full md:w-1/2 flex justify-center">
+              <div
+                class="relative w-full max-w-[250px] sm:max-w-[300px] md:max-w-[400px] aspect-square overflow-hidden rounded-md transition-all duration-300 group hover:rounded-xl"
+              >
+                <img
+                  src="img/Herr-Moise-2.png"
+                  alt="Roderick Moise"
+                  class="object-cover w-full h-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+                  loading="eager"
+                />
+              </div>
+            </div>
 
             <!-- Content Wrapper -->
             <div
@@ -1030,7 +1029,7 @@
                   <div class="relative overflow-x-auto md:overflow-x-visible">
                     <div
                       id="tools-slider"
-                      class="overflow-x-auto flex md:grid md:grid-cols-2 xl:grid-cols-4 gap-4"
+                      class="overflow-x-auto flex md:grid md:grid-cols-2 xl:grid-cols-4 gap-1"
                     >
                       <!-- Tool items (icons) -->
                       <!-- Figma -->
@@ -2890,62 +2889,65 @@
     </main>
 
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-  const slider = document.getElementById("tools-slider");
-  const dotsContainer = document.getElementById("dots-container");
+      document.addEventListener("DOMContentLoaded", () => {
+        const slider = document.getElementById("tools-slider");
+        const dotsContainer = document.getElementById("dots-container");
 
-  let containerWidth = slider.offsetWidth;
+        let containerWidth = slider.offsetWidth;
 
-  function createDots() {
-    dotsContainer.innerHTML = ""; // Clear existing dots
-    const numDots = Math.ceil(slider.scrollWidth / containerWidth);
-    for (let i = 0; i < numDots; i++) {
-      const dot = document.createElement("div");
-      dot.classList.add("dot");
-      dot.dataset.index = i;
-      dotsContainer.appendChild(dot);
-    }
-    updateDots(); // Set the initial active dot
-  }
+        function createDots() {
+          dotsContainer.innerHTML = ""; // Clear existing dots
+          const numDots = Math.ceil(slider.scrollWidth / containerWidth);
+          for (let i = 0; i < numDots; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("dot");
+            dot.dataset.index = i;
+            dotsContainer.appendChild(dot);
+          }
+          updateDots(); // Set the initial active dot
+        }
 
-  function updateDots() {
-    const scrollLeft = slider.scrollLeft;
-    const maxScrollLeft = slider.scrollWidth - containerWidth;
-    const numDots = dotsContainer.children.length;
-    const currentDotIndex = Math.round(
-      (scrollLeft / maxScrollLeft) * (numDots - 1)
-    );
+        function updateDots() {
+          const scrollLeft = slider.scrollLeft;
+          const maxScrollLeft = slider.scrollWidth - containerWidth;
+          const numDots = dotsContainer.children.length;
+          const currentDotIndex = Math.round(
+            (scrollLeft / maxScrollLeft) * (numDots - 1),
+          );
 
-    Array.from(dotsContainer.children).forEach((dot, index) => {
-      dot.classList.toggle("active", index === currentDotIndex);
-    });
-  }
+          Array.from(dotsContainer.children).forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentDotIndex);
+          });
+        }
 
-  // Handle dot clicks to scroll to the corresponding section
-  dotsContainer.addEventListener("click", (event) => {
-    if (event.target.classList.contains("dot")) {
-      const index = event.target.dataset.index;
-      const scrollTo =
-        (slider.scrollWidth / dotsContainer.children.length) * index;
-      slider.scrollTo({
-        left: scrollTo,
-        behavior: "smooth",
+        // Handle dot clicks to scroll to the corresponding section
+        dotsContainer.addEventListener("click", (event) => {
+          if (event.target.classList.contains("dot")) {
+            const index = event.target.dataset.index;
+            const scrollTo =
+              (slider.scrollWidth / dotsContainer.children.length) * index;
+            slider.scrollTo({
+              left: scrollTo,
+              behavior: "smooth",
+            });
+          }
+        });
+
+        createDots(); // Initialize dots
+
+        // Debounce scroll event to improve performance
+        let debounceTimer;
+        slider.addEventListener("scroll", () => {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(updateDots, 50);
+        });
+
+        window.addEventListener("resize", () => {
+          containerWidth = slider.offsetWidth;
+          createDots();
+          updateDots();
+        });
       });
-    }
-  });
-
-  createDots(); // Initialize dots
-
-  slider.addEventListener("scroll", updateDots);
-  window.addEventListener("resize", () => {
-    containerWidth = slider.offsetWidth;
-    createDots();
-    updateDots();
-  });
-});
-
-
-
     </script>
 
     <script>
