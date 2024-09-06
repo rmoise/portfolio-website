@@ -4186,7 +4186,6 @@ media screen and (max-width: 768px) {
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
 }
 
-
 .swiper-container {
   width: 100%;
 }
@@ -4199,11 +4198,9 @@ media screen and (max-width: 768px) {
 .swiper-slide {
   width: 100%; /* This is a common setting */
   box-sizing: border-box; /* Ensures padding/margin does not affect width */
-    margin: 0; /* Remove extra margin if present */
+  margin: 0; /* Remove extra margin if present */
   padding: 0; /* Remove extra padding if present */
-    flex-shrink: 0 !important; /* Force no shrinking */
-
-
+  flex-shrink: 1 !important; /* Force no shrinking */
 }
 
 .hover\:scale-105:hover {
@@ -4870,4 +4867,3 @@ media screen and (max-width: 768px) {
 .rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
   text-align: right !important;
 }
-
