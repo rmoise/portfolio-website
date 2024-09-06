@@ -3805,6 +3805,8 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 16px;
   -webkit-overflow-scrolling: touch;
+  min-width: 100%; /* Ensure it takes up the full width of its parent */
+  touch-action: pan-x; /* Allows horizontal scrolling */
 }
 /* Ensure that tool-item does not shrink and is centered */
 .tool-item {
