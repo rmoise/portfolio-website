@@ -695,6 +695,23 @@
       .bg-gradient {
         background: linear-gradient(90deg, #01f3ab 0%, #0ff1e0 100%);
       }
+
+      /* Default parallax for desktop */
+      .custom-image-section .image {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+
+      /* Mobile styles - disable fixed attachment */
+      @media (max-width: 768px) {
+        .custom-image-section .image {
+          background-attachment: scroll;
+          background-size: contain;
+          background-position: center top;
+        }
+      }
     </style>
   </head>
 
@@ -1252,7 +1269,7 @@
       </section>
 
       <!-- Section: Parallax Image -->
-      <section class="section m-image-large relative">
+      <section class="section m-image-large relative custom-image-section">
         <div
           class="image parallax-cs absolute inset-0"
           style="background-image: url(&quot;img/Kyto_Posters_2-03.png&quot;)"
@@ -1276,7 +1293,9 @@
               <strong>Industry</strong><br />Software as a Service
             </div>
             <!-- Year -->
-            <div class="details-label p-4"><strong>Year</strong><br />2019-2021</div>
+            <div class="details-label p-4">
+              <strong>Year</strong><br />2019-2021
+            </div>
             <!-- Website -->
             <div class="details-label p-4">
               <strong>Website</strong><br />kyto.de
@@ -1869,9 +1888,7 @@
 
       <section class="bg-[#F5F5F5] py-16 xl:py-32">
         <div class="text-center mb-8">
-          <h2 class="m-title text-2xl font-bold">
-            Website Engine Dashboard
-          </h2>
+          <h2 class="m-title text-2xl font-bold">Website Engine Dashboard</h2>
         </div>
         <div class="relative w-full flex justify-center overflow-visible">
           <img
@@ -1885,9 +1902,7 @@
       <section class="py-16 xl:py-32">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center">
           <div class="mb-4">
-            <h3 class="m-title text-2xl font-bold">
-              Stationary
-            </h3>
+            <h3 class="m-title text-2xl font-bold">Stationary</h3>
           </div>
           <p class="text-gray-600 mb-8">Letterhead and business card</p>
           <img
@@ -1909,9 +1924,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4">
           <div class="mx-auto text-center">
             <div class="mb-8">
-              <h3 class="m-title text-2xl font-bold">
-                Stickers
-              </h3>
+              <h3 class="m-title text-2xl font-bold">Stickers</h3>
             </div>
           </div>
           <div>
@@ -1923,13 +1936,11 @@
         </div>
       </section>
 
-      <section class="bg-[#F5F5F5]  py-16 xl:py-32 w-screen">
+      <section class="bg-[#F5F5F5] py-16 xl:py-32 w-screen">
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-14 relative">
           <div class="max-w-2xl md:mx-auto text-center xl:max-w-none">
             <div class="mb-8">
-              <h3 class="m-title text-2xl font-bold">
-                Desktop Wallpaper
-              </h3>
+              <h3 class="m-title text-2xl font-bold">Desktop Wallpaper</h3>
             </div>
           </div>
           <div
@@ -2108,6 +2119,31 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+    // Apply parallax effect using IntersectionObserver
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const imageElement = document.querySelector(
+          ".custom-image-section .image",
+        );
+
+        // Check if IntersectionObserver is supported
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                window.addEventListener("scroll", function () {
+                  const offset = window.pageYOffset;
+                  imageElement.style.backgroundPositionY = `${offset * 0.5}px`; // Adjust speed for parallax
+                });
+              }
+            });
+          });
+
+          observer.observe(imageElement);
+        }
+      });
+    </script>
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         // Initialize the comparison slider
