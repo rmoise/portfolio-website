@@ -2889,67 +2889,66 @@
     </main>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const slider = document.getElementById("tools-slider");
-        const dotsContainer = document.getElementById("dots-container");
-        let containerWidth = slider.offsetWidth;
-        let debounceTimer;
+     document.addEventListener("DOMContentLoaded", () => {
+  const slider = document.getElementById("tools-slider");
+  const dotsContainer = document.getElementById("dots-container");
+  let containerWidth = slider.offsetWidth;
+  let debounceTimer;
 
-        // Function to create navigation dots
-        function createDots() {
-          dotsContainer.innerHTML = ""; // Clear existing dots
-          const numDots = Math.ceil(slider.scrollWidth / containerWidth);
-          for (let i = 0; i < numDots; i++) {
-            const dot = document.createElement("div");
-            dot.classList.add("dot");
-            dot.dataset.index = i;
-            dotsContainer.appendChild(dot);
-          }
-          updateDots(); // Set the initial active dot
-        }
+  function createDots() {
+    dotsContainer.innerHTML = ""; // Clear existing dots
+    const numDots = Math.ceil(slider.scrollWidth / containerWidth);
+    for (let i = 0; i < numDots; i++) {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      dot.dataset.index = i;
+      dotsContainer.appendChild(dot);
+    }
+    updateDots(); // Set the initial active dot
+  }
 
-        // Function to update dots based on the scroll position
-        function updateDots() {
-          const scrollLeft = slider.scrollLeft;
-          const maxScrollLeft = slider.scrollWidth - containerWidth;
-          const numDots = dotsContainer.children.length;
-          const currentDotIndex = Math.round(
-            (scrollLeft / maxScrollLeft) * (numDots - 1),
-          );
+  function updateDots() {
+    const scrollLeft = slider.scrollLeft;
+    const maxScrollLeft = slider.scrollWidth - containerWidth;
+    const numDots = dotsContainer.children.length;
+    const currentDotIndex = Math.round(
+      (scrollLeft / maxScrollLeft) * (numDots - 1)
+    );
 
-          Array.from(dotsContainer.children).forEach((dot, index) => {
-            dot.classList.toggle("active", index === currentDotIndex);
-          });
-        }
+    Array.from(dotsContainer.children).forEach((dot, index) => {
+      dot.classList.toggle("active", index === currentDotIndex);
+    });
+  }
 
-        // Handle dot clicks to scroll to the corresponding section
-        dotsContainer.addEventListener("click", (event) => {
-          if (event.target.classList.contains("dot")) {
-            const index = event.target.dataset.index;
-            const scrollTo =
-              (slider.scrollWidth / dotsContainer.children.length) * index;
-            slider.scrollTo({
-              left: scrollTo,
-              behavior: "smooth",
-            });
-          }
-        });
-
-        // Debounced scroll event handler
-        function handleScroll() {
-          clearTimeout(debounceTimer);
-          debounceTimer = setTimeout(updateDots, 50); // Adjust timeout as needed
-        }
-
-        // Initialize dots and event listeners
-        createDots();
-        slider.addEventListener("scroll", handleScroll);
-        window.addEventListener("resize", () => {
-          containerWidth = slider.offsetWidth;
-          createDots();
-          updateDots();
-        });
+  // Handle dot clicks to scroll to the corresponding section
+  dotsContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("dot")) {
+      const index = event.target.dataset.index;
+      const scrollTo =
+        (slider.scrollWidth / dotsContainer.children.length) * index;
+      slider.scrollTo({
+        left: scrollTo,
+        behavior: "smooth",
       });
+    }
+  });
+
+  // Debounced scroll event handler
+  function handleScroll() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(updateDots, 50); // Adjust timeout as needed
+  }
+
+  // Initialize dots and event listeners
+  createDots();
+  slider.addEventListener("scroll", handleScroll, { passive: true });
+  window.addEventListener("resize", () => {
+    containerWidth = slider.offsetWidth;
+    createDots();
+    updateDots();
+  });
+});
+
     </script>
 
     <script>
