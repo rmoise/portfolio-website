@@ -4567,6 +4567,10 @@ media screen and (max-width: 768px) {
     margin-bottom: 0px !important;
   }
 
+  .md\:mt-10 {
+    margin-top: 2.5rem !important;
+  }
+
   .md\:mt-16 {
     margin-top: 4rem !important;
   }
@@ -4701,6 +4705,10 @@ media screen and (max-width: 768px) {
     margin-top: 0px !important;
   }
 
+  .lg\:mt-10 {
+    margin-top: 2.5rem !important;
+  }
+
   .lg\:mt-16 {
     margin-top: 4rem !important;
   }
@@ -4819,6 +4827,10 @@ media screen and (max-width: 768px) {
 
   .xl\:mb-8 {
     margin-bottom: 2rem !important;
+  }
+
+  .xl\:mt-10 {
+    margin-top: 2.5rem !important;
   }
 
   .xl\:mt-8 {
