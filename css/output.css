@@ -3807,6 +3807,7 @@ body {
   -webkit-overflow-scrolling: touch;
   min-width: 100%; /* Ensure it takes up the full width of its parent */
   touch-action: pan-x; /* Allows horizontal scrolling */
+  scroll-behavior: smooth;
 }
 /* Ensure that tool-item does not shrink and is centered */
 .tool-item {

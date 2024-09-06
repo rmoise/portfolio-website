@@ -2889,66 +2889,93 @@
     </main>
 
     <script>
-     document.addEventListener("DOMContentLoaded", () => {
-  const slider = document.getElementById("tools-slider");
-  const dotsContainer = document.getElementById("dots-container");
-  let containerWidth = slider.offsetWidth;
-  let debounceTimer;
+      document.addEventListener("DOMContentLoaded", () => {
+        const slider = document.getElementById("tools-slider");
+        const dotsContainer = document.getElementById("dots-container");
+        let containerWidth = slider.offsetWidth;
 
-  function createDots() {
-    dotsContainer.innerHTML = ""; // Clear existing dots
-    const numDots = Math.ceil(slider.scrollWidth / containerWidth);
-    for (let i = 0; i < numDots; i++) {
-      const dot = document.createElement("div");
-      dot.classList.add("dot");
-      dot.dataset.index = i;
-      dotsContainer.appendChild(dot);
-    }
-    updateDots(); // Set the initial active dot
-  }
+        function createDots() {
+          dotsContainer.innerHTML = ""; // Clear existing dots
+          const numDots = Math.ceil(slider.scrollWidth / containerWidth);
+          for (let i = 0; i < numDots; i++) {
+            const dot = document.createElement("div");
+            dot.classList.add("dot");
+            dot.dataset.index = i;
+            dotsContainer.appendChild(dot);
+          }
+          updateDots(); // Set the initial active dot
+        }
 
-  function updateDots() {
-    const scrollLeft = slider.scrollLeft;
-    const maxScrollLeft = slider.scrollWidth - containerWidth;
-    const numDots = dotsContainer.children.length;
-    const currentDotIndex = Math.round(
-      (scrollLeft / maxScrollLeft) * (numDots - 1)
-    );
+        function updateDots() {
+          const scrollLeft = slider.scrollLeft;
+          const maxScrollLeft = slider.scrollWidth - containerWidth;
+          const numDots = dotsContainer.children.length;
+          const currentDotIndex = Math.round(
+            (scrollLeft / maxScrollLeft) * (numDots - 1),
+          );
 
-    Array.from(dotsContainer.children).forEach((dot, index) => {
-      dot.classList.toggle("active", index === currentDotIndex);
-    });
-  }
+          Array.from(dotsContainer.children).forEach((dot, index) => {
+            dot.classList.toggle("active", index === currentDotIndex);
+          });
+        }
 
-  // Handle dot clicks to scroll to the corresponding section
-  dotsContainer.addEventListener("click", (event) => {
-    if (event.target.classList.contains("dot")) {
-      const index = event.target.dataset.index;
-      const scrollTo =
-        (slider.scrollWidth / dotsContainer.children.length) * index;
-      slider.scrollTo({
-        left: scrollTo,
-        behavior: "smooth",
+        // Handle dot clicks to scroll to the corresponding section
+        dotsContainer.addEventListener("click", (event) => {
+          if (event.target.classList.contains("dot")) {
+            const index = event.target.dataset.index;
+            const scrollTo =
+              (slider.scrollWidth / dotsContainer.children.length) * index;
+            slider.scrollTo({
+              left: scrollTo,
+              behavior: "smooth",
+            });
+          }
+        });
+
+        function debounce(func, wait) {
+          let timeout;
+          return function (...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(this, args), wait);
+          };
+        }
+
+        function throttle(func, limit) {
+          let lastFunc;
+          let lastRan;
+          return function (...args) {
+            if (!lastRan) {
+              func.apply(this, args);
+              lastRan = Date.now();
+            } else {
+              clearTimeout(lastFunc);
+              lastFunc = setTimeout(
+                () => {
+                  if (Date.now() - lastRan >= limit) {
+                    func.apply(this, args);
+                    lastRan = Date.now();
+                  }
+                },
+                limit - (Date.now() - lastRan),
+              );
+            }
+          };
+        }
+
+        // Use debounce for scroll event to reduce frequency of updates
+        slider.addEventListener("scroll", debounce(updateDots, 100), {
+          passive: true,
+        });
+
+        // Update dots on resize
+        window.addEventListener("resize", () => {
+          containerWidth = slider.offsetWidth;
+          createDots();
+          updateDots();
+        });
+
+        createDots(); // Initialize dots
       });
-    }
-  });
-
-  // Debounced scroll event handler
-  function handleScroll() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(updateDots, 50); // Adjust timeout as needed
-  }
-
-  // Initialize dots and event listeners
-  createDots();
-  slider.addEventListener("scroll", handleScroll, { passive: true });
-  window.addEventListener("resize", () => {
-    containerWidth = slider.offsetWidth;
-    createDots();
-    updateDots();
-  });
-});
-
     </script>
 
     <script>
