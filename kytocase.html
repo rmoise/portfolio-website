@@ -713,19 +713,21 @@
         }
       }
 
-      /* Parallax effect for the image */
+/* Default parallax for desktop */
 .custom-image-section .image {
-  background-attachment: fixed; /* Parallax effect */
-  background-size: cover; /* Ensure the image covers the section on larger screens */
-  background-position: center center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent repeating */
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Adjust the height if needed */
 }
 
-      /* On mobile, adjust the background size and position */
+/* Mobile styles - zoom out the image */
 @media (max-width: 768px) {
   .custom-image-section .image {
-    background-size: cover; /* Ensure the whole image fits on mobile */
-    background-position: center top; /* Adjust position for mobile */
+    background-attachment: scroll; /* JavaScript parallax handles scroll */
+    background-size: 250%; /* Zoom out by increasing the background size */
+    background-position: center top; /* Adjust position as needed */
   }
 }
     </style>
