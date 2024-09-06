@@ -1142,6 +1142,9 @@ input:checked + .toggle-bg {
 .mb-1 {
   margin-bottom: 0.25rem !important;
 }
+.mb-12 {
+  margin-bottom: 3rem !important;
+}
 .mb-2 {
   margin-bottom: 0.5rem !important;
 }
@@ -4816,10 +4819,6 @@ media screen and (max-width: 768px) {
 
   .xl\:mb-8 {
     margin-bottom: 2rem !important;
-  }
-
-  .xl\:mt-16 {
-    margin-top: 4rem !important;
   }
 
   .xl\:mt-8 {
