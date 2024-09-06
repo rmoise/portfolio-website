@@ -712,6 +712,22 @@
           background-position: center top;
         }
       }
+
+      /* Parallax effect for the image */
+.custom-image-section .image {
+  background-attachment: fixed; /* Parallax effect */
+  background-size: cover; /* Ensure the image covers the section on larger screens */
+  background-position: center center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent repeating */
+}
+
+      /* On mobile, adjust the background size and position */
+@media (max-width: 768px) {
+  .custom-image-section .image {
+    background-size: cover; /* Ensure the whole image fits on mobile */
+    background-position: center top; /* Adjust position for mobile */
+  }
+}
     </style>
   </head>
 
@@ -1256,7 +1272,7 @@
       <!-- Hero Section -->
 
       <!-- Section: Heading -->
-      <section class="section section-inner started-heading pt-52 pb-16">
+      <section class="section section-inner started-heading lg:pt-52 lg:pb-16">
         <div class="container mx-auto px-8 w-full">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -2121,27 +2137,31 @@
     <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
     // Apply parallax effect using IntersectionObserver
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const imageElement = document.querySelector(
-          ".custom-image-section .image",
-        );
+     document.addEventListener("DOMContentLoaded", function () {
+  const imageElement = document.querySelector(".custom-image-section .image");
 
-        // Check if IntersectionObserver is supported
-        if ("IntersectionObserver" in window) {
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                window.addEventListener("scroll", function () {
-                  const offset = window.pageYOffset;
-                  imageElement.style.backgroundPositionY = `${offset * 0.5}px`; // Adjust speed for parallax
-                });
-              }
-            });
+  // Check if window width is less than 768px (mobile)
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
+  // Check if IntersectionObserver is supported and if on mobile
+  if ("IntersectionObserver" in window && isMobile()) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          window.addEventListener("scroll", function () {
+            const offset = window.pageYOffset;
+            imageElement.style.backgroundPositionY = `${offset * 0.5}px`; // Adjust speed for parallax
           });
-
-          observer.observe(imageElement);
         }
       });
+    });
+
+    observer.observe(imageElement);
+  }
+});
+
     </script>
 
     <script>
