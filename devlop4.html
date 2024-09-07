@@ -3,88 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects</title>
+    <title>Personal Website</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        .project-image {
+            height: 500px; /* Adjusted height for more prominent images */
+        }
+    </style>
 </head>
 <body class="bg-gray-100">
-
-<div class="mx-auto max-w-[100rem] rounded-md border bg-white">
-    <a href="/projects/project-a">
-        <div class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50/50 xl:flex-row">
-            <div class="w-full xl:w-9/12">
-                <div class="w-full overflow-hidden rounded-[3px] bg-gray-50 relative aspect-[16/9]">
-                    <img alt="Cover image from Project A" loading="lazy" width="3500" height="2000" decoding="async"
-                         class="absolute h-full w-full object-cover" src="img/02---iPhone-XS-Front2.jpg">
-                </div>
-            </div>
-            <div class="flex xl:w-1/4">
-                <div class="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
-                    <div>
-                        <div class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">Project A</div>
-                        <div class="font-serif text-gray-500">
-                            <p>Etiam auctor tincidunt ullamcorper. Praesent sit amet porttitor nunc. Ut congue purus nec turpis molestie, nec imperdiet mi efficitur. Morbi sit amet pretium augue, in finibus sem.</p>
-                        </div>
-                    </div>
-                    <div class="mt-4 flex flex-row gap-x-2">
-                        <div class="text-sm font-medium lowercase md:text-lg">#sanity</div>
-                        <div class="text-sm font-medium lowercase md:text-lg">#javascript</div>
-                    </div>
-                </div>
+    <div class="space-y-20 p-6">
+        <div class="text-center">
+            <h1 class="text-3xl font-extrabold tracking-tight md:text-5xl">Personal Website</h1>
+            <div class="mt-4 font-serif text-xl text-gray-600 md:text-2xl">
+                <p>A <em>statically</em> generated personal website example using
+                    <a class="underline transition hover:opacity-50" href="https://nextjs.org/" rel="noreferrer noopener">Next.js</a> and
+                    <a class="underline transition hover:opacity-50" href="https://sanity.io/" rel="noreferrer noopener">Sanity</a>.
+                </p>
+                <p>You can find this template on the
+                    <a class="underline transition hover:opacity-50" href="https://www.sanity.io/templates/personal-website-with-built-in-content-editing" rel="noreferrer noopener">Sanity Exchange</a>
+                    and on <a class="underline transition hover:opacity-50" href="https://github.com/sanity-io/template-nextjs-personal-website" rel="noreferrer noopener">GitHub</a>.
+                </p>
             </div>
         </div>
-    </a>
 
-    <a href="/projects/project-b">
-        <div class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50/50 xl:flex-row border-b border-t xl:flex-row-reverse">
-            <div class="w-full xl:w-9/12">
-                <div class="w-full overflow-hidden rounded-[3px] bg-gray-50 relative aspect-[16/9]">
-                    <img alt="Cover image from Project B" loading="lazy" width="3500" height="2000" decoding="async"
-                         class="absolute h-full w-full object-cover" src="https://via.placeholder.com/3500x2000.png?text=Project+B">
-                </div>
-            </div>
-            <div class="flex xl:w-1/4">
-                <div class="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
-                    <div>
-                        <div class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">Project B</div>
-                        <div class="font-serif text-gray-500">
-                            <p>Sed suscipit ex lectus, id bibendum felis sagittis in.</p>
+        <div class="mx-auto max-w-6xl rounded-md border border-gray-300">
+            <!-- Project A -->
+            <a href="/projects/project-a">
+                <div class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row">
+                    <div class="w-full xl:w-9/12">
+                        <div class="relative overflow-hidden rounded-md bg-gray-50 aspect-w-16 aspect-h-9">
+                            <img alt="Cover image from Project A" class="object-cover w-full h-full project-image" src="https://cdn.sanity.io/images/r0z1eifg/personal-website-dev/1b7b7a22456d1107cf743b3fd47105685f64ba69-1504x752.png" />
                         </div>
                     </div>
-                    <div class="mt-4 flex flex-row gap-x-2">
-                        <div class="text-sm font-medium lowercase md:text-lg">#sanity</div>
-                        <div class="text-sm font-medium lowercase md:text-lg">#react</div>
-                        <div class="text-sm font-medium lowercase md:text-lg">#nextjs</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </a>
-
-    <a href="/projects/project-c">
-        <div class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50/50 xl:flex-row">
-            <div class="w-full xl:w-9/12">
-                <div class="w-full overflow-hidden rounded-[3px] bg-gray-50 relative aspect-[16/9]">
-                    <img alt="Cover image from Project C" loading="lazy" width="3500" height="2000" decoding="async"
-                         class="absolute h-full w-full object-cover" src="img/02---iPhone-XS-Front3.jpg">
-                </div>
-            </div>
-            <div class="flex xl:w-1/4">
-                <div class="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
-                    <div>
-                        <div class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">Project C</div>
-                        <div class="font-serif text-gray-500">
-                            <p>Ut aliquam erat volutpat. Fusce eu risus vehicula, ultrices ex ac, dictum arcu.</p>
+                    <div class="flex xl:w-1/4">
+                        <div class="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
+                            <div>
+                                <div class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">Project A</div>
+                                <div class="font-serif text-gray-500">
+                                    <p>Etiam auctor tincidunt ullamcorper. Praesent sit amet porttitor nunc. Ut congue purus nec turpis molestie, nec imperdiet mi efficitur. Morbi sit amet pretium augue, in finibus sem.</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex flex-row gap-x-2">
+                                <div class="text-sm font-medium lowercase md:text-lg">#sanity</div>
+                                <div class="text-sm font-medium lowercase md:text-lg">#javascript</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="mt-4 flex flex-row gap-x-2">
-                        <div class="text-sm font-medium lowercase md:text-lg">#tailwind</div>
-                        <div class="text-sm font-medium lowercase md:text-lg">#css</div>
+                </div>
+            </a>
+
+            <!-- Divider Line -->
+            <hr class="border-t border-gray-300">
+
+            <!-- Project B -->
+            <a href="/projects/project-b">
+                <div class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse">
+                    <div class="w-full xl:w-9/12">
+                        <div class="relative overflow-hidden rounded-md bg-gray-50 aspect-w-16 aspect-h-9">
+                            <img alt="Cover image from Project B" class="object-cover w-full h-full project-image" src="img/Baugasm_10.png" />
+                        </div>
+                    </div>
+                    <div class="flex xl:w-1/4">
+                        <div class="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
+                            <div>
+                                <div class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">Project B</div>
+                                <div class="font-serif text-gray-500">
+                                    <p>Curabitur id diam ut felis dignissim tincidunt non vel ante. Integer non urna lorem. Sed suscipit eros vitae lorem dapibus, eget accumsan risus tincidunt.</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 flex flex-row gap-x-2">
+                                <div class="text-sm font-medium lowercase md:text-lg">#tailwindcss</div>
+                                <div class="text-sm font-medium lowercase md:text-lg">#nextjs</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
-    </a>
-</div>
-
+    </div>
 </body>
 </html>
