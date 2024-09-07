@@ -1,54 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-  <style>
-    .swiper-container {
-      width: 100%;
-      height: 300px;
-    }
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #eee;
-    }
-    .swiper-slide img {
-      max-width: 100%;
-      height: auto;
-    }
-  </style>
-  <title>Swiper Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-  <div class="swiper-container swiper-container-1">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><img src="img/Kyto-01.png" alt="Image 1"></div>
-      <div class="swiper-slide"><img src="img/Kyto-02.png" alt="Image 2"></div>
-      <!-- Add more slides as needed -->
-    </div>
-    <div class="swiper-pagination swiper-pagination-1"></div>
-    <div class="swiper-button-next swiper-button-next-1"></div>
-    <div class="swiper-button-prev swiper-button-prev-1"></div>
-  </div>
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    const swiper1 = new Swiper(".swiper-container-1", {
-      loop: true,
-      slidesPerView: 1,
-      spaceBetween: 30,
-      centeredSlides: true,
-      pagination: {
-        el: ".swiper-pagination.swiper-pagination-1",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next.swiper-button-next-1",
-        prevEl: ".swiper-button-prev.swiper-button-prev-1",
-      },
-    });
-  </script>
+<body class="bg-gray-100">
+
+<div class="mx-auto max-w-[100rem] rounded-md border bg-white">
+    <a href="/projects/project-a">
+        <div class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50/50 xl:flex-row">
+            <div class="w-full xl:w-9/12">
+                <div class="w-full overflow-hidden rounded-[3px] bg-gray-50 relative aspect-[16/9]">
+                    <img alt="Cover image from Project A" loading="lazy" width="3500" height="2000" decoding="async"
+                         class="absolute h-full w-full object-cover" src="img/02---iPhone-XS-Front2.jpg">
+                </div>
+            </div>
+            <div class="flex xl:w-1/4">
+                <div class="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
+                    <div>
+                        <div class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">Project A</div>
+                        <div class="font-serif text-gray-500">
+                            <p>Etiam auctor tincidunt ullamcorper. Praesent sit amet porttitor nunc. Ut congue purus nec turpis molestie, nec imperdiet mi efficitur. Morbi sit amet pretium augue, in finibus sem.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-row gap-x-2">
+                        <div class="text-sm font-medium lowercase md:text-lg">#sanity</div>
+                        <div class="text-sm font-medium lowercase md:text-lg">#javascript</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <a href="/projects/project-b">
+        <div class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50/50 xl:flex-row border-b border-t xl:flex-row-reverse">
+            <div class="w-full xl:w-9/12">
+                <div class="w-full overflow-hidden rounded-[3px] bg-gray-50 relative aspect-[16/9]">
+                    <img alt="Cover image from Project B" loading="lazy" width="3500" height="2000" decoding="async"
+                         class="absolute h-full w-full object-cover" src="https://via.placeholder.com/3500x2000.png?text=Project+B">
+                </div>
+            </div>
+            <div class="flex xl:w-1/4">
+                <div class="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
+                    <div>
+                        <div class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">Project B</div>
+                        <div class="font-serif text-gray-500">
+                            <p>Sed suscipit ex lectus, id bibendum felis sagittis in.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-row gap-x-2">
+                        <div class="text-sm font-medium lowercase md:text-lg">#sanity</div>
+                        <div class="text-sm font-medium lowercase md:text-lg">#react</div>
+                        <div class="text-sm font-medium lowercase md:text-lg">#nextjs</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <a href="/projects/project-c">
+        <div class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50/50 xl:flex-row">
+            <div class="w-full xl:w-9/12">
+                <div class="w-full overflow-hidden rounded-[3px] bg-gray-50 relative aspect-[16/9]">
+                    <img alt="Cover image from Project C" loading="lazy" width="3500" height="2000" decoding="async"
+                         class="absolute h-full w-full object-cover" src="img/02---iPhone-XS-Front3.jpg">
+                </div>
+            </div>
+            <div class="flex xl:w-1/4">
+                <div class="relative mt-2 flex w-full flex-col justify-between p-3 xl:mt-0">
+                    <div>
+                        <div class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl">Project C</div>
+                        <div class="font-serif text-gray-500">
+                            <p>Ut aliquam erat volutpat. Fusce eu risus vehicula, ultrices ex ac, dictum arcu.</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 flex flex-row gap-x-2">
+                        <div class="text-sm font-medium lowercase md:text-lg">#tailwind</div>
+                        <div class="text-sm font-medium lowercase md:text-lg">#css</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+
 </body>
 </html>
