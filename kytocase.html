@@ -713,23 +713,23 @@
         }
       }
 
-/* Default parallax for desktop */
-.custom-image-section .image {
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 100vh; /* Adjust the height if needed */
-}
+      /* Default parallax for desktop */
+      .custom-image-section .image {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 100vh; /* Adjust the height if needed */
+      }
 
-/* Mobile styles - zoom out the image */
-@media (max-width: 768px) {
-  .custom-image-section .image {
-    background-attachment: scroll; /* JavaScript parallax handles scroll */
-    background-size: 300%; /* Zoom out by increasing the background size */
-    background-position: center top; /* Adjust position as needed */
-  }
-}
+      /* Mobile styles - zoom out the image */
+      @media (max-width: 768px) {
+        .custom-image-section .image {
+          background-attachment: scroll; /* JavaScript parallax handles scroll */
+          background-size: 300%; /* Zoom out by increasing the background size */
+          background-position: center top; /* Adjust position as needed */
+        }
+      }
     </style>
   </head>
 
@@ -1596,7 +1596,63 @@
         </section>
       </section>
 
-      <section class="bg-[#fff] py-4">
+      <section class="bg-white py-4">
+  <!-- Adjusted padding -->
+  <section class="container mx-auto px-4 md:px-10 lg:px-10">
+    <!-- Section Description -->
+    <div class="section section-inner m-description text-center">
+      <!-- History Title (Moved Above) -->
+      <div class="mb-8">
+        <div class="m-titles">
+          <div class="m-title text-2xl font-bold" data-animate="active">
+            Design System
+          </div>
+        </div>
+      </div>
+      <!-- History Description -->
+      <div class="w-full max-w-4xl mx-auto">
+        <!-- Adjusted width to make content smaller -->
+        <!-- Section Gallery Carousel -->
+        <div class="relative flex items-center justify-center">
+          <!-- Flex container for centering arrows -->
+          <div class="swiper-container-3 w-full">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img
+                  class="border w-full h-auto"
+                  src="img/UI Elements - Colors.png"
+                  alt="Image #1"
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  class="border w-full h-auto"
+                  src="img/UI Elements - Gradients.png"
+                  alt="Image #2"
+                />
+              </div>
+              <div class="swiper-slide">
+                <img
+                  class="border w-full h-auto"
+                  src="img/UI Elements - Typography.png"
+                  alt="Image #3"
+                />
+              </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination swiper-pagination-3"></div>
+          </div>
+          <!-- Add Navigation -->
+          <div class="swiper-button-next swiper-button-next-3 absolute right-2 top-1/2 -translate-y-1/2 z-10"></div>
+          <div class="swiper-button-prev swiper-button-prev-3 absolute left-2 top-1/2 -translate-y-1/2 z-10"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+
+      <section class="bg-[#F5F5F5] py-4">
         <!-- Adjusted padding -->
         <section class="container mx-auto px-4 md:px-10 lg:px-10">
           <!-- Section Description -->
@@ -1606,7 +1662,7 @@
             <div class="mb-8">
               <div class="m-titles">
                 <div class="m-title text-2xl font-bold" data-animate="active">
-                  Design System
+                  Website Design
                 </div>
               </div>
             </div>
@@ -1615,140 +1671,77 @@
               <!-- Adjusted width to make content smaller -->
               <!-- Section Gallery Carousel -->
               <div>
-                <div class="swiper-container-3">
+                <div class="swiper-container-1 relative w-full pb-12 p-0">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
                       <img
-                        class="border w-full h-auto"
-                        src="img/UI Elements - Colors.png"
-                        alt="Image #1"
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <img
-                        class="border w-full h-auto"
-                        src="img/UI Elements - Gradients.png"
-                        alt="Image #2"
-                      />
-                    </div>
-                    <div class="swiper-slide">
-                      <img
-                        class="border w-full h-auto"
-                        src="img/UI Elements - Typography.png"
-                        alt="Image #3"
-                      />
-                    </div>
-                  </div>
-                  <!-- Add Pagination -->
-                  <div class="swiper-pagination"></div>
-                  <!-- Add Navigation -->
-                  <div class="swiper-button-next"></div>
-                  <div class="swiper-button-prev"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      <section class="bg-[#F5F5F5] py-4">
-        <section class="container mx-auto px-4 md:px-10 lg:px-10">
-          <!-- Section Description -->
-          <div class="section section-inner m-description text-center">
-            <!-- History Title (Moved Above) -->
-            <div class="mb-8">
-              <div class="m-titles">
-                <div class="m-title text-2xl font-bold" data-animate="active">
-                  Website Design
-                </div>
-              </div>
-            </div>
-
-            <!-- History Description -->
-            <div class="w-full max-w-4xl mx-auto">
-              <div class="description-text">
-                <!-- Swiper Carousel Section -->
-                <div
-                  class="swiper-container swiper-container-1 relative w-full pb-12 p-0"
-                >
-                  <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide">
-                      <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-01.png"
                         data-modal-src="img/kyto-website-01.png"
-                        alt="Payment UI"
+                        alt="Image #1"
                       />
                       <div class="caption2">Homepage</div>
                     </div>
-                    <!-- Slide 2 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow-xl"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-02.png"
                         data-modal-src="img/Kyto-website-02.png"
-                        alt="Payment UI"
+                        alt="Image #2"
                       />
                       <div class="caption2">Kyto Platform Engine Page</div>
                     </div>
-                    <!-- Slide 3 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow-xl"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-03.png"
                         data-modal-src="img/Kyto-website-03.png"
-                        alt="Payment UI"
+                        alt="Image #3"
                       />
                       <div class="caption2">Kyto Website Engine Page</div>
                     </div>
-                    <!-- Slide 4 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-04.png"
                         data-modal-src="img/Kyto-website-04.png"
-                        alt="Payment UI"
+                        alt="Image #4"
                       />
                       <div class="caption2">Contact Page</div>
                     </div>
-                    <!-- Slide 5 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-05.png"
                         data-modal-src="img/Kyto-website-05.png"
-                        alt="Payment UI"
+                        alt="Image #5"
                       />
                       <div class="caption2">Careers Page</div>
                     </div>
-                    <!-- Slide 6 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-06.png"
                         data-modal-src="img/Kyto-website-06.png"
-                        alt="Payment UI"
+                        alt="Image #6"
                       />
                       <div class="caption2">Partners Page</div>
                     </div>
-                    <!-- Slide 7 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-07.png"
                         data-modal-src="img/Kyto-website-07.png"
-                        alt="Payment UI"
+                        alt="Image #7"
                       />
                       <div class="caption2">Blog Page</div>
                     </div>
-                    <!-- Slide 8 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-08.png"
                         data-modal-src="img/Kyto-website-08.png"
-                        alt="Payment UI"
+                        alt="Image #8"
                       />
                       <div class="caption2">Blog Article Page</div>
                     </div>
@@ -1761,7 +1754,6 @@
                 </div>
               </div>
             </div>
-
             <!-- New Header and Image Section -->
             <div class="mt-16 mb-8">
               <h3 class="m-title text-2xl font-bold mb-4 text-center">
@@ -1801,96 +1793,93 @@
       </div>
 
       <section class="bg-[#FAFAFA] py-4">
+        <!-- Adjusted padding -->
         <section class="container mx-auto px-4 md:px-10 lg:px-10">
           <!-- Section Description -->
           <div class="section section-inner m-description text-center">
+            <!-- Center content -->
             <!-- History Title (Moved Above) -->
             <div class="mb-8">
               <div class="m-titles">
                 <div class="m-title text-2xl font-bold" data-animate="active">
-                  Kyto Platform Engine Dashboard
+                  Platform Engine Dashboard
                 </div>
               </div>
             </div>
-
             <!-- History Description -->
             <div class="w-full max-w-4xl mx-auto">
-              <div class="description-text">
-                <!-- Swiper Carousel Section -->
+              <!-- Adjusted width to make content smaller -->
+              <!-- Section Gallery Carousel -->
+              <div>
                 <div
-                  class="swiper-container swiper-container-2 relative w-full max-w-4xl mx-auto pb-12"
+                  class="swiper-container-2 relative w-full max-w-4xl mx-auto pb-12"
                 >
                   <div class="swiper-wrapper">
-                    <!-- Slide 1 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow-2xl border border-gray-100"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-PE-01.png"
                         data-modal-src="img/Kyto-PE-FS-01.png"
-                        alt="Payment UI"
+                        alt="Image #1"
                       />
                       <div class="caption2">Product Data Details</div>
                     </div>
-                    <!-- Slide 2 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow-2xl border border-gray-100"
-                        src="img/Kyto-PE-02.png"
+                        class="clickable-image border w-full h-auto"
+                       src="img/Kyto-PE-02.png"
                         data-modal-src="img/Kyto-PE-FS-02.png"
-                        alt="Payment UI"
+                        alt="Image #2"
                       />
-                      <div class="caption2">Company Profile</div>
+                       <div class="caption2">Company Profile</div>
                     </div>
-                    <!-- Slide 3 -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow-2xl border border-gray-100"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-PE-03.png"
                         data-modal-src="img/Kyto-PE-FS-03.png"
-                        alt="Payment UI"
+                        alt="Image #3"
                       />
-                      <div class="caption2">Data Synchronization</div>
+                       <div class="caption2">Data Synchronization</div>
                     </div>
-                    <!-- Additional Slides -->
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow-2xl border border-gray-100"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-PE-04.png"
                         data-modal-src="img/Kyto-PE-FS-04.png"
-                        alt="Payment UI"
+                        alt="Image #4"
                       />
-                      <div class="caption2">
+                     <div class="caption2">
                         Product Catalogue - new product
                       </div>
                     </div>
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow-2xl border border-gray-100"
+                        class="clickable-image border w-full h-auto"
                         src="img/Kyto-PE-05.png"
                         data-modal-src="img/Kyto-PE-FS-05.png"
-                        alt="Payment UI"
+                        alt="Image #5"
                       />
                       <div class="caption2">Product Catalogue - tile view</div>
                     </div>
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow-2xl border border-gray-100"
-                        src="img/Kyto-PE-06.png"
+                        class="clickable-image border w-full h-auto"
+                       src="img/Kyto-PE-06.png"
                         data-modal-src="img/Kyto-PE-FS-06.png"
-                        alt="Payment UI"
+                        alt="Image #6"
                       />
-                      <div class="caption2">Product Catalogue - accordion</div>
+                       <div class="caption2">Product Catalogue - accordion</div>
                     </div>
                     <div class="swiper-slide">
                       <img
-                        class="clickable-image w-full h-auto rounded-3xl shadow-2xl border border-gray-100"
-                        src="img/Kyto-PE-07.png"
+                        class="clickable-image border w-full h-auto"
+                      src="img/Kyto-PE-07.png"
                         data-modal-src="img/Kyto-PE-FS-07.png"
-                        alt="Payment UI"
+                        alt="Image #7"
                       />
                       <div class="caption2">Product Catalogue - list view</div>
                     </div>
-                    <!-- Add more slides as needed -->
                   </div>
                   <!-- Add Pagination -->
                   <div class="swiper-pagination swiper-pagination-2"></div>
@@ -1904,6 +1893,8 @@
         </section>
       </section>
 
+
+
       <section class="bg-[#F5F5F5] py-16 xl:py-32">
         <div class="text-center mb-8">
           <h2 class="m-title text-2xl font-bold">Website Engine Dashboard</h2>
@@ -1912,7 +1903,7 @@
           <img
             src="img/kyto-web-engine-Mockup-02.png"
             alt="Sample Image"
-            class="shadow-2xl border rounded-3xl object-cover max-w-3/4 max-h-[75vh] w-auto h-auto"
+            class="border object-cover max-w-3/4 max-h-[75vh] w-auto h-auto"
           />
         </div>
       </section>
@@ -1929,11 +1920,11 @@
           />
           <img
             src="img/Business_Card_Mockup_4.png"
-            class="mx-auto overflow-hidden rounded-xl md:mb-7 mb-3 -mt-3 lg:w-1/2 object-cover"
+            class="mx-auto overflow-hidden  md:mb-7 mb-3 -mt-3 lg:w-1/2 object-cover"
           />
           <img
             src="img/Business_Card_Mockup_5.png"
-            class="mx-auto overflow-hidden rounded-xl lg:w-1/2 object-cover"
+            class="mx-auto overflow-hidden  lg:w-1/2 object-cover"
           />
         </div>
       </section>
@@ -1962,7 +1953,7 @@
             </div>
           </div>
           <div
-            class="mt-4 overflow-hidden rounded-xl bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10"
+            class="mt-4 overflow-hidden  bg-white shadow-lg shadow-slate-900/5 ring-1 ring-slate-500/10"
           >
             <img src="img/Kyto_Posters_2-03.png" class="" />
           </div>
@@ -2139,39 +2130,34 @@
     <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
     // Apply parallax effect using IntersectionObserver
     <script>
-     document.addEventListener("DOMContentLoaded", function () {
-  const imageElement = document.querySelector(".custom-image-section .image");
+      document.addEventListener("DOMContentLoaded", function () {
+        const imageElement = document.querySelector(
+          ".custom-image-section .image",
+        );
 
-  // Check if window width is less than 768px (mobile)
-  function isMobile() {
-    return window.innerWidth <= 768;
-  }
+        // Check if window width is less than 768px (mobile)
+        function isMobile() {
+          return window.innerWidth <= 768;
+        }
 
-  // Check if IntersectionObserver is supported and if on mobile
-  if ("IntersectionObserver" in window && isMobile()) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          window.addEventListener("scroll", function () {
-            const offset = window.pageYOffset;
-            imageElement.style.backgroundPositionY = `${offset * 0.5}px`; // Adjust speed for parallax
+        // Check if IntersectionObserver is supported and if on mobile
+        if ("IntersectionObserver" in window && isMobile()) {
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                window.addEventListener("scroll", function () {
+                  const offset = window.pageYOffset;
+                  imageElement.style.backgroundPositionY = `${offset * 0.5}px`; // Adjust speed for parallax
+                });
+              }
+            });
           });
+
+          observer.observe(imageElement);
         }
       });
-    });
-
-    observer.observe(imageElement);
-  }
-});
-
     </script>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        // Initialize the comparison slider
-        imgComparisonSlider.init();
-      });
-    </script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const modal = document.getElementById("image-modal");
@@ -2278,11 +2264,11 @@
           spaceBetween: 30,
           centeredSlides: false, // Default behavior for desktop
           navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: ".swiper-button-next-3",
+            prevEl: ".swiper-button-prev-3",
           },
           pagination: {
-            el: ".swiper-pagination",
+            el: ".swiper-pagination.swiper-pagination-3",
             clickable: true,
           },
           keyboard: {
@@ -2306,6 +2292,7 @@
           },
         });
 
+        // Initialize Swiper for container 1
         // Initialize Swiper instance
         const swiper1 = new Swiper(".swiper-container-1", {
           loop: true,
@@ -2313,7 +2300,7 @@
           spaceBetween: 30, // No space between slides to maximize width
           centeredSlides: true, // Center slides if desired
           pagination: {
-            el: ".swiper-pagination",
+            el: ".swiper-pagination.swiper-pagination-1",
             clickable: true,
           },
           navigation: {
@@ -2356,12 +2343,25 @@
     <script>
       function initializeSlider(sliderId) {
         const sliderContainer = document.getElementById(sliderId);
+
+        if (!sliderContainer) {
+          console.error(`Slider container with ID "${sliderId}" not found.`);
+          return;
+        }
+
         const sliderImages = sliderContainer.querySelector(".slider-images");
         const images = sliderContainer.querySelectorAll(".slider-image");
         const dots = sliderContainer.querySelectorAll(".dot");
         let currentIndex = 0;
         let startX,
           isDragging = false;
+
+        if (!sliderImages || images.length === 0) {
+          console.error(
+            `Required elements for slider with ID "${sliderId}" are missing.`,
+          );
+          return;
+        }
 
         function updateSlider(index) {
           sliderImages.style.transform = `translateX(-${index * 100}%)`;
@@ -2371,23 +2371,27 @@
         }
 
         function nextSlide() {
-          currentIndex =
-            currentIndex < images.length - 1 ? currentIndex + 1 : 0;
+          currentIndex = (currentIndex + 1) % images.length;
           updateSlider(currentIndex);
         }
 
         function prevSlide() {
-          currentIndex =
-            currentIndex > 0 ? currentIndex - 1 : images.length - 1;
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
           updateSlider(currentIndex);
         }
 
-        sliderContainer
-          .querySelector(".left-arrow")
-          .addEventListener("click", prevSlide);
-        sliderContainer
-          .querySelector(".right-arrow")
-          .addEventListener("click", nextSlide);
+        // Remove arrow event listeners if only one image
+        if (images.length <= 1) {
+          sliderContainer.querySelector(".left-arrow")?.remove();
+          sliderContainer.querySelector(".right-arrow")?.remove();
+        } else {
+          sliderContainer
+            .querySelector(".left-arrow")
+            ?.addEventListener("click", prevSlide);
+          sliderContainer
+            .querySelector(".right-arrow")
+            ?.addEventListener("click", nextSlide);
+        }
 
         dots.forEach((dot) => {
           dot.addEventListener("click", (e) => {
@@ -2466,9 +2470,8 @@
         updateSlider(currentIndex);
       }
 
-      // Initialize both custom sliders
+      // Initialize slider1
       initializeSlider("slider1");
-      initializeSlider("slider2");
     </script>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>

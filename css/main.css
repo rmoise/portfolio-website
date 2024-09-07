@@ -2135,3 +2135,9 @@ media screen and (max-width: 768px) {
   padding: 0; /* Remove extra padding if present */
   flex-shrink: 1 !important; /* Force no shrinking */
 }
+
+.swiper-pagination-3 {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 1.5rem; /* Adjust this value to control the space between the image and dots */
+}

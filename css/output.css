@@ -4203,6 +4203,12 @@ media screen and (max-width: 768px) {
   flex-shrink: 1 !important; /* Force no shrinking */
 }
 
+.swiper-pagination-3 {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 1.5rem; /* Adjust this value to control the space between the image and dots */
+}
+
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05 !important;
   --tw-scale-y: 1.05 !important;
