@@ -2141,3 +2141,12 @@ media screen and (max-width: 768px) {
   bottom: 0 !important;
   margin-top: 1.5rem; /* Adjust this value to control the space between the image and dots */
 }
+
+
+.tab {
+            color: black; /* Default text color */
+        }
+        .tab[aria-selected="true"] {
+            color: white; /* Text color when selected */
+        }
+    
