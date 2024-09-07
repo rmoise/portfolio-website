@@ -4195,7 +4195,7 @@ media screen and (max-width: 768px) {
   align-items: center; /* Ensures slides align properly */
 }
 
-.swiper-slide {
+.custom-slider-item {
   width: 100%; /* This is a common setting */
   box-sizing: border-box; /* Ensures padding/margin does not affect width */
   margin: 0; /* Remove extra margin if present */
