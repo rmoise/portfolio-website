@@ -725,6 +725,7 @@
       /* Mobile styles - zoom out the image */
       @media (max-width: 768px) {
         .custom-image-section .image {
+          background-attachment: scroll; /* JavaScript parallax handles scroll */
           background-size: 300%; /* Zoom out by increasing the background size */
           background-position: center top; /* Adjust position as needed */
         }
@@ -1297,7 +1298,7 @@
       </section>
 
       <!-- Section: Details -->
-      <section class="section-inner m-details py-16">
+      <section class="-mt-48 md:mt-0 section-inner m-details py-16">
         <div class="container mx-auto">
           <!-- Grid container with responsive columns -->
           <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
