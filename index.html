@@ -651,12 +651,12 @@
               <div
                 class="relative w-full max-w-[250px] sm:max-w-[300px] md:max-w-[400px] aspect-square overflow-hidden rounded-md transition-all duration-300 group hover:rounded-xl"
               >
-                <img
-                  src="img/Herr-Moise-2.webp"
-                  alt="Roderick Moise"
-                  class="object-cover w-full h-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-              loading="eager"
-                />
+                 <img
+  src="img/Herr-Moise-2-placeholder.webp"
+  data-src="img/Herr-Moise-2.webp"
+  alt="Roderick Moise"
+  class="lazy-load object-cover w-full h-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
+/>
               </div>
             </div>
 
@@ -3367,6 +3367,26 @@
         },
       });
     </script>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const lazyImages = document.querySelectorAll("img.lazy-load");
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.getAttribute("data-src");
+          img.classList.remove("lazy-load");
+          observer.unobserve(img);
+        }
+      });
+    });
+
+    lazyImages.forEach((image) => {
+      imageObserver.observe(image);
+    });
+  });
+</script>
 
    <script>
   // Debounce function to limit the rate at which a function is executed
