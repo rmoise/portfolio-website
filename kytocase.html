@@ -732,16 +732,19 @@
     </style>
   </head>
 
-  <body class="font-poppins pb-12">
+  <body class="flex h-full flex-col">
     <div class="wrapper">
       <!-- Navbar -->
       <nav
+        id="main-nav"
         x-data="navbar()"
         x-init="init()"
-        class="bg-white fixed top-0 left-0 w-full z-50"
+        class="bg-white fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-32 py-2 xl:px-40 mx-auto z-50"
       >
-        <!-- Container -->
-        <div class="container flex flex-wrap px-4 py-2 mx-auto">
+        <!-- Container with minimal padding -->
+        <div
+          class="container mx-auto flex flex-wrap items-center justify-between p-0"
+        >
           <!-- Logo -->
           <a href="index.html" class="inline-flex items-center p-2">
             <img src="img/rm_logo.svg" alt="Logo" class="h-8" />
@@ -1274,16 +1277,25 @@
 
       <!-- Section: Heading -->
       <section class="section section-inner started-heading lg:pt-52 lg:pb-16">
-        <div class="container mx-auto px-8 w-full">
+        <div class="container mx-auto px-16 w-full">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <!-- Eyebrow Section -->
+              <p
+                class="text-sm font-medium uppercase tracking-wide text-gray-500 mb-2"
+              >
+                Case Study
+              </p>
+              <!-- Main Heading -->
               <h1 id="header" class="font-bold text-6xl">
-                <span style="">Kyto</span>
+                <span>Kyto</span>
               </h1>
             </div>
           </div>
         </div>
       </section>
+
+
 
       <!-- Section: Parallax Image -->
       <section class="section m-image-large relative custom-image-section">
@@ -1296,37 +1308,39 @@
         </div>
       </section>
 
-      <!-- Section: Details -->
-      <section class="-mt-24 md:mt-0 section-inner m-details py-16">
-        <div class="container mx-auto">
-          <!-- Grid container with responsive columns -->
-          <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
-            <!-- Client -->
-            <div class="details-label p-4">
-              <strong>Client</strong><br />Kyto
-            </div>
-            <!-- Category -->
-            <div class="details-label p-4">
-              <strong>Industry</strong><br />Software as a Service / B2B
-            </div>
-            <!-- Year -->
-            <div class="details-label p-4">
-              <strong>Year</strong><br />2019-2021
-            </div>
-            <!-- Website -->
-            <a href="https://kyto.de" target="_blank" rel="noopener noreferrer">
-              <div class="details-label p-4">
-                <strong>Website</strong><br />kyto.de
-              </div>
-            </a>
-          </div>
+   <!-- Section: Details (Kyto) -->
+<section class="section-inner m-details py-16 px-4 sm:px-8 lg:px-32 xl:px-40">
+  <div class="container mx-auto">
+    <!-- Flex container with left-aligned items -->
+    <div class="flex flex-wrap gap-6">
+      <!-- Client -->
+      <div class="details-label p-4 flex-1">
+        <strong class="block leading-tight">Client</strong><br />Kyto
+      </div>
+      <!-- Industry -->
+      <div class="details-label p-4 flex-1">
+        <strong class="block leading-tight">Industry</strong><br />Software as a Service / B2B
+      </div>
+      <!-- Year -->
+      <div class="details-label p-4 flex-1">
+        <strong class="block leading-tight">Year</strong><br />2019-2021
+      </div>
+      <!-- Website -->
+      <a href="https://kyto.de" target="_blank" rel="noopener noreferrer">
+        <div class="details-label p-4 flex-1">
+          <strong class="block leading-tight">Website</strong><br />kyto.de
         </div>
-      </section>
+      </a>
+    </div>
+  </div>
+</section>
+
+
 
       <section class="container mx-auto px-4 md:px-10 lg:px-10">
         <!-- Section Description -->
         <div class="section section-inner m-description">
-          <div class="container mx-auto">
+          <div class="container mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <!-- History Title -->
               <div class="lg:w-1/4 mb-8 lg:mb-0">
@@ -1354,10 +1368,10 @@
       <section class="container mx-auto px-4 md:px-10 lg:px-10">
         <!-- Section Description -->
         <div class="section section-inner m-description">
-          <div class="container mx-auto">
+          <div class="container mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <!-- History Title -->
-              <div class="lg:w-1/4 mb-8 lg:mb-0">
+             <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
                   <div class="m-title text-2xl font-bold" data-animate="active">
                     Solution
@@ -1384,7 +1398,7 @@
       <section class="container mx-auto px-4 md:px-10 lg:px-10">
         <!-- Section Description -->
         <div class="section section-inner m-description">
-          <div class="container mx-auto">
+          <div class="container mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <!-- History Title -->
               <div class="lg:w-1/4 mb-8 lg:mb-0">
@@ -1414,7 +1428,7 @@
       <section class="container mx-auto px-4 md:px-10 lg:px-10">
         <!-- Section Description -->
         <div class="section section-inner m-description">
-          <div class="container mx-auto">
+          <div class="container mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <!-- History Title -->
               <div class="lg:w-1/4 mb-8 lg:mb-0">

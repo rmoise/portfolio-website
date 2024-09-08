@@ -2153,3 +2153,15 @@ media screen and (max-width: 768px) {
         opacity: 1;
       }
 
+/* Ensure equal width and spacing for details labels */
+.details-label {
+  flex: 1;
+  min-width: 150px; /* Adjust as needed for responsiveness */
+  text-align: left; /* Align text to the left */
+}
+
+/* Adjust line height for the strong element */
+.details-label strong {
+  display: block;
+  line-height: 0; /* Tighter line height */
+}
