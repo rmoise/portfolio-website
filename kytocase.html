@@ -707,7 +707,7 @@
       /* Mobile styles - disable fixed attachment */
       @media (max-width: 768px) {
         .custom-image-section .image {
-          background-attachment: scroll;
+
           background-size: contain;
           background-position: center top;
         }
@@ -725,7 +725,6 @@
       /* Mobile styles - zoom out the image */
       @media (max-width: 768px) {
         .custom-image-section .image {
-          background-attachment: scroll; /* JavaScript parallax handles scroll */
           background-size: 300%; /* Zoom out by increasing the background size */
           background-position: center top; /* Adjust position as needed */
         }
@@ -1315,9 +1314,11 @@
               <strong>Year</strong><br />2019-2021
             </div>
             <!-- Website -->
-            <div class="details-label p-4">
-              <strong>Website</strong><br />kyto.de
-            </div>
+            <a href="https://kyto.de" target="_blank" rel="noopener noreferrer">
+                <div class="details-label p-4">
+                    <strong>Website</strong><br />kyto.de
+                </div>
+            </a>
           </div>
         </div>
       </section>
@@ -2142,7 +2143,7 @@
           if (isMobile()) {
             // Remove parallax effect if on mobile
             window.removeEventListener("scroll", parallaxEffect);
-          } 
+          }
         }
 
         // Parallax effect function
