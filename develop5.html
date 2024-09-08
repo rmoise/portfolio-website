@@ -3,84 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tools Section</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <title>Image and Header Test</title>
   <style>
-    .swiper-container {
-      width: 100%;
+    body {
+      margin: 0;
+      padding: 0;
     }
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .header {
+      text-align: center;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+    .image-container {
+      text-align: center;
+      padding: 20px;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      opacity: 1;
+      transition: opacity 0.5s ease;
     }
   </style>
 </head>
 <body>
-  <!-- Tools Section -->
-  <section aria-labelledby="tools-title" class="relative overflow-hidden py-16 px-4 sm:px-8 lg:px-32 xl:px-40 border-t border-gray-100">
-    <div class="container mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <!-- Column 1: Header -->
-        <div class="md:col-span-4 lg:col-span-3 flex items-start">
-          <h5 id="tools" class="text-3xl font-bold">Tools</h5>
-        </div>
-        <!-- Column 2: Description and Icons -->
-        <div class="md:col-span-8 lg:col-span-9">
-          <!-- Description -->
-          <div class="mb-8">
-            <p class="text-lg">These are the tools of my trade—each one essential to crafting innovative designs and developing cutting-edge solutions.</p>
-          </div>
-          <!-- Icons Container -->
-          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-8">
-            <!-- Tool Item (Icon) -->
-            <div class="flex justify-center items-center">
-              <a href="#" target="_blank" class="flex-shrink-0 h-32 w-32 rounded-xl border-2 border-gray-300 flex justify-center items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 256">
-                  <!-- SVG path for Figma -->
-                  <path d="M18.5,2c-4.68248,0 -8.5,3.81752 -8.5,8.5c0,3.30029 1.94993,6.09286 4.70898,7.5c-2.75906,1.40715 -4.70898,4.19971 -4.70898,7.5c0,3.30029 1.94993,6.09286 4.70898,7.5c-2.75906,1.40715 -4.70898,4.19971 -4.70898,7.5c0,4.68248 3.81752,8.5 8.5,8.5c4.68248,0 8.5,-3.81752 8.5,-8.5v-7.5v-3.34375c1.34137,2.54547 3.93207,4.34375 7,4.34375c4.40644,0 8,-3.59357 8,-8c0,-3.62175 -2.47383,-6.57131 -5.78516,-7.55078c3.33871,-1.14751 5.78516,-4.22899 5.78516,-7.94922c0,-4.68248 -3.81752,-8.5 -8.5,-8.5h-7.5zM18.5,4h6.5v13h-6.5c-3.60152,0 -6.5,-2.89848 -6.5,-6.5c0,-3.60152 2.89848,-6.5 6.5,-6.5zM27,4h6.5c3.60152,0 6.5,2.89848 6.5,6.5c0,3.60152 -2.89848,6.5 -6.5,6.5h-6.5zM18.5,19h6.5v13h-6.5c-3.60152,0 -6.5,-2.89848 -6.5,-6.5c0,-3.60152 2.89848,-6.5 6.5,-6.5zM27,19h3.34375c-1.43491,0.75615 -2.5876,1.90884 -3.34375,3.34375zM34,20c3.32556,0 6,2.67445 6,6c0,3.32555 -2.67444,6 -6,6c-3.32556,0 -6,-2.67445 -6,-6c0,-3.32555 2.67444,-6 6,-6zM18.5,34h6.5v6.5c0,3.60152 -2.89848,6.5 -6.5,6.5c-3.60152,0 -6.5,-2.89848 -6.5,-6.5c0,-3.60152 2.89848,-6.5 6.5,-6.5z"></path>
-                </svg>
-              </a>
-            </div>
-            <!-- Repeat for other icons -->
-            <!-- Example for additional icons -->
-            <div class="flex justify-center items-center">
-              <a href="#" target="_blank" class="flex-shrink-0 h-32 w-32 rounded-xl border-2 border-gray-300 flex justify-center items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 256 256">
-                  <!-- SVG path for AI -->
-                  <path d="M18.5,2c-4.68248,0 -8.5,3.81752 -8.5,8.5c0,3.30029 1.94993,6.09286 4.70898,7.5c-2.75906,1.40715 -4.70898,4.19971 -4.70898,7.5c0,3.30029 1.94993,6.09286 4.70898,7.5c-2.75906,1.40715 -4.70898,4.19971 -4.70898,7.5c0,4.68248 3.81752,8.5 8.5,8.5c4.68248,0 8.5,-3.81752 8.5,-8.5v-7.5v-3.34375c1.34137,2.54547 3.93207,4.34375 7,4.34375c4.40644,0 8,-3.59357 8,-8c0,-3.62175 -2.47383,-6.57131 -5.78516,-7.55078c3.33871,-1.14751 5.78516,-4.22899 5.78516,-7.94922c0,-4.68248 -3.81752,-8.5 -8.5,-8.5h-7.5zM18.5,4h6.5v13h-6.5c-3.60152,0 -6.5,-2.89848 -6.5,-6.5c0,-3.60152 2.89848,-6.5 6.5,-6.5zM27,4h6.5c3.60152,0 6.5,2.89848 6.5,6.5c0,3.60152 -2.89848,6.5 -6.5,6.5h-6.5zM18.5,19h6.5v13h-6.5c-3.60152,0 -6.5,-2.89848 -6.5,-6.5c0,-3.60152 2.89848,-6.5 6.5,-6.5zM27,19h3.34375c-1.43491,0.75615 -2.5876,1.90884 -3.34375,3.34375zM34,20c3.32556,0 6,2.67445 6,6c0,3.32555 -2.67444,6 -6,6c-3.32556,0 -6,-2.67445 -6,-6c0,-3.32555 2.67444,-6 6,-6zM18.5,34h6.5v6.5c0,3.60152 -2.89848,6.5 -6.5,6.5c-3.60152,0 -6.5,-2.89848 -6.5,-6.5c0,-3.60152 2.89848,-6.5 6.5,-6.5z"></path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Swiper JS -->
-  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const swiper = new Swiper('.swiper-container', {
-        slidesPerView: 2,
-        spaceBetween: 16,
-        breakpoints: {
-          640: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 5,
-          },
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        grabCursor: true,
-        loop: true,
-      });
-    });
-  </script>
+  <div class="header">
+    <h1>Your Header</h1>
+  </div>
+  <div class="image-container">
+    <img
+      src="img/Herr-Moise-2.webp"
+      alt="Roderick Moise"
+      onload="this.style.opacity = '1';"
+    />
+  </div>
 </body>
 </html>
