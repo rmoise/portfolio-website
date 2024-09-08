@@ -1964,24 +1964,7 @@ body {
   z-index: 5;
 }
 
-.swiper-button-next,
-.swiper-button-prev {
-  width: 60px;
-  height: 50px;
-  /* Adjust height as needed */
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-  color: #4a4a4a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
+
 
 .swiper-pagination {
   position: relative;
@@ -2012,7 +1995,7 @@ body {
 
   .swiper-button-next,
   .swiper-button-prev {
-    display: none;
+    display: none!important;
     /* Hide arrows on mobile */
   }
 }
@@ -2114,10 +2097,7 @@ media screen and (max-width: 768px) {
   width: 100%;
 }
 
-.swiper-wrapper {
-  display: flex;
-  align-items: center; /* Ensures slides align properly */
-}
+
 
 .custom-slider-item {
   width: 100%; /* This is a common setting */
@@ -2165,3 +2145,696 @@ media screen and (max-width: 768px) {
   display: block;
   line-height: 0; /* Tighter line height */
 }
+
+
+
+.swiper-pagination {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: #000!important;
+        /* Adjust color as needed */
+      }
+
+      .swiper-slide .caption2 {
+        position: absolute;
+        bottom: 30px;
+        /* Adjust as needed */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.3);
+        /* Lighter semi-transparent background */
+        color: #fff;
+        /* White text color */
+        padding: 5px 10px;
+        /* Padding for readability */
+        border-radius: 3px;
+        /* Slightly rounded corners */
+        font-family: "Poppins", sans-serif;
+        /* Font style to match your site */
+        font-size: 14px;
+        /* Smaller font size */
+        text-align: center;
+        max-width: 80%;
+        /* Prevents caption from stretching too wide */
+        box-sizing: border-box;
+        z-index: 1;
+        /* Ensure caption is above image */
+        backdrop-filter: blur(5px);
+        /* Optional: Adds a subtle blur effect to the background */
+      }
+
+      .swiper-pagination-bullet-active {
+        background: #01f3ab;
+        opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+        .swiper-slide {
+          width: 100%;
+        }
+
+        .swiper-slide .caption {
+          font-size: 14px;
+          padding: 5px;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+          display: none;
+          /* Hide arrows on mobile */
+        }
+      }
+
+      /* Modal Styling */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 20;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        /* Prevents scrolling of the entire page */
+        background-color: rgba(0, 0, 0, 0.85);
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        z-index: 1000;
+        /* Ensures it's above everything else */
+      }
+
+      .modal-content {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        margin: auto;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        overflow: auto;
+        z-index: 1001;
+        /* Just to ensure content is above the backdrop */
+
+        /* Allow scrolling if content is larger */
+      }
+
+      .modal-content img {
+        width: 100%;
+        height: auto;
+        display: block;
+        max-height: 100%;
+        object-fit: contain;
+        /* Ensure the image is contained */
+      }
+
+      .modal-close {
+        position: fixed;
+        /* Change to fixed positioning */
+        top: 20px;
+        /* Adjusted position for better visibility */
+        right: 20px;
+        /* Adjusted position for better visibility */
+        background: rgba(0, 0, 0, 0.5);
+        padding: 5px;
+        cursor: pointer;
+        color: #fff;
+        font-size: 24px;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        line-height: 0;
+        z-index: 20;
+        /* Ensure it's above other content */
+      }
+
+      .modal-prev,
+      .modal-next {
+        position: fixed;
+        /* Change to fixed positioning */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 20;
+        /* Ensure it's above other content */
+      }
+
+      .modal-prev {
+        left: 20px;
+        /* Adjusted position for better visibility */
+      }
+
+      .modal-next {
+        right: 20px;
+        /* Adjusted position for better visibility */
+      }
+
+      .modal-prev:hover,
+      .modal-next:hover {
+        background: rgba(0, 0, 0, 0.7);
+      }
+
+      /* Container for the slider */
+      .slider-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 90%;
+        max-width: 960px;
+        /* Increased max-width */
+        margin: 20px auto;
+        position: relative;
+      }
+
+      /* Image container */
+      .image-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding-bottom: 62%;
+        /* 16:9 aspect ratio (9 / 16 = 0.5625, converted to percentage) */
+        /* Adjust to make the slider slightly larger */
+      }
+
+      /* Slider images wrapper */
+      .slider-images {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      /* Slider image container */
+      .slider-image {
+        position: relative;
+        min-width: 100%;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Slider images */
+      .slider-image img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        /* Adjusted to ensure images cover the container */
+      }
+
+      /* Caption Styling */
+      .caption {
+        position: absolute;
+        bottom: 30px;
+        /* Adjust as needed */
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: rgba(0, 0, 0, 0.3);
+        /* Lighter semi-transparent background */
+        color: #fff;
+        /* White text color */
+        padding: 5px 10px;
+        /* Padding for readability */
+        border-radius: 3px;
+        /* Slightly rounded corners */
+        font-family: "Poppins", sans-serif;
+        /* Font style to match your site */
+        font-size: 14px;
+        /* Smaller font size */
+        text-align: center;
+        max-width: 80%;
+        /* Prevents caption from stretching too wide */
+        box-sizing: border-box;
+        z-index: 1;
+        /* Ensure caption is above image */
+        backdrop-filter: blur(5px);
+        /* Optional: Adds a subtle blur effect to the background */
+      }
+
+      /* Controls container */
+      .controls-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+        z-index: 2;
+        /* Ensure controls are above captions */
+      }
+
+      /* Dots container (left side) */
+      .dots-container {
+        display: flex;
+        gap: 8px;
+        /* Increased gap */
+        margin-left: 20px;
+      }
+
+      /* Dot styling */
+      .dot {
+        width: 10px;
+        /* Increased dot size */
+        height: 10px;
+        border-radius: 50%;
+        background-color: #333;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .dot.active {
+        background-color: #555;
+      }
+
+      .dot:hover {
+        background-color: #777;
+      }
+
+      /* Arrows container (right side) */
+      .arrows-container {
+        display: flex;
+        gap: 12px;
+        /* Increased gap */
+        margin-right: 20px;
+      }
+
+      /* Arrow styling */
+      .arrow {
+        cursor: pointer;
+        font-size: 18px;
+        /* Decreased font size */
+        /* Previously 22px, now 18px for smaller arrows */
+        color: #333;
+        transition: color 0.3s;
+      }
+
+      .arrow:hover {
+        color: #555;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .controls-container {
+          margin-top: 10px;
+        }
+
+        .arrow {
+          font-size: 16px;
+          /* Adjusted font size for smaller screens */
+          /* Previously 20px, now 16px for smaller screens */
+        }
+
+        .dot {
+          width: 8px;
+          height: 8px;
+        }
+      }
+
+      .slider-example-split-line {
+        --divider-width: 4px;
+        --divider-color: #01f3ab;
+        --default-handle-color: #000;
+        --default-handle-opacity: 0;
+      }
+
+      .slider-example-opacity-and-size {
+        --default-handle-width: 100px;
+      }
+
+      .slider-example-opacity-and-size:focus {
+        --default-handle-opacity: 0;
+      }
+
+      .before,
+      .after {
+        margin: 0;
+      }
+
+      .before figcaption,
+      .after figcaption {
+        background: #fff;
+        border: 1px solid #c0c0c0;
+        border-radius: 12px;
+        color: #2e3452;
+        opacity: 0.8;
+        padding: 12px;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        line-height: 100%;
+      }
+
+      .before figcaption {
+        left: 33px;
+      }
+
+      .after figcaption {
+        right: 33px;
+      }
+
+      img-comparison-slider {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      /* Swiper styles */
+      .swiper-container {
+        width: 100%;
+        height: 100%;
+      }
+
+      .swiper-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+
+      .swiper-button-prev.swiper-button-disabled,
+      .swiper-button-next.swiper-button-disabled {
+        pointer-events: none !important;
+      }
+
+      /* Section Gallery Carousel Styles */
+      .section.m-gallery-carousel {
+        margin-top: 0 !important;
+        position: relative;
+        cursor: grab;
+      }
+
+      .section.m-gallery-carousel:active {
+        cursor: grabbing;
+      }
+
+      .section.m-gallery-carousel .swiper-container {
+        overflow: visible;
+      }
+
+      .section.m-gallery-carousel .swiper-wrapper {
+        display: flex!important;
+        align-items: center!important;
+        transition-timing-function: ease-out!important,
+          cubic-bezier(0.82, 0.1, 0.14, 1.12);
+      }
+
+      .section.m-gallery-carousel .swiper-slide {
+        position: relative;
+        flex: 0 0 auto;
+        width: auto;
+        margin-right: 50px;
+        /* Space between slides */
+      }
+
+      .section.m-gallery-carousel .swiper-slide img {
+        width: auto;
+        height: auto;
+      }
+
+      @media screen and (max-width: 768px) {
+        .section.m-gallery-carousel .swiper-slide img {
+          height: 240px;
+        }
+
+        .section.m-gallery-carousel .swiper-slide {
+          width: 100%;
+          margin-right: 0;
+        }
+      }
+
+      /* Optional custom scroll animations */
+      .splitting-text-anim-1,
+      .splitting-text-anim-2 {
+        transition: all 0.6s ease;
+      }
+
+      .splitting-text-anim-1.active,
+      .splitting-text-anim-2.active {
+        color: red;
+        /* Example effect, customize as needed */
+      }
+
+      .scroll-animate.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .scrolla-element-anim-1 {
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      /* Navigation buttons styles */
+      .swiper-button-next,
+      .swiper-button-prev {
+        color: #000!important;
+        /* Adjust color if needed */
+        width: 44px!important;
+        height: 44px!important;
+        background-color: rgba(255, 255, 255, 0.7)!important;
+        /* Optional background for visibility */
+        border-radius: 50%!important;
+        display: flex!important;
+        align-items: center!important;
+        justify-content: center!important;
+        z-index: 10!important;
+        /* Ensure buttons are on top */
+        position: absolute!important;
+        top: 50%!important;
+          box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1)!important;
+
+        transform: translateY(-50%)!important;
+      }
+
+      .swiper-button-next::after,
+      .swiper-button-prev::after {
+        font-size: 20px!important;
+      }
+
+      .swiper-button-disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+      }
+
+      /* Custom Parallax Effect */
+      .parallax-cs {
+        background-attachment: fixed;
+        background-position: center;
+        background-size: cover;
+      }
+
+      /* Custom Style for Large Parallax Image Section */
+      .section.m-image-large .image {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+      }
+
+      /* Custom Style for Heading */
+      .wrapper .section.started-heading {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+
+      .section.section-inner {
+        margin: 200px 0;
+      }
+
+      .section.section-inner.m-details {
+        margin-top: 0 !important;
+      }
+
+      .section {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Additional Styles for Heading */
+      .h-titles {
+        text-align: center;
+      }
+
+      .h-subtitle,
+      .h-title {
+        display: block;
+        font-size: 2rem;
+        margin: 0;
+      }
+
+      .splitting {
+        position: relative;
+        display: inline-block;
+        overflow: hidden;
+      }
+
+      .splitting .word {
+        display: inline-block;
+      }
+
+      .splitting .char {
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      /* Global Styles */
+      * {
+        outline: none;
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+      }
+
+      media screen and (max-width: 768px) {
+        .wrapper .section.section-inner.started-heading {
+          margin-bottom: 30px !important;
+        }
+      }
+
+      @media screen and (max-width: 1100px) {
+        .wrapper .section.section-inner.started-heading {
+          margin-top: 150px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .section.section-inner {
+          margin: 100px 0;
+        }
+
+        .wrapper .section.started-heading {
+          margin-bottom: 30px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        html,
+        body {
+          font-size: 16px;
+        }
+      }
+
+      /* Custom styles */
+      .large-image-container {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        /* Maintains 16:9 ratio */
+      }
+
+      .large-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        /* Ensures image maintains its aspect ratio and fills the container */
+      }
+
+      .thumbnail {
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        flex: 1 1 0;
+        /* Allow flex items to grow and shrink */
+      }
+
+      .thumbnail:hover {
+        opacity: 0.8;
+      }
+
+      .thumbnail.selected {
+        border: 2px solid #01f3ab;
+        /* Highlight selected thumbnail */
+      }
+
+      .thumbnail-container {
+        display: flex;
+        gap: 0.5rem;
+        /* Space between thumbnails */
+        width: 100%;
+        /* Ensure thumbnails span the full width of the large image */
+        overflow-x: auto;
+        /* Allow horizontal scrolling if needed */
+      }
+
+      .thumbnail-container img {
+        width: calc((100% - 0.5rem * 4) / 5);
+        /* Adjust width for 5 thumbnails including gaps */
+        height: auto;
+        object-fit: cover;
+      }
+
+      @media (max-width: 1024px) {
+        .desktop-only {
+          display: none;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .mobile-only {
+          display: none;
+        }
+      }
+
+      .bg-gradient {
+        background: linear-gradient(90deg, #01f3ab 0%, #0ff1e0 100%);
+      }
+
+      /* Default parallax for desktop */
+      .custom-image-section .image {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+      }
+
+      /* Mobile styles - disable fixed attachment */
+      @media (max-width: 768px) {
+        .custom-image-section .image {
+          background-size: contain;
+          background-position: center top;
+        }
+      }
+
+      /* Default parallax for desktop */
+      .custom-image-section .image {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        height: 100vh; /* Adjust the height if needed */
+      }
+
+      /* Mobile styles - zoom out the image */
+      @media (max-width: 768px) {
+        .custom-image-section .image {
+          background-attachment: scroll; /* JavaScript parallax handles scroll */
+          background-size: 300%; /* Zoom out by increasing the background size */
+          background-position: center top; /* Adjust position as needed */
+        }
+      }
