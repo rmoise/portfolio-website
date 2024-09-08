@@ -1509,11 +1509,7 @@ video {
   }
 }
 
-/* Animation classes */
-.headline-animate,
-.image-animate {
-  animation: fadeIn 1s ease-out forwards;
-}
+
 
 /* Scroll snap effect (optional) */
 .scroll-snap-type {
@@ -2812,3 +2808,12 @@ media screen and (max-width: 768px) {
           background-position: center top; /* Adjust position as needed */
         }
       }
+
+      .lazy-load {
+  opacity: 0; /* Start with hidden images */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition when image loads */
+}
+
+.lazy-load[src] {
+  opacity: 1; /* Fade in once the image is loaded */
+}
