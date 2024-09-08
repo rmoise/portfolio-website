@@ -4199,6 +4199,12 @@ media screen and (max-width: 768px) {
   margin-top: 1.5rem; /* Adjust this value to control the space between the image and dots */
 }
 
+.swiper-pagination-4 {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 1.5rem; /* Adjust this value to control the space between the image and dots */
+}
+
 
 .tab {
             color: black; /* Default text color */
