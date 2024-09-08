@@ -3391,6 +3391,9 @@
     ) {
       let translateY = scrollTop * speedFactor;
       parallaxContent.style.transform = `translateY(${translateY}px)`;
+    } else {
+      // Reset transform if out of viewport
+      parallaxContent.style.transform = `translateY(0)`;
     }
 
     // Toggle visibility of parallax background based on scroll position
@@ -3406,9 +3409,6 @@
     requestAnimationFrame(updateParallax);
   }
 
-  // Attach the scroll event listener
-  window.addEventListener("scroll", onScroll);
-
   // Create a debounced version of the updateParallax function
   const updateParallaxDebounced = debounce(updateParallax, 10);
 
@@ -3417,7 +3417,7 @@
     requestAnimationFrame(updateParallaxDebounced);
   }
 
-  // Add event listeners for scroll and resize events
+  // Attach event listeners for scroll and resize events
   window.addEventListener("scroll", onScrollOrResize);
   window.addEventListener("resize", onScrollOrResize);
 
