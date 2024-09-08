@@ -3380,7 +3380,6 @@
 
   function updateParallax() {
     const parallaxContent = document.querySelector(".parallax-content");
-    const parallaxBackground = document.querySelector(".parallax-background");
     const scrollTop = window.pageYOffset;
     const speedFactor = 0.1; // Adjust this value to control the speed of the parallax effect
 
@@ -3391,16 +3390,6 @@
     ) {
       let translateY = scrollTop * speedFactor;
       parallaxContent.style.transform = `translateY(${translateY}px)`;
-    } else {
-      // Reset transform if out of viewport
-      parallaxContent.style.transform = `translateY(0)`;
-    }
-
-    // Toggle visibility of parallax background based on scroll position
-    if (scrollTop > 0) {
-      parallaxBackground.classList.add("show");
-    } else {
-      parallaxBackground.classList.remove("show");
     }
   }
 
@@ -3408,6 +3397,9 @@
   function onScroll() {
     requestAnimationFrame(updateParallax);
   }
+
+  // Attach the scroll event listener
+  window.addEventListener("scroll", onScroll);
 
   // Create a debounced version of the updateParallax function
   const updateParallaxDebounced = debounce(updateParallax, 10);
@@ -3417,7 +3409,7 @@
     requestAnimationFrame(updateParallaxDebounced);
   }
 
-  // Attach event listeners for scroll and resize events
+  // Add event listeners for scroll and resize events
   window.addEventListener("scroll", onScrollOrResize);
   window.addEventListener("resize", onScrollOrResize);
 
