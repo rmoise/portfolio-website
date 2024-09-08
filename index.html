@@ -655,7 +655,7 @@
                   src="img/Herr-Moise-2.webp"
                   alt="Roderick Moise"
                   class="object-cover w-full h-full rounded-lg shadow-lg transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy "
+              loading="eager"
                 />
               </div>
             </div>
@@ -3368,103 +3368,96 @@
       });
     </script>
 
-    <script>
-      // Debounce function to limit the rate at which a function is executed
-      function debounce(func, wait) {
-        let timeout;
-        return function (...args) {
-          clearTimeout(timeout);
-          timeout = setTimeout(() => func.apply(this, args), wait);
-        };
+   <script>
+  // Debounce function to limit the rate at which a function is executed
+  function debounce(func, wait) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
+
+  function updateParallax() {
+    const parallaxContent = document.querySelector(".parallax-content");
+    const parallaxBackground = document.querySelector(".parallax-background");
+    const scrollTop = window.pageYOffset;
+    const speedFactor = 0.1; // Adjust this value to control the speed of the parallax effect
+
+    // Only apply parallax if the element is in the viewport
+    if (
+      scrollTop > parallaxContent.offsetTop - window.innerHeight &&
+      scrollTop < parallaxContent.offsetTop + parallaxContent.offsetHeight
+    ) {
+      let translateY = scrollTop * speedFactor;
+      parallaxContent.style.transform = `translateY(${translateY}px)`;
+    }
+
+    // Toggle visibility of parallax background based on scroll position
+    if (scrollTop > 0) {
+      parallaxBackground.classList.add("show");
+    } else {
+      parallaxBackground.classList.remove("show");
+    }
+  }
+
+  // Wrap the parallax update function with requestAnimationFrame for smoother performance
+  function onScroll() {
+    requestAnimationFrame(updateParallax);
+  }
+
+  // Attach the scroll event listener
+  window.addEventListener("scroll", onScroll);
+
+  // Create a debounced version of the updateParallax function
+  const updateParallaxDebounced = debounce(updateParallax, 10);
+
+  // Use requestAnimationFrame for smoother animations
+  function onScrollOrResize() {
+    requestAnimationFrame(updateParallaxDebounced);
+  }
+
+  // Add event listeners for scroll and resize events
+  window.addEventListener("scroll", onScrollOrResize);
+  window.addEventListener("resize", onScrollOrResize);
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const tabs = document.querySelectorAll(".tab");
+    const panels = document.querySelectorAll(".panel");
+    const indicator = document.querySelector(".tab-indicator");
+
+    function updateTabIndicator() {
+      const selectedTab = document.querySelector('[aria-selected="true"]');
+      if (selectedTab) {
+        const rect = selectedTab.getBoundingClientRect();
+        const containerRect = selectedTab.parentElement.getBoundingClientRect();
+        const indicatorWidth = selectedTab.offsetWidth;
+        indicator.style.left = `${rect.left - containerRect.left}px`;
+        indicator.style.width = `${indicatorWidth}px`;
       }
+    }
 
-      function updateParallax() {
-        const parallaxContent = document.querySelector(".parallax-content");
-        const parallaxBackground = document.querySelector(
-          ".parallax-background",
-        );
-        const scrollTop = window.pageYOffset;
-        const speedFactor = 0.1; // Adjust this value to control the speed of the parallax effect
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", function () {
+        tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
+        tab.setAttribute("aria-selected", "true");
 
-        // Toggle visibility of parallax background based on scroll position
-        if (scrollTop > 0) {
-          parallaxBackground.classList.add("show");
-        } else {
-          parallaxBackground.classList.remove("show");
-        }
-
-        // Disable parallax effect only for screens smaller than 768px
-        if (window.innerWidth < 768) {
-          parallaxContent.style.transform = "none"; // Disable parallax effect for small screens
-          return; // Exit here to prevent further parallax-related calculations
-        }
-
-        // Apply parallax effect to content for tablets and larger screens
-        let translateY = 0;
-        if (scrollTop > 0) {
-          translateY = scrollTop * speedFactor;
-        }
-        parallaxContent.style.transform = `translateY(${translateY}px)`;
-      }
-
-      // Wrap the parallax update function with requestAnimationFrame for smoother performance
-      function onScroll() {
-        requestAnimationFrame(updateParallax);
-      }
-
-      // Attach the scroll event listener
-      window.addEventListener("scroll", onScroll);
-
-      // Create a debounced version of the updateParallax function
-      const updateParallaxDebounced = debounce(updateParallax, 10);
-
-      // Use requestAnimationFrame for smoother animations
-      function onScrollOrResize() {
-        requestAnimationFrame(updateParallaxDebounced);
-      }
-
-      // Add event listeners for scroll and resize events
-      window.addEventListener("scroll", onScrollOrResize);
-      window.addEventListener("resize", onScrollOrResize);
-
-      document.addEventListener("DOMContentLoaded", function () {
-        const tabs = document.querySelectorAll(".tab");
-        const panels = document.querySelectorAll(".panel");
-        const indicator = document.querySelector(".tab-indicator");
-
-        function updateTabIndicator() {
-          const selectedTab = document.querySelector('[aria-selected="true"]');
-          if (selectedTab) {
-            const rect = selectedTab.getBoundingClientRect();
-            const containerRect =
-              selectedTab.parentElement.getBoundingClientRect();
-            const indicatorWidth = selectedTab.offsetWidth;
-            indicator.style.left = `${rect.left - containerRect.left}px`;
-            indicator.style.width = `${indicatorWidth}px`;
-          }
-        }
-
-        tabs.forEach((tab) => {
-          tab.addEventListener("click", function () {
-            tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
-            tab.setAttribute("aria-selected", "true");
-
-            const panelId = tab.getAttribute("aria-controls");
-            panels.forEach((p) => {
-              p.classList.add("hidden");
-              p.classList.remove("block");
-            });
-            document.getElementById(panelId).classList.remove("hidden");
-            document.getElementById(panelId).classList.add("block");
-
-            updateTabIndicator();
-          });
+        const panelId = tab.getAttribute("aria-controls");
+        panels.forEach((p) => {
+          p.classList.add("hidden");
+          p.classList.remove("block");
         });
+        document.getElementById(panelId).classList.remove("hidden");
+        document.getElementById(panelId).classList.add("block");
 
-        // Initial call to position the indicator correctly
         updateTabIndicator();
       });
-    </script>
+    });
+
+    // Initial call to position the indicator correctly
+    updateTabIndicator();
+  });
+</script>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/navigation.js"></script>
