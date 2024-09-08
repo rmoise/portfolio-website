@@ -2128,33 +2128,32 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
-    // Apply parallax effect using IntersectionObserver
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const imageElement = document.querySelector(
-          ".custom-image-section .image",
-        );
+        const imageElement = document.querySelector(".custom-image-section .image");
 
         // Check if window width is less than 768px (mobile)
         function isMobile() {
           return window.innerWidth <= 768;
         }
 
-        // Check if IntersectionObserver is supported and if on mobile
-        if ("IntersectionObserver" in window && isMobile()) {
-          const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                window.addEventListener("scroll", function () {
-                  const offset = window.pageYOffset;
-                  imageElement.style.backgroundPositionY = `${offset * 0.5}px`; // Adjust speed for parallax
-                });
-              }
-            });
-          });
-
-          observer.observe(imageElement);
+        // Function to enable or disable the parallax effect
+        function applyParallax() {
+          if (isMobile()) {
+            // Remove parallax effect if on mobile
+            window.removeEventListener("scroll", parallaxEffect);
+          } 
         }
+
+        // Parallax effect function
+        function parallaxEffect() {
+          const offset = window.pageYOffset;
+          imageElement.style.backgroundPositionY = `${offset * 0.5}px`; // Adjust speed for parallax
+        }
+
+        // Initial check and event listener for window resize
+        applyParallax();
+        window.addEventListener("resize", applyParallax);
       });
     </script>
 
