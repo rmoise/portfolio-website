@@ -2870,3 +2870,12 @@ media screen and (max-width: 768px) {
       .mdc-tab-indicator {
         background-color: transparent !important;
       }
+
+      video {
+    width: 100vw; /* Full viewport width */
+    height: auto;
+    max-width: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
