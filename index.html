@@ -3468,23 +3468,30 @@
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-      const swiper = new Swiper(".swiper-container", {
-        slidesPerView: "auto",
-        spaceBetween: 10,
-        centeredSlides: false,
-        observer: true,
-        observeParents: true,
-        slideClass: "custom-slider-item", // Update the class for the slides
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-      });
-    </script>
+  const swiper = new Swiper(".swiper-container", {
+    slidesPerView: "auto",
+    spaceBetween: 10,
+    centeredSlides: false,
+    observer: true,
+    observeParents: true,
+    slideClass: "custom-slider-item", // Update the class for the slides
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    touchRatio: 1, // Default is 1, you can increase this to make swiping more responsive
+    touchReleaseOnEdges: true, // Allows swipe action to be released even at the edges
+    speed: 600, // Adjust the speed of transition for smoother effect
+    freeMode: true, // Allows free scrolling for a smoother feel
+    freeModeMomentum: true, // Enables momentum for smoother sliding
+    freeModeMomentumRatio: 0.5, // Adjusts the ratio of the momentum
+  });
+</script>
+
 
     <script>
       // Debounce function to limit the rate at which a function is executed
