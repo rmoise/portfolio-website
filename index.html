@@ -3483,14 +3483,14 @@
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
-    touchRatio: 1, // Default is 1, you can increase this to make swiping more responsive
+    touchRatio: 1, // Default is 1, you can adjust this if needed
     touchReleaseOnEdges: true, // Allows swipe action to be released even at the edges
-    speed: 600, // Adjust the speed of transition for smoother effect
-    freeMode: true, // Allows free scrolling for a smoother feel
-    freeModeMomentum: true, // Enables momentum for smoother sliding
-    freeModeMomentumRatio: 0.5, // Adjusts the ratio of the momentum
+    speed: 400, // Lower the speed for smoother transitions
+    freeMode: false, // Disable free mode to ensure pagination sync
+    watchSlidesProgress: true, // Keep track of slide progress for better sync
   });
 </script>
+
 
 
     <script>

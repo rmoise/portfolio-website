@@ -4934,6 +4934,17 @@ media screen and (max-width: 768px) {
   }
 }
 
+
+/* Ensure smooth transitions */
+.swiper-wrapper {
+  transition: transform 0.6s ease; /* Adjust transition duration for smoothness */
+}
+
+.swiper-slide {
+  transition: transform 0.6s ease; /* Smooth transition for each slide */
+  will-change: transform; /* Hint to the browser to optimize performance */
+}
+
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05 !important;
   --tw-scale-y: 1.05 !important;
