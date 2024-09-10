@@ -2807,3 +2807,66 @@ media screen and (max-width: 768px) {
       }
 
 
+ .aspect-ratio-container {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        border-radius: 0.25rem; /* Rounded corners */
+        overflow: hidden; /* Ensures that the rounded corners are respected */
+      }
+      .aspect-ratio-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      /* Default tab background color */
+      .mdc-tab {
+        background-color: transparent !important; /* Transparent background */
+        color: gray !important; /* Default text color */
+      }
+
+      /* Active tab background color */
+      .mdc-tab--active {
+        background-color: transparent !important; /* Transparent background for active tab */
+      }
+
+      /* Active tab text color */
+      .mdc-tab--active .mdc-tab__text-label {
+        color: black !important; /* Black text color for active tab */
+      }
+
+      /* Underline color for tab indicator */
+      .mdc-tab-indicator .mdc-tab-indicator__content--underline {
+        border-color: black !important; /* Black color for the underline */
+        z-index: 2 !important; /* Ensure it stays above the static line */
+      }
+
+      /* Hover state */
+      .mdc-tab:hover {
+        background-color: transparent !important; /* Light gray background on hover */
+      }
+
+      /* Black text on hover */
+      .mdc-tab:hover .mdc-tab__text-label {
+        color: black !important; /* Change text color to black on hover */
+      }
+
+      /* Ripple effect */
+      .mdc-tab .mdc-tab__ripple::before,
+      .mdc-tab .mdc-tab__ripple::after {
+        background-color: transparent !important; /* Light gray background for ripple effect */
+      }
+
+      /* Ensure tab indicator itself does not have conflicting background */
+      .mdc-tab-indicator {
+        background-color: transparent !important;
+      }

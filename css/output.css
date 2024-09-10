@@ -1115,9 +1115,6 @@ input:checked + .toggle-bg {
 .col-span-12 {
   grid-column: span 12 / span 12 !important;
 }
-.col-span-2 {
-  grid-column: span 2 / span 2 !important;
-}
 .m-auto {
   margin: auto !important;
 }
@@ -1491,9 +1488,6 @@ input:checked + .toggle-bg {
 .gap-2 {
   gap: 0.5rem !important;
 }
-.gap-3 {
-  gap: 0.75rem !important;
-}
 .gap-4 {
   gap: 1rem !important;
 }
@@ -1514,6 +1508,10 @@ input:checked + .toggle-bg {
 .gap-x-3 {
   -moz-column-gap: 0.75rem !important;
        column-gap: 0.75rem !important;
+}
+.gap-x-5 {
+  -moz-column-gap: 1.25rem !important;
+       column-gap: 1.25rem !important;
 }
 .-space-x-52 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0 !important;
@@ -1539,11 +1537,6 @@ input:checked + .toggle-bg {
   --tw-space-x-reverse: 0 !important;
   margin-right: calc(2rem * var(--tw-space-x-reverse)) !important;
   margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse))) !important;
-}
-.space-y-12 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0 !important;
-  margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse))) !important;
-  margin-bottom: calc(3rem * var(--tw-space-y-reverse)) !important;
 }
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0 !important;
@@ -1580,9 +1573,6 @@ input:checked + .toggle-bg {
 }
 .rounded-2xl {
   border-radius: 1rem !important;
-}
-.rounded-3xl {
-  border-radius: 1.5rem !important;
 }
 .rounded-\[inherit\] {
   border-radius: inherit !important;
@@ -1713,9 +1703,6 @@ input:checked + .toggle-bg {
 .bg-white {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity)) !important;
-}
-.bg-white\/35 {
-  background-color: rgb(255 255 255 / 0.35) !important;
 }
 .bg-white\/40 {
   background-color: rgb(255 255 255 / 0.4) !important;
@@ -1853,17 +1840,9 @@ input:checked + .toggle-bg {
   padding-left: 1.25rem !important;
   padding-right: 1.25rem !important;
 }
-.px-6 {
-  padding-left: 1.5rem !important;
-  padding-right: 1.5rem !important;
-}
 .px-\[3px\] {
   padding-left: 3px !important;
   padding-right: 3px !important;
-}
-.py-10 {
-  padding-top: 2.5rem !important;
-  padding-bottom: 2.5rem !important;
 }
 .py-16 {
   padding-top: 4rem !important;
@@ -1896,9 +1875,6 @@ input:checked + .toggle-bg {
 }
 .pt-24 {
   padding-top: 6rem !important;
-}
-.pt-6 {
-  padding-top: 1.5rem !important;
 }
 .text-left {
   text-align: left !important;
@@ -2052,9 +2028,6 @@ input:checked + .toggle-bg {
 }
 .ring-white\/30 {
   --tw-ring-color: rgb(255 255 255 / 0.3) !important;
-}
-.ring-white\/50 {
-  --tw-ring-color: rgb(255 255 255 / 0.5) !important;
 }
 .blur {
   --tw-blur: blur(8px) !important;
@@ -4873,6 +4846,72 @@ media screen and (max-width: 768px) {
           background-position: center top; /* Adjust position as needed */
         }
       }
+
+
+ .aspect-ratio-container {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        border-radius: 0.25rem; /* Rounded corners */
+        overflow: hidden; /* Ensures that the rounded corners are respected */
+      }
+      .aspect-ratio-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+           object-fit: cover;
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      /* Default tab background color */
+      .mdc-tab {
+        background-color: transparent !important; /* Transparent background */
+        color: gray !important; /* Default text color */
+      }
+
+      /* Active tab background color */
+      .mdc-tab--active {
+        background-color: transparent !important; /* Transparent background for active tab */
+      }
+
+      /* Active tab text color */
+      .mdc-tab--active .mdc-tab__text-label {
+        color: black !important; /* Black text color for active tab */
+      }
+
+      /* Underline color for tab indicator */
+      .mdc-tab-indicator .mdc-tab-indicator__content--underline {
+        border-color: black !important; /* Black color for the underline */
+        z-index: 2 !important; /* Ensure it stays above the static line */
+      }
+
+      /* Hover state */
+      .mdc-tab:hover {
+        background-color: transparent !important; /* Light gray background on hover */
+      }
+
+      /* Black text on hover */
+      .mdc-tab:hover .mdc-tab__text-label {
+        color: black !important; /* Change text color to black on hover */
+      }
+
+      /* Ripple effect */
+      .mdc-tab .mdc-tab__ripple::before,
+      .mdc-tab .mdc-tab__ripple::after {
+        background-color: transparent !important; /* Light gray background for ripple effect */
+      }
+
+      /* Ensure tab indicator itself does not have conflicting background */
+      .mdc-tab-indicator {
+        background-color: transparent !important;
+      }
       .hover\:scale-105:hover {
   --tw-scale-x: 1.05 !important;
   --tw-scale-y: 1.05 !important;
@@ -4900,6 +4939,10 @@ media screen and (max-width: 768px) {
       .hover\:bg-gray-100:hover {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity)) !important;
+}
+      .hover\:bg-gray-50:hover {
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity)) !important;
 }
       .hover\:bg-white:hover {
   --tw-bg-opacity: 1 !important;
@@ -5177,10 +5220,6 @@ media screen and (max-width: 768px) {
     margin-top: 4rem !important;
   }
 
-  .md\:block {
-    display: block !important;
-  }
-
   .md\:flex {
     display: flex !important;
   }
@@ -5247,12 +5286,6 @@ media screen and (max-width: 768px) {
     margin-bottom: calc(0px * var(--tw-space-y-reverse)) !important;
   }
 
-  .md\:space-y-12 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0 !important;
-    margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse))) !important;
-    margin-bottom: calc(3rem * var(--tw-space-y-reverse)) !important;
-  }
-
   .md\:px-10 {
     padding-left: 2.5rem !important;
     padding-right: 2.5rem !important;
@@ -5260,6 +5293,11 @@ media screen and (max-width: 768px) {
 
   .md\:text-left {
     text-align: left !important;
+  }
+
+  .md\:text-2xl {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
   }
 
   .md\:text-3xl {
@@ -5270,6 +5308,11 @@ media screen and (max-width: 768px) {
   .md\:text-5xl {
     font-size: 3rem !important;
     line-height: 3.5rem !important;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem !important;
+    line-height: 2rem !important;
   }
 }
       @media (min-width: 1024px) {
@@ -5290,10 +5333,6 @@ media screen and (max-width: 768px) {
     grid-column-start: 4 !important;
   }
 
-  .lg\:mb-0 {
-    margin-bottom: 0px !important;
-  }
-
   .lg\:mb-12 {
     margin-bottom: 3rem !important;
   }
@@ -5312,10 +5351,6 @@ media screen and (max-width: 768px) {
 
   .lg\:mt-16 {
     margin-top: 4rem !important;
-  }
-
-  .lg\:block {
-    display: block !important;
   }
 
   .lg\:flex {
@@ -5354,10 +5389,6 @@ media screen and (max-width: 768px) {
     flex-direction: row !important;
   }
 
-  .lg\:justify-start {
-    justify-content: flex-start !important;
-  }
-
   .lg\:gap-12 {
     gap: 3rem !important;
   }
@@ -5368,18 +5399,6 @@ media screen and (max-width: 768px) {
 
   .lg\:gap-8 {
     gap: 2rem !important;
-  }
-
-  .lg\:space-x-10 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0 !important;
-    margin-right: calc(2.5rem * var(--tw-space-x-reverse)) !important;
-    margin-left: calc(2.5rem * calc(1 - var(--tw-space-x-reverse))) !important;
-  }
-
-  .lg\:space-y-12 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0 !important;
-    margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse))) !important;
-    margin-bottom: calc(3rem * var(--tw-space-y-reverse)) !important;
   }
 
   .lg\:px-16 {
@@ -5395,14 +5414,6 @@ media screen and (max-width: 768px) {
   .lg\:px-40 {
     padding-left: 10rem !important;
     padding-right: 10rem !important;
-  }
-
-  .lg\:pl-0 {
-    padding-left: 0px !important;
-  }
-
-  .lg\:text-left {
-    text-align: left !important;
   }
 
   .lg\:text-3xl {
@@ -5429,6 +5440,10 @@ media screen and (max-width: 768px) {
     margin-bottom: 2rem !important;
   }
 
+  .xl\:mt-0 {
+    margin-top: 0px !important;
+  }
+
   .xl\:mt-10 {
     margin-top: 2.5rem !important;
   }
@@ -5437,14 +5452,24 @@ media screen and (max-width: 768px) {
     margin-top: 2rem !important;
   }
 
+  .xl\:w-1\/4 {
+    width: 25% !important;
+  }
+
+  .xl\:w-9\/12 {
+    width: 75% !important;
+  }
+
   .xl\:grid-cols-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
   }
 
-  .xl\:space-y-12 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-y-reverse: 0 !important;
-    margin-top: calc(3rem * calc(1 - var(--tw-space-y-reverse))) !important;
-    margin-bottom: calc(3rem * var(--tw-space-y-reverse)) !important;
+  .xl\:flex-row {
+    flex-direction: row !important;
+  }
+
+  .xl\:flex-row-reverse {
+    flex-direction: row-reverse !important;
   }
 
   .xl\:px-40 {
@@ -5467,5 +5492,3 @@ media screen and (max-width: 768px) {
       .rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
   text-align: right !important;
 }
-
-

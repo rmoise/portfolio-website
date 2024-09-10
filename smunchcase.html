@@ -25,617 +25,671 @@
     ></script>
   </head>
 
-  <body class="font-poppins pb-12">
-    <!-- Navbar -->
-    <nav
-      x-data="navbar()"
-      x-init="init()"
-      class="border-b bg-white fixed top-0 left-0 w-full z-50"
-    >
-      <!-- Container -->
-      <div class="container flex flex-wrap px-4 py-2 mx-auto">
-        <!-- Logo -->
-        <a href="index.html" class="inline-flex items-center p-2">
-          <img src="img/rm_logo.svg" alt="Logo" class="h-8" />
-        </a>
-        <!-- Toggler Btn -->
-        <button
-          class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
-          @click="toggleNavbar()"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 transition-transform"
-            :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-          <svg
-            x-cloak
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-6 h-6 transition-transform"
-            :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-        <!-- Menu for Desktop -->
-        <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
-          <ul class="flex flex-row space-x-2">
-            <!-- Dropdown for Desktop -->
-            <li
-              x-data="{ dropdownOpen: false }"
-              @click.away="dropdownOpen = false"
-              class="relative"
-            >
-              <button
-                @click="dropdownOpen = !dropdownOpen"
-                :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-              >
-                Portfolio
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-4 h-4 ml-2 transition-transform"
-                  :class="{ 'rotate-180': dropdownOpen }"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <!-- Dropdown Menu for Desktop -->
-              <div
-                x-show="dropdownOpen"
-                x-cloak
-                class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48"
-                x-transition
-              >
-                <ul class="space-y-2">
-                  <!-- Categories Dropdown -->
-                  <li>
-                    <button
-                      @click="toggleCategories()"
-                      :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                      class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                    >
-                      Design Systems
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4 ml-2 transition-transform"
-                        :class="{ 'rotate-180': categoriesOpen }"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-                    <div
-                      x-show="categoriesOpen"
-                      class="mt-1 bg-white rounded-md shadow-lg"
-                      x-transition
-                    >
-                      <ul class="space-y-2">
-                        <!-- Nested Links -->
-                        <li>
-                          <a
-                            href="kytocase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Kyto</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="smunchcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Smunch</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="cogalleriescase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >coGalleries</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="organize.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Organize</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="pffcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Pffcase</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="stak.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Stak</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-
-                  <!-- Web Dev Dropdown -->
-                  <li>
-                    <button
-                      @click="toggleNestedDropdown()"
-                      :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                      class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                    >
-                      Web Dev
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4 ml-2 transition-transform"
-                        :class="{ 'rotate-180': nestedDropdownOpen }"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-                    <div
-                      x-show="nestedDropdownOpen"
-                      class="mt-1 bg-white rounded-md"
-                      x-transition
-                    >
-                      <ul class="space-y-2">
-                        <li>
-                          <a
-                            target="_blank"
-                            href="https://github.com/rmoise/document-management-app"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Doc Manager
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            target="_blank"
-                            href="https://github.com/rmoise/document-management-api"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Doc Manager API
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="pokemoncase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Pokédex App</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="myflixcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >myFlix React</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            target="_blank"
-                            href="https://github.com/rmoise/myFlix-Angular-client"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >myFlix Angular
-                          </a>
-                        </li>
-                        <li>
-                          <a
-                            href="meetcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Meet</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="chatappcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Chat</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </li>
-
-            <li>
-              <a
-                href="#contact"
-                @click="closeNavbar()"
-                :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                >Contact</a
-              >
-            </li>
-          </ul>
-        </div>
-        <!-- Menu for Mobile -->
+  <body class="flex h-full flex-col">
+    <div class="wrapper">
+      <!-- Navbar -->
+      <nav
+        id="main-nav"
+        x-data="navbar()"
+        x-init="init()"
+        class="bg-white fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-32 py-2 xl:px-40 mx-auto z-50"
+      >
+        <!-- Container with minimal padding -->
         <div
-          x-cloak
-          :class="{ 'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen }"
-          class="lg:hidden w-full"
+          class="container mx-auto flex flex-wrap items-center justify-between p-0"
         >
-          <ul class="border-t flex flex-col space-y-2 px-4 py-2">
-            <!-- Dropdown for Mobile -->
-            <li class="relative">
-              <button
-                @click="toggleDropdown()"
-                :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
+          <!-- Logo -->
+          <a href="index.html" class="inline-flex items-center p-2">
+            <img src="img/rm_logo.svg" alt="Logo" class="h-8" />
+          </a>
+          <!-- Toggler Btn -->
+          <button
+            class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
+            @click="toggleNavbar()"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 transition-transform"
+              :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              x-cloak
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 transition-transform"
+              :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+          <!-- Menu for Desktop -->
+          <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
+            <ul class="flex flex-row space-x-2">
+              <!-- Dropdown for Desktop -->
+              <li
+                x-data="{ dropdownOpen: false }"
+                @click.away="dropdownOpen = false"
+                class="relative"
               >
-                Portfolio
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-4 h-4 ml-2 transition-transform"
-                  :class="{ 'rotate-180': dropdownOpen }"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
+                <button
+                  @click="dropdownOpen = !dropdownOpen"
+                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
+                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </button>
-              <!-- Dropdown Menu for Mobile -->
-              <div
-                x-show="dropdownOpen"
-                x-cloak
-                class="lg:hidden mt-2 bg-white rounded-md"
-                x-transition
+                  Portfolio
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4 ml-2 transition-transform"
+                    :class="{ 'rotate-180': dropdownOpen }"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown Menu for Desktop -->
+                <div
+                  x-show="dropdownOpen"
+                  x-cloak
+                  class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48"
+                  x-transition
+                >
+                  <ul class="space-y-2">
+                    <!-- Categories Dropdown -->
+                    <li>
+                      <button
+                        @click="toggleCategories()"
+                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
+                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
+                      >
+                        Design Systems
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-4 h-4 ml-2 transition-transform"
+                          :class="{ 'rotate-180': categoriesOpen }"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        x-show="categoriesOpen"
+                        class="mt-1 bg-white rounded-md shadow-lg"
+                        x-transition
+                      >
+                        <ul class="space-y-2">
+                          <!-- Nested Links -->
+                          <li>
+                            <a
+                              href="kytocase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Kyto</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="smunchcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Smunch</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="cogalleriescase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >coGalleries</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="organize.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Organize</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="pffcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Pffcase</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="stak.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Stak</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+
+                    <!-- Web Dev Dropdown -->
+                    <li>
+                      <button
+                        @click="toggleNestedDropdown()"
+                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
+                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
+                      >
+                        Web Dev
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-4 h-4 ml-2 transition-transform"
+                          :class="{ 'rotate-180': nestedDropdownOpen }"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        x-show="nestedDropdownOpen"
+                        class="mt-1 bg-white rounded-md"
+                        x-transition
+                      >
+                        <ul class="space-y-2">
+                          <li>
+                            <a
+                              target="_blank"
+                              href="https://github.com/rmoise/document-management-app"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Doc Manager
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              target="_blank"
+                              href="https://github.com/rmoise/document-management-api"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Doc Manager API
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="pokemoncase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Pokédex App</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="myflixcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >myFlix React</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              target="_blank"
+                              href="https://github.com/rmoise/myFlix-Angular-client"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >myFlix Angular
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              href="meetcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Meet</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="chatappcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Chat</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a
+                  href="#contact"
+                  @click="closeNavbar()"
+                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
+                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Menu for Mobile -->
+          <div
+            x-cloak
+            :class="{ 'fixed inset-0 top-16 bg-white z-40 overflow-y-auto': navbarOpen, 'hidden': !navbarOpen }"
+            class="lg:hidden w-full"
+          >
+            <ul class="border-t flex flex-col space-y-2 px-4 py-2">
+              <!-- Dropdown for Mobile -->
+              <li class="relative">
+                <button
+                  @click="toggleDropdown()"
+                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
+                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
+                >
+                  Portfolio
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4 ml-2 transition-transform"
+                    :class="{ 'rotate-180': dropdownOpen }"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown Menu for Mobile -->
+                <div
+                  x-show="dropdownOpen"
+                  x-cloak
+                  class="lg:hidden mt-2 bg-white rounded-md"
+                  x-transition
+                >
+                  <ul class="space-y-2">
+                    <!-- Categories Dropdown -->
+                    <li>
+                      <button
+                        @click="toggleCategories()"
+                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
+                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
+                      >
+                        Design Systems
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-4 h-4 ml-2 transition-transform"
+                          :class="{ 'rotate-180': categoriesOpen }"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        x-show="categoriesOpen"
+                        class="mt-1 bg-white rounded-md"
+                        x-transition
+                      >
+                        <ul class="space-y-2">
+                          <!-- Nested Links -->
+                          <li>
+                            <a
+                              href="kytocase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Kyto</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="smunchcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Smunch</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="cogalleriescase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >coGalleries</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="organize.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Organize</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="pffcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Pffcase</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="stak.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Stak</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                    <!-- Web Dev Dropdown -->
+                    <li>
+                      <button
+                        @click="toggleNestedDropdown()"
+                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
+                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
+                      >
+                        Web Dev
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          class="w-4 h-4 ml-2 transition-transform"
+                          :class="{ 'rotate-180': nestedDropdownOpen }"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </button>
+                      <div
+                        x-show="nestedDropdownOpen"
+                        class="mt-1 bg-white rounded-md"
+                        x-transition
+                      >
+                        <ul class="space-y-2">
+                          <li>
+                            <a
+                              target="_blank"
+                              href="https://github.com/rmoise/document-management-app"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Doc Manager</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              target="_blank"
+                              href="https://github.com/rmoise/document-management-api"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Doc Manager API</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="pokemoncase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Pokédex App</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="myflixcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >myFlix React</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              target="_blank"
+                              href="https://github.com/rmoise/myFlix-Angular-client"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >myFlix Angular</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="meetcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Meet</a
+                            >
+                          </li>
+                          <li>
+                            <a
+                              href="chatappcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >Chat</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li>
+                <a
+                  href="#contact"
+                  @click.prevent="handleContactClick()"
+                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
+                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                >
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Hero Section -->
+
+      <!-- Section: Heading -->
+      <section class="section section-inner started-heading lg:pt-52 lg:pb-16">
+        <div class="container mx-auto px-16 w-full">
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <!-- Eyebrow Section -->
+              <p
+                class="text-sm font-medium uppercase tracking-wide text-gray-500 mb-2"
               >
-                <ul class="space-y-2">
-                  <!-- Categories Dropdown -->
-                  <li>
-                    <button
-                      @click="toggleCategories()"
-                      :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                      class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                    >
-                      Design Systems
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4 ml-2 transition-transform"
-                        :class="{ 'rotate-180': categoriesOpen }"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-                    <div
-                      x-show="categoriesOpen"
-                      class="mt-1 bg-white rounded-md"
-                      x-transition
-                    >
-                      <ul class="space-y-2">
-                        <!-- Nested Links -->
-                        <li>
-                          <a
-                            href="kytocase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Kyto</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="smunchcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Smunch</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="cogalleriescase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >coGalleries</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="organize.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Organize</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="pffcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Pffcase</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="stak.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Stak</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                  <!-- Web Dev Dropdown -->
-                  <li>
-                    <button
-                      @click="toggleNestedDropdown()"
-                      :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                      class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                    >
-                      Web Dev
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="w-4 h-4 ml-2 transition-transform"
-                        :class="{ 'rotate-180': nestedDropdownOpen }"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M19 9l-7 7-7-7"
-                        />
-                      </svg>
-                    </button>
-                    <div
-                      x-show="nestedDropdownOpen"
-                      class="mt-1 bg-white rounded-md"
-                      x-transition
-                    >
-                      <ul class="space-y-2">
-                        <li>
-                          <a
-                            target="_blank"
-                            href="https://github.com/rmoise/document-management-app"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Doc Manager</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            target="_blank"
-                            href="https://github.com/rmoise/document-management-api"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Doc Manager API</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="pokemoncase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Pokédex App</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="myflixcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >myFlix React</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            target="_blank"
-                            href="https://github.com/rmoise/myFlix-Angular-client"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >myFlix Angular</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="meetcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Meet</a
-                          >
-                        </li>
-                        <li>
-                          <a
-                            href="chatappcase.html"
-                            @click="closeNavbar()"
-                            :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                            >Chat</a
-                          >
-                        </li>
-                      </ul>
-                    </div>
-                  </li>
-                </ul>
+                Case Study
+              </p>
+              <!-- Main Heading -->
+              <h1 id="header" class="font-bold text-6xl">
+                <span>Smunch</span>
+              </h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+      <!-- Section: Parallax Image -->
+      <section class="section m-image-large relative custom-image-section">
+        <div
+          class="image parallax-cs absolute inset-0"
+          style="background-image: url(&quot;img/iPhone-Mockup.jpg&quot;)"
+        ></div>
+        <div class="relative z-10 flex items-center justify-center h-full">
+          <!-- Content over the image can go here -->
+        </div>
+      </section>
+
+   <!-- Section: Details (Kyto) -->
+<section class="section-inner m-details py-16 px-4 sm:px-8 lg:px-32 xl:px-40">
+  <div class="container mx-auto">
+    <!-- Flex container with left-aligned items -->
+    <div class="flex flex-wrap gap-6">
+      <!-- Client -->
+      <div class="details-label p-4 flex-1">
+        <strong class="block leading-tight">Client</strong><br />Smunch
+      </div>
+      <!-- Industry -->
+      <div class="details-label p-4 flex-1">
+        <strong class="block leading-tight">Industry</strong><br />food tech startup / B2B
+      </div>
+      <!-- Year -->
+      <div class="details-label p-4 flex-1">
+        <strong class="block leading-tight">Year</strong><br />2018
+      </div>
+      <!-- Website -->
+      <a href="https://smunch.co" target="_blank" rel="noopener noreferrer">
+        <div class="details-label p-4 flex-1">
+          <strong class="block leading-tight">Website</strong><br />smunch.co
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+      <section class="container mx-auto px-4 md:px-10 lg:px-10">
+        <!-- Section Description -->
+        <div class="section section-inner m-description">
+          <div class="container mx-auto px-8">
+            <div class="flex flex-col lg:flex-row">
+              <!-- History Title -->
+              <div class="lg:w-1/4 mb-8 lg:mb-0">
+                <div class="m-titles text-left">
+                  <div class="m-title text-2xl font-bold" data-animate="active">
+                    Challenge
+                  </div>
+                </div>
               </div>
-            </li>
+              <!-- History Description -->
+              <div class="w-full pb-12 lg:w-2/3">
+                <div class="description-text">
+                  <p>
+                    The goal was to create a new brand identity and better app usability that could resonate in today's busy market. When designing the logo I wanted to achieve speed and implementation and to do that I believe it’s best to set some boundaries to allow the mind to wander in a creative direction. The limitations set for this logo was that it had to be associated with food and tech due to Smunch mainly being a software\delivery food based company.
 
-            <li>
-              <a
-                href="#contact"
-                @click.prevent="handleContactClick()"
-                :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 
-    <!-- Title Section -->
-    <section>
-      <div class="md:flex-nowrap mt-40 mb-24 px-4 md:px-14 lg:px-24 w-full">
-        <!-- Left item -->
-        <div>
-          <h1 id="header" class="font-bold text-5xl text-center">
-            <span>Smunch</span>
-          </h1>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <section class="container mx-auto px-4 md:px-10 lg:px-10">
+        <!-- Section Description -->
+        <div class="section section-inner m-description">
+          <div class="container mx-auto px-8">
+            <div class="flex flex-col lg:flex-row">
+              <!-- History Title -->
+             <div class="lg:w-1/4 mb-8 lg:mb-0">
+                <div class="m-titles text-left">
+                  <div class="m-title text-2xl font-bold" data-animate="active">
+                    Solution
+                  </div>
+                </div>
+              </div>
+              <!-- History Description -->
+              <div class="w-full pb-12 lg:w-2/3">
+                <div class="description-text">
+                  <p>
+                    Before implementing design I did some research on Smunch's competitors and found purple to be the ideal color for the brand. The previous logo looked a bit outdated and the icon didn’t really connect with the company’s philosophy. The philosophy that ordering Smunch should be as simple as clicking a button. What inspired the logos direction was a reference to the videogame pacman. This reference came to mind because of the simplistic nature of the game and the playfulness attitude of the team at Smunch. The pacman game plays mainly on winning/eating by pushing a button therefore I felt there was a creative connection there. Though the logo appears to be abstract I believe the redesign reveals more of a purpose behind the design decision that I made.<br><br>
+
+Before designing the app I did some user testing and user research to get a better understanding of how people used the older version of the app. After feedback was given I worked on creating working prototypes through invision.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
     <!-- Hero Section -->
     <main>
-      <!-- Purpose & Context Section -->
-      <section>
-        <div class="md:w-full mb-8 2xl:px-96 xl:px-72 lg:px-48">
-          <!-- Left item -->
-          <div class="flex flex-col px-4 md:px-14 lg:px-24 md:w-full">
-            <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-            >
-              <h2 class="secondary-title text-3xl font-bold">Challenge</h2>
-
-              <p class="mt-4 md:mb-0">
-                The goal was to create a new brand identity and better app
-                usability that could resonate in today's busy market. When
-                designing the logo I wanted to achieve speed and implementation
-                and to do that I believe it’s best to set some boundaries to
-                allow the mind to wander in a creative direction. The
-                limitations set for this logo was that it had to be associated
-                with food and tech due to Smunch mainly being a
-                software\delivery food based company.
-              </p>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- Purpose & Context Section -->
-      <section>
-        <div class="md:w-full mb-8 2xl:px-96 xl:px-72 lg:px-48">
-          <!-- Left item -->
-          <div class="flex flex-col px-4 md:px-14 lg:px-24 md:w-full">
-            <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-            >
-              <h2 class="secondary-title text-3xl font-bold">Solution</h2>
-
-              <p class="mt-4 md:mb-0">
-                Before implementing design I did some research on Smunch's
-                competitors and found purple to be the ideal color for the
-                brand. The previous logo looked a bit outdated and the icon
-                didn’t really connect with the company’s philosophy. The
-                philosophy that ordering Smunch should be as simple as clicking
-                a button. What inspired the logos direction was a reference to
-                the videogame pacman. This reference came to mind because of the
-                simplistic nature of the game and the playfulness attitude of
-                the team at Smunch. The pacman game plays mainly on
-                winning/eating by pushing a button therefore I felt there was a
-                creative connection there. Though the logo appears to be
-                abstract I believe the redesign reveals more of a purpose behind
-                the design decision that I made.
-              </p>
-              <p class="mt-4 md:mb-0">
-                Before designing the app I did some user testing and user
-                research to get a better understanding of how people used the
-                older version of the app. After feedback was given I worked on
-                creating working prototypes through invision.
-              </p>
-            </figure>
-          </div>
-        </div>
-      </section>
+     
 
       <!-- Work section-->
       <section class="md:pb-5">

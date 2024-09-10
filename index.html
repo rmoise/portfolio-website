@@ -18,6 +18,12 @@
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
 
+    <!-- MDC Web CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+    />
+
     <script
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js"
       defer
@@ -2091,55 +2097,76 @@
                 <div class="panel block transition duration-500" id="panel-0">
                   <!-- Container for Feature 1 content -->
                   <section class="w-full">
-                    <div
-                      class="space-y-8 xl:space-y-12 lg:space-y-12 md:space-y-12 mt-8"
-                    >
-                      <!-- project 1 -->
+                    <div class="mt-8">
+                      <!-- Project A -->
                       <div
-                        class="bg-white/35 ring-1 ring-inset ring-white/50 p-[1px] border h-full overflow-hidden rounded-2xl"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
                       >
-                        <div
-                          class="w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
-                        >
-                          <!-- Project image-->
-                          <div class="mb-6 px-6 lg:mb-0 justify-center">
-                            <div
-                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                            >
-                              <a href="kytocase.html"
-                                ><img
-                                  src="img/kyto_thumbnail_2.png"
+                        <div class="w-full xl:w-9/12">
+                          <a href="kytocase.html">
+                            <div class="aspect-ratio-container">
+                              <div
+                                class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                              >
+                                <img
+                                  src="img/03-Laptop-Mockup.jpg"
                                   alt="Kyto"
-                                  class="w-full h-full object-cover aspect-[4/3] transition duration-300 hover:scale-105"
-                              /></a>
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </div>
                             </div>
-                          </div>
-
-                          <!-- Project info-->
+                          </a>
+                        </div>
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <h3 class="text-2xl font-semibold">Kyto</h3>
-
-                            <div
-                              class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
-                            >
-                              <div class="badge">Design System</div>
-                              <div class="badge">UI</div>
-                              <div class="badge">Branding</div>
-                              <div class="badge">Prototyping</div>
-                              <div class="badge">Illustration</div>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Kyto
+                              </div>
+                              <div>
+                                <p>
+                                  Founded in 2013, Kyto specializes in B2B
+                                  portal marketing, managing global customer
+                                  data through a central cloud-based solution.
+                                </p>
+                              </div>
                             </div>
-
-                            <p class="mb-4">
-                              Founded in 2013, Kyto specializes in B2B portal
-                              marketing, managing global customer data through a
-                              central cloud-based solution.
-                            </p>
-                            <div class="flex">
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Design System
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #UI
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Branding
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Prototyping
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Illustration
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
                               <a
                                 href="kytocase.html"
-                                class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
                               >
                                 View Case Study
                               </a>
@@ -2148,51 +2175,70 @@
                         </div>
                       </div>
 
-                      <!-- project 2 -->
+                      <!-- Project B -->
                       <div
-                        class="bg-white/35 ring-1 ring-inset border ring-white/50 p-[1px] h-full overflow-hidden rounded-3xl"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
                       >
-                        <div
-                          class="w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
-                        >
-                          <!-- Project image-->
-                          <div class="mb-6 px-6 lg:mb-0 justify-center">
+                        <div class="w-full xl:w-9/12">
+                          <div class="aspect-ratio-container">
                             <div
                               class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
                             >
-                              <a href="smunchcase.html"
-                                ><img
-                                  src="img/smunch_logo.png"
+                              <a href="smunchcase.html">
+                                <img
+                                  src="img/iPhone-Mockup.jpg"
                                   alt="Smunch"
-                                  class="w-full h-full object-cover aspect-[4/3] transition duration-300 hover:scale-105"
-                              /></a>
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
                             </div>
                           </div>
-
-                          <!-- Project info-->
+                        </div>
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <h3 class="text-2xl font-semibold">Smunch</h3>
-
-                            <div
-                              class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
-                            >
-                              <div class="badge">Design System</div>
-                              <div class="badge">UI</div>
-                              <div class="badge">Branding</div>
-                              <div class="badge">Prototyping</div>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Smunch
+                              </div>
+                              <div>
+                                <p>
+                                  Smunch is a startup based in Berlin that wants
+                                  to make it easy for companies to provide
+                                  healthy, mindful food for their employees.
+                                </p>
+                              </div>
                             </div>
-
-                            <p class="mb-4">
-                              Smunch is a startup based in Berlin that wants to
-                              make it easy for companies to provide healthy,
-                              mindful food for their employees.
-                            </p>
-                            <div class="flex">
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Design System
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #UI
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Branding
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Prototyping
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
                               <a
                                 href="smunchcase.html"
-                                class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
                               >
                                 View Case Study
                               </a>
@@ -2201,195 +2247,279 @@
                         </div>
                       </div>
 
-                      <!-- project 3 -->
+                      <!-- Project C -->
                       <div
-                        class="bg-white/35 ring-1 border ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
                       >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a href="cogalleriescase.html"
-                              ><img
-                                src="img/cogalleries_logo.png"
-                                alt="coGalleries"
-                                class="w-full h-full object-cover aspect-[4/3] transition duration-300 hover:scale-105"
-                            /></a>
+                        <div class="w-full xl:w-9/12">
+                          <div class="aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                            >
+                              <a href="cogalleriescase.html">
+                                <img
+                                  src="img/02-Laptop-Mockup.jpg"
+                                  alt="coGalleries"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
                           </div>
                         </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">coGalleries</h3>
-
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <div class="badge">Design System</div>
-                            <div class="badge">UI</div>
-                            <div class="badge">Branding</div>
-                            <div class="badge">Prototyping</div>
-                          </div>
-
-                          <p class="mb-4">
-                            coGalleries is a creative travel company offering
-                            unique private art tours and cultural trips.
-                          </p>
-                          <div class="flex">
-                            <a
-                              href="cogalleriescase.html"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              View Case Study
-                            </a>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                coGalleries
+                              </div>
+                              <div>
+                                <p>
+                                  coGalleries is a creative travel company
+                                  offering unique private art tours and cultural
+                                  trips.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Design System
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #UI
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Branding
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Prototyping
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/your-username/your-repo-c"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                View Case Study
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
 
-                      <!-- project 4 -->
+                      <!-- Project B -->
                       <div
-                        class="bg-white/35 ring-1 border ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
                       >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a href="organize.html"
-                              ><img
-                                src="img/organize_thumbnail.png"
-                                alt="Organize"
-                                class="w-full h-full object-cover aspect-[4/3] transition duration-300 hover:scale-105"
-                            /></a>
+                        <div class="w-full xl:w-9/12">
+                          <div class="aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                            >
+                              <a href="organize.html">
+                                <img
+                                  src="img/organize-ig.jpg"
+                                  alt="Organize"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
                           </div>
                         </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">Organize</h3>
-
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <div class="badge">Social Media</div>
-                            <div class="badge">Marketing</div>
-                            <div class="badge">Illustration</div>
-                            <div class="badge">Video Animation</div>
-                          </div>
-
-                          <p class="mb-4">
-                            Organize is a non-profit focused on increasing the
-                            supply of transplantable organs through advocacy for
-                            health equity, patient safety, and transparency.
-                          </p>
-                          <div class="flex">
-                            <a
-                              href="organize.html"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              View Case Study
-                            </a>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Organize
+                              </div>
+                              <div>
+                                <p>
+                                  Organize is a non-profit focused on increasing
+                                  the supply of transplantable organs through
+                                  advocacy for health equity, patient safety,
+                                  and transparency.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Social Media
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Marketing
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Illustration
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Video Animation
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="organize.html"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                View Case Study
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
 
-                      <!-- project 5 -->
+                      <!-- Project E -->
+                      <!-- Project C -->
                       <div
-                        class="bg-white/35 ring-1 border ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
                       >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a href="pffcase.html"
-                              ><img
-                                src="img/Simple-Mockup-Free-Scene 2.png"
-                                alt="Personality Friend Finding App"
-                                class="w-full h-full object-cover aspect-[4/3] transition duration-300 hover:scale-105"
-                            /></a>
+                        <div class="w-full xl:w-9/12">
+                          <div class="aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                            >
+                              <a href="pffcase.html">
+                                <img
+                                  src="img/Simple-Mockup-Free-Scene-2.png"
+                                  alt="Personality Friend Finding App"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
                           </div>
                         </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">PFF</h3>
-
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <div class="badge">Design System</div>
-                            <div class="badge">UI</div>
-                            <div class="badge">Information Architecture</div>
-                            <div class="badge">Wireframing</div>
-                            <div class="badge">Prototyping</div>
-                          </div>
-
-                          <p class="mb-4">
-                            The app helps users make friends by taking
-                            personality quizzes, viewing results, and chatting
-                            with people who have similar traits.
-                          </p>
-                          <div class="flex">
-                            <a
-                              href="pffcase.html"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              View Case Study
-                            </a>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                PFF
+                              </div>
+                              <div>
+                                <p>
+                                  The app helps users make friends by taking
+                                  personality quizzes, viewing results, and
+                                  chatting with people who have similar traits.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Design System
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #UI
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Branding
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Prototyping
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="pffcase.html"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                View Case Study
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
 
-                      <!-- project 6 -->
+                      <!-- Project D -->
+                      <!-- Project B -->
                       <div
-                        class="bg-white/35 ring-1 ring-inset border ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
                       >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a href="stak.html"
-                              ><img
-                                src="img/stak_thumbnail.png"
-                                alt="Stak"
-                                class="w-full h-full object-cover aspect-[4/3] transition duration-300 hover:scale-105"
-                            /></a>
+                        <div class="w-full xl:w-9/12">
+                          <div class="aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                            >
+                              <a href="stak.html">
+                                <img
+                                  src="img/Stak-v6.png"
+                                  alt="Stak"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
                           </div>
                         </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">Stak</h3>
-
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <div class="badge">Visual Design</div>
-                          </div>
-
-                          <p class="mb-4">
-                            Stak is a California-based artist known for bold,
-                            vibrant music that infuses dynamic energy into his
-                            sounds.
-                          </p>
-                          <div class="flex">
-                            <a
-                              href="stak.html"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              View Case Study
-                            </a>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Stak
+                              </div>
+                              <div>
+                                <p>
+                                  Stak is a California-based artist known for
+                                  bold, vibrant music that infuses dynamic
+                                  energy into his sounds.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Visual Design
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="stak.html"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                View Case Study
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -2401,519 +2531,720 @@
                 <div class="panel hidden transition duration-500" id="panel-1">
                   <!-- Content for Feature 2 -->
                   <section class="w-full">
-                    <div class="space-y-12 mt-8">
-                      <!-- project 1 -->
+                    <div class="mt-8">
+                      <!-- Project A -->
                       <div
-                        class="bg-white/35 ring-1 border ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
                       >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="overflow-hidden w-full h-full object-cover aspect-[4/3] rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/document-management-app"
-                              ><img
-                                src="img/document-management-app-screenshot.png"
-                                alt="Document Management App"
-                                class="object-cover transition duration-300 hover:scale-105"
-                            /></a>
+                        <div class="w-full xl:w-9/12">
+                          <div class="bg-gray-200 aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                            >
+                              <a
+                                href="https://github.com/rmoise/document-management-app"
+                                target="_blank"
+                              >
+                                <img
+                                  src="img/document-management-app-screenshot.png"
+                                  alt="Doc Manager"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
                           </div>
                         </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">Doc Manager</h3>
-
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <div class="badge">React</div>
-                            <div class="badge">Tailwind</div>
-                            <div class="badge">ASP.NET</div>
-                            <div class="badge">C#</div>
-                            <div class="badge">Azure Blob Storage</div>
-                            <div class="badge">PostgreSQL</div>
-                          </div>
-
-                          <p class="mb-4">
-                            This app, built with React and ASP.NET Core, manages
-                            documents with PostgreSQL and Azure Blob Storage,
-                            offering secure upload, preview, and sharing.
-                          </p>
-                          <div class="md:flex">
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/document-management-app"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              GitHub
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- project 2 -->
-                      <div
-                        class="bg-white/35 ring-1 border ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
-                      >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="w-full h-full object-cover aspect-[4/3] overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/document-management-api"
-                              ><img
-                                src="img/document-management-api-screenshot.png"
-                                alt="Document Management API"
-                                class="object-cover transition duration-300 hover:scale-105"
-                            /></a>
-                          </div>
-                        </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">
-                            Doc Manager API
-                          </h3>
-
-                          <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
-                          >
-                            <div class="badge">ASP.NET</div>
-                            <div class="badge">Azure Blob Storage</div>
-                            <div class="badge">PostgreSQL</div>
-                            <div class="badge">Postman</div>
-                            <div class="badge">C#</div>
-                          </div>
-
-                          <p class="mb-4">
-                            This API uses PostgreSQL and Azure Blob Storage for
-                            secure document management, including
-                            authentication, upload, preview, and sharing.
-                          </p>
-                          <div class="md:flex">
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/document-management-api"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              GitHub
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- project 3 -->
-                      <div
-                        class="bg-white/35 ring-1 border ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
-                      >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://rmoise.github.io/simple-js-app/"
-                              ><img
-                                src="img/pokedex.png"
-                                alt="Pokémon app"
-                                class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
-                            /></a>
-                          </div>
-                        </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">Pokédex</h3>
-
-                          <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
-                          >
-                            <div class="badge">JavaScript</div>
-                            <div class="badge">Bootstrap</div>
-                            <div class="badge">Jquery</div>
-                            <div class="badge">HTML5</div>
-                            <div class="badge">CSS3</div>
-                          </div>
-
-                          <p class="mb-4">
-                            This Pokédex web app, built with HTML, CSS, and
-                            JavaScript, loads data from an API for detailed
-                            Pokémon information.
-                          </p>
-                          <div class="flex">
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://rmoise.github.io/simple-js-app/"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              Demo
-                            </a>
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/simple-js-app"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              GitHub
-                            </a>
-                            <a
-                              rel="noopener noreferrer"
-                              href="pokemoncase.html"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              Case
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- project 4 -->
-                      <div
-                        class="bg-white/35 ring-1 border ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
-                      >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://myflix-movie-client-react.netlify.app/"
-                              ><img
-                                src="img/myFlix.png"
-                                alt="myFlix React"
-                                class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
-                            /></a>
-                          </div>
-                        </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">myFlix React</h3>
-
-                          <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
-                          >
-                            <div class="badge">React</div>
-                            <div class="badge">Redux</div>
-                            <div class="badge">Bootstrap</div>
-                            <div class="badge">Netlify</div>
-                          </div>
-
-                          <p class="mb-4">
-                            This single-page, responsive application (SPA) is
-                            the client-side for an application called myFlix
-                            based on its existing server-side code (REST API and
-                            database).
-                          </p>
-                          <div class="flex">
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://myflix-movie-client-react.netlify.app/"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              Demo
-                            </a>
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/myFlix-client"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              GitHub
-                            </a>
-                            <br />
-                            <a
-                              rel="noopener noreferrer"
-                              href="myflixcase.html"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              Case
-                            </a>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Doc Manager
+                              </div>
+                              <div>
+                                <p>
+                                  This app, built with React and ASP.NET Core,
+                                  manages documents with PostgreSQL and Azure
+                                  Blob Storage, offering secure upload, preview,
+                                  and sharing.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #React
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Tailwind
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #ASP.NET
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #C
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Azure Blob Storage
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #PostgreSQL
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/your-username/your-repo"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
 
-                      <!-- project 5 -->
+                      <!-- Project B -->
                       <div
-                        class="bg-white/35 ring-1 border ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
                       >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="w-full h-full object-cover aspect-[4/3] overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://myflix-firstapi-app.herokuapp.com/documentation"
-                              ><img
-                                src="img/movie-api2.png"
-                                alt="myFlix API"
-                                class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
-                            /></a>
+                        <div class="w-full xl:w-9/12">
+                          <div class="bg-gray-200 aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                            >
+                              <a
+                                href="https://github.com/rmoise/document-management-api"
+                                target="_blank"
+                              >
+                                <img
+                                  src="img/document-management-api-screenshot.png"
+                                  alt="Doc Manager API"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
                           </div>
                         </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">myFlix API</h3>
-
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <div class="badge">Node.js</div>
-                            <div class="badge">Express</div>
-                            <div class="badge">MongoDB</div>
-                            <div class="badge">Heroku</div>
-                          </div>
-
-                          <p class="mb-4">
-                            This API powers a movie app, giving users info on
-                            films, directors, and genres.
-                          </p>
-                          <div class="flex">
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/myFlix_api?tab=readme-ov-file#endpoint-documentation"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              Doc.
-                            </a>
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/myFlix_api"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              GitHub
-                            </a>
-                            <a
-                              rel="noopener noreferrer"
-                              href="myflixcase.html"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              Case
-                            </a>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Doc Manager API
+                              </div>
+                              <div>
+                                <p>
+                                  This API uses PostgreSQL and Azure Blob
+                                  Storage for secure document management,
+                                  including authentication, upload, preview, and
+                                  sharing.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #ASP.NET
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Azure Blob Storage
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #PostgreSQL
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Postman
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #C Sharp
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/your-username/your-repo-b"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
 
-                      <!-- project 6 -->
+                      <!-- Project C -->
                       <div
-                        class="bg-white/35 border ring-1 ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
                       >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="w-full h-full object-cover aspect-[4/3] overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://rmoise.github.io/myFlix-Angular-client/welcome"
-                              ><img
-                                src="img/myFlix-angular.png"
-                                alt="myFlix Angular App"
-                                class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
-                            /></a>
+                        <div class="w-full xl:w-9/12">
+                          <div class="bg-gray-200 aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                            >
+                              <a
+                                href="https://rmoise.github.io/simple-js-app/"
+                                target="_blank"
+                              >
+                                <img
+                                  src="img/pokedex-laptop.png"
+                                  alt="Pokedex"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
                           </div>
                         </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">myFlix Angular</h3>
-
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <div class="badge">Angular</div>
-                            <div class="badge">Angular Material UI</div>
-                            <div class="badge">TypeScript</div>
-                          </div>
-
-                          <p>
-                            Utilizing the same movie API as with the React app,
-                            this SPA is built with Angular.
-                          </p>
-                          <div class="flex">
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://rmoise.github.io/myFlix-Angular-client/welcome"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              Demo
-                            </a>
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/myFlix-Angular-client"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-                            >
-                              GitHub
-                            </a>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Pokédex
+                              </div>
+                              <div>
+                                <p>
+                                  This Pokédex web app, built with HTML, CSS,
+                                  and JavaScript, loads data from an API for
+                                  detailed Pokémon information.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #JavaScript
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Bootstrap
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Jquery
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #HTML5
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #CSS3
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/rmoise/simple-js-app"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                              <a
+                                href="https://rmoise.github.io/simple-js-app/"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Demo
+                              </a>
+                              <a
+                                href="pokemoncase.html"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Case
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
 
-                      <!-- project 7 -->
+                      <!-- Project D -->
                       <div
-                        class="bg-white/35 border ring-1 ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
                       >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="w-full h-full object-cover aspect-[4/3] overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://rmoise.github.io/meet/"
+                        <div class="w-full xl:w-9/12">
+                          <div class="bg-gray-200 aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
                             >
-                              <img
-                                src="img/meet-app.png"
-                                alt="meet app"
-                                class="w-full h-full object-cover transition duration-300 hover:scale-105"
-                              />
-                            </a>
+                              <a
+                                href="https://myflix-movie-client-react.netlify.app/"
+                                target="_blank"
+                              >
+                                <img
+                                  src="img/myFlix-laptop.png"
+                                  alt="myFlix"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
                           </div>
                         </div>
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-col justify-between text-center lg:text-left col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">Meet</h3>
-
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-4"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <div class="badge">React</div>
-                            <div class="badge">Recharts</div>
-                            <div class="badge">Enzyme</div>
-                            <div class="badge">AWS</div>
-                            <div class="badge">Google Cloud Platform</div>
-                            <div class="badge">Jest</div>
-                            <div class="badge">Bootstrap</div>
-                          </div>
-
-                          <p class="mb-4">
-                            Meet App is a serverless PWA built with React and
-                            TDD, using Google Calendar API to fetch upcoming
-                            events.
-                          </p>
-
-                          <div class="flex flex-wrap gap-3">
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://rmoise.github.io/meet/"
-                              class="underline text-black hover:text-darkGrayishBlue"
-                            >
-                              Demo
-                            </a>
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/meet"
-                              class="underline text-black hover:text-darkGrayishBlue"
-                            >
-                              GitHub
-                            </a>
-                            <a
-                              rel="noopener noreferrer"
-                              href="meetcase.html"
-                              class="underline text-black hover:text-darkGrayishBlue"
-                            >
-                              Case
-                            </a>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                myFlix React
+                              </div>
+                              <div>
+                                <p>
+                                  This single-page, responsive application (SPA)
+                                  is the client-side for an application called
+                                  myFlix based on its existing server-side code
+                                  (REST API and database).
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #React
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Redux
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Bootstrap
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Netlify
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/rmoise/myFlix-client"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                              <a
+                                href="https://myflix-movie-client-react.netlify.app/"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Demo
+                              </a>
+                              <a
+                                href="myflixcase.html"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Case
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
 
-                      <!-- project 8 -->
+                      <!-- Project E -->
                       <div
-                        class="bg-white/35 border ring-1 ring-inset ring-white/50 p-[1px] w-full rounded-3xl py-10 px-4 lg:space-x-10 justify-center lg:justify-start grid grid-cols-1 lg:grid-cols-3 gap-2"
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
                       >
-                        <!-- Project image-->
-                        <div class="mb-6 px-6 lg:mb-0 justify-center">
-                          <div
-                            class="w-full h-full object-cover aspect-[4/3] overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
-                          >
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/Chat-App"
-                              ><img
-                                src="img/chat.png"
-                                alt="chat app"
-                                class="object-cover transition duration-300 hover:scale-105"
-                            /></a>
+                        <div class="w-full xl:w-9/12">
+                          <div class="bg-gray-200 aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                            >
+                              <a
+                                href="https://github.com/rmoise/myFlix_api?tab=readme-ov-file#endpoint-documentation"
+                                target="_blank"
+                              >
+                                <img
+                                  src="img/code-2023-11-27-04-53-33-utc.jpg"
+                                  alt="myFlix API"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
                           </div>
                         </div>
-
-                        <!-- Project info-->
-                        <div
-                          class="flex flex-wrap justify-center text-center lg:text-left lg:block col-span-2"
-                        >
-                          <h3 class="text-2xl font-semibold">Chat</h3>
-
+                        <div class="flex flex-col xl:w-1/4">
                           <div
-                            class="w-full lg:w-auto flex flex-wrap justify-center lg:justify-start gap-3 mt-6 mb-8"
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
-                            <div class="badge">React Native</div>
-                            <div class="badge">Expo</div>
-                            <div class="badge">Gifted Chats</div>
-                            <div class="badge">Android Studio</div>
-                            <div class="badge">Google Firebase</div>
-                            <div class="badge">PWA</div>
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                myFlix API
+                              </div>
+                              <div>
+                                <p>
+                                  This API powers a movie app, giving users info
+                                  on films, directors, and genres.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Node.js
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Express
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #MongoDB
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Heroku
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/rmoise/myFlix_api"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                              <a
+                                href="https://github.com/rmoise/myFlix_api?tab=readme-ov-file#endpoint-documentation"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Doc
+                              </a>
+                              <a
+                                href="myflixcase.html"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Case
+                              </a>
+                            </div>
                           </div>
+                        </div>
+                      </div>
 
-                          <p class="mb-4">
-                            Chat App, built with React Native, offers a chat
-                            interface with image and location sharing on mobile
-                            devices
-                          </p>
-                          <div class="flex">
-                            <a
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="https://github.com/rmoise/Chat-App"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                      <!-- Project D -->
+                      <div
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
+                      >
+                        <div class="w-full xl:w-9/12">
+                          <div class="bg-gray-200 aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
                             >
-                              GitHub
-                            </a>
-                            <a
-                              rel="noopener noreferrer"
-                              href="chatappcase.html"
-                              class="md:block p-3 px-6 pt-6 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                              <a
+                                href="https://rmoise.github.io/myFlix-Angular-client/welcome"
+                                target="_blank"
+                              >
+                                <img
+                                  src="img/myFlix-angular.png"
+                                  alt="myFlix Angular"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex flex-col xl:w-1/4">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                myFlix Angular
+                              </div>
+                              <div>
+                                <p>
+                                  Utilizing the same movie API as with the React
+                                  app, this SPA is built with Angular.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Angular
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Angular Material UI
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #TypeScript
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/rmoise/myFlix-Angular-client"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                              <a
+                                href="https://rmoise.github.io/myFlix-Angular-client/welcome"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Demo
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Project E -->
+                      <div
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
+                      >
+                        <div class="w-full xl:w-9/12">
+                          <div class="bg-gray-200 aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
                             >
-                              Case
-                            </a>
+                              <a
+                                href="https://rmoise.github.io/meet/"
+                                target="_blank"
+                              >
+                                <img
+                                  src="img/meet-laptop.png"
+                                  alt="meet"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex flex-col xl:w-1/4">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Meet
+                              </div>
+                              <div>
+                                <p>
+                                  Meet App is a serverless PWA built with React
+                                  and TDD, using Google Calendar API to fetch
+                                  upcoming events.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #React
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Recharts
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Enzyme
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #AWS
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Google Cloud Platform
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Jest
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Bootstrap
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/rmoise/meet"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                              <a
+                                href="https://rmoise.github.io/meet/"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Demo
+                              </a>
+                              <a
+                                href="meetcase.html"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Case
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Project D -->
+                      <div
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
+                      >
+                        <div class="w-full xl:w-9/12">
+                          <div class="bg-gray-200 aspect-ratio-container">
+                            <div
+                              class="overflow-hidden rounded-lg transition-all duration-300 hover:rounded-xl shadow-lg border"
+                            >
+                              <a
+                                href="https://github.com/rmoise/Chat-App"
+                                target="_blank"
+                              >
+                                <img
+                                  src="img/chat-mobile.png"
+                                  alt="meet"
+                                  class="w-full h-full object-cover aspect-[4/3] object-cover transition duration-300 hover:scale-105"
+                                />
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex flex-col xl:w-1/4">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Chat
+                              </div>
+                              <div>
+                                <p>
+                                  Chat App, built with React Native, offers a
+                                  chat interface with image and location sharing
+                                  on mobile devices
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #React Native
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Expo
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Gifted Chats
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Android Studio
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Google Firebase
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #PWA
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/rmoise/Chat-App"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                              <a
+                                href="chatappcase.html"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                Case
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>
