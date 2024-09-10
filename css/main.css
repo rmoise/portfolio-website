@@ -2879,3 +2879,14 @@ media screen and (max-width: 768px) {
     background-size: cover;
     background-position: center;
 }
+@media (max-width: 639px) { /* Tailwind's sm breakpoint is 640px */
+  .custom-image-section .image {
+    background-size: 450% !important;
+  }
+}
+
+@media (min-width: 640px) { /* Tailwind's sm breakpoint and up */
+  .custom-image-section .image {
+    background-size: cover !important; /* or any other size */
+  }
+}
