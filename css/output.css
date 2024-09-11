@@ -3587,9 +3587,6 @@ video {
   display: none;
 }
 
-.initial-hidden {
-  visibility: hidden; /* Hide elements initially */
-}
 
 /* Base button styles */
 .button-hover-up {
