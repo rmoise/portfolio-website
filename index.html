@@ -3604,131 +3604,146 @@
     </div>
 
     <script>
-     document.addEventListener("DOMContentLoaded", () => {
-    const modal = document.getElementById("image-lightbox");
-    const closeBtn = document.querySelector(".modal-close");
-    const prevBtn = document.querySelector(".modal-prev");
-    const nextBtn = document.querySelector(".modal-next");
-    const modalImage = modal.querySelector("img");
-    const body = document.body; // Reference to the body element
-    let scrollPosition = 0; // Variable to store scroll position
-    let modalOpen = false; // Track if the modal is already open
+      document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("image-lightbox");
+        const closeBtn = document.querySelector(".modal-close");
+        const prevBtn = document.querySelector(".modal-prev");
+        const nextBtn = document.querySelector(".modal-next");
+        const modalImage = modal.querySelector("img");
+        const body = document.body; // Reference to the body element
+        let scrollPosition = 0; // Variable to store scroll position
+        let modalOpen = false; // Track if the modal is already open
 
-    // Store images and their sources
-    const images = Array.from(document.querySelectorAll(".clickable-image"));
-    let currentIndex = -1;
+        // Store images and their sources
+        const images = Array.from(
+          document.querySelectorAll(".clickable-image"),
+        );
+        let currentIndex = -1;
 
-    // Function to show the modal with the given index
-    function showModal(index) {
-        if (index >= 0 && index < images.length) {
+        // Function to show the modal with the given index
+        function showModal(index) {
+          if (index >= 0 && index < images.length) {
             if (!modalOpen) {
-                // Store the current scroll position and apply styles to prevent scroll
-                scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-                body.style.position = 'fixed';
-                body.style.top = `-${scrollPosition}px`;
-                body.style.left = '0';
-                body.style.right = '0';
-                body.style.overflow = 'hidden';
-                modalOpen = true; // Mark modal as open
+              // Store the current scroll position and apply styles to prevent scroll
+              scrollPosition =
+                window.pageYOffset || document.documentElement.scrollTop;
+              body.style.position = "fixed";
+              body.style.top = `-${scrollPosition}px`;
+              body.style.left = "0";
+              body.style.right = "0";
+              body.style.overflow = "hidden";
+              modalOpen = true; // Mark modal as open
             }
             modal.style.display = "flex";
             modalImage.src = images[index].src; // Use the actual image src
             currentIndex = index; // Update the current index
+          }
         }
-    }
 
-    // Close modal and restore body scroll
-    function closeModal() {
-        if (modalOpen) {
+        // Close modal and restore body scroll
+        function closeModal() {
+          if (modalOpen) {
             modal.style.display = "none";
-            body.style.position = ''; // Restore body position
-            body.style.overflow = ''; // Restore body scroll
-            body.style.top = ''; // Reset top positioning
+            body.style.position = ""; // Restore body position
+            body.style.overflow = ""; // Restore body scroll
+            body.style.top = ""; // Reset top positioning
 
             // Restore the scroll position
             window.scrollTo(0, scrollPosition);
             modalOpen = false; // Mark modal as closed
+          }
         }
-    }
 
-    // Add click event to images
-    images.forEach((img, index) => {
-        img.addEventListener("click", () => {
+        // Prevent default touch actions
+        function preventTouchDefault(e) {
+          e.preventDefault();
+        }
+
+        // Add click event to images
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => {
             showModal(index);
+          });
         });
-    });
 
-    // Close modal
-    closeBtn.addEventListener("click", closeModal);
+        // Close modal
+        closeBtn.addEventListener("click", closeModal);
 
-    // Navigate to previous image
-    prevBtn.addEventListener("click", () => {
-        const prevIndex = (currentIndex - 1 + images.length) % images.length;
-        showModal(prevIndex);
-    });
+        // Navigate to previous image
+        prevBtn.addEventListener("click", () => {
+          const prevIndex = (currentIndex - 1 + images.length) % images.length;
+          showModal(prevIndex);
+        });
 
-    // Navigate to next image
-    nextBtn.addEventListener("click", () => {
-        const nextIndex = (currentIndex + 1) % images.length;
-        showModal(nextIndex);
-    });
+        // Navigate to next image
+        nextBtn.addEventListener("click", () => {
+          const nextIndex = (currentIndex + 1) % images.length;
+          showModal(nextIndex);
+        });
 
-    // Close modal when clicking outside the modal content
-    modal.addEventListener("click", (event) => {
-        if (event.target === modal) {
+        // Close modal when clicking outside the modal content
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) {
             closeModal();
-        }
-    });
+          }
+        });
 
-    // Close modal with ESC key
-    window.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
+        // Close modal with ESC key
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
             closeModal();
-        }
-        if (modal.style.display === "flex") {
+          }
+          if (modal.style.display === "flex") {
             if (event.key === "ArrowLeft") {
-                prevBtn.click();
+              prevBtn.click();
             }
             if (event.key === "ArrowRight") {
-                nextBtn.click();
+              nextBtn.click();
             }
-        }
-    });
+          }
+        });
 
-    // Touch swipe functionality
-    let startX;
-    let startY;
+        // Touch swipe functionality
+        let startX;
+        let startY;
 
-    modal.addEventListener("touchstart", (event) => {
-        const touch = event.touches[0];
-        startX = touch.clientX;
-        startY = touch.clientY;
-    });
+        modal.addEventListener("touchstart", (event) => {
+          const touch = event.touches[0];
+          startX = touch.clientX;
+          startY = touch.clientY;
+        });
 
-    modal.addEventListener("touchend", (event) => {
-        const touch = event.changedTouches[0];
-        const endX = touch.clientX;
-        const endY = touch.clientY;
-        const deltaX = endX - startX;
-        const deltaY = endY - startY;
+        modal.addEventListener("touchend", (event) => {
+          const touch = event.changedTouches[0];
+          const endX = touch.clientX;
+          const endY = touch.clientY;
+          const deltaX = endX - startX;
+          const deltaY = endY - startY;
 
-        // Determine swipe direction
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
+          // Determine swipe direction
+          if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
             // Swipe threshold
             if (deltaX > 0) {
-                // Swipe right
-                const prevIndex = (currentIndex - 1 + images.length) % images.length;
-                showModal(prevIndex);
+              // Swipe right
+              const prevIndex =
+                (currentIndex - 1 + images.length) % images.length;
+              showModal(prevIndex);
             } else {
-                // Swipe left
-                const nextIndex = (currentIndex + 1) % images.length;
-                showModal(nextIndex);
+              // Swipe left
+              const nextIndex = (currentIndex + 1) % images.length;
+              showModal(nextIndex);
             }
-        }
-    });
-});
+          }
+        });
 
-
+        // Add event listeners to prevent default touch actions while modal is open
+        modal.addEventListener("touchmove", preventTouchDefault, {
+          passive: false,
+        });
+        modal.addEventListener("touchstart", preventTouchDefault, {
+          passive: false,
+        });
+      });
     </script>
 
     <script>
