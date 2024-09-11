@@ -1252,6 +1252,9 @@ input:checked + .toggle-bg {
 .h-3\.5 {
   height: 0.875rem !important;
 }
+.h-32 {
+  height: 8rem !important;
+}
 .h-4 {
   height: 1rem !important;
 }
@@ -1302,6 +1305,9 @@ input:checked + .toggle-bg {
 }
 .w-3\.5 {
   width: 0.875rem !important;
+}
+.w-32 {
+  width: 8rem !important;
 }
 .w-4 {
   width: 1rem !important;
@@ -1363,6 +1369,9 @@ input:checked + .toggle-bg {
 }
 .flex-shrink {
   flex-shrink: 1 !important;
+}
+.flex-shrink-0 {
+  flex-shrink: 0 !important;
 }
 .shrink-0 {
   flex-shrink: 0 !important;
@@ -5282,12 +5291,20 @@ media screen and (max-width: 768px) {
     margin-top: 4rem !important;
   }
 
+  .md\:block {
+    display: block !important;
+  }
+
   .md\:flex {
     display: flex !important;
   }
 
   .md\:grid {
     display: grid !important;
+  }
+
+  .md\:hidden {
+    display: none !important;
   }
 
   .md\:w-1\/2 {
@@ -5343,6 +5360,10 @@ media screen and (max-width: 768px) {
   .md\:px-10 {
     padding-left: 2.5rem !important;
     padding-right: 2.5rem !important;
+  }
+
+  .md\:pt-16 {
+    padding-top: 4rem !important;
   }
 
   .md\:text-left {
