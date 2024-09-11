@@ -1411,12 +1411,14 @@ video {
   z-index: 2000;
   display: none; /* Hidden by default */
   overflow-y: auto;
-  transform: translateY(-100%);
-  transition: transform 0.4s ease-in-out;
+  opacity: 0; /* Initially invisible */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
+
 .mobile-menu.open {
   display: block;
-  transform: translateY(0);
+  opacity: 1; /* Visible when open */
+  transform: translateY(0); /* Slide in from top */
 }
 
 /* Sub-navigation container */
@@ -3053,3 +3055,11 @@ media screen and (max-width: 768px) {
   background: rgba(0, 0, 0, 0.7);
 }
 
+
+
+
+
+
+
+.transition-opacity {
+    transition-property: transform, visibility !important;}
