@@ -5362,6 +5362,10 @@ media screen and (max-width: 768px) {
     padding-right: 2.5rem !important;
   }
 
+  .md\:pb-0 {
+    padding-bottom: 0px !important;
+  }
+
   .md\:pt-16 {
     padding-top: 4rem !important;
   }
