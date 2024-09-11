@@ -3590,8 +3590,8 @@
   </div>
 </div>
 
-    <script>
- document.addEventListener("DOMContentLoaded", () => {
+   <script>
+document.addEventListener("DOMContentLoaded", () => {
   const modal = document.getElementById("image-lightbox");
   const closeBtn = document.querySelector(".modal-close");
   const prevBtn = document.querySelector(".modal-prev");
@@ -3658,11 +3658,40 @@
       }
     }
   });
+
+  // Touch swipe functionality
+  let startX;
+  let startY;
+
+  modal.addEventListener("touchstart", (event) => {
+    const touch = event.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+  });
+
+  modal.addEventListener("touchend", (event) => {
+    const touch = event.changedTouches[0];
+    const endX = touch.clientX;
+    const endY = touch.clientY;
+    const deltaX = endX - startX;
+    const deltaY = endY - startY;
+
+    // Determine swipe direction
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) { // Swipe threshold
+      if (deltaX > 0) {
+        // Swipe right
+        const prevIndex = (currentIndex - 1 + images.length) % images.length;
+        showModal(prevIndex);
+      } else {
+        // Swipe left
+        const nextIndex = (currentIndex + 1) % images.length;
+        showModal(nextIndex);
+      }
+    }
+  });
 });
-
-
-
 </script>
+
 
 
 
