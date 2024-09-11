@@ -2073,13 +2073,7 @@ media screen and (max-width: 768px) {
 
 
 
-.custom-slider-item {
-  width: 100%; /* This is a common setting */
-  box-sizing: border-box; /* Ensures padding/margin does not affect width */
-  margin: 0; /* Remove extra margin if present */
-  padding: 0; /* Remove extra padding if present */
-  flex-shrink: 1 !important; /* Force no shrinking */
-}
+
 
 .swiper-pagination-3 {
   position: relative !important;
@@ -2901,4 +2895,45 @@ media screen and (max-width: 768px) {
 .swiper-slide {
   transition: transform 0.6s ease; /* Smooth transition for each slide */
   will-change: transform; /* Hint to the browser to optimize performance */
+}
+
+
+ .scroll-container {
+        position: relative;
+        overflow: hidden;
+        width: 100vw; /* Full viewport width */
+               height: 128px; /* Adjust to fit the square slider items' height */
+
+      }
+
+      .scroll-content {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: max-content;
+        white-space: nowrap;
+      }
+
+      .slider-item {
+        width: 128px;
+        height: 128px; /* Now the width and height are the same to make it a square */
+        border-radius: 0.75rem;
+        border: 1px solid #e5e7eb;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        box-sizing: border-box;
+        flex: 0 0 auto;
+        margin-right: 1rem;
+        background-color: #Fff;
+        font-size: 1rem;
+        color: #333;
+      }
+
+      /* Increase gap only for desktop */
+@media (min-width: 1024px) {
+  .slider-item {
+    margin-right: 40px; /* Increased gap for desktop */
+  }
 }
