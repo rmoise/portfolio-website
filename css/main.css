@@ -2222,6 +2222,8 @@ media screen and (max-width: 768px) {
         /* Ensure the image is contained */
       }
 
+
+
       .modal-close {
         position: fixed;
         /* Change to fixed positioning */
@@ -2936,7 +2938,6 @@ media screen and (max-width: 768px) {
     margin-right: 40px; /* Increased gap for desktop */
   }
 }
-
 /* Modal background */
 #image-lightbox {
   position: fixed;
@@ -2944,7 +2945,7 @@ media screen and (max-width: 768px) {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8); /* Black background with transparency */
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -2958,21 +2959,22 @@ media screen and (max-width: 768px) {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
-  background: transparent; /* Remove background color */
+  background: transparent; /* Ensure modal content has no background */
   border: none;
   border-radius: 0;
-  max-width: 100%;
-  max-height: 100%;
   width: auto;
   height: auto;
+  padding: 0; /* Remove any extra padding */
+  max-width: 100%;
+  max-height: 100%;
+  overflow: hidden; /* Hide any overflow */
 }
 
 /* Image inside modal: ensure it fits within the screen */
 #image-lightbox .modal-content img {
   max-width: 100vw; /* Ensure the image fits within the viewport width */
   max-height: 100vh; /* Ensure the image fits within the viewport height */
-  object-fit: contain; /* Maintain aspect ratio */
+  object-fit: contain; /* Maintain aspect ratio and avoid cropping */
   width: auto;
   height: auto;
 }
@@ -3054,9 +3056,6 @@ media screen and (max-width: 768px) {
 
 
 
-
-
-
-
 .transition-opacity {
     transition-property: transform, visibility !important;}
+
