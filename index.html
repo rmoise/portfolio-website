@@ -3652,13 +3652,6 @@
     }
   }
 
-  // Prevent default touch actions if necessary
-  function preventTouchDefault(e) {
-    if (touchMoved) {
-      e.preventDefault();
-    }
-  }
-
   // Add click event to images
   images.forEach((img, index) => {
     img.addEventListener("click", () => {
@@ -3724,8 +3717,8 @@
       touchMoved = true; // Mark that a touch move occurred
     }
 
-    // Prevent default touch actions if a swipe is detected
-    preventTouchDefault(event);
+    // Prevent default touch actions to avoid scrolling or refreshing
+    event.preventDefault();
   });
 
   modal.addEventListener("touchend", (event) => {
@@ -3735,10 +3728,9 @@
       const endX = touch.clientX;
       const endY = touch.clientY;
       const deltaX = endX - startX;
-      const deltaY = endY - startY;
 
       // Determine swipe direction
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
+      if (Math.abs(deltaX) > 30) {
         // Swipe threshold
         if (deltaX > 0) {
           // Swipe right
@@ -3758,6 +3750,8 @@
         }
       }
     }
+    // Reset touchMoved for future touches
+    touchMoved = false;
   });
 
   // Add event listeners to prevent default touch actions while modal is open
