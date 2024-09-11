@@ -2978,7 +2978,6 @@ media screen and (max-width: 768px) {
   height: auto;
 }
 
-
 /* Navigation buttons */
 #image-lightbox .modal-prev,
 #image-lightbox .modal-next,
@@ -3013,6 +3012,40 @@ media screen and (max-width: 768px) {
   top: 50%;
   right: 20px; /* Adjusted position for better visibility */
   transform: translateY(-50%);
+}
+
+/* Mobile specific styles */
+@media (max-width: 768px) {
+  #image-lightbox .modal-content {
+    max-width: 90%; /* Ensure it fits within 90% of the viewport width */
+    max-height: 90%; /* Ensure it fits within 90% of the viewport height */
+  }
+
+  #image-lightbox .modal-content img {
+    max-width: 100%; /* Ensure the image fits within the container width */
+    max-height: 100%; /* Ensure the image fits within the container height */
+  }
+
+  #image-lightbox .modal-prev,
+  #image-lightbox .modal-next,
+  #image-lightbox .modal-close {
+    width: 30px; /* Smaller buttons for mobile */
+    height: 30px;
+    font-size: 18px;
+  }
+
+  #image-lightbox .modal-prev {
+    left: 10px;
+  }
+
+  #image-lightbox .modal-next {
+    right: 10px;
+  }
+
+  #image-lightbox .modal-close {
+    top: 10px;
+    right: 10px;
+  }
 }
 
 #image-lightbox .modal-prev:hover,
