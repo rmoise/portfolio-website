@@ -1142,11 +1142,11 @@ input:checked + .toggle-bg {
 .mb-12 {
   margin-bottom: 3rem !important;
 }
-.mb-16 {
-  margin-bottom: 4rem !important;
-}
 .mb-2 {
   margin-bottom: 0.5rem !important;
+}
+.mb-32 {
+  margin-bottom: 8rem !important;
 }
 .mb-4 {
   margin-bottom: 1rem !important;
@@ -5683,12 +5683,17 @@ media screen and (max-width: 768px) {
     padding-right: 2.5rem !important;
   }
 
-  .md\:pb-0 {
-    padding-bottom: 0px !important;
+  .md\:py-32 {
+    padding-top: 8rem !important;
+    padding-bottom: 8rem !important;
   }
 
-  .md\:pt-16 {
-    padding-top: 4rem !important;
+  .md\:pb-8 {
+    padding-bottom: 2rem !important;
+  }
+
+  .md\:pt-32 {
+    padding-top: 8rem !important;
   }
 
   .md\:text-left {
