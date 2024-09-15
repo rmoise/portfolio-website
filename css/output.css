@@ -5116,8 +5116,8 @@ media screen and (max-width: 768px) {
 
     /* Create grid pattern using Tailwind's background utilities */
 .grid-pattern {
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
     background-size: 80px 80px; /* Adjust the size of the grid cells */
 }
 
@@ -5137,8 +5137,8 @@ media screen and (max-width: 768px) {
            /* Grid pattern for mobile screens */
         @media (max-width: 640px) {
             .grid-pattern-sm {
-                background-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0.5px, transparent 0.5px),
-                                  linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0.5px, transparent 0.5px);
+                background-image: linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
                 background-size: 40px 40px; /* Adjust the size of the grid cells for smaller screens */
             }
         }
