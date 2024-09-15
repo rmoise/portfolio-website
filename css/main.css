@@ -3138,63 +3138,82 @@ video {
   }
 }
 
-
 .card-outer {
-        position: relative;
-        padding: 2px;
-        border-radius: 12px; /* Adjust this to match your desired border-radius */
-        overflow: hidden;
-        z-index: 1;
-        width: 100%;
-        max-width: 400px; /* Limit the maximum width */
-        aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
-      }
+  position: relative;
+  padding: 2px;
+  border-radius: 12px; /* Adjust this to match your desired border-radius */
+  overflow: hidden;
+  z-index: 1;
+  width: 100%;
+  max-width: 400px; /* Limit the maximum width */
+  aspect-ratio: 1 / 1; /* Maintain square aspect ratio */
+}
 
-      .spinning-border {
-        position: absolute;
-        inset: 0;
-        border: 1px solid transparent; /* Transparent border to create space for the animation */
-        border-radius: 12px; /* Match the border radius of the card */
-        background: conic-gradient(
-          rgba(0, 0, 0, 0) 0%,
-          rgb(1, 243, 171, 0.9) 80%,
-          rgba(0, 0, 0, 0) 80%
-        );
-        background-clip: padding-box;
-        animation: spin 5s linear infinite;
-        z-index: 2;
-        scale: 1.75;
-      }
+.spinning-border {
+  position: absolute;
+  inset: 0;
+  border: 1px solid transparent; /* Transparent border to create space for the animation */
+  border-radius: 12px; /* Match the border radius of the card */
+  background: conic-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgb(1, 243, 171, 0.9) 80%,
+    rgba(0, 0, 0, 0) 80%
+  );
+  background-clip: padding-box;
+  animation: spin 8s linear infinite;
+  z-index: 2;
+  scale: 1.75;
+}
 
-      @keyframes spin {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
 
-      .card-inner {
-        position: relative;
-        z-index: 3;
-        border-radius: 12px; /* Match the border radius of the card */
-        overflow: hidden;
-        width: 100%;
-        height: 100%;
-      }
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 
-      .img-main {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 12px; /* Match the border radius of the card */
-        transition: transform 0.3s ease;
-      }
+.card-inner {
+  position: relative;
+  z-index: 3;
+  border-radius: 12px; /* Match the border radius of the card */
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
 
-      /* Responsive settings for the container */
-      @media (max-width: 768px) {
-        .card-outer {
-          max-width: 300px; /* Adjust the maximum width for smaller screens */
-        }
-      }
+.img-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px; /* Match the border radius of the card */
+  transition: transform 0.3s ease;
+}
+
+/* Responsive settings for the container */
+@media (max-width: 768px) {
+  .card-outer {
+    max-width: 300px; /* Adjust the maximum width for smaller screens */
+  }
+}
+
+.text-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent rectangle */
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.text-wrapper {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
