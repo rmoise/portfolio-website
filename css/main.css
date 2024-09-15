@@ -1588,7 +1588,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #f9fafb; /* Fixed background color */
   z-index: -1; /* Ensure it stays behind content */
   opacity: 0; /* Initially hidden */
@@ -3079,3 +3079,50 @@ media screen and (max-width: 768px) {
       color: transparent;
       background: linear-gradient(to right, #A7C6DA, #01f3ab);
     }
+
+
+    @keyframes pullUp {
+      0% {
+        transform: translateY(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .word-pull-up {
+      animation: pullUp 1s ease-out forwards;
+    }
+
+    .word-pull-up-wrapper {
+      overflow: hidden;
+      height: 1em; /* Adjust based on font size */
+      position: relative;
+    }
+
+    /* Ensure the wrapper and text are positioned correctly */
+    .word-pull-up-wrapper {
+      height: auto;
+    }
+
+    /* Create grid pattern using Tailwind's background utilities */
+.grid-pattern {
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+    background-size: 80px 80px; /* Adjust the size of the grid cells */
+}
+
+
+        /* White radial gradient overlay fading outwards */
+        .white-gradient-overlay {
+            background: radial-gradient(circle, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 80%);
+            /* Ensuring the overlay covers the entire grid-pattern area */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none; /* Ensure overlay does not interfere with user interaction */
+        }

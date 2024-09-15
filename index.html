@@ -659,6 +659,9 @@
     <!-- Parallax Section -->
     <section class="parallax bg-white" id="parallax">
       <div class="parallax-background"></div>
+      <div class="absolute inset-0 grid-pattern"></div>
+      <div class="white-gradient-overlay"></div>
+
       <div class="parallax-content">
         <section class="pt-24 container mx-auto px-4 md:px-10">
           <!-- Main Flex Container -->
@@ -685,15 +688,20 @@
               class="flex flex-col w-full md:w-1/2 items-center md:items-start mb-8 md:mb-0"
             >
               <!-- Headline and Description -->
-  <div id="headline" class="text-center md:text-left mb-8 lg:mb-12">
-    <h1 class="tracking-tight text-[#A7C6DA] font-extrabold text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
-      <span id="animated-text" class="inline-block">Hallo</span>,<br />
-      I'm Roderick, <br />
-      <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#A7C6DA] to-[#01f3ab]">
-        Designer & Developer
-      </span>
-    </h1>
-  </div>
+              <div id="headline" class="text-center md:text-left mb-8 lg:mb-12">
+                <h1
+                  class="tracking-tight text-[#A7C6DA] font-extrabold text-5xl md:text-5xl lg:text-6xl xl:text-7xl"
+                >
+                  <span id="animated-text" class="inline-block">Hallo</span
+                  >,<br />
+                  I'm Roderick, <br />
+                  <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-[#A7C6DA] to-[#01f3ab]"
+                  >
+                    Designer & Developer
+                  </span>
+                </h1>
+              </div>
               <!-- Buttons Section -->
               <div
                 class="buttons-container flex flex-col lg:flex-row gap-4 lg:gap-8 mb-12 z-10"
@@ -784,22 +792,25 @@
                   </a>
 
                   <!-- Twitter Icon -->
-                  <a target="_blank" href="https://twitter.com/RoderickMoise" class="flex justify-center items-center w-8 h-8 lg:w-12 lg:h-12 rounded-full border hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 transition-colors duration-300"
+                  <a
+                    target="_blank"
+                    href="https://twitter.com/RoderickMoise"
+                    class="flex justify-center items-center w-8 h-8 lg:w-12 lg:h-12 rounded-full border hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 transition-colors duration-300"
                   >
-                  <svg
-                    class="w-6 h-6 text-gray-800"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z"
-                    />
-                  </svg>
-                </a>
+                    <svg
+                      class="w-6 h-6 text-gray-800"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M13.795 10.533 20.68 2h-3.073l-5.255 6.517L7.69 2H1l7.806 10.91L1.47 22h3.074l5.705-7.07L15.31 22H22l-8.205-11.467Zm-2.38 2.95L9.97 11.464 4.36 3.627h2.31l4.528 6.317 1.443 2.02 6.018 8.409h-2.31l-4.934-6.89Z"
+                      />
+                    </svg>
+                  </a>
                 </div>
               </div>
             </div>
@@ -843,7 +854,14 @@
               <!-- Description -->
               <div class="mb-8">
                 <p class="text-lg">
-                  Hailing from the vibrant streets of Brooklyn by way of Queens, with proud Haitian roots, my design journey began amidst the creative energy of NYC's bustling ad agencies, balancing both digital and print work. My passion for modernist design, especially the Bauhaus movement, drew me to Berlin, where I've continued to explore UI design and, more recently, UX and web development. I’m driven by a desire to create clean, user-centered experiences that marry form and function.
+                  Hailing from the vibrant streets of Brooklyn by way of Queens,
+                  with proud Haitian roots, my design journey began amidst the
+                  creative energy of NYC's bustling ad agencies, balancing both
+                  digital and print work. My passion for modernist design,
+                  especially the Bauhaus movement, drew me to Berlin, where I've
+                  continued to explore UI design and, more recently, UX and web
+                  development. I’m driven by a desire to create clean,
+                  user-centered experiences that marry form and function.
                 </p>
               </div>
               <!-- Images Container -->
@@ -1030,8 +1048,9 @@
             <div class="md:col-span-8 lg:col-span-9">
               <div class="mb-8">
                 <p class="text-lg">
-                  These are the tools and skills of my trade—each one essential to crafting
-                  innovative designs and developing cutting-edge solutions.
+                  These are the tools and skills of my trade—each one essential
+                  to crafting innovative designs and developing cutting-edge
+                  solutions.
                 </p>
               </div>
             </div>
@@ -1946,31 +1965,31 @@
       </div>
 
       <!-- Portfolio Section -->
-<section
-  aria-labelledby="portfolio-title"
-  class="relative overflow-hidden py-16 md:py-32 px-4 sm:px-8 lg:px-40 border-t border-gray-100"
->
-  <div class="container mx-auto relative z-10">
-    <div class="relative mx-auto"></div>
+      <section
+        aria-labelledby="portfolio-title"
+        class="relative overflow-hidden py-16 md:py-32 px-4 sm:px-8 lg:px-40 border-t border-gray-100"
+      >
+        <div class="container mx-auto relative z-10">
+          <div class="relative mx-auto"></div>
 
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-      <!-- Column 1: Header -->
-      <div class="md:col-span-4 lg:col-span-3 flex items-start">
-        <h5 id="portfolio" class="text-3xl secondary-title font-bold">
-          My Projects
-        </h5>
-      </div>
-      <!-- Column 2: Description and Icons -->
-      <div class="md:col-span-8 lg:col-span-9">
-        <!-- Description -->
-        <div class="mb-8">
-          <p class="text-lg">
-            Explore design systems, branding, and web projects in my
-            portfolio, showcasing my expertise.
-          </p>
-        </div>
-      </div>
-    </div>
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+            <!-- Column 1: Header -->
+            <div class="md:col-span-4 lg:col-span-3 flex items-start">
+              <h5 id="portfolio" class="text-3xl secondary-title font-bold">
+                My Projects
+              </h5>
+            </div>
+            <!-- Column 2: Description and Icons -->
+            <div class="md:col-span-8 lg:col-span-9">
+              <!-- Description -->
+              <div class="mb-8">
+                <p class="text-lg">
+                  Explore design systems, branding, and web projects in my
+                  portfolio, showcasing my expertise.
+                </p>
+              </div>
+            </div>
+          </div>
 
           <!-- Portfolio Content -->
           <div>
@@ -1981,7 +2000,7 @@
                 class="relative mt-8 grid h-12 w-auto grid-cols-2 items-center gap-x-1 overflow-hidden rounded-lg border bg-white/40 ring-1 ring-inset ring-white/30 px-[3px] sm:w-max"
               >
                 <div
-                  class="tab-indicator absolute h-10 rounded-lg bg-green "
+                  class="tab-indicator absolute h-10 rounded-lg bg-green"
                   style="left: 4px; width: 114px"
                 ></div>
                 <button
@@ -2017,13 +2036,15 @@
               </div>
             </div>
             <div class="mt-8 xl:mt-8 lg:mt-16 md:mt-16">
-  <div class="relative">
-    <!-- Panel 0 for Feature 1 -->
-    <div class="panel block transition duration-500" id="panel-0">
-      <!-- Container for Feature 1 content -->
-      <section class="w-full">
-        <div class="mt-8 rounded-md border border-gray-200 bg-white overflow-hidden">
-          <!-- Project A -->
+              <div class="relative">
+                <!-- Panel 0 for Feature 1 -->
+                <div class="panel block transition duration-500" id="panel-0">
+                  <!-- Container for Feature 1 content -->
+                  <section class="w-full">
+                    <div
+                      class="mt-8 rounded-md border border-gray-200 bg-white overflow-hidden"
+                    >
+                      <!-- Project A -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
                       >
@@ -2097,8 +2118,8 @@
                           </div>
                         </div>
                       </div>
-       <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project B -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
@@ -2168,8 +2189,8 @@
                           </div>
                         </div>
                       </div>
-       <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project C -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
@@ -2240,8 +2261,8 @@
                           </div>
                         </div>
                       </div>
-       <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project D -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
@@ -2312,8 +2333,8 @@
                           </div>
                         </div>
                       </div>
-       <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project E -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
@@ -2383,8 +2404,8 @@
                           </div>
                         </div>
                       </div>
-       <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project F -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
@@ -2444,11 +2465,13 @@
                 </div>
 
                 <!-- Panel 1 for Feature 2 -->
-<div class="panel hidden transition duration-500" id="panel-1">
-  <!-- Content for Feature 2 -->
-  <section class="w-full">
-    <div class="mt-8 rounded-md border border-gray-200 bg-white overflow-hidden">
-      <!-- Project A -->
+                <div class="panel hidden transition duration-500" id="panel-1">
+                  <!-- Content for Feature 2 -->
+                  <section class="w-full">
+                    <div
+                      class="mt-8 rounded-md border border-gray-200 bg-white overflow-hidden"
+                    >
+                      <!-- Project A -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
                       >
@@ -2532,8 +2555,8 @@
                           </div>
                         </div>
                       </div>
-  <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project B -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
@@ -2613,8 +2636,8 @@
                           </div>
                         </div>
                       </div>
-  <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project C -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
@@ -2703,8 +2726,8 @@
                           </div>
                         </div>
                       </div>
-  <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project D -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
@@ -2789,8 +2812,8 @@
                           </div>
                         </div>
                       </div>
-  <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project E -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
@@ -2873,8 +2896,8 @@
                           </div>
                         </div>
                       </div>
-  <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project F -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
@@ -2949,8 +2972,8 @@
                           </div>
                         </div>
                       </div>
-  <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project G -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
@@ -3049,8 +3072,8 @@
                           </div>
                         </div>
                       </div>
-  <!-- Divider Line -->
-          <hr class="border-t border-gray-200" />
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project H -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
@@ -3566,160 +3589,167 @@
       </div>
     </div>
 
-      <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const animatedText = document.getElementById('animated-text');
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const animatedText = document.getElementById("animated-text");
 
-      const texts = ['Hallo', 'Hi', 'Bonjou'];
-      let textIndex = 0;
+        const texts = ["Hallo", "Hi", "Bonjou"];
+        let textIndex = 0;
 
-      setInterval(() => {
-        textIndex = (textIndex + 1) % texts.length; // Cycle through texts array
-        animatedText.textContent = texts[textIndex];
-      }, 3000); // Time interval for switching texts (3 seconds)
-    });
-  </script>
+        setInterval(() => {
+          textIndex = (textIndex + 1) % texts.length; // Cycle through texts array
+          animatedText.textContent = texts[textIndex];
+        }, 3000); // Time interval for switching texts (3 seconds)
+      });
+    </script>
 
-   <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const modal = document.getElementById("image-lightbox");
-  const closeBtn = document.querySelector(".modal-close");
-  const prevBtn = document.querySelector(".modal-prev");
-  const nextBtn = document.querySelector(".modal-next");
-  const modalImage = modal.querySelector("img");
-  const body = document.body;
-  let scrollPosition = 0;
-  let modalOpen = false;
-  let touchMoved = false;
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("image-lightbox");
+        const closeBtn = document.querySelector(".modal-close");
+        const prevBtn = document.querySelector(".modal-prev");
+        const nextBtn = document.querySelector(".modal-next");
+        const modalImage = modal.querySelector("img");
+        const body = document.body;
+        let scrollPosition = 0;
+        let modalOpen = false;
+        let touchMoved = false;
 
-  const images = Array.from(document.querySelectorAll(".clickable-image"));
-  let currentIndex = -1;
+        const images = Array.from(
+          document.querySelectorAll(".clickable-image"),
+        );
+        let currentIndex = -1;
 
-  // Function to show the modal with the given index
-  function showModal(index) {
-    if (index >= 0 && index < images.length) {
-      if (!modalOpen) {
-        scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-        body.style.position = 'fixed';
-        body.style.top = `-${scrollPosition}px`;
-        body.style.left = '0';
-        body.style.right = '0';
-        body.style.overflow = 'hidden';
-        modalOpen = true;
-      }
-      modal.style.display = "flex";
-      modalImage.src = images[index].src;
-      currentIndex = index;
-    }
-  }
+        // Function to show the modal with the given index
+        function showModal(index) {
+          if (index >= 0 && index < images.length) {
+            if (!modalOpen) {
+              scrollPosition =
+                window.pageYOffset || document.documentElement.scrollTop;
+              body.style.position = "fixed";
+              body.style.top = `-${scrollPosition}px`;
+              body.style.left = "0";
+              body.style.right = "0";
+              body.style.overflow = "hidden";
+              modalOpen = true;
+            }
+            modal.style.display = "flex";
+            modalImage.src = images[index].src;
+            currentIndex = index;
+          }
+        }
 
-  // Function to close the modal and restore body scroll
-  function closeModal() {
-    if (modalOpen) {
-      modal.style.display = "none";
-      body.style.position = '';
-      body.style.overflow = '';
-      body.style.top = '';
-      window.scrollTo(0, scrollPosition);
-      modalOpen = false;
-    }
-  }
+        // Function to close the modal and restore body scroll
+        function closeModal() {
+          if (modalOpen) {
+            modal.style.display = "none";
+            body.style.position = "";
+            body.style.overflow = "";
+            body.style.top = "";
+            window.scrollTo(0, scrollPosition);
+            modalOpen = false;
+          }
+        }
 
-  // Function to prevent default touch actions
-  function preventTouchDefault(event) {
-    event.preventDefault();
-  }
+        // Function to prevent default touch actions
+        function preventTouchDefault(event) {
+          event.preventDefault();
+        }
 
-  images.forEach((img, index) => {
-    img.addEventListener("click", () => {
-      showModal(index);
-    });
-  });
+        images.forEach((img, index) => {
+          img.addEventListener("click", () => {
+            showModal(index);
+          });
+        });
 
-  closeBtn.addEventListener("click", closeModal);
+        closeBtn.addEventListener("click", closeModal);
 
-  prevBtn.addEventListener("click", () => {
-    const prevIndex = (currentIndex - 1 + images.length) % images.length;
-    showModal(prevIndex);
-  });
-
-  nextBtn.addEventListener("click", () => {
-    const nextIndex = (currentIndex + 1) % images.length;
-    showModal(nextIndex);
-  });
-
-  modal.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      closeModal();
-    }
-  });
-
-  window.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeModal();
-    }
-    if (modal.style.display === "flex") {
-      if (event.key === "ArrowLeft") {
-        prevBtn.click();
-      }
-      if (event.key === "ArrowRight") {
-        nextBtn.click();
-      }
-    }
-  });
-
-  let startX;
-  let startY;
-
-  modal.addEventListener("touchstart", (event) => {
-    const touch = event.touches[0];
-    startX = touch.clientX;
-    startY = touch.clientY;
-    touchMoved = false;
-  });
-
-  modal.addEventListener("touchmove", (event) => {
-    const touch = event.touches[0];
-    const deltaX = touch.clientX - startX;
-    const deltaY = touch.clientY - startY;
-
-    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
-      touchMoved = true;
-    }
-
-    preventTouchDefault(event);
-  });
-
-  modal.addEventListener("touchend", (event) => {
-    if (touchMoved) {
-      const touch = event.changedTouches[0];
-      const endX = touch.clientX;
-      const deltaX = endX - startX;
-
-      if (Math.abs(deltaX) > 30) {
-        if (deltaX > 0) {
+        prevBtn.addEventListener("click", () => {
           const prevIndex = (currentIndex - 1 + images.length) % images.length;
           showModal(prevIndex);
-        } else {
+        });
+
+        nextBtn.addEventListener("click", () => {
           const nextIndex = (currentIndex + 1) % images.length;
           showModal(nextIndex);
-        }
-      }
-    } else {
-      if (event.changedTouches.length === 1) {
-        if (event.target === modal) {
-          closeModal();
-        }
-      }
-    }
-    touchMoved = false;
-  });
+        });
 
-  modal.addEventListener("touchmove", preventTouchDefault, { passive: false });
-  modal.addEventListener("touchstart", preventTouchDefault, { passive: false });
-});
-</script>
+        modal.addEventListener("click", (event) => {
+          if (event.target === modal) {
+            closeModal();
+          }
+        });
 
+        window.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            closeModal();
+          }
+          if (modal.style.display === "flex") {
+            if (event.key === "ArrowLeft") {
+              prevBtn.click();
+            }
+            if (event.key === "ArrowRight") {
+              nextBtn.click();
+            }
+          }
+        });
+
+        let startX;
+        let startY;
+
+        modal.addEventListener("touchstart", (event) => {
+          const touch = event.touches[0];
+          startX = touch.clientX;
+          startY = touch.clientY;
+          touchMoved = false;
+        });
+
+        modal.addEventListener("touchmove", (event) => {
+          const touch = event.touches[0];
+          const deltaX = touch.clientX - startX;
+          const deltaY = touch.clientY - startY;
+
+          if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
+            touchMoved = true;
+          }
+
+          preventTouchDefault(event);
+        });
+
+        modal.addEventListener("touchend", (event) => {
+          if (touchMoved) {
+            const touch = event.changedTouches[0];
+            const endX = touch.clientX;
+            const deltaX = endX - startX;
+
+            if (Math.abs(deltaX) > 30) {
+              if (deltaX > 0) {
+                const prevIndex =
+                  (currentIndex - 1 + images.length) % images.length;
+                showModal(prevIndex);
+              } else {
+                const nextIndex = (currentIndex + 1) % images.length;
+                showModal(nextIndex);
+              }
+            }
+          } else {
+            if (event.changedTouches.length === 1) {
+              if (event.target === modal) {
+                closeModal();
+              }
+            }
+          }
+          touchMoved = false;
+        });
+
+        modal.addEventListener("touchmove", preventTouchDefault, {
+          passive: false,
+        });
+        modal.addEventListener("touchstart", preventTouchDefault, {
+          passive: false,
+        });
+      });
+    </script>
 
     <script>
       const scrollContent = document.getElementById("scroll-content");
