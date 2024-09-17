@@ -658,37 +658,50 @@
 
     <!-- Parallax Section -->
     <section class="parallax bg-white" id="parallax">
-        <div class="parallax-background"></div>
-        <div class="absolute inset-0 grid-pattern grid-pattern-sm"></div>
-        <div class="white-gradient-overlay"></div>
+      <div class="parallax-background"></div>
+      <div class="absolute inset-0 grid-pattern grid-pattern-sm"></div>
+      <div class="white-gradient-overlay"></div>
 
-    
-        <div class="parallax-content z-10">
-            <section class="pt-24 container mx-auto px-4 md:px-10">
-                <!-- Main Flex Container -->
-                <div class="pt-16 pb-4 sm:pb-16 relative flex flex-col md:flex-row items-center md:items-start gap-8 ">
-                    <!-- Image Section with Animation -->
-                    <div id="image" class="w-full md:w-1/2 flex justify-center">
-                        <div class="relative w-full max-w-[250px] sm:max-w-[300px] md:max-w-[400px] aspect-square overflow-hidden rounded-xl transition-all duration-300 group hover:rounded-xl card-outer">
-                            <div class="spinning-border"></div>
-                            <div class="card-inner">
-                                <img src="img/Herr-Moise-2.webp" alt="Roderick Moise" class="img-main object-cover shadow-lg transition-transform duration-300 group-hover:scale-105" />
-                            </div>
-                        </div>
-                    </div>
+      <div class="parallax-content z-10">
+        <section class="pt-24 container mx-auto px-4 md:px-10">
+          <!-- Main Flex Container -->
+          <div
+            class="pt-16 pb-4 sm:pb-16 relative flex flex-col md:flex-row items-center md:items-start gap-8"
+          >
+            <!-- Image Section with Animation -->
+            <div id="image" class="w-full md:w-1/2 flex justify-center">
+              <div
+                class="relative w-full max-w-[250px] sm:max-w-[300px] md:max-w-[400px] aspect-square overflow-hidden rounded-xl transition-all duration-300 group hover:rounded-xl card-outer"
+              >
+                <div class="spinning-border"></div>
+                <div class="card-inner">
+                  <img
+                    src="img/Herr-Moise-2.webp"
+                    alt="Roderick Moise"
+                    class="img-main object-cover shadow-lg transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+              </div>
+            </div>
 
-                    <!-- Content Wrapper -->
-                    <div class="flex flex-col w-full md:w-1/2 items-center md:items-start mb-8 md:mb-0">
-                        <!-- Headline and Description -->
-                        <div id="headline" class="text-center md:text-left mb-8 lg:mb-12">
-                            <h1 class="tracking-tight text-[#A7C6DA] font-extrabold text-5xl md:text-5xl lg:text-6xl xl:text-7xl">
-                                <span id="animated-text" class="title">Hallo</span>,<br />
-                                I'm Roderick, <br />
-                                <span class="bg-clip-text text-transparent bg-gradient-to-r from-[#A7C6DA] to-[#01f3ab]">
-                                    Designer & Developer
-                                </span>
-                            </h1>
-                        </div>
+            <!-- Content Wrapper -->
+            <div
+              class="flex flex-col w-full md:w-1/2 items-center md:items-start mb-8 md:mb-0"
+            >
+              <!-- Headline and Description -->
+              <div id="headline" class="text-center md:text-left mb-8 lg:mb-12">
+                <h1
+                  class="tracking-tight text-[#A7C6DA] font-extrabold text-5xl md:text-5xl lg:text-6xl xl:text-7xl"
+                >
+                  <span id="animated-text" class="title">Hallo</span>,<br />
+                  I'm Roderick, <br />
+                  <span
+                    class="bg-clip-text text-transparent bg-gradient-to-r from-[#A7C6DA] to-[#01f3ab]"
+                  >
+                    Designer & Developer
+                  </span>
+                </h1>
+              </div>
               <!-- Buttons Section -->
               <div
                 class="buttons-container flex flex-col lg:flex-row gap-4 lg:gap-8 mb-12 z-10"
@@ -3577,325 +3590,323 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const animatedText = document.getElementById("animated-text");
+      document.addEventListener('DOMContentLoaded', function () {
+        const animatedText = document.getElementById('animated-text')
 
-        const texts = ["Hallo", "Hi", "Bonjou"];
-        let textIndex = 0;
+        const texts = ['Hallo', 'Hi', 'Bonjour']
+        let textIndex = 0
 
         setInterval(() => {
-          textIndex = (textIndex + 1) % texts.length; // Cycle through texts array
-          animatedText.textContent = texts[textIndex];
-        }, 3000); // Time interval for switching texts (3 seconds)
-      });
+          textIndex = (textIndex + 1) % texts.length // Cycle through texts array
+          animatedText.textContent = texts[textIndex]
+        }, 3000) // Time interval for switching texts (3 seconds)
+      })
     </script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const modal = document.getElementById("image-lightbox");
-        const closeBtn = document.querySelector(".modal-close");
-        const prevBtn = document.querySelector(".modal-prev");
-        const nextBtn = document.querySelector(".modal-next");
-        const modalImage = modal.querySelector("img");
-        const body = document.body;
-        let scrollPosition = 0;
-        let modalOpen = false;
-        let touchMoved = false;
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('image-lightbox')
+        const closeBtn = document.querySelector('.modal-close')
+        const prevBtn = document.querySelector('.modal-prev')
+        const nextBtn = document.querySelector('.modal-next')
+        const modalImage = modal.querySelector('img')
+        const body = document.body
+        let scrollPosition = 0
+        let modalOpen = false
+        let touchMoved = false
 
-        const images = Array.from(
-          document.querySelectorAll(".clickable-image"),
-        );
-        let currentIndex = -1;
+        const images = Array.from(document.querySelectorAll('.clickable-image'))
+        let currentIndex = -1
 
         // Function to show the modal with the given index
         function showModal(index) {
           if (index >= 0 && index < images.length) {
             if (!modalOpen) {
               scrollPosition =
-                window.pageYOffset || document.documentElement.scrollTop;
-              body.style.position = "fixed";
-              body.style.top = `-${scrollPosition}px`;
-              body.style.left = "0";
-              body.style.right = "0";
-              body.style.overflow = "hidden";
-              modalOpen = true;
+                window.pageYOffset || document.documentElement.scrollTop
+              body.style.position = 'fixed'
+              body.style.top = `-${scrollPosition}px`
+              body.style.left = '0'
+              body.style.right = '0'
+              body.style.overflow = 'hidden'
+              modalOpen = true
             }
-            modal.style.display = "flex";
-            modalImage.src = images[index].src;
-            currentIndex = index;
+            modal.style.display = 'flex'
+            modalImage.src = images[index].src
+            currentIndex = index
           }
         }
 
         // Function to close the modal and restore body scroll
         function closeModal() {
           if (modalOpen) {
-            modal.style.display = "none";
-            body.style.position = "";
-            body.style.overflow = "";
-            body.style.top = "";
-            window.scrollTo(0, scrollPosition);
-            modalOpen = false;
+            modal.style.display = 'none'
+            body.style.position = ''
+            body.style.overflow = ''
+            body.style.top = ''
+            window.scrollTo(0, scrollPosition)
+            modalOpen = false
           }
         }
 
         // Function to prevent default touch actions
         function preventTouchDefault(event) {
-          event.preventDefault();
+          event.preventDefault()
         }
 
         images.forEach((img, index) => {
-          img.addEventListener("click", () => {
-            showModal(index);
-          });
-        });
+          img.addEventListener('click', () => {
+            showModal(index)
+          })
+        })
 
-        closeBtn.addEventListener("click", closeModal);
+        closeBtn.addEventListener('click', closeModal)
 
-        prevBtn.addEventListener("click", () => {
-          const prevIndex = (currentIndex - 1 + images.length) % images.length;
-          showModal(prevIndex);
-        });
+        prevBtn.addEventListener('click', () => {
+          const prevIndex = (currentIndex - 1 + images.length) % images.length
+          showModal(prevIndex)
+        })
 
-        nextBtn.addEventListener("click", () => {
-          const nextIndex = (currentIndex + 1) % images.length;
-          showModal(nextIndex);
-        });
+        nextBtn.addEventListener('click', () => {
+          const nextIndex = (currentIndex + 1) % images.length
+          showModal(nextIndex)
+        })
 
-        modal.addEventListener("click", (event) => {
+        modal.addEventListener('click', (event) => {
           if (event.target === modal) {
-            closeModal();
+            closeModal()
           }
-        });
+        })
 
-        window.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") {
-            closeModal();
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            closeModal()
           }
-          if (modal.style.display === "flex") {
-            if (event.key === "ArrowLeft") {
-              prevBtn.click();
+          if (modal.style.display === 'flex') {
+            if (event.key === 'ArrowLeft') {
+              prevBtn.click()
             }
-            if (event.key === "ArrowRight") {
-              nextBtn.click();
+            if (event.key === 'ArrowRight') {
+              nextBtn.click()
             }
           }
-        });
+        })
 
-        let startX;
-        let startY;
+        let startX
+        let startY
 
-        modal.addEventListener("touchstart", (event) => {
-          const touch = event.touches[0];
-          startX = touch.clientX;
-          startY = touch.clientY;
-          touchMoved = false;
-        });
+        modal.addEventListener('touchstart', (event) => {
+          const touch = event.touches[0]
+          startX = touch.clientX
+          startY = touch.clientY
+          touchMoved = false
+        })
 
-        modal.addEventListener("touchmove", (event) => {
-          const touch = event.touches[0];
-          const deltaX = touch.clientX - startX;
-          const deltaY = touch.clientY - startY;
+        modal.addEventListener('touchmove', (event) => {
+          const touch = event.touches[0]
+          const deltaX = touch.clientX - startX
+          const deltaY = touch.clientY - startY
 
           if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 30) {
-            touchMoved = true;
+            touchMoved = true
           }
 
-          preventTouchDefault(event);
-        });
+          preventTouchDefault(event)
+        })
 
-        modal.addEventListener("touchend", (event) => {
+        modal.addEventListener('touchend', (event) => {
           if (touchMoved) {
-            const touch = event.changedTouches[0];
-            const endX = touch.clientX;
-            const deltaX = endX - startX;
+            const touch = event.changedTouches[0]
+            const endX = touch.clientX
+            const deltaX = endX - startX
 
             if (Math.abs(deltaX) > 30) {
               if (deltaX > 0) {
                 const prevIndex =
-                  (currentIndex - 1 + images.length) % images.length;
-                showModal(prevIndex);
+                  (currentIndex - 1 + images.length) % images.length
+                showModal(prevIndex)
               } else {
-                const nextIndex = (currentIndex + 1) % images.length;
-                showModal(nextIndex);
+                const nextIndex = (currentIndex + 1) % images.length
+                showModal(nextIndex)
               }
             }
           } else {
             if (event.changedTouches.length === 1) {
               if (event.target === modal) {
-                closeModal();
+                closeModal()
               }
             }
           }
-          touchMoved = false;
-        });
+          touchMoved = false
+        })
 
-        modal.addEventListener("touchmove", preventTouchDefault, {
+        modal.addEventListener('touchmove', preventTouchDefault, {
           passive: false,
-        });
-        modal.addEventListener("touchstart", preventTouchDefault, {
+        })
+        modal.addEventListener('touchstart', preventTouchDefault, {
           passive: false,
-        });
-      });
+        })
+      })
     </script>
 
     <script>
-      const scrollContent = document.getElementById("scroll-content");
+      const scrollContent = document.getElementById('scroll-content')
 
       // Duplicate the content for seamless scrolling
-      const contentClone = scrollContent.innerHTML;
-      scrollContent.innerHTML += contentClone;
+      const contentClone = scrollContent.innerHTML
+      scrollContent.innerHTML += contentClone
 
       // Set scroll speed and state
-      let scrollSpeed = 0.5;
-      let scrollPosition = 0;
+      let scrollSpeed = 0.5
+      let scrollPosition = 0
 
       function autoScroll() {
-        scrollPosition -= scrollSpeed;
+        scrollPosition -= scrollSpeed
 
         // Reset the scroll position when it reaches half the scrollable width
         if (Math.abs(scrollPosition) >= scrollContent.scrollWidth / 2) {
-          scrollPosition = 0;
+          scrollPosition = 0
         }
 
-        scrollContent.style.transform = `translateX(${scrollPosition}px)`;
+        scrollContent.style.transform = `translateX(${scrollPosition}px)`
 
-        requestAnimationFrame(autoScroll);
+        requestAnimationFrame(autoScroll)
       }
 
       // Start the auto scroll
-      autoScroll();
+      autoScroll()
     </script>
     <script>
       function selectTab(event) {
-        const tabs = document.querySelectorAll(".tab");
+        const tabs = document.querySelectorAll('.tab')
         tabs.forEach((tab) => {
-          tab.setAttribute("aria-selected", "false");
-        });
-        event.currentTarget.setAttribute("aria-selected", "true");
+          tab.setAttribute('aria-selected', 'false')
+        })
+        event.currentTarget.setAttribute('aria-selected', 'true')
       }
     </script>
     <!-- Swiper JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-      const swiper = new Swiper(".swiper-container", {
-        slidesPerView: "auto",
+      const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 'auto',
         spaceBetween: 10,
         centeredSlides: false,
         observer: true,
         observeParents: true,
-        slideClass: "custom-slider-item", // Update the class for the slides
+        slideClass: 'custom-slider-item', // Update the class for the slides
         pagination: {
-          el: ".swiper-pagination",
+          el: '.swiper-pagination',
           clickable: true,
         },
         navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
         },
         touchRatio: 1, // Default is 1, you can adjust this if needed
         touchReleaseOnEdges: true, // Allows swipe action to be released even at the edges
         speed: 400, // Lower the speed for smoother transitions
         freeMode: false, // Disable free mode to ensure pagination sync
         watchSlidesProgress: true, // Keep track of slide progress for better sync
-      });
+      })
     </script>
 
     <script>
       // Debounce function to limit the rate at which a function is executed
       function debounce(func, wait) {
-        let timeout;
+        let timeout
         return function (...args) {
-          clearTimeout(timeout);
-          timeout = setTimeout(() => func.apply(this, args), wait);
-        };
+          clearTimeout(timeout)
+          timeout = setTimeout(() => func.apply(this, args), wait)
+        }
       }
 
       function updateParallax() {
-        const parallaxContent = document.querySelector(".parallax-content");
+        const parallaxContent = document.querySelector('.parallax-content')
         const parallaxBackground = document.querySelector(
-          ".parallax-background",
-        );
-        const scrollTop = window.pageYOffset;
-        const speedFactor = 0.1; // Adjust this value to control the speed of the parallax effect
+          '.parallax-background',
+        )
+        const scrollTop = window.pageYOffset
+        const speedFactor = 0.1 // Adjust this value to control the speed of the parallax effect
 
         // Toggle visibility of parallax background based on scroll position
         if (scrollTop > 0) {
-          parallaxBackground.classList.add("show");
+          parallaxBackground.classList.add('show')
         } else {
-          parallaxBackground.classList.remove("show");
+          parallaxBackground.classList.remove('show')
         }
 
         // Disable parallax effect only for screens smaller than 768px
         if (window.innerWidth < 768) {
-          parallaxContent.style.transform = "none"; // Disable parallax effect for small screens
-          return; // Exit here to prevent further parallax-related calculations
+          parallaxContent.style.transform = 'none' // Disable parallax effect for small screens
+          return // Exit here to prevent further parallax-related calculations
         }
 
         // Apply parallax effect to content for tablets and larger screens
-        let translateY = 0;
+        let translateY = 0
         if (scrollTop > 0) {
-          translateY = scrollTop * speedFactor;
+          translateY = scrollTop * speedFactor
         }
-        parallaxContent.style.transform = `translateY(${translateY}px)`;
+        parallaxContent.style.transform = `translateY(${translateY}px)`
       }
 
       // Wrap the parallax update function with requestAnimationFrame for smoother performance
       function onScroll() {
-        requestAnimationFrame(updateParallax);
+        requestAnimationFrame(updateParallax)
       }
 
       // Attach the scroll event listener
-      window.addEventListener("scroll", onScroll);
+      window.addEventListener('scroll', onScroll)
 
       // Create a debounced version of the updateParallax function
-      const updateParallaxDebounced = debounce(updateParallax, 10);
+      const updateParallaxDebounced = debounce(updateParallax, 10)
 
       // Use requestAnimationFrame for smoother animations
       function onScrollOrResize() {
-        requestAnimationFrame(updateParallaxDebounced);
+        requestAnimationFrame(updateParallaxDebounced)
       }
 
       // Add event listeners for scroll and resize events
-      window.addEventListener("scroll", onScrollOrResize);
-      window.addEventListener("resize", onScrollOrResize);
+      window.addEventListener('scroll', onScrollOrResize)
+      window.addEventListener('resize', onScrollOrResize)
 
-      document.addEventListener("DOMContentLoaded", function () {
-        const tabs = document.querySelectorAll(".tab");
-        const panels = document.querySelectorAll(".panel");
-        const indicator = document.querySelector(".tab-indicator");
+      document.addEventListener('DOMContentLoaded', function () {
+        const tabs = document.querySelectorAll('.tab')
+        const panels = document.querySelectorAll('.panel')
+        const indicator = document.querySelector('.tab-indicator')
 
         function updateTabIndicator() {
-          const selectedTab = document.querySelector('[aria-selected="true"]');
+          const selectedTab = document.querySelector('[aria-selected="true"]')
           if (selectedTab) {
-            const rect = selectedTab.getBoundingClientRect();
+            const rect = selectedTab.getBoundingClientRect()
             const containerRect =
-              selectedTab.parentElement.getBoundingClientRect();
-            const indicatorWidth = selectedTab.offsetWidth;
-            indicator.style.left = `${rect.left - containerRect.left}px`;
-            indicator.style.width = `${indicatorWidth}px`;
+              selectedTab.parentElement.getBoundingClientRect()
+            const indicatorWidth = selectedTab.offsetWidth
+            indicator.style.left = `${rect.left - containerRect.left}px`
+            indicator.style.width = `${indicatorWidth}px`
           }
         }
 
         tabs.forEach((tab) => {
-          tab.addEventListener("click", function () {
-            tabs.forEach((t) => t.setAttribute("aria-selected", "false"));
-            tab.setAttribute("aria-selected", "true");
+          tab.addEventListener('click', function () {
+            tabs.forEach((t) => t.setAttribute('aria-selected', 'false'))
+            tab.setAttribute('aria-selected', 'true')
 
-            const panelId = tab.getAttribute("aria-controls");
+            const panelId = tab.getAttribute('aria-controls')
             panels.forEach((p) => {
-              p.classList.add("hidden");
-              p.classList.remove("block");
-            });
-            document.getElementById(panelId).classList.remove("hidden");
-            document.getElementById(panelId).classList.add("block");
+              p.classList.add('hidden')
+              p.classList.remove('block')
+            })
+            document.getElementById(panelId).classList.remove('hidden')
+            document.getElementById(panelId).classList.add('block')
 
-            updateTabIndicator();
-          });
-        });
+            updateTabIndicator()
+          })
+        })
 
         // Initial call to position the indicator correctly
-        updateTabIndicator();
-      });
+        updateTabIndicator()
+      })
     </script>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
