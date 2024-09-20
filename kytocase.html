@@ -608,7 +608,7 @@
       <section class="section m-image-large relative custom-image-section">
         <div
           class="image parallax-cs absolute inset-0"
-          style="background-image: url(&quot;img/03-Laptop-Mockup.jpg&quot;)"
+          style="background-image: url('img/03-Laptop-Mockup.jpg')"
         ></div>
         <div class="relative z-10 flex items-center justify-center h-full">
           <!-- Content over the image can go here -->
@@ -1321,7 +1321,7 @@
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center">
           <!-- Previous Button -->
           <a
-            href="pffcase.html"
+            href="karlstorzcase.html"
             class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
           >
             Previous
@@ -1491,147 +1491,145 @@
 
     <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener('DOMContentLoaded', function () {
         const imageElement = document.querySelector(
-          ".custom-image-section .image",
-        );
+          '.custom-image-section .image',
+        )
 
         // Check if window width is less than 768px (mobile)
         function isMobile() {
-          return window.innerWidth <= 768;
+          return window.innerWidth <= 768
         }
 
         // Function to enable or disable the parallax effect
         function applyParallax() {
           if (isMobile()) {
             // Remove parallax effect if on mobile
-            window.removeEventListener("scroll", parallaxEffect);
+            window.removeEventListener('scroll', parallaxEffect)
           }
         }
 
         // Parallax effect function
         function parallaxEffect() {
-          const offset = window.pageYOffset;
-          imageElement.style.backgroundPositionY = `${offset * 0.5}px`; // Adjust speed for parallax
+          const offset = window.pageYOffset
+          imageElement.style.backgroundPositionY = `${offset * 0.5}px` // Adjust speed for parallax
         }
 
         // Initial check and event listener for window resize
-        applyParallax();
-        window.addEventListener("resize", applyParallax);
-      });
+        applyParallax()
+        window.addEventListener('resize', applyParallax)
+      })
     </script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const modal = document.getElementById("image-modal");
-        const closeBtn = document.querySelector(".modal-close");
-        const prevBtn = document.querySelector(".modal-prev");
-        const nextBtn = document.querySelector(".modal-next");
-        const modalImage = modal.querySelector("img");
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('image-modal')
+        const closeBtn = document.querySelector('.modal-close')
+        const prevBtn = document.querySelector('.modal-prev')
+        const nextBtn = document.querySelector('.modal-next')
+        const modalImage = modal.querySelector('img')
 
         // Store images and their sources
-        const images = Array.from(
-          document.querySelectorAll(".clickable-image"),
-        );
-        let currentIndex = -1;
+        const images = Array.from(document.querySelectorAll('.clickable-image'))
+        let currentIndex = -1
 
         // Function to show the modal with the given index
         function showModal(index) {
           if (index >= 0 && index < images.length) {
-            modal.style.display = "flex";
-            modalImage.src = images[index].dataset.modalSrc;
-            currentIndex = index; // Update the current index
+            modal.style.display = 'flex'
+            modalImage.src = images[index].dataset.modalSrc
+            currentIndex = index // Update the current index
           }
         }
 
         // Add click event to images
         images.forEach((img, index) => {
-          img.addEventListener("click", () => {
-            showModal(index);
-          });
-        });
+          img.addEventListener('click', () => {
+            showModal(index)
+          })
+        })
 
         // Close modal
-        closeBtn.addEventListener("click", () => {
-          modal.style.display = "none";
-        });
+        closeBtn.addEventListener('click', () => {
+          modal.style.display = 'none'
+        })
 
         // Navigate to previous image
-        prevBtn.addEventListener("click", () => {
-          const prevIndex = (currentIndex - 1 + images.length) % images.length;
-          showModal(prevIndex);
-        });
+        prevBtn.addEventListener('click', () => {
+          const prevIndex = (currentIndex - 1 + images.length) % images.length
+          showModal(prevIndex)
+        })
 
         // Navigate to next image
-        nextBtn.addEventListener("click", () => {
-          const nextIndex = (currentIndex + 1) % images.length;
-          showModal(nextIndex);
-        });
+        nextBtn.addEventListener('click', () => {
+          const nextIndex = (currentIndex + 1) % images.length
+          showModal(nextIndex)
+        })
 
         // Close modal when clicking outside the modal content
-        window.addEventListener("click", (event) => {
+        window.addEventListener('click', (event) => {
           if (event.target === modal) {
-            modal.style.display = "none";
+            modal.style.display = 'none'
           }
-        });
+        })
 
         // Close modal with ESC key
-        window.addEventListener("keydown", (event) => {
-          if (event.key === "Escape") {
-            modal.style.display = "none";
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            modal.style.display = 'none'
           }
-          if (modal.style.display === "flex") {
-            if (event.key === "ArrowLeft") {
-              prevBtn.click();
+          if (modal.style.display === 'flex') {
+            if (event.key === 'ArrowLeft') {
+              prevBtn.click()
             }
-            if (event.key === "ArrowRight") {
-              nextBtn.click();
+            if (event.key === 'ArrowRight') {
+              nextBtn.click()
             }
           }
-        });
-      });
+        })
+      })
     </script>
     <script>
       // Initialize Swiper with a new name
-      var swiper4 = new Swiper(".swiper-container", {
+      var swiper4 = new Swiper('.swiper-container', {
         slidesPerView: 1,
         spaceBetween: 10,
         pagination: {
-          el: ".swiper-pagination",
+          el: '.swiper-pagination',
           clickable: true,
         },
-      });
+      })
 
       // JavaScript to handle thumbnail clicks
-      document.querySelectorAll(".thumbnail").forEach((thumbnail) => {
-        thumbnail.addEventListener("click", () => {
+      document.querySelectorAll('.thumbnail').forEach((thumbnail) => {
+        thumbnail.addEventListener('click', () => {
           // Remove 'selected' class from all thumbnails
           document
-            .querySelectorAll(".thumbnail")
-            .forEach((thumb) => thumb.classList.remove("selected"));
+            .querySelectorAll('.thumbnail')
+            .forEach((thumb) => thumb.classList.remove('selected'))
 
           // Add 'selected' class to the clicked thumbnail
-          thumbnail.classList.add("selected");
+          thumbnail.classList.add('selected')
 
           // Update the large image source with the selected thumbnail's image
-          document.getElementById("largeImage").src = thumbnail.dataset.image;
-        });
-      });
+          document.getElementById('largeImage').src = thumbnail.dataset.image
+        })
+      })
 
       // Set the default selected thumbnail
-      document.querySelector(".thumbnail.selected").click();
-      document.addEventListener("DOMContentLoaded", function () {
+      document.querySelector('.thumbnail.selected').click()
+      document.addEventListener('DOMContentLoaded', function () {
         // Initialize Swiper 3
-        var swiper3 = new Swiper(".swiper-container-3", {
-          slidesPerView: "auto",
+        var swiper3 = new Swiper('.swiper-container-3', {
+          slidesPerView: 'auto',
           spaceBetween: 30,
           centeredSlides: false, // Default behavior for desktop
           navigation: {
-            nextEl: ".swiper-button-next-3",
-            prevEl: ".swiper-button-prev-3",
+            nextEl: '.swiper-button-next-3',
+            prevEl: '.swiper-button-prev-3',
           },
           pagination: {
-            el: ".swiper-pagination.swiper-pagination-3",
+            el: '.swiper-pagination.swiper-pagination-3',
             clickable: true,
           },
           keyboard: {
@@ -1648,193 +1646,192 @@
               centeredSlides: true, // Center slides on mobile
             },
             1024: {
-              slidesPerView: "auto",
+              slidesPerView: 'auto',
               spaceBetween: 30,
               centeredSlides: false, // Default behavior for larger screens
             },
           },
-        });
+        })
 
         // Initialize Swiper for container 1
         // Initialize Swiper instance
-        const swiper1 = new Swiper(".swiper-container-1", {
+        const swiper1 = new Swiper('.swiper-container-1', {
           loop: true,
           slidesPerView: 1, // Ensure only one slide per view if that's your intention
           spaceBetween: 30, // No space between slides to maximize width
           centeredSlides: true, // Center slides if desired
           pagination: {
-            el: ".swiper-pagination.swiper-pagination-1",
+            el: '.swiper-pagination.swiper-pagination-1',
             clickable: true,
           },
           navigation: {
-            nextEl: ".swiper-button-next-1",
-            prevEl: ".swiper-button-prev-1",
+            nextEl: '.swiper-button-next-1',
+            prevEl: '.swiper-button-prev-1',
           },
           // Optional: Enable responsive behavior
           breakpoints: {
             768: {
-              slidesPerView: "auto",
+              slidesPerView: 'auto',
             },
             1024: {
-              slidesPerView: "auto",
+              slidesPerView: 'auto',
             },
           },
-        });
+        })
 
         // Initialize Swiper for the third container
-        var swiper2 = new Swiper(".swiper-container-2", {
-          slidesPerView: "auto",
+        var swiper2 = new Swiper('.swiper-container-2', {
+          slidesPerView: 'auto',
           centeredSlides: true,
           spaceBetween: 30,
           loop: true,
           navigation: {
-            nextEl: ".swiper-button-next.swiper-button-next-2",
-            prevEl: ".swiper-button-prev.swiper-button-prev-2",
+            nextEl: '.swiper-button-next.swiper-button-next-2',
+            prevEl: '.swiper-button-prev.swiper-button-prev-2',
           },
           pagination: {
-            el: ".swiper-pagination.swiper-pagination-2",
+            el: '.swiper-pagination.swiper-pagination-2',
             clickable: true,
           },
           keyboard: {
             enabled: true,
             onlyInViewport: true,
           },
-        });
-      });
+        })
+      })
     </script>
 
     <script>
       function initializeSlider(sliderId) {
-        const sliderContainer = document.getElementById(sliderId);
+        const sliderContainer = document.getElementById(sliderId)
 
         if (!sliderContainer) {
-          console.error(`Slider container with ID "${sliderId}" not found.`);
-          return;
+          console.error(`Slider container with ID "${sliderId}" not found.`)
+          return
         }
 
-        const sliderImages = sliderContainer.querySelector(".slider-images");
-        const images = sliderContainer.querySelectorAll(".slider-image");
-        const dots = sliderContainer.querySelectorAll(".dot");
-        let currentIndex = 0;
+        const sliderImages = sliderContainer.querySelector('.slider-images')
+        const images = sliderContainer.querySelectorAll('.slider-image')
+        const dots = sliderContainer.querySelectorAll('.dot')
+        let currentIndex = 0
         let startX,
-          isDragging = false;
+          isDragging = false
 
         if (!sliderImages || images.length === 0) {
           console.error(
             `Required elements for slider with ID "${sliderId}" are missing.`,
-          );
-          return;
+          )
+          return
         }
 
         function updateSlider(index) {
-          sliderImages.style.transform = `translateX(-${index * 100}%)`;
+          sliderImages.style.transform = `translateX(-${index * 100}%)`
           dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === index);
-          });
+            dot.classList.toggle('active', i === index)
+          })
         }
 
         function nextSlide() {
-          currentIndex = (currentIndex + 1) % images.length;
-          updateSlider(currentIndex);
+          currentIndex = (currentIndex + 1) % images.length
+          updateSlider(currentIndex)
         }
 
         function prevSlide() {
-          currentIndex = (currentIndex - 1 + images.length) % images.length;
-          updateSlider(currentIndex);
+          currentIndex = (currentIndex - 1 + images.length) % images.length
+          updateSlider(currentIndex)
         }
 
         // Remove arrow event listeners if only one image
         if (images.length <= 1) {
-          sliderContainer.querySelector(".left-arrow")?.remove();
-          sliderContainer.querySelector(".right-arrow")?.remove();
+          sliderContainer.querySelector('.left-arrow')?.remove()
+          sliderContainer.querySelector('.right-arrow')?.remove()
         } else {
           sliderContainer
-            .querySelector(".left-arrow")
-            ?.addEventListener("click", prevSlide);
+            .querySelector('.left-arrow')
+            ?.addEventListener('click', prevSlide)
           sliderContainer
-            .querySelector(".right-arrow")
-            ?.addEventListener("click", nextSlide);
+            .querySelector('.right-arrow')
+            ?.addEventListener('click', nextSlide)
         }
 
         dots.forEach((dot) => {
-          dot.addEventListener("click", (e) => {
-            const index = parseInt(e.target.dataset.index, 10);
-            updateSlider(index);
-            currentIndex = index;
-          });
-        });
+          dot.addEventListener('click', (e) => {
+            const index = parseInt(e.target.dataset.index, 10)
+            updateSlider(index)
+            currentIndex = index
+          })
+        })
 
         // Keyboard navigation
-        document.addEventListener("keydown", (e) => {
-          if (e.key === "ArrowRight") {
-            nextSlide();
-          } else if (e.key === "ArrowLeft") {
-            prevSlide();
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowRight') {
+            nextSlide()
+          } else if (e.key === 'ArrowLeft') {
+            prevSlide()
           }
-        });
+        })
 
         // Swipe support using basic touch events
-        const imageContainer =
-          sliderContainer.querySelector(".image-container");
+        const imageContainer = sliderContainer.querySelector('.image-container')
 
-        imageContainer.addEventListener("touchstart", (e) => {
-          startX = e.touches[0].clientX;
-        });
+        imageContainer.addEventListener('touchstart', (e) => {
+          startX = e.touches[0].clientX
+        })
 
-        imageContainer.addEventListener("touchend", (e) => {
-          const endX = e.changedTouches[0].clientX;
-          const diffX = endX - startX;
+        imageContainer.addEventListener('touchend', (e) => {
+          const endX = e.changedTouches[0].clientX
+          const diffX = endX - startX
 
           if (Math.abs(diffX) > 50) {
             if (diffX < 0) {
-              nextSlide();
+              nextSlide()
             } else {
-              prevSlide();
+              prevSlide()
             }
           }
-        });
+        })
 
         // Mouse drag support
-        imageContainer.addEventListener("mousedown", (e) => {
-          startX = e.clientX;
-          isDragging = true;
-          imageContainer.style.cursor = "grabbing";
-          e.preventDefault();
-        });
+        imageContainer.addEventListener('mousedown', (e) => {
+          startX = e.clientX
+          isDragging = true
+          imageContainer.style.cursor = 'grabbing'
+          e.preventDefault()
+        })
 
-        imageContainer.addEventListener("mousemove", (e) => {
+        imageContainer.addEventListener('mousemove', (e) => {
           if (isDragging) {
-            const endX = e.clientX;
-            const diffX = endX - startX;
+            const endX = e.clientX
+            const diffX = endX - startX
 
             if (Math.abs(diffX) > 50) {
               if (diffX < 0) {
-                nextSlide();
+                nextSlide()
               } else {
-                prevSlide();
+                prevSlide()
               }
-              isDragging = false;
-              imageContainer.style.cursor = "grab";
+              isDragging = false
+              imageContainer.style.cursor = 'grab'
             }
           }
-        });
+        })
 
-        imageContainer.addEventListener("mouseup", () => {
-          isDragging = false;
-          imageContainer.style.cursor = "grab";
-        });
+        imageContainer.addEventListener('mouseup', () => {
+          isDragging = false
+          imageContainer.style.cursor = 'grab'
+        })
 
-        imageContainer.addEventListener("mouseleave", () => {
-          isDragging = false;
-          imageContainer.style.cursor = "grab";
-        });
+        imageContainer.addEventListener('mouseleave', () => {
+          isDragging = false
+          imageContainer.style.cursor = 'grab'
+        })
 
         // Initialize the slider
-        updateSlider(currentIndex);
+        updateSlider(currentIndex)
       }
 
       // Initialize slider1
-      initializeSlider("slider1");
+      initializeSlider('slider1')
     </script>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
