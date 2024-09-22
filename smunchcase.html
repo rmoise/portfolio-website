@@ -1660,6 +1660,7 @@
   const nextBtn = modal.querySelector('.modal-next');
   const modalImageWrapper = document.getElementById('modal-image-wrapper');
   const modalImage = modalImageWrapper.querySelector('img');
+  const modalContent = modal.querySelector('.modal-content'); // Grab the modal content
   const body = document.body;
   let scrollPosition = 0;
   let currentIndex = -1;
@@ -1670,21 +1671,11 @@
   let startX = 0;
   let startY = 0;
   let isSwiping = false;
+  let isScrolling = false;
 
   // Select images from both Swiper instances
   const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
   const imagesSwiper2 = Array.from(document.querySelectorAll('.swiper-container-2 .clickable-image'));
-
-  // Prevent pull-to-refresh behavior in mobile browsers
-  window.addEventListener(
-    'touchmove',
-    (event) => {
-      if (window.scrollY === 0) {
-        event.preventDefault(); // Prevent pull-to-refresh action
-      }
-    },
-    { passive: false }
-  );
 
   // Function to lock the body scroll
   function lockBodyScroll() {
@@ -1710,10 +1701,13 @@
     }
   }
 
-  // Function to reset the scroll position in the modal
+  // ** Function to reset the scroll position in the modal **
   function resetScrollPosition() {
+    if (modalContent) {
+      modalContent.scrollTop = 0; // Reset scroll for modal content
+    }
     if (modalImage) {
-      modalImage.scrollTop = 0;
+      modalImage.scrollTop = 0; // Reset scroll for the image itself
     }
   }
 
@@ -1779,19 +1773,26 @@
     const touch = event.touches[0];
     startX = touch.clientX;
     startY = touch.clientY;
-    isSwiping = true;
+    isSwiping = false;
+    isScrolling = false;
   });
 
   modal.addEventListener('touchmove', (event) => {
-    if (!isSwiping) return;
-
     const touch = event.touches[0];
     const deltaX = touch.clientX - startX;
     const deltaY = touch.clientY - startY;
 
-    // Determine if the swipe is horizontal
+    // If vertical scroll is greater than horizontal, treat it as scrolling
+    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+      isScrolling = true;
+      isSwiping = false;
+      return; // Exit if it's a scroll gesture
+    }
+
+    // If horizontal movement is detected, treat it as a swipe
     if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      event.preventDefault();
+      isSwiping = true;
+      event.preventDefault(); // Prevent default browser scroll/swipe actions
       if (deltaX > 50) {
         navigateModal('prev', event); // Swipe right -> previous image
         isSwiping = false;
@@ -1804,6 +1805,7 @@
 
   modal.addEventListener('touchend', () => {
     isSwiping = false;
+    isScrolling = false;
   });
 
   // Add click event listeners for images in Swiper 1
