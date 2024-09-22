@@ -1669,8 +1669,8 @@
   let startX = 0; // For touchstart X position tracking
   let startY = 0; // For touchstart Y position tracking
   let lastSwipeTime = 0; // Track the last swipe time to introduce delay
-  const SWIPE_THRESHOLD = 150; // Increase swipe sensitivity threshold (higher = less sensitive)
-  const SWIPE_DELAY = 500; // Minimum delay between swipes (in ms)
+  const SWIPE_THRESHOLD = 100; // Swipe threshold for smoother swiping
+  const SWIPE_DELAY = 400; // Minimum delay between swipes (in ms)
 
   // Select images from both Swiper instances
   const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
@@ -1785,12 +1785,13 @@
     const deltaX = touch.clientX - startX;
     const deltaY = touch.clientY - startY;
 
+    // Prevent pull-to-refresh if swiping down
+    if (deltaY > 0 && modalContent.scrollTop === 0) {
+      event.preventDefault();
+    }
+
     // If vertical scroll is greater than horizontal, treat it as scrolling
     if (Math.abs(deltaY) > Math.abs(deltaX)) {
-      // Prevent pull-to-refresh
-      if (modalContent.scrollTop === 0 && deltaY > 0) {
-        event.preventDefault();
-      }
       return; // Exit if it's a vertical scroll gesture
     }
 
@@ -1860,6 +1861,13 @@
       }
     }
   });
+
+  // Prevent pull-to-refresh globally
+  window.addEventListener('touchmove', (event) => {
+    if (window.scrollY === 0 && event.touches[0].clientY > 0) {
+      event.preventDefault(); // Block pull-to-refresh
+    }
+  }, { passive: false });
 });
 
     </script>
