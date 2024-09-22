@@ -1676,7 +1676,7 @@
   const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
   const imagesSwiper2 = Array.from(document.querySelectorAll('.swiper-container-2 .clickable-image'));
 
-  // Function to lock the body scroll
+  // Function to lock the body scroll only when the modal is open
   function lockBodyScroll() {
     if (!isBodyLocked) {
       scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
@@ -1684,17 +1684,19 @@
       body.style.top = `-${scrollPosition}px`;
       body.style.left = '0';
       body.style.right = '0';
+      body.style.overflow = 'hidden'; // Prevent body scrolling
       isBodyLocked = true; // Set flag to indicate body scroll is locked
     }
   }
 
-  // Function to unlock the body scroll
+  // Function to unlock the body scroll when the modal is closed
   function unlockBodyScroll() {
     if (isBodyLocked) {
       body.style.position = '';
       body.style.top = '';
       body.style.left = '';
       body.style.right = '';
+      body.style.overflow = ''; // Restore body scrolling
       window.scrollTo(0, scrollPosition);
       isBodyLocked = false; // Reset flag to indicate body scroll is unlocked
     }
@@ -1773,7 +1775,7 @@
     showModal(currentIndex, currentSwiper);
   }
 
-  // Detect swipe gestures
+  // Detect swipe gestures inside the modal
   modal.addEventListener('touchstart', (event) => {
     const touch = event.touches[0];
     startX = touch.clientX;
@@ -1785,14 +1787,14 @@
     const deltaX = touch.clientX - startX;
     const deltaY = touch.clientY - startY;
 
-    // Prevent pull-to-refresh if swiping down
-    if (deltaY > 0 && modalContent.scrollTop === 0) {
-      event.preventDefault();
+    // Prevent pull-to-refresh if swiping down inside the modal
+    if (modalContent.scrollTop === 0 && deltaY > 0) {
+      event.preventDefault(); // Prevent default behavior only in modal
     }
 
     // If vertical scroll is greater than horizontal, treat it as scrolling
     if (Math.abs(deltaY) > Math.abs(deltaX)) {
-      return; // Exit if it's a vertical scroll gesture
+      return; // Exit if it's a vertical scroll gesture, allow normal page scroll
     }
 
     // Only trigger swipe if horizontal movement exceeds the SWIPE_THRESHOLD
@@ -1862,12 +1864,16 @@
     }
   });
 
-  // Prevent pull-to-refresh globally
-  window.addEventListener('touchmove', (event) => {
-    if (window.scrollY === 0 && event.touches[0].clientY > 0) {
-      event.preventDefault(); // Block pull-to-refresh
-    }
-  }, { passive: false });
+  // Remove pull-to-refresh globally only inside the modal
+  window.addEventListener(
+    'touchmove',
+    (event) => {
+      if (modal.style.display === 'flex' && window.scrollY === 0 && event.touches[0].clientY > 0) {
+        event.preventDefault(); // Block pull-to-refresh inside modal
+      }
+    },
+    { passive: false },
+  );
 });
 
     </script>
