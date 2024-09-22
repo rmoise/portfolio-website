@@ -1668,14 +1668,15 @@
   let isBodyLocked = false;
   let startX = 0;
   let startY = 0;
+  let isScrolling = false;
   let lastSwipeTime = 0;
-  const SWIPE_THRESHOLD = 50; // Decreased threshold to make swipes more responsive
-  const SWIPE_DELAY = 200; // Decreased delay for quicker swiping
+  const SWIPE_THRESHOLD = 50;
+  const SWIPE_DELAY = 200;
 
   const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
   const imagesSwiper2 = Array.from(document.querySelectorAll('.swiper-container-2 .clickable-image'));
 
-  // Function to lock the body scroll
+  // Function to lock the body scroll only when modal is open
   function lockBodyScroll() {
     if (!isBodyLocked) {
       scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
@@ -1688,7 +1689,7 @@
     }
   }
 
-  // Function to unlock the body scroll
+  // Function to unlock the body scroll when modal is closed
   function unlockBodyScroll() {
     if (isBodyLocked) {
       body.style.position = '';
@@ -1701,7 +1702,7 @@
     }
   }
 
-  // Function to reset the scroll position in the modal
+  // Reset the scroll position in the modal
   function resetScrollPosition() {
     if (modalContent) {
       modalContent.scrollTop = 0;
@@ -1711,7 +1712,7 @@
     }
   }
 
-  // Function to adjust the image wrapper class (mobile or desktop)
+  // Adjust the image wrapper class (mobile or desktop)
   function adjustImageWrapper(image) {
     const isMobile = image.dataset.type === 'mobile';
     const isDesktop = image.dataset.type === 'desktop';
@@ -1724,7 +1725,7 @@
     }
   }
 
-  // Function to open the modal with the correct image
+  // Open the modal with the correct image
   function showModal(index, swiperInstance) {
     currentIndex = index;
     currentSwiper = swiperInstance;
@@ -1743,7 +1744,7 @@
     };
   }
 
-  // Function to navigate between images with delay
+  // Navigate between images with a swipe delay
   function navigateModal(direction, event) {
     const now = Date.now();
     if (now - lastSwipeTime < SWIPE_DELAY) {
@@ -1772,6 +1773,7 @@
     const touch = event.touches[0];
     startX = touch.clientX;
     startY = touch.clientY;
+    isScrolling = false; // Reset the scrolling flag on touch start
   });
 
   modal.addEventListener('touchmove', (event) => {
@@ -1779,14 +1781,18 @@
     const deltaX = touch.clientX - startX;
     const deltaY = touch.clientY - startY;
 
-    if (modalContent.scrollTop === 0 && deltaY > 0) {
-      event.preventDefault();
+    // Determine if the user is scrolling vertically
+    if (!isScrolling && Math.abs(deltaY) > Math.abs(deltaX)) {
+      isScrolling = true; // If vertical movement is greater, allow scrolling
+      return; // Don't trigger swipe for vertical scroll
     }
 
-    if (Math.abs(deltaY) > Math.abs(deltaX)) {
+    // Block horizontal swipe when scrolling vertically
+    if (isScrolling) {
       return;
     }
 
+    // Only trigger swipe if horizontal movement exceeds the threshold
     if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
       event.preventDefault();
       if (deltaX > 0) {
@@ -1828,6 +1834,7 @@
     }
   });
 
+  // Prevent default behavior for modal navigation with buttons
   prevBtn.addEventListener('click', (event) => {
     navigateModal('prev', event);
   });
@@ -1836,6 +1843,7 @@
     navigateModal('next', event);
   });
 
+  // Prevent jump when pressing arrow keys to navigate
   window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       modal.style.display = 'none';
@@ -1851,6 +1859,7 @@
     }
   });
 
+  // Prevent pull-to-refresh only inside the modal
   window.addEventListener(
     'touchmove',
     (event) => {
