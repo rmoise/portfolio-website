@@ -1666,12 +1666,9 @@
   let currentIndex = -1;
   let currentSwiper = null;
   let isBodyLocked = false; // Track if body scroll is locked
-
-  // Swipe-related variables
-  let startX = 0;
-  let startY = 0;
-  let isSwiping = false;
-  let isScrolling = false;
+  let startX = 0; // For touchstart X position tracking
+  let startY = 0; // For touchstart Y position tracking
+  const SWIPE_THRESHOLD = 100; // Increase swipe sensitivity threshold (higher = less sensitive)
 
   // Select images from both Swiper instances
   const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
@@ -1773,8 +1770,6 @@
     const touch = event.touches[0];
     startX = touch.clientX;
     startY = touch.clientY;
-    isSwiping = false;
-    isScrolling = false;
   });
 
   modal.addEventListener('touchmove', (event) => {
@@ -1784,28 +1779,18 @@
 
     // If vertical scroll is greater than horizontal, treat it as scrolling
     if (Math.abs(deltaY) > Math.abs(deltaX)) {
-      isScrolling = true;
-      isSwiping = false;
       return; // Exit if it's a scroll gesture
     }
 
-    // If horizontal movement is detected, treat it as a swipe
-    if (Math.abs(deltaX) > Math.abs(deltaY)) {
-      isSwiping = true;
+    // Only trigger swipe if horizontal movement exceeds the SWIPE_THRESHOLD
+    if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
       event.preventDefault(); // Prevent default browser scroll/swipe actions
-      if (deltaX > 50) {
+      if (deltaX > 0) {
         navigateModal('prev', event); // Swipe right -> previous image
-        isSwiping = false;
-      } else if (deltaX < -50) {
+      } else {
         navigateModal('next', event); // Swipe left -> next image
-        isSwiping = false;
       }
     }
-  });
-
-  modal.addEventListener('touchend', () => {
-    isSwiping = false;
-    isScrolling = false;
   });
 
   // Add click event listeners for images in Swiper 1
