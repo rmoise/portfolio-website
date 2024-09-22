@@ -1668,7 +1668,9 @@
   let isBodyLocked = false; // Track if body scroll is locked
   let startX = 0; // For touchstart X position tracking
   let startY = 0; // For touchstart Y position tracking
-  const SWIPE_THRESHOLD = 100; // Increase swipe sensitivity threshold (higher = less sensitive)
+  let lastSwipeTime = 0; // Track the last swipe time to introduce delay
+  const SWIPE_THRESHOLD = 150; // Increase swipe sensitivity threshold (higher = less sensitive)
+  const SWIPE_DELAY = 500; // Minimum delay between swipes (in ms)
 
   // Select images from both Swiper instances
   const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
@@ -1747,8 +1749,14 @@
     };
   }
 
-  // Function to navigate between images
+  // Function to navigate between images with delay
   function navigateModal(direction, event) {
+    const now = Date.now();
+    if (now - lastSwipeTime < SWIPE_DELAY) {
+      return; // If swipe is too quick, ignore it
+    }
+    lastSwipeTime = now; // Update last swipe time
+
     if (event) {
       event.preventDefault();
       event.stopPropagation();
@@ -1779,7 +1787,11 @@
 
     // If vertical scroll is greater than horizontal, treat it as scrolling
     if (Math.abs(deltaY) > Math.abs(deltaX)) {
-      return; // Exit if it's a scroll gesture
+      // Prevent pull-to-refresh
+      if (modalContent.scrollTop === 0 && deltaY > 0) {
+        event.preventDefault();
+      }
+      return; // Exit if it's a vertical scroll gesture
     }
 
     // Only trigger swipe if horizontal movement exceeds the SWIPE_THRESHOLD
