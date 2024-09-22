@@ -3300,3 +3300,9 @@ video {
         font-size: 20px; /* Size of the icon */
       }
 
+ /* Add this CSS */
+      .no-scroll {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+      }
