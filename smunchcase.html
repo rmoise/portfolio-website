@@ -1660,23 +1660,22 @@
   const nextBtn = modal.querySelector('.modal-next');
   const modalImageWrapper = document.getElementById('modal-image-wrapper');
   const modalImage = modalImageWrapper.querySelector('img');
-  const modalContent = modal.querySelector('.modal-content'); // Grab the modal content
+  const modalContent = modal.querySelector('.modal-content');
   const body = document.body;
   let scrollPosition = 0;
   let currentIndex = -1;
   let currentSwiper = null;
-  let isBodyLocked = false; // Track if body scroll is locked
-  let startX = 0; // For touchstart X position tracking
-  let startY = 0; // For touchstart Y position tracking
-  let lastSwipeTime = 0; // Track the last swipe time to introduce delay
-  const SWIPE_THRESHOLD = 100; // Swipe threshold for smoother swiping
-  const SWIPE_DELAY = 400; // Minimum delay between swipes (in ms)
+  let isBodyLocked = false;
+  let startX = 0;
+  let startY = 0;
+  let lastSwipeTime = 0;
+  const SWIPE_THRESHOLD = 50; // Decreased threshold to make swipes more responsive
+  const SWIPE_DELAY = 200; // Decreased delay for quicker swiping
 
-  // Select images from both Swiper instances
   const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
   const imagesSwiper2 = Array.from(document.querySelectorAll('.swiper-container-2 .clickable-image'));
 
-  // Function to lock the body scroll only when the modal is open
+  // Function to lock the body scroll
   function lockBodyScroll() {
     if (!isBodyLocked) {
       scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
@@ -1684,31 +1683,31 @@
       body.style.top = `-${scrollPosition}px`;
       body.style.left = '0';
       body.style.right = '0';
-      body.style.overflow = 'hidden'; // Prevent body scrolling
-      isBodyLocked = true; // Set flag to indicate body scroll is locked
+      body.style.overflow = 'hidden';
+      isBodyLocked = true;
     }
   }
 
-  // Function to unlock the body scroll when the modal is closed
+  // Function to unlock the body scroll
   function unlockBodyScroll() {
     if (isBodyLocked) {
       body.style.position = '';
       body.style.top = '';
       body.style.left = '';
       body.style.right = '';
-      body.style.overflow = ''; // Restore body scrolling
+      body.style.overflow = '';
       window.scrollTo(0, scrollPosition);
-      isBodyLocked = false; // Reset flag to indicate body scroll is unlocked
+      isBodyLocked = false;
     }
   }
 
-  // ** Function to reset the scroll position in the modal **
+  // Function to reset the scroll position in the modal
   function resetScrollPosition() {
     if (modalContent) {
-      modalContent.scrollTop = 0; // Reset scroll for modal content
+      modalContent.scrollTop = 0;
     }
     if (modalImage) {
-      modalImage.scrollTop = 0; // Reset scroll for the image itself
+      modalImage.scrollTop = 0;
     }
   }
 
@@ -1717,10 +1716,7 @@
     const isMobile = image.dataset.type === 'mobile';
     const isDesktop = image.dataset.type === 'desktop';
 
-    // Remove previous classes
     modalImageWrapper.classList.remove('mobile-image-wrapper', 'desktop-image-wrapper');
-
-    // Add correct wrapper class based on data-type
     if (isMobile) {
       modalImageWrapper.classList.add('mobile-image-wrapper');
     } else if (isDesktop) {
@@ -1733,21 +1729,17 @@
     currentIndex = index;
     currentSwiper = swiperInstance;
 
-    let images = currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2;
-    let currentImage = images[currentIndex];
+    const images = currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2;
+    const currentImage = images[currentIndex];
 
-    // Set the modal image source
     modalImage.src = currentImage.dataset.modalSrc;
 
-    // Adjust the image wrapper based on mobile or desktop
     adjustImageWrapper(currentImage);
-
     modal.style.display = 'flex';
     lockBodyScroll();
 
-    // Reset scroll after image is loaded
     modalImage.onload = () => {
-      resetScrollPosition(); // Ensure modal scroll resets to the top
+      resetScrollPosition();
     };
   }
 
@@ -1755,16 +1747,16 @@
   function navigateModal(direction, event) {
     const now = Date.now();
     if (now - lastSwipeTime < SWIPE_DELAY) {
-      return; // If swipe is too quick, ignore it
+      return;
     }
-    lastSwipeTime = now; // Update last swipe time
+    lastSwipeTime = now;
 
     if (event) {
       event.preventDefault();
       event.stopPropagation();
     }
 
-    let images = currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2;
+    const images = currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2;
 
     if (direction === 'next') {
       currentIndex = (currentIndex + 1) % images.length;
@@ -1787,23 +1779,20 @@
     const deltaX = touch.clientX - startX;
     const deltaY = touch.clientY - startY;
 
-    // Prevent pull-to-refresh if swiping down inside the modal
     if (modalContent.scrollTop === 0 && deltaY > 0) {
-      event.preventDefault(); // Prevent default behavior only in modal
+      event.preventDefault();
     }
 
-    // If vertical scroll is greater than horizontal, treat it as scrolling
     if (Math.abs(deltaY) > Math.abs(deltaX)) {
-      return; // Exit if it's a vertical scroll gesture, allow normal page scroll
+      return;
     }
 
-    // Only trigger swipe if horizontal movement exceeds the SWIPE_THRESHOLD
     if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
-      event.preventDefault(); // Prevent default browser scroll/swipe actions
+      event.preventDefault();
       if (deltaX > 0) {
-        navigateModal('prev', event); // Swipe right -> previous image
+        navigateModal('prev', event);
       } else {
-        navigateModal('next', event); // Swipe left -> next image
+        navigateModal('next', event);
       }
     }
   });
@@ -1839,7 +1828,6 @@
     }
   });
 
-  // Prevent default behavior for modal navigation with buttons
   prevBtn.addEventListener('click', (event) => {
     navigateModal('prev', event);
   });
@@ -1848,7 +1836,6 @@
     navigateModal('next', event);
   });
 
-  // Prevent jump when pressing arrow keys to navigate
   window.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
       modal.style.display = 'none';
@@ -1864,12 +1851,11 @@
     }
   });
 
-  // Remove pull-to-refresh globally only inside the modal
   window.addEventListener(
     'touchmove',
     (event) => {
       if (modal.style.display === 'flex' && window.scrollY === 0 && event.touches[0].clientY > 0) {
-        event.preventDefault(); // Block pull-to-refresh inside modal
+        event.preventDefault();
       }
     },
     { passive: false },
