@@ -24,10 +24,7 @@
       defer
     ></script>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
@@ -1593,26 +1590,16 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
 
-    <script>
-      $(document).ready(function () {
-        $('.image-popup').magnificPopup({
-          type: 'image',
-          closeOnContentClick: true,
-          image: {
-            // Enable scrolling when zoomed
-            verticalFit: false, // Allow image to overflow vertically
-          },
-        })
-      })
-    </script>
+
     <script>
       // Set the default selected thumbnail
       document.addEventListener('DOMContentLoaded', function () {
         // Initialize Swiper instance
         const swiper2 = new Swiper('.swiper-container-2', {
+            loop: true,
           slidesPerView: 1, // Ensure only one slide per view if that's your intention
           spaceBetween: 30, // No space between slides to maximize width
-          centeredSlides: false, // Center slides if desired
+          centeredSlides: true, // Center slides if desired
           pagination: {
             el: '.swiper-pagination.swiper-pagination-2',
             clickable: true,

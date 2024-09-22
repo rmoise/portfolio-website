@@ -1529,11 +1529,7 @@ video {
   transition: top 0.4s ease-in; /* Ease in when showing */
 }
 
-#main-nav,
-#sub-nav {
-  transition: transform 0.3s ease-in-out; /* Smooth sliding for navs */
-  will-change: transform; /* Optimize for performance */
-}
+
 
 .subnav-wrapper::-webkit-scrollbar {
   display: none;
