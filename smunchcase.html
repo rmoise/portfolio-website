@@ -1845,6 +1845,13 @@
       }
     }
   });
+
+  // Prevent pull-to-refresh when the modal is open
+  modal.addEventListener('touchmove', (event) => {
+    if (modal.style.display === 'flex' && window.scrollY === 0 && event.touches[0].clientY > 0) {
+      event.preventDefault();
+    }
+  });
 });
 
 
