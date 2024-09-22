@@ -1673,31 +1673,39 @@
   let currentSwiper = null;
   let startX = 0;
   let startY = 0;
-  let isScrolling = false;
+  let isScrolling;
   let lastSwipeTime = 0;
   const SWIPE_THRESHOLD = 50;
   const SWIPE_DELAY = 200;
+  let scrollPosition = 0;
+  let isBodyLocked = false;
 
   const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
   const imagesSwiper2 = Array.from(document.querySelectorAll('.swiper-container-2 .clickable-image'));
 
-  // Function to lock the body scroll using a CSS class
+  // Function to lock the body scroll
   function lockBodyScroll() {
-    body.classList.add('no-scroll');
-  }
-
-  // Function to unlock the body scroll by removing the CSS class
-  function unlockBodyScroll() {
-    body.classList.remove('no-scroll');
-  }
-
-  // Reset the scroll position in the modal
-  function resetScrollPosition() {
-    if (modalContent) {
-      modalContent.scrollTop = 0;
+    if (!isBodyLocked) {
+      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollPosition}px`;
+      body.style.left = '0';
+      body.style.right = '0';
+      body.style.width = '100%';
+      isBodyLocked = true;
     }
-    if (modalImage) {
-      modalImage.scrollTop = 0;
+  }
+
+  // Function to unlock the body scroll
+  function unlockBodyScroll() {
+    if (isBodyLocked) {
+      body.style.position = '';
+      body.style.top = '';
+      body.style.left = '';
+      body.style.right = '';
+      body.style.width = '';
+      window.scrollTo(0, scrollPosition);
+      isBodyLocked = false;
     }
   }
 
@@ -1711,6 +1719,16 @@
       modalImageWrapper.classList.add('mobile-image-wrapper');
     } else if (isDesktop) {
       modalImageWrapper.classList.add('desktop-image-wrapper');
+    }
+  }
+
+  // Reset the scroll position in the modal content
+  function resetScrollPosition() {
+    if (modalContent) {
+      modalContent.scrollTop = 0; // Reset the modal's scroll position
+    }
+    if (modalImageWrapper) {
+      modalImageWrapper.scrollTop = 0; // Reset the image wrapper's scroll position
     }
   }
 
@@ -1728,8 +1746,9 @@
     modal.style.display = 'flex';
     lockBodyScroll();
 
+    // Reset scroll each time the modal image is loaded
     modalImage.onload = () => {
-      resetScrollPosition();
+      resetScrollPosition(); // Ensure the scroll resets every time an image loads
     };
   }
 
@@ -1766,7 +1785,7 @@
   });
 
   modal.addEventListener('touchmove', (event) => {
-    if (event.touches.length > 1 || (event.scale && event.scale !== 1)) return; // Ignore if touching with more than one finger
+    if (event.touches.length > 1 || (event.scale && event.scale !== 1)) return;
 
     const touch = event.touches[0];
     const deltaX = touch.clientX - startX;
@@ -1776,13 +1795,9 @@
       isScrolling = Math.abs(deltaY) > Math.abs(deltaX);
     }
 
-    if (isScrolling) {
-      // Vertical scrolling, allow default behavior
-      return;
-    } else {
-      // Horizontal swipe detected
-      event.preventDefault(); // Prevent vertical scrolling
+    if (!isScrolling) {
       if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
+        event.preventDefault(); // Prevent default only during horizontal swipes
         if (deltaX > 0) {
           navigateModal('prev', event);
         } else {
@@ -1846,13 +1861,14 @@
     }
   });
 
-  // Prevent pull-to-refresh when the modal is open
+  // Prevent pull-to-refresh when the modal is open and at the top
   modal.addEventListener('touchmove', (event) => {
-    if (modal.style.display === 'flex' && window.scrollY === 0 && event.touches[0].clientY > 0) {
+    if (modalContent.scrollTop === 0 && event.touches[0].clientY > startY) {
       event.preventDefault();
     }
   });
 });
+
 
 
     </script>
