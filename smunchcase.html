@@ -78,12 +78,11 @@
         object-fit: contain; /* Maintain aspect ratio */
       }
       /* Add this CSS */
-.no-scroll {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-}
-
+      .no-scroll {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+      }
     </style>
   </head>
 
@@ -1660,217 +1659,228 @@
       })
     </script>
     <script>
-     document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('image-modal');
-  const closeBtn = modal.querySelector('.modal-close');
-  const prevBtn = modal.querySelector('.modal-prev');
-  const nextBtn = modal.querySelector('.modal-next');
-  const modalImageWrapper = document.getElementById('modal-image-wrapper');
-  const modalImage = modalImageWrapper.querySelector('img');
-  const modalContent = modal.querySelector('.modal-content');
-  const body = document.body;
-  let currentIndex = -1;
-  let currentSwiper = null;
-  let startX = 0;
-  let startY = 0;
-  let isScrolling;
-  let lastSwipeTime = 0;
-  const SWIPE_THRESHOLD = 50;
-  const SWIPE_DELAY = 200;
-  let scrollPosition = 0;
-  let isBodyLocked = false;
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('image-modal')
+        const closeBtn = modal.querySelector('.modal-close')
+        const prevBtn = modal.querySelector('.modal-prev')
+        const nextBtn = modal.querySelector('.modal-next')
+        const modalImageWrapper = document.getElementById('modal-image-wrapper')
+        const modalImage = modalImageWrapper.querySelector('img')
+        const modalContent = modal.querySelector('.modal-content')
+        const body = document.body
+        let currentIndex = -1
+        let currentSwiper = null
+        let startX = 0
+        let startY = 0
+        let isScrolling
+        let lastSwipeTime = 0
+        const SWIPE_THRESHOLD = 50
+        const SWIPE_DELAY = 200
+        let scrollPosition = 0
+        let isBodyLocked = false
 
-  const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
-  const imagesSwiper2 = Array.from(document.querySelectorAll('.swiper-container-2 .clickable-image'));
+        const imagesSwiper1 = Array.from(
+          document.querySelectorAll('.swiper-container-1 .clickable-image'),
+        )
+        const imagesSwiper2 = Array.from(
+          document.querySelectorAll('.swiper-container-2 .clickable-image'),
+        )
 
-  // Function to lock the body scroll
-  function lockBodyScroll() {
-    if (!isBodyLocked) {
-      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-      body.style.position = 'fixed';
-      body.style.top = `-${scrollPosition}px`;
-      body.style.left = '0';
-      body.style.right = '0';
-      body.style.width = '100%';
-      isBodyLocked = true;
-    }
-  }
-
-  // Function to unlock the body scroll
-  function unlockBodyScroll() {
-    if (isBodyLocked) {
-      body.style.position = '';
-      body.style.top = '';
-      body.style.left = '';
-      body.style.right = '';
-      body.style.width = '';
-      window.scrollTo(0, scrollPosition);
-      isBodyLocked = false;
-    }
-  }
-
-  // Adjust the image wrapper class (mobile or desktop)
-  function adjustImageWrapper(image) {
-    const isMobile = image.dataset.type === 'mobile';
-    const isDesktop = image.dataset.type === 'desktop';
-
-    modalImageWrapper.classList.remove('mobile-image-wrapper', 'desktop-image-wrapper');
-    if (isMobile) {
-      modalImageWrapper.classList.add('mobile-image-wrapper');
-    } else if (isDesktop) {
-      modalImageWrapper.classList.add('desktop-image-wrapper');
-    }
-  }
-
-  // Reset the scroll position in the modal content
-  function resetScrollPosition() {
-    if (modalContent) {
-      modalContent.scrollTop = 0; // Reset the modal's scroll position
-    }
-    if (modalImageWrapper) {
-      modalImageWrapper.scrollTop = 0; // Reset the image wrapper's scroll position
-    }
-  }
-
-  // Open the modal with the correct image
-  function showModal(index, swiperInstance) {
-    currentIndex = index;
-    currentSwiper = swiperInstance;
-
-    const images = currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2;
-    const currentImage = images[currentIndex];
-
-    modalImage.src = currentImage.dataset.modalSrc;
-
-    adjustImageWrapper(currentImage);
-    modal.style.display = 'flex';
-    lockBodyScroll();
-
-    // Reset scroll each time the modal image is loaded
-    modalImage.onload = () => {
-      resetScrollPosition(); // Ensure the scroll resets every time an image loads
-    };
-  }
-
-  // Navigate between images with a swipe delay
-  function navigateModal(direction, event) {
-    const now = Date.now();
-    if (now - lastSwipeTime < SWIPE_DELAY) {
-      return;
-    }
-    lastSwipeTime = now;
-
-    if (event) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    const images = currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2;
-
-    if (direction === 'next') {
-      currentIndex = (currentIndex + 1) % images.length;
-    } else if (direction === 'prev') {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-    }
-
-    showModal(currentIndex, currentSwiper);
-  }
-
-  // Detect swipe gestures inside the modal
-  modal.addEventListener('touchstart', (event) => {
-    const touch = event.touches[0];
-    startX = touch.clientX;
-    startY = touch.clientY;
-    isScrolling = undefined; // Reset the scrolling flag on touch start
-  });
-
-  modal.addEventListener('touchmove', (event) => {
-    if (event.touches.length > 1 || (event.scale && event.scale !== 1)) return;
-
-    const touch = event.touches[0];
-    const deltaX = touch.clientX - startX;
-    const deltaY = touch.clientY - startY;
-
-    if (typeof isScrolling === 'undefined') {
-      isScrolling = Math.abs(deltaY) > Math.abs(deltaX);
-    }
-
-    if (!isScrolling) {
-      if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
-        event.preventDefault(); // Prevent default only during horizontal swipes
-        if (deltaX > 0) {
-          navigateModal('prev', event);
-        } else {
-          navigateModal('next', event);
+        // Function to lock the body scroll
+        function lockBodyScroll() {
+          if (!isBodyLocked) {
+            scrollPosition =
+              window.pageYOffset || document.documentElement.scrollTop
+            body.style.position = 'fixed'
+            body.style.top = `-${scrollPosition}px`
+            body.style.left = '0'
+            body.style.right = '0'
+            body.style.width = '100%'
+            isBodyLocked = true
+          }
         }
-      }
-    }
-  });
 
-  // Add click event listeners for images in Swiper 1
-  imagesSwiper1.forEach((img, index) => {
-    img.addEventListener('click', (event) => {
-      event.preventDefault();
-      showModal(index, 'swiper1');
-    });
-  });
+        // Function to unlock the body scroll
+        function unlockBodyScroll() {
+          if (isBodyLocked) {
+            body.style.position = ''
+            body.style.top = ''
+            body.style.left = ''
+            body.style.right = ''
+            body.style.width = ''
+            window.scrollTo(0, scrollPosition)
+            isBodyLocked = false
+          }
+        }
 
-  // Add click event listeners for images in Swiper 2
-  imagesSwiper2.forEach((img, index) => {
-    img.addEventListener('click', (event) => {
-      event.preventDefault();
-      showModal(index, 'swiper2');
-    });
-  });
+        // Adjust the image wrapper class (mobile or desktop)
+        function adjustImageWrapper(image) {
+          const isMobile = image.dataset.type === 'mobile'
+          const isDesktop = image.dataset.type === 'desktop'
 
-  // Close modal
-  closeBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    modal.style.display = 'none';
-    unlockBodyScroll();
-  });
+          modalImageWrapper.classList.remove(
+            'mobile-image-wrapper',
+            'desktop-image-wrapper',
+          )
+          if (isMobile) {
+            modalImageWrapper.classList.add('mobile-image-wrapper')
+          } else if (isDesktop) {
+            modalImageWrapper.classList.add('desktop-image-wrapper')
+          }
+        }
 
-  // Close the modal when clicking outside the modal content
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
-      modal.style.display = 'none';
-      unlockBodyScroll();
-    }
-  });
+        // Reset the scroll position in the modal content
+        function resetScrollPosition() {
+          if (modalContent) {
+            modalContent.scrollTop = 0 // Reset the modal's scroll position
+          }
+          if (modalImageWrapper) {
+            modalImageWrapper.scrollTop = 0 // Reset the image wrapper's scroll position
+          }
+        }
 
-  // Prevent default behavior for modal navigation with buttons
-  prevBtn.addEventListener('click', (event) => {
-    navigateModal('prev', event);
-  });
+        // Open the modal with the correct image
+        function showModal(index, swiperInstance) {
+          currentIndex = index
+          currentSwiper = swiperInstance
 
-  nextBtn.addEventListener('click', (event) => {
-    navigateModal('next', event);
-  });
+          const images =
+            currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2
+          const currentImage = images[currentIndex]
 
-  // Keyboard navigation
-  window.addEventListener('keydown', (event) => {
-    if (modal.style.display === 'flex') {
-      if (event.key === 'Escape') {
-        modal.style.display = 'none';
-        unlockBodyScroll();
-      } else if (event.key === 'ArrowLeft') {
-        navigateModal('prev', event);
-      } else if (event.key === 'ArrowRight') {
-        navigateModal('next', event);
-      }
-    }
-  });
+          modalImage.src = currentImage.dataset.modalSrc
 
-  // Prevent pull-to-refresh when the modal is open and at the top
-  modal.addEventListener('touchmove', (event) => {
-    if (modalContent.scrollTop === 0 && event.touches[0].clientY > startY) {
-      event.preventDefault();
-    }
-  });
-});
+          adjustImageWrapper(currentImage)
+          modal.style.display = 'flex'
+          lockBodyScroll()
 
+          // Reset scroll each time the modal image is loaded
+          modalImage.onload = () => {
+            resetScrollPosition() // Ensure the scroll resets every time an image loads
+          }
+        }
 
+        // Navigate between images with a swipe delay
+        function navigateModal(direction, event) {
+          const now = Date.now()
+          if (now - lastSwipeTime < SWIPE_DELAY) {
+            return
+          }
+          lastSwipeTime = now
 
+          if (event) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          const images =
+            currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2
+
+          if (direction === 'next') {
+            currentIndex = (currentIndex + 1) % images.length
+          } else if (direction === 'prev') {
+            currentIndex = (currentIndex - 1 + images.length) % images.length
+          }
+
+          showModal(currentIndex, currentSwiper)
+        }
+
+        // Detect swipe gestures inside the modal
+        modal.addEventListener('touchstart', (event) => {
+          const touch = event.touches[0]
+          startX = touch.clientX
+          startY = touch.clientY
+          isScrolling = undefined // Reset the scrolling flag on touch start
+        })
+
+        modal.addEventListener('touchmove', (event) => {
+          if (event.touches.length > 1 || (event.scale && event.scale !== 1))
+            return
+
+          const touch = event.touches[0]
+          const deltaX = touch.clientX - startX
+          const deltaY = touch.clientY - startY
+
+          if (typeof isScrolling === 'undefined') {
+            isScrolling = Math.abs(deltaY) > Math.abs(deltaX)
+          }
+
+          if (!isScrolling) {
+            if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
+              event.preventDefault() // Prevent default only during horizontal swipes
+              if (deltaX > 0) {
+                navigateModal('prev', event)
+              } else {
+                navigateModal('next', event)
+              }
+            }
+          }
+        })
+
+        // Add click event listeners for images in Swiper 1
+        imagesSwiper1.forEach((img, index) => {
+          img.addEventListener('click', (event) => {
+            event.preventDefault()
+            showModal(index, 'swiper1')
+          })
+        })
+
+        // Add click event listeners for images in Swiper 2
+        imagesSwiper2.forEach((img, index) => {
+          img.addEventListener('click', (event) => {
+            event.preventDefault()
+            showModal(index, 'swiper2')
+          })
+        })
+
+        // Close modal
+        closeBtn.addEventListener('click', (event) => {
+          event.preventDefault()
+          modal.style.display = 'none'
+          unlockBodyScroll()
+        })
+
+        // Close the modal when clicking outside the modal content
+        modal.addEventListener('click', (event) => {
+          if (event.target === modal) {
+            modal.style.display = 'none'
+            unlockBodyScroll()
+          }
+        })
+
+        // Prevent default behavior for modal navigation with buttons
+        prevBtn.addEventListener('click', (event) => {
+          navigateModal('prev', event)
+        })
+
+        nextBtn.addEventListener('click', (event) => {
+          navigateModal('next', event)
+        })
+
+        // Keyboard navigation
+        window.addEventListener('keydown', (event) => {
+          if (modal.style.display === 'flex') {
+            if (event.key === 'Escape') {
+              modal.style.display = 'none'
+              unlockBodyScroll()
+            } else if (event.key === 'ArrowLeft') {
+              navigateModal('prev', event)
+            } else if (event.key === 'ArrowRight') {
+              navigateModal('next', event)
+            }
+          }
+        })
+
+        // Prevent pull-to-refresh when the modal is open and at the top
+        modal.addEventListener('touchmove', (event) => {
+          if (
+            modalContent.scrollTop === 0 &&
+            event.touches[0].clientY > startY
+          ) {
+            event.preventDefault()
+          }
+        })
+      })
     </script>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
