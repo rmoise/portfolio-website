@@ -1654,177 +1654,215 @@
     </script>
     <script>
       document.addEventListener('DOMContentLoaded', () => {
-        const modal = document.getElementById('image-modal')
-        const closeBtn = modal.querySelector('.modal-close')
-        const prevBtn = modal.querySelector('.modal-prev')
-        const nextBtn = modal.querySelector('.modal-next')
-        const modalImageWrapper = document.getElementById('modal-image-wrapper')
-        const modalImage = modalImageWrapper.querySelector('img')
-        const modalContent = modal.querySelector('.modal-content') // Grab the modal content
-        const body = document.body
-        let scrollPosition = 0
-        let currentIndex = -1
-        let currentSwiper = null
-        let isBodyLocked = false // Track if body scroll is locked
+  const modal = document.getElementById('image-modal');
+  const closeBtn = modal.querySelector('.modal-close');
+  const prevBtn = modal.querySelector('.modal-prev');
+  const nextBtn = modal.querySelector('.modal-next');
+  const modalImageWrapper = document.getElementById('modal-image-wrapper');
+  const modalImage = modalImageWrapper.querySelector('img');
+  const body = document.body;
+  let scrollPosition = 0;
+  let currentIndex = -1;
+  let currentSwiper = null;
+  let isBodyLocked = false; // Track if body scroll is locked
 
-        // Select images from both Swiper instances
-        const imagesSwiper1 = Array.from(
-          document.querySelectorAll('.swiper-container-1 .clickable-image'),
-        )
-        const imagesSwiper2 = Array.from(
-          document.querySelectorAll('.swiper-container-2 .clickable-image'),
-        )
+  // Swipe-related variables
+  let startX = 0;
+  let startY = 0;
+  let isSwiping = false;
 
-        // Function to lock the body scroll
-        function lockBodyScroll() {
-          if (!isBodyLocked) {
-            scrollPosition =
-              window.pageYOffset || document.documentElement.scrollTop
-            body.style.position = 'fixed'
-            body.style.top = `-${scrollPosition}px`
-            body.style.left = '0'
-            body.style.right = '0'
-            isBodyLocked = true // Set flag to indicate body scroll is locked
-          }
-        }
+  // Select images from both Swiper instances
+  const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
+  const imagesSwiper2 = Array.from(document.querySelectorAll('.swiper-container-2 .clickable-image'));
 
-        // Function to unlock the body scroll
-        function unlockBodyScroll() {
-          if (isBodyLocked) {
-            body.style.position = ''
-            body.style.top = ''
-            body.style.left = ''
-            body.style.right = ''
-            window.scrollTo(0, scrollPosition)
-            isBodyLocked = false // Reset flag to indicate body scroll is unlocked
-          }
-        }
+  // Prevent pull-to-refresh behavior in mobile browsers
+  window.addEventListener(
+    'touchmove',
+    (event) => {
+      if (window.scrollY === 0) {
+        event.preventDefault(); // Prevent pull-to-refresh action
+      }
+    },
+    { passive: false }
+  );
 
-        // Function to reset the scroll position in the modal
-        function resetScrollPosition() {
-          if (modalContent) {
-            modalContent.scrollTop = 0 // Reset modal content scroll
-          }
-        }
+  // Function to lock the body scroll
+  function lockBodyScroll() {
+    if (!isBodyLocked) {
+      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+      body.style.position = 'fixed';
+      body.style.top = `-${scrollPosition}px`;
+      body.style.left = '0';
+      body.style.right = '0';
+      isBodyLocked = true; // Set flag to indicate body scroll is locked
+    }
+  }
 
-        // Function to adjust the image wrapper class (mobile or desktop)
-        function adjustImageWrapper(image) {
-          const isMobile = image.dataset.type === 'mobile'
-          const isDesktop = image.dataset.type === 'desktop'
+  // Function to unlock the body scroll
+  function unlockBodyScroll() {
+    if (isBodyLocked) {
+      body.style.position = '';
+      body.style.top = '';
+      body.style.left = '';
+      body.style.right = '';
+      window.scrollTo(0, scrollPosition);
+      isBodyLocked = false; // Reset flag to indicate body scroll is unlocked
+    }
+  }
 
-          // Remove previous classes
-          modalImageWrapper.classList.remove(
-            'mobile-image-wrapper',
-            'desktop-image-wrapper',
-          )
+  // Function to reset the scroll position in the modal
+  function resetScrollPosition() {
+    if (modalImage) {
+      modalImage.scrollTop = 0;
+    }
+  }
 
-          // Add correct wrapper class based on data-type
-          if (isMobile) {
-            modalImageWrapper.classList.add('mobile-image-wrapper')
-          } else if (isDesktop) {
-            modalImageWrapper.classList.add('desktop-image-wrapper')
-          }
-        }
+  // Function to adjust the image wrapper class (mobile or desktop)
+  function adjustImageWrapper(image) {
+    const isMobile = image.dataset.type === 'mobile';
+    const isDesktop = image.dataset.type === 'desktop';
 
-        // Function to open the modal with the correct image
-        function showModal(index, swiperInstance) {
-          currentIndex = index
-          currentSwiper = swiperInstance
+    // Remove previous classes
+    modalImageWrapper.classList.remove('mobile-image-wrapper', 'desktop-image-wrapper');
 
-          let images =
-            currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2
-          let currentImage = images[currentIndex]
+    // Add correct wrapper class based on data-type
+    if (isMobile) {
+      modalImageWrapper.classList.add('mobile-image-wrapper');
+    } else if (isDesktop) {
+      modalImageWrapper.classList.add('desktop-image-wrapper');
+    }
+  }
 
-          // Set the modal image source
-          modalImage.src = currentImage.dataset.modalSrc
+  // Function to open the modal with the correct image
+  function showModal(index, swiperInstance) {
+    currentIndex = index;
+    currentSwiper = swiperInstance;
 
-          // Adjust the image wrapper based on mobile or desktop
-          adjustImageWrapper(currentImage)
+    let images = currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2;
+    let currentImage = images[currentIndex];
 
-          modal.style.display = 'flex'
-          lockBodyScroll()
+    // Set the modal image source
+    modalImage.src = currentImage.dataset.modalSrc;
 
-          // Reset scroll after image is loaded
-          modalImage.onload = () => {
-            resetScrollPosition() // Ensure modal scroll resets to the top
-          }
-        }
+    // Adjust the image wrapper based on mobile or desktop
+    adjustImageWrapper(currentImage);
 
-        // Function to navigate between images
-        function navigateModal(direction, event) {
-          if (event) {
-            event.preventDefault()
-            event.stopPropagation()
-          }
+    modal.style.display = 'flex';
+    lockBodyScroll();
 
-          let images =
-            currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2
+    // Reset scroll after image is loaded
+    modalImage.onload = () => {
+      resetScrollPosition(); // Ensure modal scroll resets to the top
+    };
+  }
 
-          if (direction === 'next') {
-            currentIndex = (currentIndex + 1) % images.length
-          } else if (direction === 'prev') {
-            currentIndex = (currentIndex - 1 + images.length) % images.length
-          }
+  // Function to navigate between images
+  function navigateModal(direction, event) {
+    if (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
 
-          showModal(currentIndex, currentSwiper)
-        }
+    let images = currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2;
 
-        // Add click event listeners for images in Swiper 1
-        imagesSwiper1.forEach((img, index) => {
-          img.addEventListener('click', (event) => {
-            event.preventDefault()
-            showModal(index, 'swiper1')
-          })
-        })
+    if (direction === 'next') {
+      currentIndex = (currentIndex + 1) % images.length;
+    } else if (direction === 'prev') {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+    }
 
-        // Add click event listeners for images in Swiper 2
-        imagesSwiper2.forEach((img, index) => {
-          img.addEventListener('click', (event) => {
-            event.preventDefault()
-            showModal(index, 'swiper2')
-          })
-        })
+    showModal(currentIndex, currentSwiper);
+  }
 
-        // Close modal
-        closeBtn.addEventListener('click', (event) => {
-          event.preventDefault()
-          modal.style.display = 'none'
-          unlockBodyScroll()
-        })
+  // Detect swipe gestures
+  modal.addEventListener('touchstart', (event) => {
+    const touch = event.touches[0];
+    startX = touch.clientX;
+    startY = touch.clientY;
+    isSwiping = true;
+  });
 
-        // Close the modal when clicking outside the modal content
-        modal.addEventListener('click', (event) => {
-          if (event.target === modal) {
-            modal.style.display = 'none'
-            unlockBodyScroll()
-          }
-        })
+  modal.addEventListener('touchmove', (event) => {
+    if (!isSwiping) return;
 
-        // Prevent default behavior for modal navigation with buttons
-        prevBtn.addEventListener('click', (event) => {
-          navigateModal('prev', event)
-        })
+    const touch = event.touches[0];
+    const deltaX = touch.clientX - startX;
+    const deltaY = touch.clientY - startY;
 
-        nextBtn.addEventListener('click', (event) => {
-          navigateModal('next', event)
-        })
+    // Determine if the swipe is horizontal
+    if (Math.abs(deltaX) > Math.abs(deltaY)) {
+      event.preventDefault();
+      if (deltaX > 50) {
+        navigateModal('prev', event); // Swipe right -> previous image
+        isSwiping = false;
+      } else if (deltaX < -50) {
+        navigateModal('next', event); // Swipe left -> next image
+        isSwiping = false;
+      }
+    }
+  });
 
-        // Prevent jump when pressing arrow keys to navigate
-        window.addEventListener('keydown', (event) => {
-          if (event.key === 'Escape') {
-            modal.style.display = 'none'
-            unlockBodyScroll()
-          }
-          if (modal.style.display === 'flex') {
-            if (event.key === 'ArrowLeft') {
-              navigateModal('prev', event)
-            }
-            if (event.key === 'ArrowRight') {
-              navigateModal('next', event)
-            }
-          }
-        })
-      })
+  modal.addEventListener('touchend', () => {
+    isSwiping = false;
+  });
+
+  // Add click event listeners for images in Swiper 1
+  imagesSwiper1.forEach((img, index) => {
+    img.addEventListener('click', (event) => {
+      event.preventDefault();
+      showModal(index, 'swiper1');
+    });
+  });
+
+  // Add click event listeners for images in Swiper 2
+  imagesSwiper2.forEach((img, index) => {
+    img.addEventListener('click', (event) => {
+      event.preventDefault();
+      showModal(index, 'swiper2');
+    });
+  });
+
+  // Close modal
+  closeBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    modal.style.display = 'none';
+    unlockBodyScroll();
+  });
+
+  // Close the modal when clicking outside the modal content
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+      modal.style.display = 'none';
+      unlockBodyScroll();
+    }
+  });
+
+  // Prevent default behavior for modal navigation with buttons
+  prevBtn.addEventListener('click', (event) => {
+    navigateModal('prev', event);
+  });
+
+  nextBtn.addEventListener('click', (event) => {
+    navigateModal('next', event);
+  });
+
+  // Prevent jump when pressing arrow keys to navigate
+  window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      modal.style.display = 'none';
+      unlockBodyScroll();
+    }
+    if (modal.style.display === 'flex') {
+      if (event.key === 'ArrowLeft') {
+        navigateModal('prev', event);
+      }
+      if (event.key === 'ArrowRight') {
+        navigateModal('next', event);
+      }
+    }
+  });
+});
+
     </script>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
