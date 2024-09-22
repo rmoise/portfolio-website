@@ -77,6 +77,13 @@
         max-height: 90vh; /* Let it fill 90% of the viewport height */
         object-fit: contain; /* Maintain aspect ratio */
       }
+      /* Add this CSS */
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
     </style>
   </head>
 
@@ -1653,7 +1660,7 @@
       })
     </script>
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+     document.addEventListener('DOMContentLoaded', () => {
   const modal = document.getElementById('image-modal');
   const closeBtn = modal.querySelector('.modal-close');
   const prevBtn = modal.querySelector('.modal-prev');
@@ -1662,10 +1669,8 @@
   const modalImage = modalImageWrapper.querySelector('img');
   const modalContent = modal.querySelector('.modal-content');
   const body = document.body;
-  let scrollPosition = 0;
   let currentIndex = -1;
   let currentSwiper = null;
-  let isBodyLocked = false;
   let startX = 0;
   let startY = 0;
   let isScrolling = false;
@@ -1676,30 +1681,14 @@
   const imagesSwiper1 = Array.from(document.querySelectorAll('.swiper-container-1 .clickable-image'));
   const imagesSwiper2 = Array.from(document.querySelectorAll('.swiper-container-2 .clickable-image'));
 
-  // Function to lock the body scroll only when modal is open
+  // Function to lock the body scroll using a CSS class
   function lockBodyScroll() {
-    if (!isBodyLocked) {
-      scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-      body.style.position = 'fixed';
-      body.style.top = `-${scrollPosition}px`;
-      body.style.left = '0';
-      body.style.right = '0';
-      body.style.overflow = 'hidden';
-      isBodyLocked = true;
-    }
+    body.classList.add('no-scroll');
   }
 
-  // Function to unlock the body scroll when modal is closed
+  // Function to unlock the body scroll by removing the CSS class
   function unlockBodyScroll() {
-    if (isBodyLocked) {
-      body.style.position = '';
-      body.style.top = '';
-      body.style.left = '';
-      body.style.right = '';
-      body.style.overflow = '';
-      window.scrollTo(0, scrollPosition);
-      isBodyLocked = false;
-    }
+    body.classList.remove('no-scroll');
   }
 
   // Reset the scroll position in the modal
@@ -1773,32 +1762,32 @@
     const touch = event.touches[0];
     startX = touch.clientX;
     startY = touch.clientY;
-    isScrolling = false; // Reset the scrolling flag on touch start
+    isScrolling = undefined; // Reset the scrolling flag on touch start
   });
 
   modal.addEventListener('touchmove', (event) => {
+    if (event.touches.length > 1 || (event.scale && event.scale !== 1)) return; // Ignore if touching with more than one finger
+
     const touch = event.touches[0];
     const deltaX = touch.clientX - startX;
     const deltaY = touch.clientY - startY;
 
-    // Determine if the user is scrolling vertically
-    if (!isScrolling && Math.abs(deltaY) > Math.abs(deltaX)) {
-      isScrolling = true; // If vertical movement is greater, allow scrolling
-      return; // Don't trigger swipe for vertical scroll
+    if (typeof isScrolling === 'undefined') {
+      isScrolling = Math.abs(deltaY) > Math.abs(deltaX);
     }
 
-    // Block horizontal swipe when scrolling vertically
     if (isScrolling) {
+      // Vertical scrolling, allow default behavior
       return;
-    }
-
-    // Only trigger swipe if horizontal movement exceeds the threshold
-    if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
-      event.preventDefault();
-      if (deltaX > 0) {
-        navigateModal('prev', event);
-      } else {
-        navigateModal('next', event);
+    } else {
+      // Horizontal swipe detected
+      event.preventDefault(); // Prevent vertical scrolling
+      if (Math.abs(deltaX) > SWIPE_THRESHOLD) {
+        if (deltaX > 0) {
+          navigateModal('prev', event);
+        } else {
+          navigateModal('next', event);
+        }
       }
     }
   });
@@ -1843,33 +1832,21 @@
     navigateModal('next', event);
   });
 
-  // Prevent jump when pressing arrow keys to navigate
+  // Keyboard navigation
   window.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-      modal.style.display = 'none';
-      unlockBodyScroll();
-    }
     if (modal.style.display === 'flex') {
-      if (event.key === 'ArrowLeft') {
+      if (event.key === 'Escape') {
+        modal.style.display = 'none';
+        unlockBodyScroll();
+      } else if (event.key === 'ArrowLeft') {
         navigateModal('prev', event);
-      }
-      if (event.key === 'ArrowRight') {
+      } else if (event.key === 'ArrowRight') {
         navigateModal('next', event);
       }
     }
   });
-
-  // Prevent pull-to-refresh only inside the modal
-  window.addEventListener(
-    'touchmove',
-    (event) => {
-      if (modal.style.display === 'flex' && window.scrollY === 0 && event.touches[0].clientY > 0) {
-        event.preventDefault();
-      }
-    },
-    { passive: false },
-  );
 });
+
 
     </script>
 
