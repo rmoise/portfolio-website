@@ -3284,3 +3284,24 @@ video {
     border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
   }
 }
+
+
+ .click-to-enlarge {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-top: 10px;
+        color: #007bff; /* Blue color */
+        font-weight: bold;
+      }
+
+      .click-to-enlarge:hover {
+        text-decoration: underline; /* Underline on hover */
+      }
+
+      .magnifying-glass {
+        margin-right: 5px;
+        font-size: 20px; /* Size of the icon */
+      }
+
+      

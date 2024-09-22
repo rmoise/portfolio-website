@@ -13,24 +13,75 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
-    />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+
     <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
       rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
     <script
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js"
       defer
     ></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
+    />
+    <style>
+      /* Modal Container */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8); /* Dark background */
+        justify-content: center;
+        align-items: flex-start; /* Align the content to the top */
+        overflow-y: auto; /* Allow scrolling for content taller than viewport */
+        padding-top: 20px; /* Add padding to avoid image sticking to the top */
+      }
+
+      /* Modal Content */
+      .modal-content {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start; /* Align images to the top */
+
+        position: relative;
+        border-radius: 8px;
+        max-height: 100%; /* Ensure content doesn't exceed the viewport */
+      }
+
+      /* Mobile-specific Image Styling */
+      .mobile-image-wrapper img {
+        width: 100%;
+        height: auto;
+        max-width: 375px; /* Fixed mobile screen width */
+        max-height: 100%; /* Fit the image within modal */
+        object-fit: contain; /* Maintain aspect ratio */
+      }
+
+      /* Desktop-specific Image Styling */
+      .desktop-image-wrapper img {
+        width: 100%;
+        height: auto; /* Allow height to adapt naturally */
+        max-width: 1440px; /* Adjust as per desktop design */
+        max-height: 90vh; /* Let it fill 90% of the viewport height */
+        object-fit: contain; /* Maintain aspect ratio */
+      }
+    </style>
   </head>
 
-  <body class="flex h-full flex-col">
-    <div class="wrapper">
+  <body class="flex flex-col">
+    <div class="">
       <!-- Navbar -->
       <nav
         id="main-nav"
@@ -573,7 +624,7 @@
       <!-- Hero Section -->
 
       <!-- Section: Heading -->
-      <section class="section section-inner started-heading lg:pt-52 lg:pb-16">
+      <section class="started-heading pb-8 pt-36 lg:pt-52 lg:pb-16">
         <div class="container mx-auto lg:px-16 px-8 w-full">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -729,9 +780,7 @@
               </div>
               <!-- History Description -->
               <div class="w-full pb-12 lg:w-2/3">
-                <div class="description-text">
-
-                </div>
+                <div class="description-text"></div>
               </div>
             </div>
           </div>
@@ -754,7 +803,9 @@
               </dd>
             </div>
             <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base leading-7 text-gray-600">Increase in conversion</dt>
+              <dt class="text-base leading-7 text-gray-600">
+                Increase in conversion
+              </dt>
               <dd
                 class="order-first text-xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
               >
@@ -762,7 +813,9 @@
               </dd>
             </div>
             <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base leading-7 text-gray-600">Increase in Brand Recognition</dt>
+              <dt class="text-base leading-7 text-gray-600">
+                Increase in Brand Recognition
+              </dt>
               <dd
                 class="order-first text-xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
               >
@@ -829,13 +882,13 @@
             </div>
             <img
               src="img/Smunch_Brand_Guidelines.png"
-              class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover"
+              class="border mx-auto lg:w-2/3 object-cover"
             />
           </div>
         </section>
 
         <!-- Work section-->
-        <section class="md:pb-5 pt-5">
+        <section class="md:pb-40 pt-5">
           <div class="px-4 md:px-14 lg:px-24">
             <div class="text-center mt-16 mb-4">
               <h3 class="text-xl font-bold">Website - Desktop</h3>
@@ -845,40 +898,439 @@
 
             <img
               src="img/Mockup7.jpg"
-              class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover"
-            />
-            <p class="text-gray-600 text-center mt-16 mb-8">Order Process</p>
-
-            <img
-              src="img/Mockup (1).jpg"
-              class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover"
+              class="border mx-auto lg:w-2/3 object-cover"
             />
           </div>
+          <div class="text-center mt-16 mb-4">
+            <h3 class="text-xl font-bold">Website - Mobile</h3>
+          </div>
+          <p class="text-gray-600 mb-2 text-center mb-8">
+            Mobile view - homepage
+          </p>
+
+          <img
+            src="img/02---iPhone-XS-Front.jpg"
+            class="border mx-auto lg:w-2/3 object-cover"
+          />
         </section>
 
-        <!-- Work section-->
-        <section class="md:pb-5 pt-5">
-          <div class="px-4 md:px-14 lg:px-24">
-            <div class="text-center mt-16 mb-4">
-              <h3 class="text-xl font-bold">Website - Mobile</h3>
+        <section class="bg-[#F5F5F5] py-4">
+          <!-- Adjusted padding -->
+          <section class="container mx-auto px-4 md:px-10 lg:px-10">
+            <!-- Section Description -->
+            <div class="section section-inner m-description text-center">
+              <!-- Center content -->
+              <!-- History Title (Moved Above) -->
+              <div class="mb-8">
+                <div class="m-titles">
+                  <div class="m-title text-2xl font-bold" data-animate="active">
+                    Desktop App
+                  </div>
+                </div>
+              </div>
+              <!-- History Description -->
+              <div class="w-full max-w-4xl mx-auto">
+                <!-- Adjusted width to make content smaller -->
+                <!-- Section Gallery Carousel -->
+                <div>
+                  <div class="swiper-container-1 relative w-full pb-12 p-0">
+                    <div class="swiper-wrapper">
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Login.jpg"
+                          data-modal-src="img/Login.jpg"
+                          alt="Image #1"
+                        />
+                        <div class="caption2">Login</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Lunch Orders.jpg"
+                          data-modal-src="img/Lunch Orders.jpg"
+                          alt="Image #1"
+                        />
+                        <div class="caption2">Lunch Orders</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Lunch Orders - Quick View - Vegan.jpg"
+                          data-modal-src="img/Lunch Orders - Quick View - Vegan.jpg"
+                          alt="Image #2"
+                        />
+                        <div class="caption2">Quick View</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Lunch Orders - Dish Select Hover.jpg"
+                          data-modal-src="img/Lunch Orders - Dish Select Hover.jpg"
+                          alt="Image #4"
+                        />
+                        <div class="caption2">Dish Select</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Lunch Orders - Filter Dishes.jpg"
+                          data-modal-src="img/Lunch Orders - Filter Dishes.jpg"
+                          alt="Image #5"
+                        />
+                        <div class="caption2">Filter Dishes</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Lunch Orders - Review.jpg"
+                          data-modal-src="img/Lunch Orders - Review.jpg"
+                          alt="Image #5"
+                        />
+                        <div class="caption2">Review</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Dashboard - Rated Meals.jpg"
+                          data-modal-src="img/Dashboard - Rated Meals.jpg"
+                          alt="Image #11"
+                        />
+                        <div class="caption2">Rated Meals</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Lunch Orders - Review Collapse.jpg"
+                          data-modal-src="img/Lunch Orders - Review Collapse.jpg"
+                          alt="Image #6"
+                        />
+                        <div class="caption2">Review - Accordion</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Lunch Orders - Prepping.jpg"
+                          data-modal-src="img/Lunch Orders - Prepping.jpg"
+                          alt="Image #7"
+                        />
+                        <div class="caption2">Prepping</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Group Orders.jpg"
+                          data-modal-src="img/Group Orders.jpg"
+                          alt="Image #8"
+                        />
+                        <div class="caption2">Group Orders</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Group Orders - Edit Dishes.jpg"
+                          data-modal-src="img/Group Orders - Edit Dishes.jpg"
+                          alt="Image #9"
+                        />
+                        <div class="caption2">Edit Dishes</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Dashboard - Settings.jpg"
+                          data-modal-src="img/Dashboard - Settings.jpg"
+                          alt="Image #11"
+                        />
+                        <div class="caption2">Settings</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Group Orders - Review Order.jpg"
+                          data-modal-src="img/Group Orders - Review Order.jpg"
+                          alt="Image #10"
+                        />
+                        <div class="caption2">Review Order</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Group Orders - Update Order.jpg"
+                          data-modal-src="img/Group Orders - Update Order.jpg"
+                          alt="Image #11"
+                        />
+                        <div class="caption2">Update Order</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Group Orders - Update Order Pop Up.jpg"
+                          data-modal-src="img/Group Orders - Update Order Pop Up.jpg"
+                          alt="Image #12"
+                        />
+                        <div class="caption2">Order Success</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Dashboard - Employees.jpg"
+                          data-modal-src="img/Dashboard - Employees.jpg"
+                          alt="Image #12"
+                        />
+                        <div class="caption2">Employees</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Dashboard - Invoice.jpg"
+                          data-modal-src="img/Dashboard - Invoice.jpg"
+                          alt="Image #12"
+                        />
+                        <div class="caption2">Invoice</div>
+                      </div>
+                      <div
+                        class="swiper-slide bg-white relative border overflow-hidden h-[247px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Dashboard - Add new employees.jpg"
+                          data-modal-src="img/Dashboard - Add new employees.jpg"
+                          alt="Image #12"
+                        />
+                        <div class="caption2">Add New Employees</div>
+                      </div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination swiper-pagination-1"></div>
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next swiper-button-next-1"></div>
+                    <div class="swiper-button-prev swiper-button-prev-1"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- New Header and Image Section -->
+              <div class="relative w-full max-w-4xl mx-auto">
+                <!-- Section Gallery Carousel -->
+                <div>
+                  <!-- History Title -->
+                  <div class="mt-16 mb-8">
+                    <div class="m-titles">
+                      <div
+                        class="m-title text-2xl font-bold"
+                        data-animate="active"
+                      >
+                        Mobile App
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Swiper Container with Fixed Width -->
+                  <div
+                    class="swiper-container-2 relative md:w-2/5 pb-12 p-0 mx-auto"
+                  >
+                    <div class="swiper-wrapper">
+                      <!-- Swiper Slide 1 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Login - mobile.png"
+                          data-modal-src="img/Login - mobile.png"
+                          data-type="mobile"
+                          alt="Image #1"
+                        />
+                        <div class="caption2">Login</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          data-modal-src="img/Lunch Orders - mobile.png"
+                          src="img/Lunch Orders - mobile.png"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Lunch Orders</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          data-modal-src="img/Lunch Orders - Quick View - Chicken - mobile.png"
+                          src="img/Lunch Orders - Quick View - Chicken - mobile.png"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Lunch Detail</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Lunch Orders - Select - mobile.png"
+                          data-modal-src="img/Lunch Orders - Select - mobile.png"
+                          alt="Image #3"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Ordered Dish</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Dashboard - Unrated Meals - mobile.png"
+                          data-modal-src="img/Dashboard - Unrated Meals - mobile.png"
+                          alt="Image #2"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Lunch Orders</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Group Orders - mobile.png"
+                          data-modal-src="img/Group Orders - mobile.png"
+                          alt="Image #2"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Group Orders</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Group Orders - Review Order - mobile.png"
+                          data-modal-src="img/Group Orders - Review Order - mobile.png"
+                          alt="Image #2"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Review Orders</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Group Orders - Submit Order pop up - mobile.png"
+                          data-modal-src="img/Group Orders - Submit Order pop up - mobile.png"
+                          alt="Image #2"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Success Order</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Group Orders - Update Order - mobile.png"
+                          data-modal-src="img/Group Orders - Update Order - mobile.png"
+                          alt="Image #2"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Update Order</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Dashboard - Employees - mobile.png"
+                          data-modal-src="img/Dashboard - Employees - mobile.png"
+                          alt="Image #2"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Employees</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Dashboard - Invoice - mobile.png"
+                          data-modal-src="img/Dashboard - Invoice - mobile.png"
+                          alt="Image #2"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Invoice</div>
+                      </div>
+                      <!-- Swiper Slide 2 -->
+                      <div
+                        class="swiper-slide relative border overflow-hidden h-[630px] md:h-[620px]"
+                      >
+                        <img
+                          class="clickable-image w-full h-auto"
+                          src="img/Dashboard - Settings - mobile.png"
+                          data-modal-src="img/Dashboard - Settings - mobile.png"
+                          alt="Image #2"
+                          data-type="mobile"
+                        />
+                        <div class="caption2">Settings</div>
+                      </div>
+                      <!-- Add more slides as needed -->
+                    </div>
+
+                    <!-- Add Pagination INSIDE the Swiper container, centered -->
+                    <div class="swiper-pagination swiper-pagination-2"></div>
+
+                    <!-- Add Navigation -->
+                    <div class="swiper-button-next swiper-button-next-2"></div>
+                    <div class="swiper-button-prev swiper-button-prev-2"></div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <p class="text-gray-600 mb-2 text-center mb-8">
-              Mobile view - homepage
-            </p>
-
-            <img
-              src="img/02---iPhone-XS-Front.jpg"
-              class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover"
-            />
-            <p class="text-gray-600 text-center mt-16 mb-8">
-              Mobile view - order process
-            </p>
-
-            <img
-              src="img/02---iPhone-XS-Front2.jpg"
-              class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover w-400"
-            />
-          </div>
+          </section>
         </section>
 
         <!-- Work section-->
@@ -890,7 +1342,7 @@
 
             <img
               src="img/iMac-Flat-Mockup3_1_.jpg"
-              class="border-2 rounded-xl mx-auto lg:w-2/3 object-cover"
+              class="border mx-auto lg:w-2/3 object-cover"
             />
           </div>
         </section>
@@ -904,45 +1356,48 @@
 
             <img
               src="img/Untitled-26.jpg"
-              class="rounded-xl mx-auto lg:w-2/3 object-cover"
+              class="mx-auto lg:w-2/3 object-cover"
             />
           </div>
         </section>
 
-         <!-- Section Description -->
-      <section class="container my-32 mx-auto px-4 md:px-10 lg:px-10">
-        <blockquote class="relative text-center mx-auto">
-          <svg
-            class="absolute -top-6 -start-8 size-16 text-gray-100"
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-hidden="true"
-          >
-            <path
-              d="M7.39762 10.3C7.39762 11.0733 7.14888 11.7 6.6514 12.18C6.15392 12.6333 5.52552 12.86 4.76621 12.86C3.84979 12.86 3.09047 12.5533 2.48825 11.94C1.91222 11.3266 1.62421 10.4467 1.62421 9.29999C1.62421 8.07332 1.96459 6.87332 2.64535 5.69999C3.35231 4.49999 4.33418 3.55332 5.59098 2.85999L6.4943 4.25999C5.81354 4.73999 5.26369 5.27332 4.84476 5.85999C4.45201 6.44666 4.19017 7.12666 4.05926 7.89999C4.29491 7.79332 4.56983 7.73999 4.88403 7.73999C5.61716 7.73999 6.21938 7.97999 6.69067 8.45999C7.16197 8.93999 7.39762 9.55333 7.39762 10.3ZM14.6242 10.3C14.6242 11.0733 14.3755 11.7 13.878 12.18C13.3805 12.6333 12.7521 12.86 11.9928 12.86C11.0764 12.86 10.3171 12.5533 9.71484 11.94C9.13881 11.3266 8.85079 10.4467 8.85079 9.29999C8.85079 8.07332 9.19117 6.87332 9.87194 5.69999C10.5789 4.49999 11.5608 3.55332 12.8176 2.85999L13.7209 4.25999C13.0401 4.73999 12.4903 5.27332 12.0713 5.85999C11.6786 6.44666 11.4168 7.12666 11.2858 7.89999C11.5215 7.79332 11.7964 7.73999 12.1106 7.73999C12.8437 7.73999 13.446 7.97999 13.9173 8.45999C14.3886 8.93999 14.6242 9.55333 14.6242 10.3Z"
-              fill="currentColor"
-            ></path>
-          </svg>
-
-          <div class="relative z-10">
-            <p class="text-xl text-gray-800 md:text-3xl md:leading-normal">
-              <em>
-               Roderick demonstrated strong commitment, delivering high-quality designs for print, promotional materials, and the company website. His work consistently met our expectations, showing both independence and creativity.
-              </em>
-            </p>
-          </div>
-          <footer class="mt-6">
-            <div
-              class="text-base font-semibold text-gray-800 dark:text-neutral-400"
+        <!-- Section Description -->
+        <section class="container my-32 mx-auto px-4 md:px-10 lg:px-10">
+          <blockquote class="relative text-center mx-auto">
+            <svg
+              class="absolute -top-6 -start-8 size-16 text-gray-100"
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
             >
-              Oliver Hüfner - CFO/GC & Cofounder at Smunch
+              <path
+                d="M7.39762 10.3C7.39762 11.0733 7.14888 11.7 6.6514 12.18C6.15392 12.6333 5.52552 12.86 4.76621 12.86C3.84979 12.86 3.09047 12.5533 2.48825 11.94C1.91222 11.3266 1.62421 10.4467 1.62421 9.29999C1.62421 8.07332 1.96459 6.87332 2.64535 5.69999C3.35231 4.49999 4.33418 3.55332 5.59098 2.85999L6.4943 4.25999C5.81354 4.73999 5.26369 5.27332 4.84476 5.85999C4.45201 6.44666 4.19017 7.12666 4.05926 7.89999C4.29491 7.79332 4.56983 7.73999 4.88403 7.73999C5.61716 7.73999 6.21938 7.97999 6.69067 8.45999C7.16197 8.93999 7.39762 9.55333 7.39762 10.3ZM14.6242 10.3C14.6242 11.0733 14.3755 11.7 13.878 12.18C13.3805 12.6333 12.7521 12.86 11.9928 12.86C11.0764 12.86 10.3171 12.5533 9.71484 11.94C9.13881 11.3266 8.85079 10.4467 8.85079 9.29999C8.85079 8.07332 9.19117 6.87332 9.87194 5.69999C10.5789 4.49999 11.5608 3.55332 12.8176 2.85999L13.7209 4.25999C13.0401 4.73999 12.4903 5.27332 12.0713 5.85999C11.6786 6.44666 11.4168 7.12666 11.2858 7.89999C11.5215 7.79332 11.7964 7.73999 12.1106 7.73999C12.8437 7.73999 13.446 7.97999 13.9173 8.45999C14.3886 8.93999 14.6242 9.55333 14.6242 10.3Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+
+            <div class="relative z-10">
+              <p class="text-xl text-gray-800 md:text-3xl md:leading-normal">
+                <em>
+                  Roderick demonstrated strong commitment, delivering
+                  high-quality designs for print, promotional materials, and the
+                  company website. His work consistently met our expectations,
+                  showing both independence and creativity.
+                </em>
+              </p>
             </div>
-          </footer>
-        </blockquote>
-      </section>
+            <footer class="mt-6">
+              <div
+                class="text-base font-semibold text-gray-800 dark:text-neutral-400"
+              >
+                Oliver Hüfner - CFO/GC & Cofounder at Smunch
+              </div>
+            </footer>
+          </blockquote>
+        </section>
 
         <section class="md:py-20 py-10">
           <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center">
@@ -1107,6 +1562,20 @@
         </div>
       </section>
 
+      <!-- Modal Structure -->
+      <div id="image-modal" class="modal">
+        <div class="modal-content">
+          <button class="modal-close" aria-label="Close">&times;</button>
+          <button class="modal-prev" aria-label="Previous">&lt;</button>
+          <button class="modal-next" aria-label="Next">&gt;</button>
+
+          <!-- Single Image Wrapper -->
+          <div id="modal-image-wrapper">
+            <img src="" alt="Modal Image" />
+          </div>
+        </div>
+      </div>
+
       <!-- Notification Container -->
       <div
         id="notification"
@@ -1115,12 +1584,251 @@
         <p id="notification-message">Notification message</p>
       </div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        $('.image-popup').magnificPopup({
+          type: 'image',
+          closeOnContentClick: true,
+          image: {
+            // Enable scrolling when zoomed
+            verticalFit: false, // Allow image to overflow vertically
+          },
+        })
+      })
+    </script>
+    <script>
+      // Set the default selected thumbnail
+      document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Swiper instance
+        const swiper2 = new Swiper('.swiper-container-2', {
+          slidesPerView: 1, // Ensure only one slide per view if that's your intention
+          spaceBetween: 30, // No space between slides to maximize width
+          centeredSlides: false, // Center slides if desired
+          pagination: {
+            el: '.swiper-pagination.swiper-pagination-2',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next-2',
+            prevEl: '.swiper-button-prev-2',
+          },
+          // Optional: Enable responsive behavior
+          breakpoints: {
+            768: {
+              slidesPerView: 'auto',
+            },
+            1024: {
+              slidesPerView: 'auto',
+            },
+          },
+        })
+      })
+
+      // Initialize Swiper instance
+      const swiper1 = new Swiper('.swiper-container-1', {
+        loop: true,
+        slidesPerView: 1, // Ensure only one slide per view if that's your intention
+        spaceBetween: 30, // No space between slides to maximize width
+        centeredSlides: true, // Center slides if desired
+        pagination: {
+          el: '.swiper-pagination.swiper-pagination-1',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next-1',
+          prevEl: '.swiper-button-prev-1',
+        },
+        // Optional: Enable responsive behavior
+        breakpoints: {
+          768: {
+            slidesPerView: 'auto',
+          },
+          1024: {
+            slidesPerView: 'auto',
+          },
+        },
+      })
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('image-modal')
+        const closeBtn = modal.querySelector('.modal-close')
+        const prevBtn = modal.querySelector('.modal-prev')
+        const nextBtn = modal.querySelector('.modal-next')
+        const modalImageWrapper = document.getElementById('modal-image-wrapper')
+        const modalImage = modalImageWrapper.querySelector('img')
+        const modalContent = modal.querySelector('.modal-content') // Grab the modal content
+        const body = document.body
+        let scrollPosition = 0
+        let currentIndex = -1
+        let currentSwiper = null
+        let isBodyLocked = false // Track if body scroll is locked
+
+        // Select images from both Swiper instances
+        const imagesSwiper1 = Array.from(
+          document.querySelectorAll('.swiper-container-1 .clickable-image'),
+        )
+        const imagesSwiper2 = Array.from(
+          document.querySelectorAll('.swiper-container-2 .clickable-image'),
+        )
+
+        // Function to lock the body scroll
+        function lockBodyScroll() {
+          if (!isBodyLocked) {
+            scrollPosition =
+              window.pageYOffset || document.documentElement.scrollTop
+            body.style.position = 'fixed'
+            body.style.top = `-${scrollPosition}px`
+            body.style.left = '0'
+            body.style.right = '0'
+            isBodyLocked = true // Set flag to indicate body scroll is locked
+          }
+        }
+
+        // Function to unlock the body scroll
+        function unlockBodyScroll() {
+          if (isBodyLocked) {
+            body.style.position = ''
+            body.style.top = ''
+            body.style.left = ''
+            body.style.right = ''
+            window.scrollTo(0, scrollPosition)
+            isBodyLocked = false // Reset flag to indicate body scroll is unlocked
+          }
+        }
+
+        // Function to reset the scroll position in the modal
+        function resetScrollPosition() {
+          if (modalContent) {
+            modalContent.scrollTop = 0 // Reset modal content scroll
+          }
+        }
+
+        // Function to adjust the image wrapper class (mobile or desktop)
+        function adjustImageWrapper(image) {
+          const isMobile = image.dataset.type === 'mobile'
+          const isDesktop = image.dataset.type === 'desktop'
+
+          // Remove previous classes
+          modalImageWrapper.classList.remove(
+            'mobile-image-wrapper',
+            'desktop-image-wrapper',
+          )
+
+          // Add correct wrapper class based on data-type
+          if (isMobile) {
+            modalImageWrapper.classList.add('mobile-image-wrapper')
+          } else if (isDesktop) {
+            modalImageWrapper.classList.add('desktop-image-wrapper')
+          }
+        }
+
+        // Function to open the modal with the correct image
+        function showModal(index, swiperInstance) {
+          currentIndex = index
+          currentSwiper = swiperInstance
+
+          let images =
+            currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2
+          let currentImage = images[currentIndex]
+
+          // Set the modal image source
+          modalImage.src = currentImage.dataset.modalSrc
+
+          // Adjust the image wrapper based on mobile or desktop
+          adjustImageWrapper(currentImage)
+
+          modal.style.display = 'flex'
+          lockBodyScroll()
+
+          // Reset scroll after image is loaded
+          modalImage.onload = () => {
+            resetScrollPosition() // Ensure modal scroll resets to the top
+          }
+        }
+
+        // Function to navigate between images
+        function navigateModal(direction, event) {
+          if (event) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          let images =
+            currentSwiper === 'swiper1' ? imagesSwiper1 : imagesSwiper2
+
+          if (direction === 'next') {
+            currentIndex = (currentIndex + 1) % images.length
+          } else if (direction === 'prev') {
+            currentIndex = (currentIndex - 1 + images.length) % images.length
+          }
+
+          showModal(currentIndex, currentSwiper)
+        }
+
+        // Add click event listeners for images in Swiper 1
+        imagesSwiper1.forEach((img, index) => {
+          img.addEventListener('click', (event) => {
+            event.preventDefault()
+            showModal(index, 'swiper1')
+          })
+        })
+
+        // Add click event listeners for images in Swiper 2
+        imagesSwiper2.forEach((img, index) => {
+          img.addEventListener('click', (event) => {
+            event.preventDefault()
+            showModal(index, 'swiper2')
+          })
+        })
+
+        // Close modal
+        closeBtn.addEventListener('click', (event) => {
+          event.preventDefault()
+          modal.style.display = 'none'
+          unlockBodyScroll()
+        })
+
+        // Close the modal when clicking outside the modal content
+        modal.addEventListener('click', (event) => {
+          if (event.target === modal) {
+            modal.style.display = 'none'
+            unlockBodyScroll()
+          }
+        })
+
+        // Prevent default behavior for modal navigation with buttons
+        prevBtn.addEventListener('click', (event) => {
+          navigateModal('prev', event)
+        })
+
+        nextBtn.addEventListener('click', (event) => {
+          navigateModal('next', event)
+        })
+
+        // Prevent jump when pressing arrow keys to navigate
+        window.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            modal.style.display = 'none'
+            unlockBodyScroll()
+          }
+          if (modal.style.display === 'flex') {
+            if (event.key === 'ArrowLeft') {
+              navigateModal('prev', event)
+            }
+            if (event.key === 'ArrowRight') {
+              navigateModal('next', event)
+            }
+          }
+        })
+      })
+    </script>
+
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/script.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
   </body>
 </html>
