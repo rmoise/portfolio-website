@@ -35,6 +35,7 @@ document.addEventListener('alpine:init', () => {
     shouldExpandDropdown(dropdown) {
       const dropdowns = {
         portfolio: [
+          'karlstorzcase',
           'kytocase',
           'smunchcase',
           'cogalleriescase',
@@ -43,6 +44,7 @@ document.addEventListener('alpine:init', () => {
           'stak',
         ],
         'design-systems': [
+          'karlstorzcase',
           'kytocase',
           'smunchcase',
           'cogalleriescase',
@@ -50,7 +52,7 @@ document.addEventListener('alpine:init', () => {
           'pffcase',
           'stak',
         ],
-        'web-dev': ['pokemoncase', 'meetcase', 'myflixcase', 'chatcase'],
+        'web-dev': ['pokemoncase', 'meetcase', 'myflixcase', 'chatappcase'],
       }
       return (
         dropdowns[dropdown] && dropdowns[dropdown].includes(this.currentPage)

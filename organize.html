@@ -31,12 +31,12 @@
 
   <body class="flex h-full flex-col">
     <div class="wrapper">
-      <!-- Navbar -->
+     <!-- Navbar -->
       <nav
         id="main-nav"
         x-data="navbar()"
         x-init="init()"
-        class="bg-white fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-16 py-2 xl:px-40 mx-auto z-50"
+        class="bg-white fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-32 py-2 xl:px-40 mx-auto z-50"
       >
         <!-- Container with minimal padding -->
         <div
@@ -153,6 +153,15 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
+                           <li></li>
+                            <a
+                              href="karlstorzcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >KARL STORZ</a
+                            >
+                          </li>
                           <li>
                             <a
                               href="kytocase.html"
@@ -395,6 +404,15 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
+                             <li>
+                            <a
+                              href="karlstorzcase.html"
+                              @click="closeNavbar()"
+                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
+                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                              >KARL STORZ</a
+                            >
+                          </li>
                           <li>
                             <a
                               href="kytocase.html"
