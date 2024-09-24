@@ -510,57 +510,6 @@ scrollToSection(section) {
     },
 
 
-    // Method to handle form submission
-    handleFormSubmit(event) {
-      event.preventDefault();
-      const form = event.target;
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      fetch('https://portfolio-site-gold-six.vercel.app/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-        .then((response) => {
-          if (response.ok) {
-            console.log('Form submitted successfully');
-            form.reset();
-            this.showNotification('Form submitted successfully!', 'success');
-          } else {
-            console.error('Form submission failed');
-            this.showNotification(
-              'Form submission failed. Please try again.',
-              'error'
-            );
-          }
-        })
-        .catch((error) => {
-          console.error('Error submitting form:', error);
-          this.showNotification(
-            'An error occurred. Please try again later.',
-            'error'
-          );
-        });
-    },
-    // Method to show a notification
-    showNotification(message, type = 'success') {
-      this.notificationMessage = message; // Set the notification message
-      this.notificationType = type; // Set the notification type ('success' or 'error')
-      this.notificationVisible = true; // Show the notification
-
-      // Hide the notification after 5 seconds
-      setTimeout(() => {
-        this.notificationVisible = false;
-      }, 5000);
-    },
-
-    // Example method to simulate form submission
-    handleFormSubmit(event) {
-      event.preventDefault(); // Prevent form from submitting the traditional way
-
-      // Simulate a successful form submission
-      this.showNotification('Form submitted successfully!', 'success');
-    },
     // Method to initialize page load animations
     initializePageLoadAnimations() {
       if (this.headline) {

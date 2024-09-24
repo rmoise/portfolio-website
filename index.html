@@ -39,7 +39,7 @@
           id="menu-toggle"
           type="button"
           class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
-          @click="toggleNavbar()"
+         @click="toggleNavbar($event)"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -3642,22 +3642,14 @@
           </div>
         </div>
       </section>
-  <!-- Notification Container -->
-<div
-  id="notification"
-  x-data="navbar"
-  x-show="notificationVisible"
-  x-transition:enter="transition ease-out duration-300"
-  x-transition:enter-start="opacity-0 transform translate-y-4"
-  x-transition:enter-end="opacity-100 transform translate-y-0"
-  x-transition:leave="transition ease-in duration-300"
-  x-transition:leave-start="opacity-100 transform translate-y-0"
-  x-transition:leave-end="opacity-0 transform translate-y-4"
-  class="fixed bottom-4 right-4 bg-brightGreen text-black p-4 rounded-lg shadow-lg"
-  :class="notificationType === 'error' ? 'bg-red-500 text-white' : 'bg-brightGreen text-black'"
->
-  <p x-text="notificationMessage">Notification message</p>
-</div>
+<!-- Notification Container -->
+      <div
+        id="notification"
+        class="fixed bottom-4 right-4 hidden bg-brightGreen text-black p-4 rounded-lg shadow-lg"
+      >
+        <p id="notification-message">Notification message</p>
+      </div>
+    </div>
 
 
     </main>
