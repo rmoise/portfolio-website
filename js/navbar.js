@@ -302,7 +302,7 @@ handleContactClick() {
     let spaceAboveTitle;
     if (window.innerWidth >= 1024) {
       // Desktop (screen width 1024px and above)
-      spaceAboveTitle = -80;  // Customize this value for desktop
+      spaceAboveTitle = -40;  // Customize this value for desktop
     } else {
       // Mobile (screen width below 1024px)
       spaceAboveTitle = 0;  // Customize this value for mobile
