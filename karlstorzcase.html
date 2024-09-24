@@ -23,8 +23,8 @@
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
       rel="stylesheet"
     />
-    <script
-      src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.2/dist/cdn.min.js"
+  <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
       defer
     ></script>
     <link
@@ -55,7 +55,7 @@
     </style>
   </head>
 
-  <body class="flex h-full flex-col">
+  <body x-data="navbar" x-init="init()">
     <div class="wrapper">
       <!-- Navbar -->
       <nav

@@ -245,7 +245,7 @@ handleContactClick() {
 
 
  // Method to handle link clicks for smooth scrolling
-    handleLinkClick(event, targetId) {
+handleLinkClick(event, targetId) {
   event.preventDefault();
 
   console.log('Link clicked:', targetId); // Log when the link is clicked
@@ -253,8 +253,12 @@ handleContactClick() {
   // Set flag to indicate that the scroll is triggered by a link click
   this.isLinkClicked = true;
 
-  // Immediately show the mainNav when a link is clicked
-  this.showMainNav();
+  // Always show the mainNav and subNav when a subnav link is clicked
+  this.mainNav.style.transform = 'translateY(0)';
+
+  if (this.subNav) {
+    this.subNav.style.transform = 'translateY(0)'; // Ensure subNav stays visible too
+  }
 
   // Temporarily disable scroll event behavior during smooth scroll
   this.isScrolling = true;
@@ -276,6 +280,7 @@ handleContactClick() {
     this.isScrolling = false;  // Re-enable scroll event behavior
   }, 1000); // Adjust the delay if needed to match the duration of smooth scroll
 },
+
 
 
   // Method to show the mainNav and position subNav under it
@@ -479,35 +484,49 @@ scrollToSection(section) {
       }
     },
 
-    // Handle scroll event and dynamically manage mainNav and subNav behavior
-    handleScroll() {
-      if (!this.navbarOpen && !this.isLinkClicked && !this.isScrolling) {
-        const scrollY = window.scrollY;
-        const mainNavHeight = this.mainNav ? this.mainNav.offsetHeight : 0;
-        const scrollThreshold = this.scrollThreshold;
+   // Handle scroll event and dynamically manage mainNav and subNav behavior
+handleScroll() {
+  if (!this.navbarOpen && !this.isLinkClicked && !this.isScrolling) {
+    const scrollY = window.scrollY;
+    const mainNavHeight = this.mainNav ? this.mainNav.offsetHeight : 0;
+    const subNavExists = !!this.subNav; // Check if subNav exists (for homepage)
+    const scrollThreshold = this.scrollThreshold;
 
-        // Show or hide the mainNav based on manual scrolling
-        if (scrollY > mainNavHeight) {
-          if (scrollY > this.scrollPosition + scrollThreshold) {
-            // Scroll down, slide up both mainNav and subNav together (connected)
-            this.mainNav.style.transform = `translateY(-${mainNavHeight}px)`;
-            this.subNav.style.transform = `translateY(-${mainNavHeight}px)`;  // Move subNav with mainNav
-          } else if (scrollY < this.scrollPosition - scrollThreshold) {
-            // Scroll up, slide down both mainNav and subNav together (connected)
-            this.mainNav.style.transform = 'translateY(0)';
-            this.subNav.style.transform = 'translateY(0)';  // Keep subNav right below mainNav
-          }
-        } else {
-          // If we're at the top of the page, reset both mainNav and subNav
-          this.mainNav.style.transform = 'translateY(0)';
-          this.subNav.style.transform = 'translateY(0)'; // Move subNav below mainNav
-          this.subNav.style.position = 'fixed'; // Keep subNav fixed below mainNav
+    // Show or hide the mainNav (and subNav if it exists) based on manual scrolling
+    if (scrollY > mainNavHeight) {
+      if (scrollY > this.scrollPosition + scrollThreshold) {
+        // Scroll down, hide the mainNav (and subNav if it exists)
+        this.mainNav.style.transform = `translateY(-${mainNavHeight}px)`;
+
+        if (subNavExists) {
+          this.subNav.style.transform = `translateY(-${mainNavHeight}px)`; // Move subNav with mainNav on scroll down
         }
+        console.log("Scrolled down: Hiding mainNav (and subNav if exists).");
+      } else if (scrollY < this.scrollPosition - scrollThreshold) {
+        // Scroll up, show the mainNav (and subNav if it exists)
+        this.mainNav.style.transform = 'translateY(0)';
 
-        // Track scroll position to determine direction of next scroll
-        this.scrollPosition = scrollY;
+        if (subNavExists) {
+          this.subNav.style.transform = 'translateY(0)'; // Move subNav with mainNav on scroll up
+        }
+        console.log("Scrolled up: Showing mainNav (and subNav if exists).");
       }
-    },
+    } else {
+      // If at the top of the page, reset the mainNav (and subNav if it exists)
+      this.mainNav.style.transform = 'translateY(0)';
+
+      if (subNavExists) {
+        this.subNav.style.transform = 'translateY(0)'; // Keep subNav fixed below mainNav at the top
+        this.subNav.style.position = 'fixed'; // Ensure subNav stays fixed below mainNav
+      }
+      console.log("At top of page: Showing mainNav (and subNav if exists).");
+    }
+
+    // Update scroll position for next scroll event
+    this.scrollPosition = scrollY;
+  }
+},
+
 
 
     // Method to initialize page load animations
