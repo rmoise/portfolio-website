@@ -1409,19 +1409,19 @@ video {
   height: 100vh; /* Full viewport height */
   background-color: white; /* Background color */
   z-index: 2000;
-  display: none; /* Hidden by default */
-  overflow-y: auto;
   opacity: 0; /* Initially invisible */
-  transition:
-    opacity 0.3s ease-in-out,
-    transform 0.3s ease-in-out;
+  transform: translateY(-100%); /* Slide in from top initially */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
-.mobile-menu.open {
-  display: block;
-  opacity: 1; /* Visible when open */
-  transform: translateY(0); /* Slide in from top */
+/* Alpine.js will handle the visibility with x-show */
+.mobile-menu[x-show="navbarOpen"] {
+  opacity: 1;
+  transform: translateY(0); /* Slide in from top when visible */
+  pointer-events: all; /* Ensure interactions are enabled */
 }
+
+
 
 /* Sub-navigation container */
 .sub-nav-container {
@@ -1537,7 +1537,7 @@ video {
 }
 
 [x-cloak] {
-  display: none;
+  display: none !important;
 }
 
 /* Base button styles */
@@ -3306,3 +3306,63 @@ video {
         position: fixed;
         width: 100%;
       }
+
+
+#main-nav {
+  transition: transform 0.5s ease-in-out;
+  will-change: transform;
+}
+
+#sub-nav {
+  transition: transform 0.5s ease-in-out, position 0.5s ease-in-out;
+  will-change: transform, position;
+  position: fixed; /* Keep subNav fixed below mainNav */
+}
+
+
+.sub-nav-container a.active {
+  font-weight: bold;
+  color: #000;
+  text-decoration: underline;
+}
+
+/* Scroll container */
+.scroll-container {
+  position: absolute; /* Make it independent of parent container */
+  left: 0; /* Align it to the far left of the parent container */
+  right: 0; /* Extend to the far right */
+  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling */
+  display: flex;
+  justify-content: flex-start;
+  padding: 0; /* Remove padding */
+  margin: 0; /* No margin */
+}
+
+/* Scroll content */
+.scroll-content {
+  display: flex;
+  gap: 16px; /* Space between icons */
+  width: max-content; /* Ensure content stretches based on the number of icons */
+}
+
+/* Icon container */
+.slider-item {
+  flex-shrink: 0; /* Prevent shrinking */
+  margin: 0;
+  padding: 0;
+}
+
+/* Icons - no padding */
+.slider-item svg {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+/* Adjustments for mobile views (optional) */
+@media (max-width: 768px) {
+  .scroll-container {
+    position: relative; /* Reset absolute positioning on smaller screens */
+  }
+}
