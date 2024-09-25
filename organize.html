@@ -31,7 +31,7 @@
 
   <body class="flex h-full flex-col">
     <div class="wrapper">
-     <!-- Navbar -->
+      <!-- Navbar -->
       <nav
         id="main-nav"
         x-data="navbar()"
@@ -48,7 +48,9 @@
           </a>
           <!-- Toggler Btn -->
           <button
-            class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
+            id="menu-toggle"
+            type="button"
+            class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
             @click="toggleNavbar()"
           >
             <svg
@@ -153,7 +155,7 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
-                           <li></li>
+                          <li>
                             <a
                               href="karlstorzcase.html"
                               @click="closeNavbar()"
@@ -335,13 +337,13 @@
             </ul>
           </div>
           <!-- Mobile Menu -->
-        <div
-          id="mobile-menu"
-          x-show="navbarOpen"
-          x-cloak
-          class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
-          x-transition
-        >
+          <div
+            id="mobile-menu"
+            x-show="navbarOpen"
+            x-cloak
+            class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
+            x-transition
+          >
             <ul class="flex flex-col space-y-2 px-4 py-2">
               <!-- Dropdown for Mobile -->
               <li class="relative">
@@ -406,7 +408,7 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
-                             <li>
+                          <li>
                             <a
                               href="karlstorzcase.html"
                               @click="closeNavbar()"
@@ -616,7 +618,7 @@
       <section class="section m-image-large relative custom-image-section">
         <div
           class="image parallax-cs absolute inset-0"
-          style="background-image: url(&quot;img/organize-ig.jpg&quot;)"
+          style="background-image: url('img/organize-ig.jpg')"
         ></div>
         <div class="relative z-10 flex items-center justify-center h-full">
           <!-- Content over the image can go here -->
@@ -719,57 +721,65 @@
         </div>
       </section>
 
-       <section class="container mx-auto px-4 md:px-10 lg:px-10"></section>
-        <!-- Section Description -->
-        <div class="mb-8">
-          <div class="container mx-auto px-8">
-            <div class="flex flex-col lg:flex-row">
-              <!-- History Title -->
-              <div class="lg:w-1/4 mb-8 lg:mb-0">
-                <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold" data-animate="active">
-                    Results
-                  </div>
-                </div>
-              </div>
-              <!-- History Description -->
-              <div class="w-full pb-12 lg:w-2/3">
-                <div class="description-text">
-
+      <section class="container mx-auto px-4 md:px-10 lg:px-10"></section>
+      <!-- Section Description -->
+      <div class="mb-8">
+        <div class="container mx-auto px-8">
+          <div class="flex flex-col lg:flex-row">
+            <!-- History Title -->
+            <div class="lg:w-1/4 mb-8 lg:mb-0">
+              <div class="m-titles text-left">
+                <div class="m-title text-2xl font-bold" data-animate="active">
+                  Results
                 </div>
               </div>
             </div>
+            <!-- History Description -->
+            <div class="w-full pb-12 lg:w-2/3">
+              <div class="description-text"></div>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
+
       <div class="bg-white pb-32">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <dl class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
-      <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base leading-7 text-gray-600">
-          Increase in Social Media Engagement
-        </dt>
-        <dd class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-          30%
-        </dd>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+          <dl
+            class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3"
+          >
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base leading-7 text-gray-600">
+                Increase in Social Media Engagement
+              </dt>
+              <dd
+                class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl"
+              >
+                30%
+              </dd>
+            </div>
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base leading-7 text-gray-600">
+                Increased audience and engagement
+              </dt>
+              <dd
+                class="order-first text-xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
+              >
+                Cross-Platform Reach
+              </dd>
+            </div>
+            <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt class="text-base leading-7 text-gray-600">
+                Enhanced Brand Presence
+              </dt>
+              <dd
+                class="order-first text-xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
+              >
+                Significant Growth
+              </dd>
+            </div>
+          </dl>
+        </div>
       </div>
-      <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base leading-7 text-gray-600"> Increased audience and engagement</dt>
-        <dd class="order-first text-xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-Cross-Platform Reach
-        </dd>
-      </div>
-      <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-        <dt class="text-base leading-7 text-gray-600">Enhanced Brand Presence</dt>
-        <dd class="order-first text-xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-          Significant Growth
-        </dd>
-      </div>
-    </dl>
-  </div>
-</div>
-
-
 
       <!-- Work section-->
       <section>

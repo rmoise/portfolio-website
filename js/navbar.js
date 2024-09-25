@@ -104,33 +104,20 @@ document.addEventListener('alpine:init', () => {
         dropdowns[dropdown] && dropdowns[dropdown].includes(this.currentPage)
       );
     },
-    // Method to toggle the navbar
+   // Toggle Navbar
     toggleNavbar() {
-  this.navbarOpen = !this.navbarOpen; // Toggle the open state
-  const menu = document.getElementById('main-nav'); // Target the main-nav by its ID
+      this.navbarOpen = !this.navbarOpen;
+      if (this.navbarOpen) {
+        document.body.style.overflow = 'hidden'; // Lock body scroll
+      } else {
+        document.body.style.overflow = 'auto'; // Unlock body scroll
 
-  if (menu) {
-    if (this.navbarOpen) {
-      // Lock body scroll when the nav is open
-      document.body.style.overflow = 'hidden';
-
-      // Ensure main nav stays visible and fixed
-      menu.style.position = 'fixed';
-      menu.style.top = '0';
-      menu.style.width = '100%';
-    } else {
-      // Unlock body scroll when the nav is closed
-      document.body.style.overflow = 'auto';
-
-      // Reset main nav position to normal
-      menu.style.position = '';
-      menu.style.top = '';
-      menu.style.width = '';
-    }
-  } else {
-    console.error('Navbar element not found: #main-nav');
-  }
-},
+        // Disable scroll logic temporarily after menu close to prevent hiding
+        this.scrollLockTimeout = setTimeout(() => {
+          this.scrollLockTimeout = null; // Re-enable scroll logic after timeout
+        }, 500);  // Adjust timeout to match menu animation
+      }
+    },
 
     // Method to restore dropdown states
     restoreDropdownStates() {
@@ -244,41 +231,23 @@ handleContactClick() {
 
 
 
- // Method to handle link clicks for smooth scrolling
-handleLinkClick(event, targetId) {
-  event.preventDefault();
 
+    // Handle smooth scrolling when clicking a link
+   handleLinkClick(event, targetId) {
+  event.preventDefault();
+  this.isLinkClicked = true; // Prevent scroll hiding due to link click
   console.log('Link clicked:', targetId); // Log when the link is clicked
 
-  // Set flag to indicate that the scroll is triggered by a link click
-  this.isLinkClicked = true;
+  // Always show the mainNav when a subnav link is clicked
+  this.showMainNav();
 
-  // Always show the mainNav and subNav when a subnav link is clicked
-  this.mainNav.style.transform = 'translateY(0)';
-
-  if (this.subNav) {
-    this.subNav.style.transform = 'translateY(0)'; // Ensure subNav stays visible too
-  }
-
-  // Temporarily disable scroll event behavior during smooth scroll
-  this.isScrolling = true;
-
-  // Perform smooth scroll
+  // Perform smooth scrolling to the target section
   this.smoothScrollTo(targetId);
 
-  // Highlight the clicked link
-  this.highlightLink(targetId);
-
-  // Close the navbar if open
-  if (this.navbarOpen) {
-    this.closeNavbar(true);
-  }
-
-  // Reset the scrolling state after smooth scroll is done
+  // Re-enable scroll behavior after link click and scroll are done
   setTimeout(() => {
     this.isLinkClicked = false;
-    this.isScrolling = false;  // Re-enable scroll event behavior
-  }, 1000); // Adjust the delay if needed to match the duration of smooth scroll
+  }, 1500); // Match this time to the smooth scroll duration
 },
 
 
@@ -299,46 +268,36 @@ handleLinkClick(event, targetId) {
    smoothScrollTo(targetId) {
   const targetElement = document.querySelector(targetId);
   if (targetElement) {
-    // Get dynamic height of mainNav and subNav
-    const headerHeight = this.mainNav ? this.mainNav.offsetHeight : 0;
-    const subNavHeight = this.subNav ? this.subNav.offsetHeight : 0;
+    this.isScrolling = true; // Prevent scroll handling while smooth scrolling
 
-    // Set spaceAboveTitle for desktop and mobile
-    let spaceAboveTitle;
-    if (window.innerWidth >= 1024) {
-      // Desktop (screen width 1024px and above)
-      spaceAboveTitle = -40;  // Customize this value for desktop
-    } else {
-      // Mobile (screen width below 1024px)
-      spaceAboveTitle = 0;  // Customize this value for mobile
-    }
+    // Ensure main nav is visible before starting the scroll
+    this.showMainNav();
 
-    // Calculate the total offset (header + subNav + spaceAboveTitle)
-    const totalOffset = headerHeight + subNavHeight + spaceAboveTitle;
+    setTimeout(() => {
+      const headerHeight = this.mainNav ? this.mainNav.offsetHeight : 0;
+      const subNavHeight = this.subNav ? this.subNav.offsetHeight : 0;
+      const spaceAboveTitle = window.innerWidth >= 1024 ? -40 : 0; // Desktop or mobile offset
 
-    // Calculate the target's position
-    const targetRect = targetElement.getBoundingClientRect();
-    const targetPosition = window.scrollY + targetRect.top - totalOffset;
+      const totalOffset = headerHeight + subNavHeight + spaceAboveTitle;
+      const targetRect = targetElement.getBoundingClientRect();
+      const targetPosition = window.scrollY + targetRect.top - totalOffset;
 
-    // Logging for debugging
-    console.log({
-      targetId,
-      headerHeight,
-      subNavHeight,
-      spaceAboveTitle,
-      totalOffset,
-      targetPosition,
-    });
+      // Perform smooth scroll
+      window.scrollTo({
+        top: Math.max(targetPosition, 0),  // Ensure it doesn't scroll to a negative position
+        behavior: 'smooth',
+      });
 
-    // Scroll smoothly to the calculated position
-    window.scrollTo({
-      top: Math.max(targetPosition, 0),  // Ensure it doesn't scroll to a negative position
-      behavior: 'smooth',
-    });
+      // Allow time for the smooth scroll to complete
+      setTimeout(() => {
+        this.isScrolling = false; // Re-enable scroll handling after smooth scroll
+      }, 1000); // Adjust this time to match smooth scroll duration
+    }, 300);  // Adjust based on any animation time for the nav to become visible
   } else {
     console.error(`Target element ${targetId} not found.`);
   }
 },
+
 
 
 
@@ -484,47 +443,46 @@ scrollToSection(section) {
       }
     },
 
-   // Handle scroll event and dynamically manage mainNav and subNav behavior
-handleScroll() {
-  if (!this.navbarOpen && !this.isLinkClicked && !this.isScrolling) {
-    const scrollY = window.scrollY;
-    const mainNavHeight = this.mainNav ? this.mainNav.offsetHeight : 0;
-    const subNavExists = !!this.subNav; // Check if subNav exists (for homepage)
-    const scrollThreshold = this.scrollThreshold;
-
-    // Show or hide the mainNav (and subNav if it exists) based on manual scrolling
-    if (scrollY > mainNavHeight) {
-      if (scrollY > this.scrollPosition + scrollThreshold) {
-        // Scroll down, hide the mainNav (and subNav if it exists)
-        this.mainNav.style.transform = `translateY(-${mainNavHeight}px)`;
-
-        if (subNavExists) {
-          this.subNav.style.transform = `translateY(-${mainNavHeight}px)`; // Move subNav with mainNav on scroll down
-        }
-        console.log("Scrolled down: Hiding mainNav (and subNav if exists).");
-      } else if (scrollY < this.scrollPosition - scrollThreshold) {
-        // Scroll up, show the mainNav (and subNav if it exists)
-        this.mainNav.style.transform = 'translateY(0)';
-
-        if (subNavExists) {
-          this.subNav.style.transform = 'translateY(0)'; // Move subNav with mainNav on scroll up
-        }
-        console.log("Scrolled up: Showing mainNav (and subNav if exists).");
-      }
-    } else {
-      // If at the top of the page, reset the mainNav (and subNav if it exists)
-      this.mainNav.style.transform = 'translateY(0)';
-
-      if (subNavExists) {
-        this.subNav.style.transform = 'translateY(0)'; // Keep subNav fixed below mainNav at the top
-        this.subNav.style.position = 'fixed'; // Ensure subNav stays fixed below mainNav
-      }
-      console.log("At top of page: Showing mainNav (and subNav if exists).");
-    }
-
-    // Update scroll position for next scroll event
-    this.scrollPosition = scrollY;
+  // Handle scroll event for hiding/showing mainNav
+    handleScroll() {
+  // Disable scroll behavior temporarily after unlocking the menu or link click, or while smooth scrolling
+  if (this.scrollLockTimeout || this.isLinkClicked || this.isScrolling) {
+    console.log("Scroll handling disabled temporarily.");
+    return;
   }
+
+  const scrollY = window.scrollY;
+  const mainNavHeight = this.mainNav ? this.mainNav.offsetHeight : 0;
+  const subNavExists = !!this.subNav;
+  const scrollThreshold = this.scrollThreshold;
+
+  if (scrollY > mainNavHeight) {
+    if (scrollY > this.scrollPosition + scrollThreshold) {
+      // Scrolling down, hide the mainNav
+      this.mainNav.style.transform = `translateY(-${mainNavHeight}px)`;
+      if (subNavExists) {
+        this.subNav.style.transform = `translateY(-${mainNavHeight}px)`;
+      }
+      console.log("Scrolled down: Hiding mainNav (and subNav if exists).");
+    } else if (scrollY < this.scrollPosition - scrollThreshold) {
+      // Scrolling up, show the mainNav
+      this.mainNav.style.transform = 'translateY(0)';
+      if (subNavExists) {
+        this.subNav.style.transform = 'translateY(0)';
+      }
+      console.log("Scrolled up: Showing mainNav (and subNav if exists).");
+    }
+  } else {
+    // At the top of the page, reset mainNav visibility
+    this.mainNav.style.transform = 'translateY(0)';
+    if (subNavExists) {
+      this.subNav.style.transform = 'translateY(0)';
+    }
+    console.log("At top of page: Showing mainNav (and subNav if exists).");
+  }
+
+  // Update scroll position for the next event
+  this.scrollPosition = scrollY;
 },
 
 
@@ -551,3 +509,4 @@ handleScroll() {
     },
   }));
 });
+

@@ -60,9 +60,11 @@
           </a>
           <!-- Toggler Btn -->
           <button
-            class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
-            @click="toggleNavbar()"
-          >
+      id="menu-toggle"
+          type="button"
+          class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
+        @click="toggleNavbar()"
+        >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-6 h-6 transition-transform"
@@ -165,7 +167,7 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
-                           <li></li>
+                           <li>
                             <a
                               href="karlstorzcase.html"
                               @click="closeNavbar()"
@@ -1287,5 +1289,6 @@
     <script src="js/script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    </div>
   </body>
 </html>

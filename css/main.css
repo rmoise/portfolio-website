@@ -3369,3 +3369,9 @@ video {
 
 
 
+/* Prevent scrolling when the menu is open */
+body.fixed {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+}

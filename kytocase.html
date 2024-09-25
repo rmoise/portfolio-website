@@ -43,7 +43,7 @@
 
   <body class="flex h-full flex-col">
     <div class="wrapper">
-     <!-- Navbar -->
+      <!-- Navbar -->
       <nav
         id="main-nav"
         x-data="navbar()"
@@ -60,7 +60,9 @@
           </a>
           <!-- Toggler Btn -->
           <button
-            class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
+            id="menu-toggle"
+            type="button"
+            class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
             @click="toggleNavbar()"
           >
             <svg
@@ -165,7 +167,7 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
-                           <li></li>
+                          <li>
                             <a
                               href="karlstorzcase.html"
                               @click="closeNavbar()"
@@ -346,14 +348,14 @@
               </li>
             </ul>
           </div>
-           <!-- Mobile Menu -->
-        <div
-          id="mobile-menu"
-          x-show="navbarOpen"
-          x-cloak
-          class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
-          x-transition
-        >
+          <!-- Mobile Menu -->
+          <div
+            id="mobile-menu"
+            x-show="navbarOpen"
+            x-cloak
+            class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
+            x-transition
+          >
             <ul class="flex flex-col space-y-2 px-4 py-2">
               <!-- Dropdown for Mobile -->
               <li class="relative">
@@ -418,7 +420,7 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
-                             <li>
+                          <li>
                             <a
                               href="karlstorzcase.html"
                               @click="closeNavbar()"
@@ -1000,8 +1002,6 @@
         </section>
       </section>
 
-
-
       <section class="bg-[#F5F5F5] py-4">
         <!-- Adjusted padding -->
         <section class="container mx-auto px-4 md:px-10 lg:px-10">
@@ -1308,7 +1308,7 @@
         </div>
       </section>
 
-       <!-- Section Description -->
+      <!-- Section Description -->
       <section class="container my-32 mx-auto px-4 md:px-10 lg:px-10">
         <blockquote class="relative text-center mx-auto">
           <svg
@@ -1329,7 +1329,10 @@
           <div class="relative z-10">
             <p class="text-xl text-gray-800 md:text-3xl md:leading-normal">
               <em>
-             Roderick showed exceptional independence and adaptability, quickly adjusting to changes. His dedication, pioneering spirit, and strong work ethic greatly contributed to our success and consistently met high standards.
+                Roderick showed exceptional independence and adaptability,
+                quickly adjusting to changes. His dedication, pioneering spirit,
+                and strong work ethic greatly contributed to our success and
+                consistently met high standards.
               </em>
             </p>
           </div>
@@ -1504,8 +1507,6 @@
           </div>
         </div>
       </section>
-
-
 
       <!-- Notification Container -->
       <div

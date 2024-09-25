@@ -43,7 +43,7 @@
 
   <body class="flex h-full flex-col">
     <div class="wrapper">
-     <!-- Navbar -->
+      <!-- Navbar -->
       <nav
         id="main-nav"
         x-data="navbar()"
@@ -60,7 +60,9 @@
           </a>
           <!-- Toggler Btn -->
           <button
-            class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
+            id="menu-toggle"
+            type="button"
+            class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
             @click="toggleNavbar()"
           >
             <svg
@@ -165,7 +167,7 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
-                           <li></li>
+                          <li>
                             <a
                               href="karlstorzcase.html"
                               @click="closeNavbar()"
@@ -347,13 +349,13 @@
             </ul>
           </div>
           <!-- Mobile Menu -->
-        <div
-          id="mobile-menu"
-          x-show="navbarOpen"
-          x-cloak
-          class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
-          x-transition
-        >
+          <div
+            id="mobile-menu"
+            x-show="navbarOpen"
+            x-cloak
+            class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
+            x-transition
+          >
             <ul class="flex flex-col space-y-2 px-4 py-2">
               <!-- Dropdown for Mobile -->
               <li class="relative">
@@ -418,7 +420,7 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
-                             <li>
+                          <li>
                             <a
                               href="karlstorzcase.html"
                               @click="closeNavbar()"
@@ -602,132 +604,239 @@
         </div>
       </nav>
 
-    <!-- Title Section -->
-    <section class="container flex justify-between items-center mx-auto">
-      <div
-        class="flex md:mb-8 justify-center mt-32 px-4 md:px-10 lg:px-10 w-full"
-      >
-        <!-- Left item -->
-        <div class="flex flex-col w-full">
-          <h1 id="header" class="font-bold text-5xl text-center">
-            <span>Meet</span>
-          </h1>
-          <div class="mt-8 flex justify-center">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://rmoise.github.io/meet/"
-              class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-            >
-              Demo
-            </a>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/rmoise/meet"
-              class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-            >
-              GitHub
-            </a>
-            <a
-              rel="noopener noreferrer"
-              href="img/Meet Case Study.pdf"
-              class="block md:p-3 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
-            >
-              Download PDF
-            </a>
+      <!-- Title Section -->
+      <section class="container flex justify-between items-center mx-auto">
+        <div
+          class="flex md:mb-8 justify-center mt-32 px-4 md:px-10 lg:px-10 w-full"
+        >
+          <!-- Left item -->
+          <div class="flex flex-col w-full">
+            <h1 id="header" class="font-bold text-5xl text-center">
+              <span>Meet</span>
+            </h1>
+            <div class="mt-8 flex justify-center">
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://rmoise.github.io/meet/"
+                class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+              >
+                Demo
+              </a>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/rmoise/meet"
+                class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+              >
+                GitHub
+              </a>
+              <a
+                rel="noopener noreferrer"
+                href="img/Meet Case Study.pdf"
+                class="block md:p-3 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+              >
+                Download PDF
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Overview Section -->
-    <section class="container flex justify-between items-center mx-auto">
-      <div
-        class="mt-32 flex md:flex-nowrap flex-wrap justify-between items-center mx-auto px-4 lg:px-10 w-full"
-      >
-        <!-- Left item -->
-        <div class="flex flex-col md:w-1/2 justify-center">
-          <h2 id="web" class="secondary-title text-3xl font-bold">Overview</h2>
-          <p class="mt-4 md:mb-0 mb-8">
-            Meet is a react serverless, progressive web application (PWA) using
-            a test-driven development (TDD) technique. The application uses the
-            Google Calendar API to fetch upcoming events.
-          </p>
-        </div>
-
-        <!-- Image -->
-        <div class="max-w-lg md:mb-0 md:ml-20">
-          <img
-            src="img/meet-laptop.png"
-            alt=""
-            class="rounded-lg bottom-0 right-0 lg:left-0 mx-auto"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- Purpose & Context Section -->
-    <section class="container flex justify-between items-center mx-auto">
-      <div
-        class="mt-10 flex justify-between items-center mx-auto px-4 lg:px-10 w-full"
-      >
-        <!-- Left item -->
-        <div class="flex flex-col md:w-full">
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <h2 class="mt-4 secondary-title text-3xl font-bold">
-              Purpose & Context
+      <!-- Overview Section -->
+      <section class="container flex justify-between items-center mx-auto">
+        <div
+          class="mt-32 flex md:flex-nowrap flex-wrap justify-between items-center mx-auto px-4 lg:px-10 w-full"
+        >
+          <!-- Left item -->
+          <div class="flex flex-col md:w-1/2 justify-center">
+            <h2 id="web" class="secondary-title text-3xl font-bold">
+              Overview
             </h2>
-
-            <p class="mt-4 md:mb-0">
-              Meet was a project I built as part of my web development course at
-              CareerFoundry to demonstrate my mastery of test driven development
-              and PWA's.
+            <p class="mt-4 md:mb-0 mb-8">
+              Meet is a react serverless, progressive web application (PWA)
+              using a test-driven development (TDD) technique. The application
+              uses the Google Calendar API to fetch upcoming events.
             </p>
-          </figure>
-        </div>
-      </div>
-    </section>
+          </div>
 
-    <!-- Objective Section -->
-    <section class="container flex justify-between items-center mx-auto">
-      <div
-        class="flex flex-wrap-reverse md:flex-nowrap mt-10 mb-8 px-4 md:px-10 lg:px-10 w-full"
-      >
-        <!-- Image -->
-        <div class="max-w-lg md:mr-20">
-          <img
-            src="img/safar-safarov-koOdUvfGr4c-unsplash.jpg"
-            alt=""
-            class="rounded-lg bottom-0 right-0 lg:left-0 mx-auto"
-          />
+          <!-- Image -->
+          <div class="max-w-lg md:mb-0 md:ml-20">
+            <img
+              src="img/meet-laptop.png"
+              alt=""
+              class="rounded-lg bottom-0 right-0 lg:left-0 mx-auto"
+            />
+          </div>
         </div>
-        <!-- Left item -->
-        <div class="mt-8 flex flex-col md:w-1/2 justify-center">
-          <h2 class="secondary-title text-3xl font-bold">Objective</h2>
-          <p class="mt-4 mb-8">
-            The aim of the project was to build a progressive web app with the
-            ability to work offline and a serverless backend developed using a
-            TDD technique.The aim of the project was to build a progressive web
-            app with the ability to work offline and a serverless backend
-            developed using a TDD technique.
-          </p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Duration Section -->
-    <section class="container flex justify-between items-center mx-auto">
-      <div class="mt-10 px-4 md:px-10 lg:px-10 w-full">
-        <!-- Left item -->
-        <div class="flex flex-col">
-          <!--          <h2 id="web" class="secondary-title text-4xl font-bold mb-8">
+      <!-- Purpose & Context Section -->
+      <section class="container flex justify-between items-center mx-auto">
+        <div
+          class="mt-10 flex justify-between items-center mx-auto px-4 lg:px-10 w-full"
+        >
+          <!-- Left item -->
+          <div class="flex flex-col md:w-full">
+            <figure
+              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+            >
+              <h2 class="mt-4 secondary-title text-3xl font-bold">
+                Purpose & Context
+              </h2>
+
+              <p class="mt-4 md:mb-0">
+                Meet was a project I built as part of my web development course
+                at CareerFoundry to demonstrate my mastery of test driven
+                development and PWA's.
+              </p>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Objective Section -->
+      <section class="container flex justify-between items-center mx-auto">
+        <div
+          class="flex flex-wrap-reverse md:flex-nowrap mt-10 mb-8 px-4 md:px-10 lg:px-10 w-full"
+        >
+          <!-- Image -->
+          <div class="max-w-lg md:mr-20">
+            <img
+              src="img/safar-safarov-koOdUvfGr4c-unsplash.jpg"
+              alt=""
+              class="rounded-lg bottom-0 right-0 lg:left-0 mx-auto"
+            />
+          </div>
+          <!-- Left item -->
+          <div class="mt-8 flex flex-col md:w-1/2 justify-center">
+            <h2 class="secondary-title text-3xl font-bold">Objective</h2>
+            <p class="mt-4 mb-8">
+              The aim of the project was to build a progressive web app with the
+              ability to work offline and a serverless backend developed using a
+              TDD technique.The aim of the project was to build a progressive
+              web app with the ability to work offline and a serverless backend
+              developed using a TDD technique.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Duration Section -->
+      <section class="container flex justify-between items-center mx-auto">
+        <div class="mt-10 px-4 md:px-10 lg:px-10 w-full">
+          <!-- Left item -->
+          <div class="flex flex-col">
+            <!--          <h2 id="web" class="secondary-title text-4xl font-bold mb-8">
                     Duration
                 </h2> -->
+            <div
+              class="grid mb-8 rounded-lg shadow-sm gap-4 md:mb-12 md:grid-cols"
+            >
+              <figure
+                class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              >
+                <svg
+                  fill="none"
+                  class="w-10 h-10 mb-2"
+                  stroke="#00F2AA"
+                  stroke-width="1.5"
+                  viewbox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  ></path>
+                </svg>
+
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                  Duration
+                </h5>
+
+                <p class="mb-3 font-normal">16 Days</p>
+              </figure>
+              <figure
+                class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              >
+                <svg
+                  fill="none"
+                  class="w-10 h-10 mb-2"
+                  stroke="#00F2AA"
+                  stroke-width="1.5"
+                  viewbox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+                  ></path>
+                </svg>
+
+                <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                  Credits
+                </h5>
+
+                <ul class="grid md:grid-cols-1 gap-1 list-disc list-inside">
+                  <li>Tutor: Terver Aosu</li>
+                  <li>Mentor: Stephen Barungi</li>
+                </ul>
+              </figure>
+              <figure
+                class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              >
+                <svg
+                  fill="none"
+                  class="w-10 h-10 mb-2"
+                  stroke="#00F2AA"
+                  stroke-width="1.5"
+                  viewbox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z"
+                  ></path>
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.867 19.125h.008v.008h-.008v-.008z"
+                  ></path>
+                </svg>
+                <a href="#">
+                  <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                    Built With
+                  </h5>
+                </a>
+
+                <ul class="grid md:grid-cols-3 gap-1 list-disc list-inside">
+                  <li>React</li>
+                  <li>Amazon(AWS)</li>
+                  <li>Google Cloud</li>
+                  <li>Jest</li>
+                  <li>Bootstrap</li>
+                </ul>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Approach Section -->
+      <section class="container flex justify-between items-center mx-auto">
+        <div class="mt-10 mx-auto px-4 lg:px-10 w-full">
+          <!-- Left item -->
+          <h2 class="mb-8 secondary-title text-3xl font-bold">Approach</h2>
+
+          <!-- Image -->
           <div
-            class="grid mb-8 rounded-lg shadow-sm gap-4 md:mb-12 md:grid-cols"
+            class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-3 lg:gap-6"
           >
             <figure
               class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
@@ -744,15 +853,20 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 ></path>
               </svg>
 
               <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-                Duration
+                01 Testing
               </h5>
 
-              <p class="mb-3 font-normal">16 Days</p>
+              <p class="mb-3 font-normal">
+                First I: Applied a test-driven development, defining user
+                scenarios for Jest (unit and integration), Cucumber
+                (acceptance), and Puppeteer (end-to-end) tests based on user
+                stories.
+              </p>
             </figure>
             <figure
               class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
@@ -769,19 +883,20 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 ></path>
               </svg>
 
               <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-                Credits
+                02 Serverless Functions
               </h5>
 
-              <ul class="grid md:grid-cols-1 gap-1 list-disc list-inside">
-                <li>Tutor: Terver Aosu</li>
-                <li>Mentor: Stephen Barungi</li>
-              </ul>
+              <p class="mb-3 font-normal">
+                Then I: Implemented serverless functions such as display events
+                from Google Calendar using AWS Lambda
+              </p>
             </figure>
+
             <figure
               class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
             >
@@ -797,361 +912,253 @@
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M21.75 6.75a4.5 4.5 0 01-4.884 4.484c-1.076-.091-2.264.071-2.95.904l-7.152 8.684a2.548 2.548 0 11-3.586-3.586l8.684-7.152c.833-.686.995-1.874.904-2.95a4.5 4.5 0 016.336-4.486l-3.276 3.276a3.004 3.004 0 002.25 2.25l3.276-3.276c.256.565.398 1.192.398 1.852z"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 ></path>
+              </svg>
+              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                03 Continuous Delivery
+              </h5>
+
+              <p class="mb-3 font-normal">
+                Next I: Created a project in Atatus to automate tracking the
+                performance of the app to resolve any issues
+              </p>
+            </figure>
+
+            <figure
+              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+            >
+              <svg
+                fill="none"
+                class="w-10 h-10 mb-2"
+                stroke="#00F2AA"
+                stroke-width="1.5"
+                viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  d="M4.867 19.125h.008v.008h-.008v-.008z"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 ></path>
               </svg>
-              <a href="#">
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-                  Built With
-                </h5>
-              </a>
+              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                04 Object-Oriented Programming
+              </h5>
 
-              <ul class="grid md:grid-cols-3 gap-1 list-disc list-inside">
-                <li>React</li>
-                <li>Amazon(AWS)</li>
-                <li>Google Cloud</li>
-                <li>Jest</li>
-                <li>Bootstrap</li>
-              </ul>
+              <p class="mb-3 font-normal">
+                Then I: Used object-oriented programming to set up notification
+                warning, info and error alerts
+              </p>
+            </figure>
+
+            <figure
+              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+            >
+              <svg
+                fill="none"
+                class="w-10 h-10 mb-2"
+                stroke="#00F2AA"
+                stroke-width="1.5"
+                viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
+                ></path>
+              </svg>
+              <h5 class="mb-2 text-2xl font-semibold tracking-tight">05 PWA</h5>
+
+              <p class="mb-3 font-normal">
+                Next I: Implemented PWA using Lighthouse, a free tool offered by
+                Google that’s used to analyze apps. allowed my app to be
+                installed on users’ devices by editing the manifest file from
+                create-react-app and also implemented the offline logic by using
+                localStorage.
+              </p>
+            </figure>
+
+            <figure
+              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+            >
+              <svg
+                fill="none"
+                class="w-10 h-10 mb-2"
+                stroke="#00F2AA"
+                stroke-width="1.5"
+                viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4.5 12.75l6 6 9-13.5"
+                ></path>
+              </svg>
+              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                06 Data Visualization & Deployment
+              </h5>
+
+              <p class="mb-3 font-normal">
+                Finally I: Used Recharts library to add two charts one that
+                shows how many events will take place in that city on upcoming
+                days in the form of a scatterplot chart, and another that
+                visualizes the popularity of event genres in the form of a pie
+                chart and then deployed the updated app on GitHub pages.
+              </p>
             </figure>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Approach Section -->
-    <section class="container flex justify-between items-center mx-auto">
-      <div class="mt-10 mx-auto px-4 lg:px-10 w-full">
-        <!-- Left item -->
-        <h2 class="mb-8 secondary-title text-3xl font-bold">Approach</h2>
+      <!-- Retrospective Section -->
+      <section
+        class="container mb-24 flex justify-between items-center mx-auto"
+      >
+        <div class="mt-24 mx-auto px-4 lg:px-10 w-full">
+          <!-- Left item -->
+          <h2 class="mb-8 secondary-title text-3xl font-bold">Retrospective</h2>
 
-        <!-- Image -->
-        <div
-          class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-3 lg:gap-6"
-        >
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+          <!-- Image -->
+          <div
+            class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-4 lg:gap-6 mb-10"
           >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
+            <figure
+              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-              ></path>
-            </svg>
+              <svg
+                fill="none"
+                class="w-10 h-10 mb-2"
+                stroke="#00F2AA"
+                stroke-width="1.5"
+                viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z"
+                ></path>
+              </svg>
 
-            <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-              01 Testing
-            </h5>
+              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                What went well?
+              </h5>
 
-            <p class="mb-3 font-normal">
-              First I: Applied a test-driven development, defining user
-              scenarios for Jest (unit and integration), Cucumber (acceptance),
-              and Puppeteer (end-to-end) tests based on user stories.
-            </p>
-          </figure>
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
+              <p class="mb-3 font-normal">
+                I like the concept of creating user scenarios and testing before
+                coding. I could see this being an error free approach that saves
+                a lot of time and helps in keeping code consistent across a
+                team. I also enjoyed using Kanban to organize my task and
+                achieve an orderly productive work environment.
+              </p>
+            </figure>
+            <figure
+              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-              ></path>
-            </svg>
+              <svg
+                fill="none"
+                class="w-10 h-10 mb-2 text-gray-500"
+                stroke="#00F2AA"
+                stroke-width="1.5"
+                viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M7.5 15h2.25m8.024-9.75c.011.05.028.1.052.148.591 1.2.924 2.55.924 3.977a8.96 8.96 0 01-.999 4.125m.023-8.25c-.076-.365.183-.75.575-.75h.908c.889 0 1.713.518 1.972 1.368.339 1.11.521 2.287.521 3.507 0 1.553-.295 3.036-.831 4.398C20.613 14.547 19.833 15 19 15h-1.053c-.472 0-.745-.556-.5-.96a8.95 8.95 0 00.303-.54m.023-8.25H16.48a4.5 4.5 0 01-1.423-.23l-3.114-1.04a4.5 4.5 0 00-1.423-.23H6.504c-.618 0-1.217.247-1.605.729A11.95 11.95 0 002.25 12c0 .434.023.863.068 1.285C2.427 14.306 3.346 15 4.372 15h3.126c.618 0 .991.724.725 1.282A7.471 7.471 0 007.5 19.5a2.25 2.25 0 002.25 2.25.75.75 0 00.75-.75v-.633c0-.573.11-1.14.322-1.672.304-.76.93-1.33 1.653-1.715a9.04 9.04 0 002.86-2.4c.498-.634 1.226-1.08 2.032-1.08h.384"
+                ></path>
+              </svg>
 
-            <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-              02 Serverless Functions
-            </h5>
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900"
+              >
+                What didn't go well?
+              </h5>
 
-            <p class="mb-3 font-normal">
-              Then I: Implemented serverless functions such as display events
-              from Google Calendar using AWS Lambda
-            </p>
-          </figure>
-
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
+              <p class="mb-3 font-normal">
+                Upon completing this achievement I ran into some issues with
+                testing in enzyme. My tutor and I could not find a solution as
+                to why some of my test were not passing. I tried debugging and
+                troubleshooting but to no success. My guess is that enyzme is no
+                longer supported with the latest react and could be causing some
+                dependency issues. However the app does still work as intended.
+              </p>
+            </figure>
+            <figure
+              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-              ></path>
-            </svg>
-            <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-              03 Continuous Delivery
-            </h5>
+              <svg
+                fill="none"
+                class="w-10 h-10 mb-2 text-gray-500"
+                stroke="#00F2AA"
+                stroke-width="1.5"
+                viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
+                ></path>
+              </svg>
 
-            <p class="mb-3 font-normal">
-              Next I: Created a project in Atatus to automate tracking the
-              performance of the app to resolve any issues
-            </p>
-          </figure>
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900"
+              >
+                Future Steps
+              </h5>
 
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
+              <p class="mb-3 font-normal">
+                I would like to continue to build on the app by creating my own
+                API or using another external API. I would like the data to be
+                more diverse.
+              </p>
+            </figure>
+            <figure
+              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
             >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-              ></path>
-            </svg>
-            <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-              04 Object-Oriented Programming
-            </h5>
+              <svg
+                fill="none"
+                class="w-10 h-10 mb-2"
+                stroke="#00F2AA"
+                stroke-width="1.5"
+                viewbox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
+                ></path>
+              </svg>
 
-            <p class="mb-3 font-normal">
-              Then I: Used object-oriented programming to set up notification
-              warning, info and error alerts
-            </p>
-          </figure>
+              <h5 class="mb-2 text-2xl font-semibold tracking-tigh">
+                Final Thoughts
+              </h5>
 
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
-              ></path>
-            </svg>
-            <h5 class="mb-2 text-2xl font-semibold tracking-tight">05 PWA</h5>
-
-            <p class="mb-3 font-normal">
-              Next I: Implemented PWA using Lighthouse, a free tool offered by
-              Google that’s used to analyze apps. allowed my app to be installed
-              on users’ devices by editing the manifest file from
-              create-react-app and also implemented the offline logic by using
-              localStorage.
-            </p>
-          </figure>
-
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M4.5 12.75l6 6 9-13.5"
-              ></path>
-            </svg>
-            <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-              06 Data Visualization & Deployment
-            </h5>
-
-            <p class="mb-3 font-normal">
-              Finally I: Used Recharts library to add two charts one that shows
-              how many events will take place in that city on upcoming days in
-              the form of a scatterplot chart, and another that visualizes the
-              popularity of event genres in the form of a pie chart and then
-              deployed the updated app on GitHub pages.
-            </p>
-          </figure>
+              <p class="mb-3 font-normal">
+                Overall, this was an insightful introduction to test driven
+                development. I've learned quite a bit about serverless
+                functions, defining user scenarios, unit and integration,
+                acceptance and end to end testing.
+              </p>
+            </figure>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Retrospective Section -->
-    <section class="container mb-24 flex justify-between items-center mx-auto">
-      <div class="mt-24 mx-auto px-4 lg:px-10 w-full">
-        <!-- Left item -->
-        <h2 class="mb-8 secondary-title text-3xl font-bold">Retrospective</h2>
-
-        <!-- Image -->
-        <div
-          class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-4 lg:gap-6 mb-10"
-        >
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6.633 10.5c.806 0 1.533-.446 2.031-1.08a9.041 9.041 0 012.861-2.4c.723-.384 1.35-.956 1.653-1.715a4.498 4.498 0 00.322-1.672V3a.75.75 0 01.75-.75A2.25 2.25 0 0116.5 4.5c0 1.152-.26 2.243-.723 3.218-.266.558.107 1.282.725 1.282h3.126c1.026 0 1.945.694 2.054 1.715.045.422.068.85.068 1.285a11.95 11.95 0 01-2.649 7.521c-.388.482-.987.729-1.605.729H13.48c-.483 0-.964-.078-1.423-.23l-3.114-1.04a4.501 4.501 0 00-1.423-.23H5.904M14.25 9h2.25M5.904 18.75c.083.205.173.405.27.602.197.4-.078.898-.523.898h-.908c-.889 0-1.713-.518-1.972-1.368a12 12 0 01-.521-3.507c0-1.553.295-3.036.831-4.398C3.387 10.203 4.167 9.75 5 9.75h1.053c.472 0 .745.556.5.96a8.958 8.958 0 00-1.302 4.665c0 1.194.232 2.333.654 3.375z"
-              ></path>
-            </svg>
-
-            <h5 class="mb-2 text-2xl font-semibold tracking-tight">
-              What went well?
-            </h5>
-
-            <p class="mb-3 font-normal">
-              I like the concept of creating user scenarios and testing before
-              coding. I could see this being an error free approach that saves a
-              lot of time and helps in keeping code consistent across a team. I
-              also enjoyed using Kanban to organize my task and achieve an
-              orderly productive work environment.
-            </p>
-          </figure>
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2 text-gray-500"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M7.5 15h2.25m8.024-9.75c.011.05.028.1.052.148.591 1.2.924 2.55.924 3.977a8.96 8.96 0 01-.999 4.125m.023-8.25c-.076-.365.183-.75.575-.75h.908c.889 0 1.713.518 1.972 1.368.339 1.11.521 2.287.521 3.507 0 1.553-.295 3.036-.831 4.398C20.613 14.547 19.833 15 19 15h-1.053c-.472 0-.745-.556-.5-.96a8.95 8.95 0 00.303-.54m.023-8.25H16.48a4.5 4.5 0 01-1.423-.23l-3.114-1.04a4.5 4.5 0 00-1.423-.23H6.504c-.618 0-1.217.247-1.605.729A11.95 11.95 0 002.25 12c0 .434.023.863.068 1.285C2.427 14.306 3.346 15 4.372 15h3.126c.618 0 .991.724.725 1.282A7.471 7.471 0 007.5 19.5a2.25 2.25 0 002.25 2.25.75.75 0 00.75-.75v-.633c0-.573.11-1.14.322-1.672.304-.76.93-1.33 1.653-1.715a9.04 9.04 0 002.86-2.4c.498-.634 1.226-1.08 2.032-1.08h.384"
-              ></path>
-            </svg>
-
-            <h5
-              class="mb-2 text-2xl font-semibold tracking-tight text-gray-900"
-            >
-              What didn't go well?
-            </h5>
-
-            <p class="mb-3 font-normal">
-              Upon completing this achievement I ran into some issues with
-              testing in enzyme. My tutor and I could not find a solution as to
-              why some of my test were not passing. I tried debugging and
-              troubleshooting but to no success. My guess is that enyzme is no
-              longer supported with the latest react and could be causing some
-              dependency issues. However the app does still work as intended.
-            </p>
-          </figure>
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2 text-gray-500"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5"
-              ></path>
-            </svg>
-
-            <h5
-              class="mb-2 text-2xl font-semibold tracking-tight text-gray-900"
-            >
-              Future Steps
-            </h5>
-
-            <p class="mb-3 font-normal">
-              I would like to continue to build on the app by creating my own
-              API or using another external API. I would like the data to be
-              more diverse.
-            </p>
-          </figure>
-          <figure
-            class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
-          >
-            <svg
-              fill="none"
-              class="w-10 h-10 mb-2"
-              stroke="#00F2AA"
-              stroke-width="1.5"
-              viewbox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
-              ></path>
-            </svg>
-
-            <h5 class="mb-2 text-2xl font-semibold tracking-tigh">
-              Final Thoughts
-            </h5>
-
-            <p class="mb-3 font-normal">
-              Overall, this was an insightful introduction to test driven
-              development. I've learned quite a bit about serverless functions,
-              defining user scenarios, unit and integration, acceptance and end
-              to end testing.
-            </p>
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
+      <!-- Contact Section -->
       <section
         id="contact"
         aria-labelledby="contact-title"
@@ -1293,19 +1300,19 @@
         </div>
       </section>
 
-    <!-- Notification Container -->
-    <div
-      id="notification"
-      class="fixed bottom-4 right-4 hidden bg-brightGreen text-black p-4 rounded-lg shadow-lg"
-    >
-      <p id="notification-message">Notification message</p>
-    </div>
+      <!-- Notification Container -->
+      <div
+        id="notification"
+        class="fixed bottom-4 right-4 hidden bg-brightGreen text-black p-4 rounded-lg shadow-lg"
+      >
+        <p id="notification-message">Notification message</p>
+      </div>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/script.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-    t
+      <script src="https://smtpjs.com/v3/smtp.js"></script>
+      <script src="js/navbar.js"></script>
+      <script src="js/script.js"></script>
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    </div>
   </body>
 </html>

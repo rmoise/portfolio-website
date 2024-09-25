@@ -39,7 +39,7 @@
           id="menu-toggle"
           type="button"
           class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
-         @click="toggleNavbar($event)"
+        @click="toggleNavbar()"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -3667,7 +3667,7 @@
     <script
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
       defer
-    ></script>   
+    ></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function () {
@@ -3987,6 +3987,21 @@
         updateTabIndicator()
       })
     </script>
+    <div x-data="navbar()" @scroll.window="handleScroll()" @resize.window="handleResize()">
+  <!-- Your nav content here -->
+  <button @click="toggleNavbar()" id="menu-toggle">Toggle Menu</button>
+
+  <nav id="main-nav" x-show="navbarOpen" style="display: none;">
+    <!-- Your nav links -->
+    <a href="#section1" @click="handleLinkClick($event, '#section1')">Section 1</a>
+    <a href="#section2" @click="handleLinkClick($event, '#section2')">Section 2</a>
+  </nav>
+</div>
+
+
+
+
+
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/navigation.js"></script>

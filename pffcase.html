@@ -31,7 +31,7 @@
 
   <body class="flex h-full flex-col">
     <div class="wrapper">
-     <!-- Navbar -->
+      <!-- Navbar -->
       <nav
         id="main-nav"
         x-data="navbar()"
@@ -48,7 +48,9 @@
           </a>
           <!-- Toggler Btn -->
           <button
-            class="inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
+            id="menu-toggle"
+            type="button"
+            class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
             @click="toggleNavbar()"
           >
             <svg
@@ -153,7 +155,7 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
-                           <li></li>
+                          <li>
                             <a
                               href="karlstorzcase.html"
                               @click="closeNavbar()"
@@ -335,13 +337,13 @@
             </ul>
           </div>
           <!-- Mobile Menu -->
-        <div
-          id="mobile-menu"
-          x-show="navbarOpen"
-          x-cloak
-          class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
-          x-transition
-        >
+          <div
+            id="mobile-menu"
+            x-show="navbarOpen"
+            x-cloak
+            class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
+            x-transition
+          >
             <ul class="flex flex-col space-y-2 px-4 py-2">
               <!-- Dropdown for Mobile -->
               <li class="relative">
@@ -406,7 +408,7 @@
                       >
                         <ul class="space-y-2">
                           <!-- Nested Links -->
-                             <li>
+                          <li>
                             <a
                               href="karlstorzcase.html"
                               @click="closeNavbar()"
@@ -616,9 +618,7 @@
       <section class="section m-image-large relative custom-image-section">
         <div
           class="image parallax-cs absolute inset-0"
-          style="
-            background-image: url(&quot;img/Simple-Mockup-Free-Scene-2.png&quot;);
-          "
+          style="background-image: url('img/Simple-Mockup-Free-Scene-2.png')"
         ></div>
         <div class="relative z-10 flex items-center justify-center h-full">
           <!-- Content over the image can go here -->

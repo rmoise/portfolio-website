@@ -5375,6 +5375,15 @@ video {
     position: relative; /* Reset absolute positioning on smaller screens */
   }
 }
+
+
+
+/* Prevent scrolling when the menu is open */
+body.fixed {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+}
 .hover\:scale-105:hover {
   --tw-scale-x: 1.05 !important;
   --tw-scale-y: 1.05 !important;
@@ -5947,6 +5956,3 @@ video {
 .rtl\:text-right:where([dir="rtl"], [dir="rtl"] *) {
   text-align: right !important;
 }
-
-
-
