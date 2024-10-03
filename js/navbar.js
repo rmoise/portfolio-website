@@ -509,4 +509,3 @@ scrollToSection(section) {
     },
   }));
 });
-
