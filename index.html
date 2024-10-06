@@ -39,7 +39,7 @@
           id="menu-toggle"
           type="button"
           class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
-        @click="toggleNavbar()"
+          @click="toggleNavbar()"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -316,7 +316,7 @@
             <li>
               <a
                 href="#contact"
-               @click="handleLinkClick($event, '#contact')"
+                @click="handleLinkClick($event, '#contact')"
                 :class="{ 'bg-gray-100 text-black': isActive('contact') }"
                 class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
                 >Contact</a
@@ -584,15 +584,14 @@
 
             <!-- Contact Link in Mobile Menu -->
             <li>
-             <a
-  href="#contact"
-  @click.prevent="handleContactClick()"
-  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
->
-  Contact
-</a>
-
+              <a
+                href="#contact"
+                @click.prevent="handleContactClick()"
+                :class="{ 'bg-gray-100 text-black': isActive('contact') }"
+                class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+              >
+                Contact
+              </a>
             </li>
           </ul>
         </div>
@@ -846,7 +845,7 @@
       <!-- About Me Section -->
       <section
         id="about"
-        class="relative overflow-hidden bg-white py-16 md:py-32  px-4 sm:px-8 lg:px-32 xl:px-40 border-t border-gray-100"
+        class="relative overflow-hidden bg-white py-16 md:py-32 px-4 sm:px-8 lg:px-32 xl:px-40 border-t border-gray-100"
       >
         <div class="container mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -2164,7 +2163,7 @@
                               >
                                 #UI
                               </div>
-                                <div
+                              <div
                                 class="text-sm font-medium lowercase md:text-lg"
                               >
                                 #UX
@@ -2245,7 +2244,7 @@
                               >
                                 #UI
                               </div>
-                                  <div
+                              <div
                                 class="text-sm font-medium lowercase md:text-lg"
                               >
                                 #UX
@@ -2465,12 +2464,12 @@
                               >
                                 #UI
                               </div>
-                                 <div
+                              <div
                                 class="text-sm font-medium lowercase md:text-lg"
                               >
                                 #UX
                               </div>
-                                    <div
+                              <div
                                 class="text-sm font-medium lowercase md:text-lg"
                               >
                                 #Wireframing
@@ -3662,16 +3661,13 @@
           </div>
         </div>
       </section>
-<!-- Notification Container -->
+      <!-- Notification Container -->
       <div
         id="notification"
         class="fixed bottom-4 right-4 hidden bg-brightGreen text-black p-4 rounded-lg shadow-lg"
       >
         <p id="notification-message">Notification message</p>
       </div>
-    </div>
-
-
     </main>
 
     <!-- Modal -->
@@ -4007,21 +4003,24 @@
         updateTabIndicator()
       })
     </script>
-    <div x-data="navbar()" @scroll.window="handleScroll()" @resize.window="handleResize()">
-  <!-- Your nav content here -->
-  <button @click="toggleNavbar()" id="menu-toggle">Toggle Menu</button>
+    <div
+      x-data="navbar()"
+      @scroll.window="handleScroll()"
+      @resize.window="handleResize()"
+    >
+      <!-- Your nav content here -->
+      <button @click="toggleNavbar()" id="menu-toggle">Toggle Menu</button>
 
-  <nav id="main-nav" x-show="navbarOpen" style="display: none;">
-    <!-- Your nav links -->
-    <a href="#section1" @click="handleLinkClick($event, '#section1')">Section 1</a>
-    <a href="#section2" @click="handleLinkClick($event, '#section2')">Section 2</a>
-  </nav>
-</div>
-
-
-
-
-
+      <nav id="main-nav" x-show="navbarOpen" style="display: none">
+        <!-- Your nav links -->
+        <a href="#section1" @click="handleLinkClick($event, '#section1')"
+          >Section 1</a
+        >
+        <a href="#section2" @click="handleLinkClick($event, '#section2')"
+          >Section 2</a
+        >
+      </nav>
+    </div>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/navigation.js"></script>
