@@ -243,6 +243,26 @@
                         <li>
                           <a
                             target="_blank"
+                            href="https://github.com/rmoise/captain-frank-flight-funnel"
+                            @click="closeNavbar()"
+                            :class="{ 'bg-gray-100 text-black': isActive('captain-frank-flight-funnel') }"
+                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                            >Captain Frank
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            target="_blank"
+                            href="https://github.com/rmoise/All7s"
+                            @click="closeNavbar()"
+                            :class="{ 'bg-gray-100 text-black': isActive('all7s') }"
+                            class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                            >All7z Website
+                          </a>
+                        </li>
+                        <li>
+                          <a
+                            target="_blank"
                             href="https://github.com/rmoise/document-management-app"
                             @click="closeNavbar()"
                             :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
@@ -512,6 +532,26 @@
                 x-transition:leave-end="opacity-0"
               >
                 <ul class="space-y-2">
+                    <li>
+                    <a
+                      target="_blank"
+                      href="https://github.com/rmoise/captain-frank-flight-funnel"
+                      @click="closeNavbar()"
+                      :class="{ 'bg-gray-100 text-black': isActive('captain-frank-flight-funnel') }"
+                      class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                      >Captain Frank</a
+                    >
+                  </li>
+                    <li>
+                    <a
+                      target="_blank"
+                      href="https://github.com/rmoise/All7s"
+                      @click="closeNavbar()"
+                      :class="{ 'bg-gray-100 text-black': isActive('all7s') }"
+                      class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
+                      >All7z Website</a
+                    >
+                  </li>
                   <li>
                     <a
                       target="_blank"
@@ -2564,6 +2604,168 @@
                     <div
                       class="mt-8 rounded-md border border-gray-200 bg-white overflow-hidden"
                     >
+                     <!-- Project A -->
+                      <div
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
+                      >
+                        <div class="w-full xl:w-9/12">
+                          <a
+                            href="https://github.com/rmoise/captain-frank-flight-funnel"
+                            target="_blank"
+                          >
+                            <div
+                              class="bg-gray-200 relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
+                            >
+                              <img
+                                src="img/mockup-website-8.png"
+                                alt="Captain Frank Funnel"
+                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                              />
+                            </div>
+                          </a>
+                        </div>
+
+                        <div class="flex flex-col xl:w-1/4">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                Captain Frank
+                              </div>
+                              <div>
+                                <p>
+                                 This modern web application helps passengers navigate flight-related issues and claims through an intuitive funnel system, featuring Zustand state management, secure document handling, and real-time progress tracking powered by Next.js and TypeScript.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Next.js
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #TypeScript
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Zustand
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Tailwind CSS
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Hubspot
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Framer Motion
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/rmoise/captain-frank-flight-funnel"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
+                     <!-- Project B -->
+                      <div
+                        class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
+                      >
+                        <div class="w-full xl:w-9/12">
+                          <a
+                            href="https://github.com/rmoise/All7s"
+                            target="_blank"
+                          >
+                            <div
+                              class="bg-gray-200 relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
+                            >
+                              <img
+                                src="img/mockup-website-9.png"
+                                alt="Captain Frank Funnel"
+                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                              />
+                            </div>
+                          </a>
+                        </div>
+                        <div class="flex flex-col xl:w-1/4">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl"
+                              >
+                                All7z
+                              </div>
+                              <div>
+                                <p>
+                                    This modern e-commerce platform for artists integrates Sanity.io headless CMS with Next.js and Stripe, featuring dynamic content management, SEO optimization, and mobile-first design for seamless shopping experiences.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Next.js
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #TypeScript
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Sanity.io
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Tailwind CSS
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg"
+                              >
+                                #Stripe
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://github.com/rmoise/All7s"
+                                target="_blank"
+                                class="text-sm font-medium underline text-black hover:text-darkGrayishBlue"
+                              >
+                                GitHub
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Divider Line -->
+                      <hr class="border-t border-gray-200" />
                       <!-- Project A -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
@@ -2584,6 +2786,7 @@
                             </div>
                           </a>
                         </div>
+
                         <div class="flex flex-col xl:w-1/4">
                           <div
                             class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
