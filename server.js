@@ -17,6 +17,9 @@ app.use(
   }),
 )
 
+// Serve static files from the current directory
+app.use(express.static('.'))
+
 // Middleware to parse JSON and URL-encoded data
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))

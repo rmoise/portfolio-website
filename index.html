@@ -532,7 +532,7 @@
                 x-transition:leave-end="opacity-0"
               >
                 <ul class="space-y-2">
-                    <li>
+                  <li>
                     <a
                       target="_blank"
                       href="https://github.com/rmoise/captain-frank-flight-funnel"
@@ -542,7 +542,7 @@
                       >Captain Frank</a
                     >
                   </li>
-                    <li>
+                  <li>
                     <a
                       target="_blank"
                       href="https://github.com/rmoise/All7s"
@@ -2048,6 +2048,7 @@
                   title="Feature 1"
                   class="tab relative block rounded-lg py-2.5 px-4"
                   onclick="selectTab(event)"
+                  data-tab="design"
                 >
                   <span
                     class="m-auto block w-max text-sm font-medium text-black tracking-wider"
@@ -2063,6 +2064,7 @@
                   title="Feature 2"
                   class="tab relative block rounded-lg py-2.5 px-4"
                   onclick="selectTab(event)"
+                  data-tab="development"
                 >
                   <span
                     class="m-auto block w-max text-sm text-black font-medium tracking-wider"
@@ -2604,7 +2606,7 @@
                     <div
                       class="mt-8 rounded-md border border-gray-200 bg-white overflow-hidden"
                     >
-                     <!-- Project A -->
+                      <!-- Project A -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row relative"
                       >
@@ -2637,7 +2639,12 @@
                               </div>
                               <div>
                                 <p>
-                                 This modern web application helps passengers navigate flight-related issues and claims through an intuitive funnel system, featuring Zustand state management, secure document handling, and real-time progress tracking powered by Next.js and TypeScript.
+                                  This modern web application helps passengers
+                                  navigate flight-related issues and claims
+                                  through an intuitive funnel system, featuring
+                                  Zustand state management, secure document
+                                  handling, and real-time progress tracking
+                                  powered by Next.js and TypeScript.
                                 </p>
                               </div>
                             </div>
@@ -2688,7 +2695,7 @@
                       </div>
                       <!-- Divider Line -->
                       <hr class="border-t border-gray-200" />
-                     <!-- Project B -->
+                      <!-- Project B -->
                       <div
                         class="flex flex-col gap-x-5 p-2 transition bg-white hover:bg-gray-50 xl:flex-row-reverse relative"
                       >
@@ -2720,7 +2727,11 @@
                               </div>
                               <div>
                                 <p>
-                                    This modern e-commerce platform for artists integrates Sanity.io headless CMS with Next.js and Stripe, featuring dynamic content management, SEO optimization, and mobile-first design for seamless shopping experiences.
+                                  This modern e-commerce platform for artists
+                                  integrates Sanity.io headless CMS with Next.js
+                                  and Stripe, featuring dynamic content
+                                  management, SEO optimization, and mobile-first
+                                  design for seamless shopping experiences.
                                 </p>
                               </div>
                             </div>
@@ -4077,11 +4088,14 @@
     </script>
     <script>
       function selectTab(event) {
-        const tabs = document.querySelectorAll('.tab')
-        tabs.forEach((tab) => {
-          tab.setAttribute('aria-selected', 'false')
-        })
-        event.currentTarget.setAttribute('aria-selected', 'true')
+        // This function is now handled by the enhanced tab system below
+        // but keeping it for backward compatibility
+        const tabType = event.currentTarget.getAttribute('data-tab')
+        if (tabType) {
+          history.replaceState(null, null, `#${tabType}`)
+          // The hashchange event will handle the rest
+          window.dispatchEvent(new HashChangeEvent('hashchange'))
+        }
       }
     </script>
 
@@ -4185,25 +4199,59 @@
           }
         }
 
+        function showTab(tabType) {
+          // Find the tab with the matching data-tab attribute
+          const targetTab = document.querySelector(`[data-tab="${tabType}"]`)
+          if (!targetTab) return
+
+          // Update tab selection
+          tabs.forEach((t) => {
+            t.setAttribute('aria-selected', 'false')
+            t.setAttribute('tabindex', '-1')
+          })
+          targetTab.setAttribute('aria-selected', 'true')
+          targetTab.setAttribute('tabindex', '0')
+
+          // Update panel visibility
+          const panelId = targetTab.getAttribute('aria-controls')
+          panels.forEach((p) => {
+            p.classList.add('hidden')
+            p.classList.remove('block')
+          })
+          document.getElementById(panelId).classList.remove('hidden')
+          document.getElementById(panelId).classList.add('block')
+
+          updateTabIndicator()
+        }
+
+        function handleHashChange() {
+          const hash = window.location.hash.substring(1) // Remove the # symbol
+          if (hash === 'design') {
+            showTab('design')
+          } else if (hash === 'development') {
+            showTab('development')
+          } else {
+            // Default to design if no hash or invalid hash
+            showTab('design')
+          }
+        }
+
         tabs.forEach((tab) => {
           tab.addEventListener('click', function () {
-            tabs.forEach((t) => t.setAttribute('aria-selected', 'false'))
-            tab.setAttribute('aria-selected', 'true')
+            const tabType = tab.getAttribute('data-tab')
 
-            const panelId = tab.getAttribute('aria-controls')
-            panels.forEach((p) => {
-              p.classList.add('hidden')
-              p.classList.remove('block')
-            })
-            document.getElementById(panelId).classList.remove('hidden')
-            document.getElementById(panelId).classList.add('block')
+            // Update URL hash without triggering hashchange event
+            history.replaceState(null, null, `#${tabType}`)
 
-            updateTabIndicator()
+            showTab(tabType)
           })
         })
 
-        // Initial call to position the indicator correctly
-        updateTabIndicator()
+        // Listen for hash changes (e.g., browser back/forward, direct URL access)
+        window.addEventListener('hashchange', handleHashChange)
+
+        // Handle initial page load
+        handleHashChange()
       })
     </script>
     <div
