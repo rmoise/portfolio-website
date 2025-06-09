@@ -31,16 +31,33 @@
         height: 100vh;
         z-index: -1;
         pointer-events: none;
+        min-height: 100vh;
       }
 
       .spline-container iframe {
         border: none;
         width: 100%;
         height: 100%;
+        min-height: 100vh;
         transform: translate3d(0, 0, 0); /* Force GPU acceleration */
         will-change: auto;
         contain: strict;
         isolation: isolate;
+      }
+
+      /* Mobile-specific fixes for Spline container */
+      @media (max-width: 768px) {
+        .spline-container {
+          height: 100vh;
+          min-height: 100vh;
+          overflow: hidden;
+        }
+
+        .spline-container iframe {
+          height: 120vh; /* Slightly larger to prevent gaps */
+          min-height: 120vh;
+          transform: scale(1.1) translate3d(0, 0, 0); /* Scale up slightly */
+        }
       }
 
       /* Performance optimizations */
@@ -82,9 +99,8 @@
         background: transparent !important;
       }
 
-      /* Explicitly disable any overlays in dark mode */
-      .dark .parallax::before,
-      .dark .parallax::after {
+      /* Disable only before pseudo-element in dark mode, keep after for fade */
+      .dark .parallax::before {
         display: none !important;
         content: none !important;
       }
@@ -92,23 +108,115 @@
             /* ===== LIGHT MODE ONLY ===== */
       /* Only apply when NOT in dark mode */
       html:not(.dark) body:not(.dark) .spline-container {
-        opacity: 0.3 !important;
-        filter: invert(1) hue-rotate(180deg) contrast(1.5) brightness(0.8) !important;
+        opacity: 0.4 !important;
+        filter: invert(1) hue-rotate(180deg) contrast(1.3) brightness(1.1) !important;
+      }
+
+      /* Mobile light mode - better blending */
+      @media (max-width: 768px) {
+        html:not(.dark) body:not(.dark) .spline-container {
+          opacity: 0.4 !important;
+          filter: invert(1) hue-rotate(180deg) contrast(1.3) brightness(0.9) !important;
+        }
       }
 
       /* Light mode background */
       html:not(.dark) body:not(.dark) .parallax {
-        background: #ffffff !important;
+        background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #ffffff 100%) !important;
+      }
+
+      /* Mobile light mode - ensure full coverage */
+      @media (max-width: 768px) {
+        html:not(.dark) body:not(.dark) .parallax {
+          background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 50%, #ffffff 100%) !important;
+          min-height: 100vh;
+        }
+      }
+
+                              /* Bottom fade effect - hidden by default */
+      .hero-bottom-fade {
+        display: none;
+        pointer-events: none;
+      }
+
+            /* Mobile light mode only - bottom fade */
+      @media (max-width: 768px) {
+        html:not(.dark) .hero-bottom-fade {
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          width: 100%;
+          height: 400px;
+          background: linear-gradient(to top, #ffffff 0%, #ffffff 30%, rgba(255, 255, 255, 0.95) 40%, rgba(255, 255, 255, 0.8) 55%, rgba(255, 255, 255, 0.5) 70%, rgba(255, 255, 255, 0.2) 85%, transparent 100%);
+          z-index: 5;
+          pointer-events: none;
+        }
       }
 
       /* About Me Section Background */
       #about {
-        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #e2e8f0 75%, #f8fafc 100%);
+        background-image: url('img/about-me-bg.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
       }
 
-      /* Dark mode About Me background */
+      /* Light mode overlay for better readability */
+      #about::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(238, 242, 247, 0.3) 0%, rgba(238, 242, 247, 0.5) 25%, rgba(238, 242, 247, 0.6) 50%, rgba(238, 242, 247, 0.5) 75%, rgba(238, 242, 247, 0.3) 100%);
+        z-index: 1;
+      }
+
+      #about > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Dark mode About Me background - add overlay for better text readability */
       .dark #about {
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #0f172a 50%, #1e293b 75%, #0f172a 100%);
+        background-image: url('img/about-me-bg.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      .dark #about::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.3) 0%, rgba(59, 130, 246, 0.4) 25%, rgba(59, 130, 246, 0.4) 50%, rgba(59, 130, 246, 0.4) 75%, rgba(6, 182, 212, 0.3) 100%);
+        z-index: 1;
+      }
+
+      .dark #about > * {
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Glass button styling for dark mode only */
+      .dark .glass-primary-button {
+        background: rgba(255, 255, 255, 0.15) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        transition: all 0.3s ease;
+      }
+      .dark .glass-primary-button:hover {
+        background: rgba(255, 255, 255, 0.25) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       }
 
     </style>
@@ -141,6 +249,9 @@
 
       <div class="parallax-background"></div>
 
+      <!-- Bottom Fade Overlay - only in hero section -->
+      <div class="hero-bottom-fade"></div>
+
       <div class="parallax-content relative z-50">
         <section class="pt-24 min-h-screen flex items-center justify-center">
           <div class="container mx-auto px-6 py-16 md:py-32">
@@ -160,14 +271,14 @@
                   powered by development
                 </h1>
                 <p
-                  class="text-gray-600 dark:text-gray-300 text-xl md:text-2xl mb-8 max-w-2xl mx-auto font-extralight tracking-wide"
+                  class="text-black dark:text-gray-300 text-xl md:text-2xl mb-8 max-w-2xl mx-auto font-extralight tracking-wide"
                 >
                   I create responsive digital experiences that balance form and function—built to scale, designed to make an impact.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a
                     href="#portfolio"
-                    class="bg-black dark:bg-gray-800 text-white dark:text-white font-light rounded-md px-6 py-3 hover:bg-gray-800 dark:hover:bg-gray-700 transition-all text-center"
+                    class="bg-black glass-primary-button text-white font-light rounded-md px-6 py-3 hover:bg-gray-800 transition-all text-center"
                   >
                     View my work
                     </a>
@@ -227,7 +338,7 @@
                 <i class="fas fa-chevron-down text-base"></i>
               </a>
             </div>
-            </div>
+                        </div>
         </section>
       </div>
     </section>
@@ -1786,7 +1897,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 Stak
                               </div>
@@ -1855,7 +1966,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 Captain Frank
                               </div>
@@ -1943,7 +2054,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 All7z
                               </div>
@@ -2026,7 +2137,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 Doc Manager
                               </div>
@@ -2112,7 +2223,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 Doc Manager API
                               </div>
@@ -2190,7 +2301,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 Pokédex
                               </div>
@@ -2280,7 +2391,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 myFlix React
                               </div>
@@ -2366,7 +2477,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 myFlix API
                               </div>
@@ -2453,7 +2564,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 myFlix Angular
                               </div>
@@ -2526,7 +2637,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 Meet
                               </div>
@@ -2626,7 +2737,7 @@
                           >
                             <div class="flex-grow">
                               <div
-                                class="mb-2 text-xl font-semibold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
                               >
                                 Chat
                               </div>
@@ -3480,7 +3591,7 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/global-navbar.js"></script>
     <script src="js/theme-toggle.js"></script>
-    <script src="js/navigation.js"></script>
+    <!-- <script src="js/navigation.js"></script> -->
     <script src="js/gradient.js"></script>
     <script src="js/script.js"></script>
   </body>

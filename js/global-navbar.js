@@ -49,6 +49,11 @@ class GlobalNavbar {
       // Initialize Alpine.js components for the navbar
       await this.initializeAlpine();
 
+      // Add mobile section link handlers as a fallback
+      setTimeout(() => {
+        this.addMobileSectionLinkHandlers();
+      }, 200);
+
       return true;
     } catch (error) {
       console.error('Failed to load navbar:', error);
@@ -97,6 +102,9 @@ class GlobalNavbar {
               }
             });
           }
+
+          // Add mobile section link handlers after Alpine is initialized
+          this.addMobileSectionLinkHandlers();
         }, 100);
       }
     } else {
@@ -109,84 +117,101 @@ class GlobalNavbar {
           addVanillaMenuFunctionality() {
     // Simple vanilla JavaScript mobile menu based on working navbar.js approach
     const menuToggle = document.getElementById('menu-toggle');
-    const mobileMenu = document.querySelector('#main-nav [x-show="navbarOpen"]');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = menuToggle?.querySelector('.hamburger-icon');
+    const closeIcon = menuToggle?.querySelector('.close-icon');
 
         console.log('Vanilla menu setup - menuToggle:', menuToggle);
     console.log('Vanilla menu setup - mobileMenu:', mobileMenu);
+
+    // Add global prevention for any Alpine.js clicks that might cause page jumps
+    document.addEventListener('click', (e) => {
+      // Check if the clicked element or its parents have Alpine.js attributes that might cause issues
+      const element = e.target.closest('[\\@click], [x-on\\:click]');
+      if (element && element.closest('#mobile-menu, #main-nav')) {
+        const clickHandler = element.getAttribute('@click') || element.getAttribute('x-on:click');
+        if (clickHandler && clickHandler.includes('navbarOpen')) {
+          console.log('Preventing Alpine.js navbarOpen click that could cause page jump');
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+          return false;
+        }
+      }
+    }, { capture: true });
+
+    // Also disable Alpine.js on the mobile menu container completely
+    const mobileMenuContainer = document.getElementById('mobile-menu');
+    if (mobileMenuContainer) {
+      mobileMenuContainer.setAttribute('x-ignore', '');
+      console.log('Disabled Alpine.js on mobile menu container');
+    }
     console.log('Vanilla menu setup - main-nav exists:', document.getElementById('main-nav'));
 
     if (menuToggle && mobileMenu) {
       console.log('Adding vanilla JS mobile menu functionality');
 
-      // Simple toggle function like the working navbar.js
-      const toggleNavbar = () => {
+                  // Ultra-simple toggle function - remove all complex logic temporarily
+      const toggleNavbar = (event) => {
+        console.log('TOGGLE CALLED - scroll position BEFORE:', window.scrollY);
+
+        // Prevent page jumping to top
+        if (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          event.stopImmediatePropagation();
+        }
+
         const isCurrentlyOpen = !mobileMenu.classList.contains('hidden');
         const mainNav = document.getElementById('main-nav');
 
         console.log('Toggle function called, isCurrentlyOpen:', isCurrentlyOpen);
 
-                                                if (!isCurrentlyOpen) {
-          // Open the mobile menu - position below navbar
+                                if (!isCurrentlyOpen) {
+          // Open the mobile menu with SAFE scroll locking
+          console.log('OPENING menu - scroll position:', window.scrollY);
+          mobileMenu.classList.remove('hidden');
           mobileMenu.style.display = 'block';
-          mobileMenu.style.position = 'fixed';
-          mobileMenu.style.top = '72px'; // Start below navbar
-          mobileMenu.style.left = '0';
-          mobileMenu.style.right = '0';
-          mobileMenu.style.bottom = '0';
-          mobileMenu.style.width = '100vw';
-          mobileMenu.style.height = 'calc(100vh - 72px)'; // Take remaining height
-          mobileMenu.style.background = '#000';
-          mobileMenu.style.zIndex = '9998';
-          mobileMenu.style.overflow = 'auto';
-          mobileMenu.style.overflowX = 'hidden'; // Prevent horizontal scroll
 
-          // Remove conflicting CSS classes
-          mobileMenu.classList.remove('hidden', 'z-40');
-          mobileMenu.classList.add('z-[9998]');
-
-          // Lock body scroll and prevent scroll issues
+          // Safe scroll lock - prevent background scrolling but keep menu scrollable
           document.body.style.overflow = 'hidden';
-          document.body.style.position = 'fixed';
-          document.body.style.width = '100%';
+          document.documentElement.style.overflow = 'hidden'; // For some browsers
 
-          // Store current scroll position
-          const scrollY = window.scrollY;
-          document.body.style.top = `-${scrollY}px`;
-          mobileMenu.setAttribute('data-scroll-y', scrollY);
+          // Ensure mobile menu itself remains scrollable
+          mobileMenu.style.overflow = 'auto';
+          mobileMenu.style.overflowY = 'auto';
 
-          // Ensure main navbar stays visible
-          if (mainNav) {
-            mainNav.style.zIndex = '9999';
-            console.log('Set main navbar z-index to 9999');
-          } else {
-            console.log('Main navbar element not found!');
+          // Toggle icons
+          if (hamburgerIcon && closeIcon) {
+            hamburgerIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
           }
 
-          console.log('Mobile menu opened below navbar');
-                } else {
-          // Close the mobile menu
-          mobileMenu.style.display = 'none';
+          console.log('Mobile menu opened - scroll position AFTER:', window.scrollY);
+        } else {
+          // Close the mobile menu and restore scrolling
+          console.log('CLOSING menu - scroll position:', window.scrollY);
           mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('z-[9998]');
+          mobileMenu.style.display = 'none';
 
-          // Restore body scroll and position
-          const scrollY = mobileMenu.getAttribute('data-scroll-y') || 0;
+          // Restore scroll ability
           document.body.style.overflow = '';
-          document.body.style.position = '';
-          document.body.style.width = '';
-          document.body.style.top = '';
-          window.scrollTo(0, parseInt(scrollY));
+          document.documentElement.style.overflow = '';
 
-          // Restore main navbar z-index when mobile menu is closed
-          if (mainNav) {
-            mainNav.style.zIndex = '50';
+          // Toggle icons
+          if (hamburgerIcon && closeIcon) {
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
           }
 
-          console.log('Mobile menu closed');
+          console.log('Mobile menu closed - scroll position AFTER:', window.scrollY);
         }
 
         console.log('Mobile menu toggled, new state open:', !mobileMenu.classList.contains('hidden'));
       };
+
+      // Add mobile section link handlers
+      this.addMobileSectionLinkHandlers();
 
             // Check if already initialized - but force re-attach since navbar might load multiple times
       if (menuToggle.hasAttribute('data-mobile-initialized')) {
@@ -199,28 +224,48 @@ class GlobalNavbar {
       // Mark as initialized
       menuToggle.setAttribute('data-mobile-initialized', 'true');
 
-      // Attach click handler
+      // Add mobile section link functionality
+      this.addMobileSectionLinkHandlers();
+
+            // MINIMAL click handler - testing for page jump
       menuToggle.addEventListener('click', (e) => {
+        console.log('=== CLICK HANDLER START ===');
+        console.log('Scroll position at start:', window.scrollY);
         e.preventDefault();
-        console.log('Menu toggle clicked');
-        console.log('Before toggle - Mobile menu display:', mobileMenu.style.display);
-        console.log('Before toggle - Mobile menu classes:', mobileMenu.className);
-        toggleNavbar();
-        console.log('After toggle - Mobile menu display:', mobileMenu.style.display);
-        console.log('After toggle - Mobile menu z-index:', mobileMenu.style.zIndex);
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+
+        // Call toggle
+        toggleNavbar(e);
+
+        console.log('Scroll position at end:', window.scrollY);
+        console.log('=== CLICK HANDLER END ===');
       });
 
             // Close menu when clicking on any link (simple approach)
       const mobileNavLinks = mobileMenu.querySelectorAll('a');
       mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
+        link.addEventListener('click', (e) => {
+          // Prevent page jumping for regular nav links
+          if (link.getAttribute('href') === '#' || link.classList.contains('mobile-section-link')) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
           const mainNav = document.getElementById('main-nav');
 
-          // Force close the mobile menu
-          mobileMenu.style.display = 'none';
+                    // Force close the mobile menu
           mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('z-[9998]');
-          document.body.style.overflow = 'auto';
+          mobileMenu.style.display = 'none';
+
+          // Reset icons
+          if (hamburgerIcon && closeIcon) {
+            hamburgerIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+          }
+
+          // Restore scrolling
+          document.body.style.overflow = '';
+          document.documentElement.style.overflow = '';
 
           // Restore main navbar z-index when mobile menu is closed
           if (mainNav) {
@@ -233,6 +278,104 @@ class GlobalNavbar {
 
     } else {
       console.log('Menu toggle or mobile menu not found');
+    }
+  }
+
+  addMobileSectionLinkHandlers() {
+    console.log('Adding mobile section link handlers...');
+
+    // Handle mobile section links
+    const mobileSectionLinks = document.querySelectorAll('.mobile-section-link');
+    const mobileContactBtn = document.querySelector('.mobile-contact-btn');
+
+    console.log('Found mobile section links:', mobileSectionLinks.length);
+    console.log('Found mobile contact button:', !!mobileContactBtn);
+
+    // Handle section links
+    mobileSectionLinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const targetId = link.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+
+        console.log('Mobile section link clicked:', targetId);
+
+        if (targetElement) {
+          // Close mobile menu first
+          this.closeMobileMenu();
+
+          // Smooth scroll to section with offset
+          setTimeout(() => {
+            const offset = 80; // Account for fixed navbar
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }, 100); // Small delay to ensure menu is closed
+        }
+      });
+    });
+
+    // Handle contact button
+    if (mobileContactBtn) {
+      mobileContactBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+
+        const targetElement = document.querySelector('#contact');
+        console.log('Mobile contact button clicked');
+
+        if (targetElement) {
+          // Close mobile menu first
+          this.closeMobileMenu();
+
+          // Smooth scroll to contact section
+          setTimeout(() => {
+            const offset = 80; // Account for fixed navbar
+            const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+            const offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            });
+          }, 100);
+        }
+      });
+    }
+  }
+
+  closeMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mainNav = document.getElementById('main-nav');
+    const menuToggle = document.getElementById('menu-toggle');
+    const hamburgerIcon = menuToggle?.querySelector('.hamburger-icon');
+    const closeIcon = menuToggle?.querySelector('.close-icon');
+
+    if (mobileMenu) {
+      // Close the mobile menu
+      mobileMenu.classList.add('hidden');
+      mobileMenu.style.display = 'none';
+
+      // Reset icons
+      if (hamburgerIcon && closeIcon) {
+        hamburgerIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+      }
+
+      // Restore scrolling - simple approach
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+
+      // Restore main navbar z-index
+      if (mainNav) {
+        mainNav.style.zIndex = '50';
+      }
+
+      console.log('Mobile menu closed via section link');
     }
   }
 
@@ -349,10 +492,88 @@ class GlobalNavbar {
     }
   }
 
+    // Method to scroll sub-nav to active link (from original navbar.js)
+  scrollSubNavToActiveLink(activeLink) {
+    const subNavContainer = document.querySelector('.sub-nav-container');
+    if (activeLink && subNavContainer) {
+      const containerRect = subNavContainer.getBoundingClientRect();
+      const linkRect = activeLink.getBoundingClientRect();
+      const linkCenter = linkRect.left + linkRect.width / 2;
+      const containerCenter = containerRect.left + containerRect.width / 2;
+      const offset = linkCenter - containerCenter;
+
+      // Smooth scroll the subnav to center the active link
+      subNavContainer.scrollTo({
+        left: subNavContainer.scrollLeft + offset,
+        behavior: 'smooth'
+      });
+
+      // Update gradient visibility after scrolling
+      setTimeout(() => {
+        this.updateGradientVisibility();
+      }, 300);
+
+      console.log(`Auto-scrolled subnav to show active link: ${activeLink.textContent}`);
+    }
+  }
+
+    // Method to update gradient visibility based on scroll position
+  updateGradientVisibility() {
+    const subNavContainer = document.querySelector('.sub-nav-container');
+    const leftGradient = document.querySelector('.gradient-left');
+    const rightGradient = document.querySelector('.gradient-right');
+    const subNav = document.querySelector('#sub-nav');
+
+    if (subNavContainer && leftGradient && rightGradient && subNav) {
+      const scrollLeft = subNavContainer.scrollLeft;
+      const maxScroll = subNavContainer.scrollWidth - subNavContainer.clientWidth;
+      const isFixed = subNav.classList.contains('subnav-fixed');
+      const isMobile = window.innerWidth <= 768;
+
+      // Determine the correct gradient colors based on subnav state
+      let gradientColor, gradientColorFade;
+
+      if (isMobile) {
+        // Mobile uses solid background
+        gradientColor = '#f9fafb';
+        gradientColorFade = 'rgba(249, 250, 251, 0.8)';
+      } else if (isFixed) {
+        // Fixed state uses more opaque background
+        gradientColor = 'rgba(248, 250, 252, 0.95)';
+        gradientColorFade = 'rgba(248, 250, 252, 0.7)';
+      } else {
+        // Normal state uses semi-transparent background
+        gradientColor = 'rgba(248, 250, 252, 0.85)';
+        gradientColorFade = 'rgba(248, 250, 252, 0.6)';
+      }
+
+      // Update gradient backgrounds
+      leftGradient.style.background = `linear-gradient(to right, ${gradientColor}, ${gradientColorFade}, transparent)`;
+      rightGradient.style.background = `linear-gradient(to left, ${gradientColor}, ${gradientColorFade}, transparent)`;
+
+      // Show/hide left gradient
+      if (scrollLeft > 10) {
+        leftGradient.style.opacity = '1';
+      } else {
+        leftGradient.style.opacity = '0';
+      }
+
+      // Show/hide right gradient
+      if (scrollLeft < maxScroll - 10) {
+        rightGradient.style.opacity = '1';
+      } else {
+        rightGradient.style.opacity = '0';
+      }
+    }
+  }
+
   initSectionHighlighting() {
     const sections = ['about', 'expertise', 'tools', 'portfolio', 'recent-visuals', 'testimonials'];
     const subnavLinks = document.querySelectorAll('.subnav-link');
     let currentActiveSection = null;
+
+    // Store reference to the class instance for use in nested functions
+    const globalNavbar = this;
 
     // Simplified intersection observer for backup detection
     const observer = new IntersectionObserver((entries) => {
@@ -373,6 +594,31 @@ class GlobalNavbar {
         console.warn(`Section not found: ${sectionId}`); // Debug log
       }
     });
+
+    // Method to update mobile menu background based on current section
+    const updateMobileMenuBackground = (sectionId) => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      console.log('Mobile menu element:', mobileMenu); // Debug
+      console.log('Current section:', sectionId, 'Scroll position:', window.scrollY); // Debug
+
+      if (mobileMenu) {
+        if (sectionId === 'about' || window.scrollY < 600) {
+          // In hero/about section - use off-white background (default)
+          mobileMenu.classList.remove('mobile-menu-white');
+          mobileMenu.style.setProperty('background', '#F2F2F4', 'important');
+          console.log('Set off-white background'); // Debug
+        } else {
+          // In other sections - use white background
+          mobileMenu.classList.add('mobile-menu-white');
+          mobileMenu.style.setProperty('background', 'white', 'important');
+          console.log('Set white background'); // Debug
+        }
+        console.log('Mobile menu classes:', mobileMenu.classList.toString()); // Debug
+        console.log('Mobile menu background style:', mobileMenu.style.background); // Debug
+      } else {
+        console.log('Mobile menu element not found!'); // Debug
+      }
+    };
 
                         // Accurate section detection system
     const handleScroll = () => {
@@ -444,7 +690,13 @@ class GlobalNavbar {
           activeLink.style.color = '#000000';
           activeLink.style.fontWeight = '600';
           activeLink.style.textDecoration = 'underline';
+
+          // Auto-scroll subnav to show active link (mobile functionality)
+          globalNavbar.scrollSubNavToActiveLink(activeLink);
         }
+
+        // Update mobile menu background based on current section
+        updateMobileMenuBackground(activeSection);
       }
     };
 
@@ -474,6 +726,36 @@ class GlobalNavbar {
 
       // Set initial section highlighting
       handleScroll();
+
+      // Set initial mobile menu background
+      if (window.scrollY < 600) {
+        updateMobileMenuBackground('about');
+      } else {
+        updateMobileMenuBackground('other');
+      }
+
+      // Initialize gradient visibility and add scroll listener to subnav
+      const subNavContainer = document.querySelector('.sub-nav-container');
+      if (subNavContainer) {
+        globalNavbar.updateGradientVisibility();
+        subNavContainer.addEventListener('scroll', () => {
+          globalNavbar.updateGradientVisibility();
+        });
+
+        // Update gradients on window resize
+        window.addEventListener('resize', () => {
+          globalNavbar.updateGradientVisibility();
+        });
+
+        // Update gradients when subnav state changes (observe class changes)
+        const subNav = document.querySelector('#sub-nav');
+        if (subNav) {
+          const observer = new MutationObserver(() => {
+            globalNavbar.updateGradientVisibility();
+          });
+          observer.observe(subNav, { attributes: true, attributeFilter: ['class'] });
+        }
+      }
     }, 200);
 
     // Optimized scroll detection
@@ -658,6 +940,57 @@ class GlobalNavbar {
     });
   }
 
+  initMobileMenuBackgroundChange() {
+    // Only add scroll detection for homepage, set white background for all other pages
+    if (this.currentPage !== 'index') {
+      // For non-homepage pages: just set white background and return
+      setTimeout(() => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileMenu) {
+          mobileMenu.style.setProperty('background-color', 'white', 'important');
+          console.log('Set white background for non-homepage page:', this.currentPage);
+        }
+      }, 500);
+      return;
+    }
+
+    // Homepage-only: scroll-based background change
+    const updateMobileMenuBackground = () => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) {
+        if (window.scrollY < 200) {
+          // Homepage at top - add hero-bg class for off-white background
+          mobileMenu.classList.add('hero-bg');
+          console.log('Added hero-bg class for homepage top (scroll < 200px)');
+        } else {
+          // Homepage scrolled down - remove hero-bg class for white background
+          mobileMenu.classList.remove('hero-bg');
+          console.log('Removed hero-bg class for homepage scrolled (scroll >= 200px)');
+        }
+        console.log('Mobile menu classes:', mobileMenu.className);
+      }
+    };
+
+    // Set initial background for homepage
+    setTimeout(() => {
+      updateMobileMenuBackground();
+    }, 500);
+
+    // Add scroll listener for homepage only
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateMobileMenuBackground();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    console.log('Mobile menu background change initialized for homepage only');
+  }
+
   initNavbarThemeSwitching() {
     // Theme switching is now handled by theme-toggle.js
     // This function only handles tab text color forcing
@@ -834,14 +1167,15 @@ class GlobalNavbar {
         background-color: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        box-shadow: none !important;
       }
 
       /* Subnav when main nav is hidden (moves to top) */
       #sub-nav.subnav-fixed {
-        background-color: rgba(255, 255, 255, 0.95) !important;
-        backdrop-filter: blur(10px) !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+        background-color: rgba(255, 255, 255, 0.85) !important;
+        backdrop-filter: blur(12px) !important;
+        -webkit-backdrop-filter: blur(12px) !important;
+        box-shadow: none !important;
       }
 
       /* Dark theme for subnav */
@@ -849,7 +1183,7 @@ class GlobalNavbar {
         background-color: rgba(0, 0, 0, 0.85) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
-        box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1) !important;
+        box-shadow: none !important;
       }
 
       .dark #sub-nav .subnav-link {
@@ -1007,9 +1341,23 @@ class GlobalNavbar {
         left: 0 !important;
         width: 100vw !important;
         height: calc(100vh - 72px) !important;
-        background: #000 !important;
+        background: #F2F2F4 !important;
         z-index: 9998 !important;
         overflow-y: auto !important;
+      }
+
+      /* Mobile menu text colors for light background */
+      #main-nav [x-show="navbarOpen"] a,
+      #main-nav [x-show="navbarOpen"] .text-white {
+        color: #1f2937 !important;
+      }
+
+      #main-nav [x-show="navbarOpen"] .text-gray-500 {
+        color: #6b7280 !important;
+      }
+
+      #main-nav [x-show="navbarOpen"] span {
+        color: #1f2937 !important;
       }
 
       /* Override any Tailwind z-index classes */
@@ -1208,10 +1556,25 @@ class GlobalNavbar {
         color: #a78bfa !important;
       }
 
-      /* Light mode mobile menu */
+      /* Light mode mobile menu - default white for all pages */
       #main-nav [x-show="navbarOpen"] {
         background: white !important;
         color: #1f2937 !important;
+      }
+
+      /* Off-white background only for homepage at top */
+      body.home-page #main-nav [x-show="navbarOpen"].hero-bg {
+        background: #F2F2F4 !important;
+      }
+
+      /* Light mode mobile menu - white background for other sections */
+      #main-nav [x-show="navbarOpen"].mobile-menu-white {
+        background: white !important;
+      }
+
+      /* Force white background with higher specificity */
+      #main-nav div[x-show="navbarOpen"].mobile-menu-white {
+        background: white !important;
       }
 
       #main-nav [x-show="navbarOpen"] a {
@@ -1327,6 +1690,18 @@ class GlobalNavbar {
         background-color: rgba(99, 102, 241, 0.2) !important;
         color: #a78bfa !important;
       }
+
+      /* Mobile menu scrollability - ensure it's always scrollable */
+      #mobile-menu {
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch !important; /* Smooth scrolling on iOS */
+        max-height: calc(100vh - 72px) !important;
+      }
+
+      /* Ensure content inside mobile menu can scroll */
+      #mobile-menu > div {
+        min-height: 100% !important;
+      }
     `;
     document.head.appendChild(style);
   }
@@ -1362,6 +1737,9 @@ class GlobalNavbar {
       // Initialize transparent navbar behavior
       this.initTransparentNavbar();
 
+      // Initialize mobile menu background changes for all pages
+      this.initMobileMenuBackgroundChange();
+
       // Immediately hide mobile menu to prevent it from showing
       this.hideMobileMenuImmediately();
 
@@ -1382,7 +1760,7 @@ class GlobalNavbar {
 
   hideMobileMenuImmediately() {
     // Immediately hide mobile menu on page load
-    const mobileMenu = document.querySelector('#main-nav [x-show="navbarOpen"]');
+    const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu) {
       mobileMenu.style.display = 'none';
       mobileMenu.classList.add('hidden');
@@ -1405,7 +1783,7 @@ class GlobalNavbar {
   }
 
       testMobileMenuFunctionality() {
-    const mobileMenu = document.querySelector('#main-nav [x-show="navbarOpen"]');
+    const mobileMenu = document.getElementById('mobile-menu');
 
     if (mobileMenu) {
       // Simply ensure mobile menu is hidden initially

@@ -246,16 +246,15 @@
       </div>
 
       <!-- Mobile Toggler Btn -->
-      <button
+      <div
         id="menu-toggle"
-        type="button"
-        class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-white border border-indigo-500/30 rounded-md focus:outline-none md:hidden"
-        @click="navbarOpen = !navbarOpen"
+        class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-white border border-indigo-500/30 rounded-md focus:outline-none md:hidden cursor-pointer"
+        role="button"
+        aria-label="Toggle mobile menu"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6 transition-transform"
-          :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }"
+          class="w-6 h-6 transition-transform hamburger-icon"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -268,10 +267,8 @@
           />
         </svg>
         <svg
-          x-cloak
           xmlns="http://www.w3.org/2000/svg"
-          class="w-6 h-6 transition-transform"
-          :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }"
+          class="w-6 h-6 transition-transform close-icon hidden"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -283,18 +280,17 @@
             d="M6 18L18 6M6 6l12 12"
           />
         </svg>
-      </button>
+      </div>
     </div>
   </div>
 
   <!-- Mobile Menu -->
   <div
-    x-show="navbarOpen"
-    x-cloak
-    class="fixed top-[72px] left-0 w-full h-[calc(100vh-72px)] bg-white dark:bg-black z-[9998] md:hidden"
-    x-transition
+    id="mobile-menu"
+    class="fixed top-[72px] left-0 w-full h-[calc(100vh-72px)] z-[9998] md:hidden overflow-y-auto hidden"
+    style="background-color: #f2f2f4"
   >
-    <div class="container mx-auto px-6 py-4">
+    <div class="container mx-auto px-6 py-4 pb-8">
       <div class="flex flex-col space-y-6 mt-4">
         <!-- Mobile Portfolio Dropdown -->
         <div x-data="{ mobileDropdownOpen: false }" class="flex flex-col">
@@ -335,42 +331,36 @@
             <div class="ml-4 space-y-2">
               <a
                 href="karlstorzcase.html"
-                @click="navbarOpen = false"
                 class="block text-white transition-colors nav-link"
                 data-page="karlstorzcase"
                 >KARL STORZ</a
               >
               <a
                 href="kytocase.html"
-                @click="navbarOpen = false"
                 class="block text-white transition-colors nav-link"
                 data-page="kytocase"
                 >Kyto</a
               >
               <a
                 href="smunchcase.html"
-                @click="navbarOpen = false"
                 class="block text-white transition-colors nav-link"
                 data-page="smunchcase"
                 >Smunch</a
               >
               <a
                 href="cogalleriescase.html"
-                @click="navbarOpen = false"
                 class="block text-white transition-colors nav-link"
                 data-page="cogalleriescase"
                 >coGalleries</a
               >
               <a
                 href="organize.html"
-                @click="navbarOpen = false"
                 class="block text-white transition-colors nav-link"
                 data-page="organize"
                 >Organize</a
               >
               <a
                 href="pffcase.html"
-                @click="navbarOpen = false"
                 class="block text-white transition-colors nav-link"
                 data-page="pffcase"
                 >Pffcase</a
@@ -487,7 +477,9 @@
         </div>
 
         <button
-          class="text-sm border border-indigo-500/30 rounded-md px-4 py-2 hover:bg-indigo-500/10 transition-all text-left w-fit"
+          class="text-sm border border-indigo-500/30 rounded-md px-4 py-2 hover:bg-indigo-500/10 transition-all text-left w-fit mt-6 mobile-contact-btn"
+          data-target="#contact"
+          @click="navbarOpen = false"
         >
           Let's Talk
         </button>

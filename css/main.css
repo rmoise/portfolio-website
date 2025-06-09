@@ -1449,6 +1449,9 @@ video {
   touch-action: pan-x; /* Allow horizontal panning */
   scrollbar-width: none; /* Firefox */
   scroll-behavior: smooth; /* Smooth scrolling */
+  /* Add padding to prevent text cropping at edges */
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .item {
@@ -1477,24 +1480,35 @@ video {
   z-index: 999;
 }
 
-/* Gradient effects */
+/* Gradient effects - now positioned at subnav level for full height coverage */
 .gradient-left,
 .gradient-right {
   position: absolute;
   top: 0;
+  bottom: 0;
   height: 100%;
-  width: 20px;
+  width: 48px; /* 12 * 4px in Tailwind (w-12) */
   pointer-events: none;
   transition: opacity 0.3s ease;
   z-index: 10;
 }
 .gradient-left {
   left: 0;
-  background: linear-gradient(to right, rgba(249, 250, 251, 1), transparent);
+  background: linear-gradient(
+    to right,
+    rgba(248, 250, 252, 0.95),
+    rgba(248, 250, 252, 0.7),
+    transparent
+  );
 }
 .gradient-right {
   right: 0;
-  background: linear-gradient(to left, rgba(249, 250, 251, 1), transparent);
+  background: linear-gradient(
+    to left,
+    rgba(248, 250, 252, 0.95),
+    rgba(248, 250, 252, 0.7),
+    transparent
+  );
 }
 /* Initial State: Gradients Hidden */
 .gradient-left,
@@ -1514,11 +1528,35 @@ video {
 @media (max-width: 768px) {
   .sub-nav-container {
     min-width: 100%; /* Full width on mobile */
+    /* Increase padding on mobile for better visibility */
+    padding-left: 30px;
+    padding-right: 30px;
   }
 
   .gradient-left,
   .gradient-right {
     display: block; /* Show gradients */
+  }
+
+  /* Mobile-specific gradient colors to match solid background */
+  .gradient-left {
+    background: linear-gradient(
+      to right,
+      #f9fafb,
+      rgba(249, 250, 251, 0.8),
+      transparent
+    );
+    width: 48px; /* Match the Tailwind w-12 class */
+  }
+
+  .gradient-right {
+    background: linear-gradient(
+      to left,
+      #f9fafb,
+      rgba(249, 250, 251, 0.8),
+      transparent
+    );
+    width: 48px; /* Match the Tailwind w-12 class */
   }
 }
 
@@ -3344,6 +3382,36 @@ video {
   font-weight: bold;
   color: #000;
   text-decoration: underline;
+}
+
+/* Improve subnav link spacing and touch targets */
+.subnav-link {
+  min-width: fit-content;
+  white-space: nowrap;
+  padding: 8px 12px;
+  margin: 0 4px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  /* Ensure adequate spacing for first and last items */
+}
+
+.subnav-link:first-child {
+  margin-left: 8px;
+}
+
+.subnav-link:last-child {
+  margin-right: 8px;
+}
+
+/* Enhanced hover state */
+.subnav-link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Better visual feedback for active state */
+.subnav-link.active {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
 }
 
 /* Scroll container */
