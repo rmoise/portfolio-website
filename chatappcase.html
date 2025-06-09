@@ -10,10 +10,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
@@ -41,571 +46,13 @@
     />
   </head>
 
-  <body class="flex h-full flex-col">
-    <div class="wrapper">
-      <!-- Navbar -->
-      <nav
-        id="main-nav"
-        x-data="navbar()"
-        x-init="init()"
-        class="bg-white fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-32 py-2 xl:px-40 mx-auto z-50"
-      >
-        <!-- Container with minimal padding -->
-        <div
-          class="container mx-auto flex flex-wrap items-center justify-between p-0"
-        >
-          <!-- Logo -->
-          <a href="index.html" class="inline-flex items-center p-2">
-            <img src="img/rm_logo.svg" alt="Logo" class="h-8" />
-          </a>
-          <!-- Toggler Btn -->
-          <button
-            id="menu-toggle"
-            type="button"
-            class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
-            @click="toggleNavbar()"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 transition-transform"
-              :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-            <svg
-              x-cloak
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 transition-transform"
-              :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-          <!-- Menu for Desktop -->
-          <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
-            <ul class="flex flex-row space-x-2">
-              <!-- Dropdown for Desktop -->
-              <li
-                x-data="{ dropdownOpen: false }"
-                @click.away="dropdownOpen = false"
-                class="relative"
-              >
-                <button
-                  @click="dropdownOpen = !dropdownOpen"
-                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                >
-                  Portfolio
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 ml-2 transition-transform"
-                    :class="{ 'rotate-180': dropdownOpen }"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <!-- Dropdown Menu for Desktop -->
-                <div
-                  x-show="dropdownOpen"
-                  x-cloak
-                  class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48"
-                  x-transition
-                >
-                  <ul class="space-y-2">
-                    <!-- Categories Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleCategories()"
-                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Design Systems
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': categoriesOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="categoriesOpen"
-                        class="mt-1 bg-white rounded-md shadow-lg"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <!-- Nested Links -->
-                          <li>
-                            <a
-                              href="karlstorzcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >KARL STORZ</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="kytocase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Kyto</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="smunchcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Smunch</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="cogalleriescase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >coGalleries</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="organize.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Organize</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pffcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pffcase</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="stak.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Stak</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-
-                    <!-- Web Dev Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleNestedDropdown()"
-                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Web Dev
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': nestedDropdownOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="nestedDropdownOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-app"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-api"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager API
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="pokemoncase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pokédex App</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="myflixcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix React</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/myFlix-Angular-client"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix Angular
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="meetcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Meet</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="chatappcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Chat</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  @click="closeNavbar()"
-                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </div>
-          <!-- Mobile Menu -->
-          <div
-            id="mobile-menu"
-            x-show="navbarOpen"
-            x-cloak
-            class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
-            x-transition
-          >
-            <ul class="flex flex-col space-y-2 px-4 py-2">
-              <!-- Dropdown for Mobile -->
-              <li class="relative">
-                <button
-                  @click="toggleDropdown()"
-                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                >
-                  Portfolio
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 ml-2 transition-transform"
-                    :class="{ 'rotate-180': dropdownOpen }"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <!-- Dropdown Menu for Mobile -->
-                <div
-                  x-show="dropdownOpen"
-                  x-cloak
-                  class="lg:hidden mt-2 bg-white rounded-md"
-                  x-transition
-                >
-                  <ul class="space-y-2">
-                    <!-- Categories Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleCategories()"
-                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Design Systems
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': categoriesOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="categoriesOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <!-- Nested Links -->
-                          <li>
-                            <a
-                              href="karlstorzcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >KARL STORZ</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="kytocase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Kyto</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="smunchcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Smunch</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="cogalleriescase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >coGalleries</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="organize.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Organize</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pffcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pffcase</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="stak.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Stak</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <!-- Web Dev Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleNestedDropdown()"
-                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Web Dev
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': nestedDropdownOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="nestedDropdownOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-app"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-api"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager API</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pokemoncase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pokédex App</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="myflixcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix React</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/myFlix-Angular-client"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix Angular</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="meetcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Meet</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="chatappcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Chat</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  @click.prevent="handleContactClick()"
-                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+  <body class="bg-white dark:bg-black text-gray-900 dark:text-white">
+    <div id="navbar-container"></div>
+    <div class="wrapper bg-white dark:bg-black">
       <!-- Title Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="flex md:mb-8 justify-center mt-32 px-4 md:px-10 lg:px-10 w-full"
         >
@@ -619,14 +66,14 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://github.com/rmoise/Chat-App"
-                class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
               >
                 GitHub
               </a>
               <a
                 rel="noopener noreferrer"
                 href="img/Chat App Case Study.pdf"
-                class="block md:p-3 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                class="block md:p-3 md:px-6 md:pt-2 lg:pl-0 underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
               >
                 Download PDF
               </a>
@@ -637,17 +84,20 @@
 
       <!-- Overview Section -->
       <section
-        class="container flex justify-between md:flex-nowrap items-center mx-auto"
+        class="container bg-white dark:bg-black flex justify-between md:flex-nowrap items-center mx-auto"
       >
         <div
           class="mt-32 flex md:flex-nowrap flex-wrap justify-between items-center mx-auto px-4 lg:px-10 w-full"
         >
           <!-- Left item -->
           <div class="flex flex-col md:w-1/2 justify-center">
-            <h2 id="web" class="secondary-title text-3xl font-bold">
+            <h2
+              id="web"
+              class="secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+            >
               Overview
             </h2>
-            <p class="mt-4 md:mb-0 mb-8">
+            <p class="mt-4 md:mb-0 mb-8 text-gray-700 dark:text-gray-300">
               Chat app is an app for mobile devices using React Native. The app
               provides users with a chat interface and options to share images
               and their location.
@@ -658,28 +108,33 @@
           <div class="max-w-lg md:mb-0 md:ml-20">
             <img
               src="img/chat-mobile.png"
-              alt=""
+              alt="Chat app interface displayed on mobile device"
               class="rounded-lg bottom-0 right-0 lg:left-0 mx-auto"
+              loading="lazy"
             />
           </div>
         </div>
       </section>
 
       <!-- Purpose & Context Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="mt-10 flex justify-between items-center mx-auto px-4 lg:px-10 w-full"
         >
           <!-- Left item -->
           <div class="flex flex-col md:w-full">
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
-              <h2 class="mt-4 secondary-title text-3xl font-bold">
+              <h2
+                class="mt-4 secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+              >
                 Purpose & Context
               </h2>
 
-              <p class="mt-4 md:mb-0">
+              <p class="mt-4 md:mb-0 text-gray-700 dark:text-gray-300">
                 To build a chat app that I can add to my portfolio and
                 demonstrate my knowledge of JavaScript mobile development.
               </p>
@@ -689,7 +144,9 @@
       </section>
 
       <!-- Objective Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="flex flex-wrap-reverse md:flex-nowrap mt-10 mb-8 px-4 md:px-10 lg:px-10 w-full"
         >
@@ -697,14 +154,19 @@
           <div class="max-w-lg md:mr-20">
             <img
               src="img/safar-safarov-koOdUvfGr4c-unsplash.jpg"
-              alt=""
+              alt="Group of people working together at a table with laptops"
               class="rounded-lg bottom-0 right-0 lg:left-0 mx-auto"
+              loading="lazy"
             />
           </div>
           <!-- Left item -->
           <div class="mt-8 flex flex-col md:w-1/2 justify-center">
-            <h2 class="secondary-title text-3xl font-bold">Objective</h2>
-            <p class="mt-4 mb-8">
+            <h2
+              class="secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+            >
+              Objective
+            </h2>
+            <p class="mt-4 mb-8 text-gray-700 dark:text-gray-300">
               The aim of the project was to build a native chat app built with
               React Native optimized for both Android and iOS devices.
             </p>
@@ -713,7 +175,9 @@
       </section>
 
       <!-- Duration Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div class="mt-10 px-4 md:px-10 lg:px-10 w-full">
           <!-- Left item -->
           <div class="flex flex-col">
@@ -724,7 +188,7 @@
               class="grid mb-8 rounded-lg shadow-sm gap-4 md:mb-12 md:grid-cols"
             >
               <figure
-                class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+                class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
               >
                 <svg
                   fill="none"
@@ -742,14 +206,18 @@
                   ></path>
                 </svg>
 
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                <h5
+                  class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+                >
                   Duration
                 </h5>
 
-                <p class="mb-3 font-normal">7 Days</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
+                  7 Days
+                </p>
               </figure>
               <figure
-                class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+                class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
               >
                 <svg
                   fill="none"
@@ -767,19 +235,23 @@
                   ></path>
                 </svg>
 
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                <h5
+                  class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+                >
                   Credits
                 </h5>
 
                 <!-- Remove the <p> tag and place <ul> directly inside <figure> -->
-                <ul class="grid md:grid-cols-1 gap-1 list-disc list-inside">
+                <ul
+                  class="grid md:grid-cols-1 gap-1 list-disc list-inside text-gray-700 dark:text-gray-300"
+                >
                   <li>Tutor: Terver Aosu</li>
                   <li>Mentor: Stephen Barungi</li>
                 </ul>
               </figure>
 
               <figure
-                class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+                class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
               >
                 <svg
                   fill="none"
@@ -802,11 +274,15 @@
                   ></path>
                 </svg>
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                  <h5
+                    class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+                  >
                     Built With
                   </h5>
                 </a>
-                <ul class="grid md:grid-cols-3 gap-1 list-disc list-inside">
+                <ul
+                  class="grid md:grid-cols-3 gap-1 list-disc list-inside text-gray-700 dark:text-gray-300"
+                >
                   <li>Expo</li>
                   <li>React Native</li>
                   <li>Google Firebase</li>
@@ -820,17 +296,23 @@
       </section>
 
       <!-- Approach Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div class="mt-10 mx-auto px-4 lg:px-10 w-full">
           <!-- Left item -->
-          <h2 class="mb-8 secondary-title text-3xl font-bold">Approach</h2>
+          <h2
+            class="mb-8 secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+          >
+            Approach
+          </h2>
 
           <!-- Image -->
           <div
             class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-3 lg:gap-6"
           >
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -848,18 +330,20 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 01 Expo
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 First I: Applied Expo, to set up my first React Native project
                 and used my own device and an Android Emulator to check that
                 everything was working as intended.
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -877,17 +361,19 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 02 Chat UIs & Accessibility
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 Then I: Implemented the design and layout using gifted chat.
               </p>
             </figure>
 
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -904,20 +390,22 @@
                   d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 ></path>
               </svg>
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 03 Real-Time Applications & Data Storage
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 Next I: Implemented a database solution for your app using
                 Firestore. Because my app needs real-time data (so that users
                 can see new messages instantly), I created a Firestore database
-                that will store every message that’s sent by my users.
+                that will store every message that's sent by my users.
               </p>
             </figure>
 
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -934,19 +422,21 @@
                   d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 ></path>
               </svg>
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 04 Storing Data on the Client Side
               </h5>
 
-              <p class="mb-3 font-normal">
-                Then I: Stored my chat app’s messages offline using React
-                Native’s AsyncStorage and partially enabled some of the app’s
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
+                Then I: Stored my chat app's messages offline using React
+                Native's AsyncStorage and partially enabled some of the app's
                 features when the device is offline using NetInfo.
               </p>
             </figure>
 
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -963,21 +453,23 @@
                   d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 ></path>
               </svg>
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 05 Communication Features
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 Next I: Added two new communication features, giving users the
-                ability to send images (chosen from their device’s image library
+                ability to send images (chosen from their device's image library
                 or taken with the camera) and share their current location.
-                Decided to store users’ images in Google Cloud Storage so that
+                Decided to store users' images in Google Cloud Storage so that
                 other chat participants can view them.
               </p>
             </figure>
 
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -994,11 +486,13 @@
                   d="M4.5 12.75l6 6 9-13.5"
                 ></path>
               </svg>
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 06 Documentation
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 Finally I: Included all the necessary steps in my
                 <a
                   href="https://github.com/rmoise/Chat-App"
@@ -1015,18 +509,22 @@
 
       <!-- Retrospective Section -->
       <section
-        class="container mb-24 flex justify-between items-center mx-auto"
+        class="container bg-white dark:bg-black mb-24 flex justify-between items-center mx-auto"
       >
         <div class="mt-24 mx-auto px-4 lg:px-10 w-full">
           <!-- Left item -->
-          <h2 class="mb-8 secondary-title text-3xl font-bold">Retrospective</h2>
+          <h2
+            class="mb-8 secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+          >
+            Retrospective
+          </h2>
 
           <!-- Image -->
           <div
             class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-4 lg:gap-6 mb-10"
           >
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1044,11 +542,13 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 What went well?
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 I found building an app in react native to be a seamless
                 process. I like the flexibility that react native framework
                 allows for building Android and iOS apps that only requires one
@@ -1056,7 +556,7 @@
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1075,19 +575,19 @@
               </svg>
 
               <h5
-                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900"
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
               >
                 What didn't go well?
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 I would've liked a way to view the app through a demo or other
                 medium rather than using android studio. I found the app to be a
                 bit slow and heavy to use.
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1106,19 +606,19 @@
               </svg>
 
               <h5
-                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900"
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
               >
                 Future Steps
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 I would like to continue to build on the chat app by adding the
                 ability to record and play sounds, the ability to upload an
                 audio file and the ability to send an audio file.
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1136,11 +636,13 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tigh">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 Final Thoughts
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 Overall, this was a great introduction to mobile development and
                 I found the use of react native to be an enjoyable experience.
                 By requiring only one codebase for building Android and iOS
@@ -1156,16 +658,19 @@
       <section
         id="contact"
         aria-labelledby="contact-title"
-        class="relative overflow-hidden py-16 px-4 sm:px-8 lg:px-40 border-t border-gray-100"
+        class="relative overflow-hidden py-16 px-4 sm:px-8 lg:px-40 border-t border-gray-100 dark:border-gray-800"
       >
-        <div class="container mx-auto relative z-10">
+        <div class="container bg-white dark:bg-black mx-auto relative z-10">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
             <!-- Column 1: Header and Description Container -->
             <div class="md:col-span-4 lg:col-span-12 flex flex-col items-start">
-              <h5 id="contact-title" class="text-3xl font-bold secondary-title">
+              <h5
+                id="contact-title"
+                class="text-3xl font-bold secondary-title text-gray-900 dark:text-white"
+              >
                 Contact
               </h5>
-              <p class="text-lg mt-4">
+              <p class="text-lg mt-4 text-gray-700 dark:text-gray-300">
                 Please use the form below to send me a message. I'll be happy to
                 hear from you.
               </p>
@@ -1174,37 +679,43 @@
           <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-8">
             <form class="space-y-8 input-form" method="POST">
               <div>
-                <label for="form-name" class="block mb-4 text-xl font-bold"
+                <label
+                  for="form-name"
+                  class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your name</label
                 >
                 <input
                   type="text"
                   name="name"
                   id="form-name"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                  class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
               </div>
               <div>
-                <label for="form-email" class="block mb-4 text-xl font-bold"
+                <label
+                  for="form-email"
+                  class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your email</label
                 >
                 <input
                   type="email"
                   name="email"
                   id="form-email"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                  class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-2 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   required
                 />
               </div>
               <div>
-                <label for="form-message" class="block mb-4 text-xl font-bold"
+                <label
+                  for="form-message"
+                  class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your message</label
                 >
                 <textarea
                   name="message"
                   id="form-message"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none"
+                  class="w-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white px-4 py-4 h-56 resize-none rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Type your message here..."
                   required
                 ></textarea>
@@ -1218,16 +729,16 @@
             </form>
             <!-- Contact info -->
             <div class="mt-12">
-              <p>+49 163 7126279</p>
+              <p class="text-gray-900 dark:text-white">+49 163 7126279</p>
               <a
                 href="mailto:roderickfmoise@gmail.com"
-                class="underline mt-3 block"
+                class="underline mt-3 block text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                 >roderickfmoise@gmail.com</a
               >
               <a
                 href="img/Roderick-Moise-CV-Designer-Developer.pdf"
                 target="_blank"
-                class="underline mt-3 block"
+                class="underline mt-3 block text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                 ><b>Download my CV</b></a
               >
               <!-- Socials -->
@@ -1238,7 +749,7 @@
                   href="https://www.linkedin.com/in/roderickmoise/"
                 >
                   <svg
-                    class="w-[32px] h-[32px] text-gray-800"
+                    class="w-[32px] h-[32px] text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1257,7 +768,7 @@
                 <!-- Github logo -->
                 <a target="_blank" href="https://github.com/rmoise">
                   <svg
-                    class="w-[28px] h-[28px] text-gray-800"
+                    class="w-[28px] h-[28px] text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1275,7 +786,7 @@
                 <!-- Twitter logo -->
                 <a target="_blank" href="https://twitter.com/RoderickMoise">
                   <svg
-                    class="w-6 h-6 text-gray-800"
+                    class="w-6 h-6 text-gray-800 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1303,10 +814,9 @@
       </div>
 
       <script src="https://smtpjs.com/v3/smtp.js"></script>
-      <script src="js/navbar.js"></script>
+      <script src="js/global-navbar.js"></script>
+      <script src="js/theme-toggle.js"></script>
       <script src="js/script.js"></script>
-      <script src="https://cdn.tailwindcss.com"></script>
-      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     </div>
   </body>
 </html>

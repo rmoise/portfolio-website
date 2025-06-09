@@ -10,15 +10,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <script>
+      tailwind.config = {
+        darkMode: 'class'
+      }
+    </script>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
@@ -39,576 +39,22 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
     />
+
+
   </head>
 
-  <body class="flex h-full flex-col">
-    <div class="wrapper">
-      <!-- Navbar -->
-      <nav
-        id="main-nav"
-        x-data="navbar()"
-        x-init="init()"
-        class="bg-white fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-32 py-2 xl:px-40 mx-auto z-50"
-      >
-        <!-- Container with minimal padding -->
-        <div
-          class="container mx-auto flex flex-wrap items-center justify-between p-0"
-        >
-          <!-- Logo -->
-          <a href="index.html" class="inline-flex items-center p-2">
-            <img src="img/rm_logo.svg" alt="Logo" class="h-8" />
-          </a>
-          <!-- Toggler Btn -->
-          <button
-            id="menu-toggle"
-            type="button"
-            class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
-            @click="toggleNavbar()"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 transition-transform"
-              :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-            <svg
-              x-cloak
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 transition-transform"
-              :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-          <!-- Menu for Desktop -->
-          <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
-            <ul class="flex flex-row space-x-2">
-              <!-- Dropdown for Desktop -->
-              <li
-                x-data="{ dropdownOpen: false }"
-                @click.away="dropdownOpen = false"
-                class="relative"
-              >
-                <button
-                  @click="dropdownOpen = !dropdownOpen"
-                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                >
-                  Portfolio
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 ml-2 transition-transform"
-                    :class="{ 'rotate-180': dropdownOpen }"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <!-- Dropdown Menu for Desktop -->
-                <div
-                  x-show="dropdownOpen"
-                  x-cloak
-                  class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48"
-                  x-transition
-                >
-                  <ul class="space-y-2">
-                    <!-- Categories Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleCategories()"
-                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Design Systems
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': categoriesOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="categoriesOpen"
-                        class="mt-1 bg-white rounded-md shadow-lg"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <!-- Nested Links -->
-                          <li>
-                            <a
-                              href="karlstorzcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >KARL STORZ</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="kytocase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Kyto</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="smunchcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Smunch</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="cogalleriescase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >coGalleries</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="organize.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Organize</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pffcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pffcase</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="stak.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Stak</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
+  <body class="bg-white dark:bg-black text-gray-900 dark:text-white">
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
 
-                    <!-- Web Dev Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleNestedDropdown()"
-                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Web Dev
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': nestedDropdownOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="nestedDropdownOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-app"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-api"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager API
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="pokemoncase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pokédex App</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="myflixcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix React</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/myFlix-Angular-client"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix Angular
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="meetcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Meet</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="chatappcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Chat</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  @click="closeNavbar()"
-                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </div>
-          <!-- Mobile Menu -->
-          <div
-            id="mobile-menu"
-            x-show="navbarOpen"
-            x-cloak
-            class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
-            x-transition
-          >
-            <ul class="flex flex-col space-y-2 px-4 py-2">
-              <!-- Dropdown for Mobile -->
-              <li class="relative">
-                <button
-                  @click="toggleDropdown()"
-                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                >
-                  Portfolio
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 ml-2 transition-transform"
-                    :class="{ 'rotate-180': dropdownOpen }"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <!-- Dropdown Menu for Mobile -->
-                <div
-                  x-show="dropdownOpen"
-                  x-cloak
-                  class="lg:hidden mt-2 bg-white rounded-md"
-                  x-transition
-                >
-                  <ul class="space-y-2">
-                    <!-- Categories Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleCategories()"
-                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Design Systems
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': categoriesOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="categoriesOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <!-- Nested Links -->
-                          <li>
-                            <a
-                              href="karlstorzcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >KARL STORZ</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="kytocase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Kyto</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="smunchcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Smunch</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="cogalleriescase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >coGalleries</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="organize.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Organize</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pffcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pffcase</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="stak.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Stak</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <!-- Web Dev Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleNestedDropdown()"
-                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Web Dev
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': nestedDropdownOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="nestedDropdownOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-app"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-api"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager API</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pokemoncase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pokédex App</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="myflixcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix React</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/myFlix-Angular-client"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix Angular</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="meetcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Meet</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="chatappcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Chat</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  @click.prevent="handleContactClick()"
-                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+    <div class="wrapper bg-white dark:bg-black">
       <!-- Hero Section -->
 
       <!-- Section: Heading -->
-      <section class="section section-inner started-heading lg:pt-52 lg:pb-16">
-        <div class="container mx-auto lg:px-16 px-8 w-full">
+      <section class="section started-heading bg-white dark:bg-black pb-8 pt-36 lg:pt-52 lg:pb-16">
+        <div
+          class="container bg-white dark:bg-black mx-auto lg:px-16 px-8 w-full"
+        >
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <!-- Eyebrow Section -->
@@ -618,7 +64,7 @@
                 Case Study
               </p>
               <!-- Main Heading -->
-              <h1 id="header" class="font-bold text-6xl">
+              <h1 id="header" class="font-bold text-6xl text-gray-900 dark:text-white">
                 <span>Kyto</span>
               </h1>
             </div>
@@ -627,7 +73,9 @@
       </section>
 
       <!-- Section: Parallax Image -->
-      <section class="section m-image-large relative custom-image-section">
+      <section
+        class="section bg-white dark:bg-black m-image-large relative custom-image-section"
+      >
         <div
           class="image parallax-cs absolute inset-0"
           style="background-image: url('img/03-Laptop-Mockup.jpg')"
@@ -639,26 +87,26 @@
 
       <!-- Section: Details (Kyto) -->
       <section
-        class="section-inner m-details py-16 px-4 sm:px-8 lg:px-32 xl:px-40"
+        class="section bg-white dark:bg-black m-details py-16 px-4 sm:px-8 lg:px-32 xl:px-40"
       >
-        <div class="container mx-auto">
+        <div class="container bg-white dark:bg-black mx-auto">
           <!-- Flex container with left-aligned items -->
           <div class="flex flex-wrap gap-6">
             <!-- Client -->
-            <div class="details-label p-4 flex-1">
+            <div class="details-label p-4 flex-1 text-gray-900 dark:text-white">
               <strong class="block leading-tight">Client</strong><br />Kyto
             </div>
             <!-- Industry -->
-            <div class="details-label p-4 flex-1">
+            <div class="details-label p-4 flex-1 text-gray-900 dark:text-white">
               <strong class="block leading-tight">Industry</strong
               ><br />Software as a Service / B2B
             </div>
             <!-- Year -->
-            <div class="details-label p-4 flex-1">
+            <div class="details-label p-4 flex-1 text-gray-900 dark:text-white">
               <strong class="block leading-tight">Year</strong><br />2019-2021
             </div>
             <!-- Website -->
-            <a href="https://kyto.de" target="_blank" rel="noopener noreferrer">
+            <a href="https://kyto.de" target="_blank" rel="noopener noreferrer" class="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300">
               <div class="details-label p-4 flex-1">
                 <strong class="block leading-tight">Website</strong
                 ><br />kyto.de
@@ -668,23 +116,26 @@
         </div>
       </section>
 
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
+      <!-- Divider -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10">
         <!-- Section Description -->
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
-              <!-- History Title -->
+              <!-- Challenge Title -->
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold" data-animate="active">
+                  <div class="m-title text-2xl font-bold text-gray-900 dark:text-white" data-animate="active">
                     Challenge
                   </div>
                 </div>
               </div>
-              <!-- History Description -->
+              <!-- Challenge Description -->
               <div class="w-full pb-12 lg:w-2/3">
                 <div class="description-text">
-                  <p>
+                  <p class="text-gray-700 dark:text-gray-300">
                     Kyto needed a design and brand system that would unify their
                     brand identity and create a consistent user experience
                     across all touchpoints for new product launches.
@@ -696,23 +147,26 @@
         </div>
       </section>
 
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
+      <!-- Divider -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10">
         <!-- Section Description -->
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
-              <!-- History Title -->
+              <!-- Solution Title -->
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold" data-animate="active">
+                  <div class="m-title text-2xl font-bold text-gray-900 dark:text-white" data-animate="active">
                     Solution
                   </div>
                 </div>
               </div>
-              <!-- History Description -->
+              <!-- Solution Description -->
               <div class="w-full pb-12 lg:w-2/3">
                 <div class="description-text">
-                  <p>
+                  <p class="text-gray-700 dark:text-gray-300">
                     Conducted extensive research to inform a comprehensive
                     design and brand system that emphasized the company's values
                     of innovation, simplicity, and accessibility. The system
@@ -726,23 +180,26 @@
         </div>
       </section>
 
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
+      <!-- Divider -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10">
         <!-- Section Description -->
-        <div class="">
-          <div class="container mx-auto px-8">
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
-              <!-- History Title -->
-              <div class="lg:w-1/4 mb-8 lg:mb-0">
+              <!-- Results Title -->
+              <div class="lg:w-1/4 mb-4 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold" data-animate="active">
+                  <div class="m-title text-2xl font-bold text-gray-900 dark:text-white" data-animate="active">
                     Results
                   </div>
                 </div>
               </div>
-              <!-- History Description -->
-              <div class="w-full pb-12 lg:w-2/3">
+              <!-- Results Description -->
+              <div class="w-full pb-8 lg:w-2/3">
                 <div class="description-text">
-                  <p class="mb-8">
+                  <p class="mb-8 text-gray-700 dark:text-gray-300">
                     The new design and brand system resulted in increased brand
                     recognition and trust, website traffic, and sales for the
                     company. User feedback indicated higher engagement and
@@ -755,59 +212,62 @@
           </div>
         </div>
       </section>
-      <div class="bg-white pb-32">
+      <div class="bg-white dark:bg-black pt-16 pb-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
           <dl
             class="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3"
           >
             <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base leading-7 text-gray-600">
+              <dt class="text-base leading-7 text-gray-600 dark:text-gray-400">
                 Brand Recognition
               </dt>
               <dd
-                class="order-first text-xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
+                class="order-first text-xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
               >
                 Increased <br />Trust
               </dd>
             </div>
             <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base leading-7 text-gray-600">Website Traffic</dt>
+              <dt class="text-base leading-7 text-gray-600 dark:text-gray-400">Website Traffic</dt>
               <dd
-                class="order-first text-xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
+                class="order-first text-xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
               >
                 Higher Engagement
               </dd>
             </div>
             <div class="mx-auto flex max-w-xs flex-col gap-y-4">
-              <dt class="text-base leading-7 text-gray-600">Sales</dt>
+              <dt class="text-base leading-7 text-gray-600 dark:text-gray-400">Sales</dt>
               <dd
-                class="order-first text-xl font-semibold tracking-tight text-gray-900 sm:text-4xl"
+                class="order-first text-xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl"
               >
-                Significant Growth
+                Significant <br />Growth
               </dd>
             </div>
           </dl>
         </div>
       </div>
 
-      <section class="bg-[#F5F5F5] py-4">
+      <!-- Divider Line -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="py-4">
         <!-- Adjust padding if needed -->
-        <section class="container mx-auto px-4 md:px-10 lg:px-10">
+        <section class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10">
           <!-- Section Description -->
-          <div class="section section-inner m-description text-center">
+          <div class="section bg-white dark:bg-black section-inner m-description text-center">
             <!-- Center content -->
             <!-- Header Section -->
             <div class="mb-8">
               <div class="m-titles">
-                <div class="m-title text-2xl font-bold" data-animate="active">
+                <div class="m-title text-2xl font-bold text-gray-900 dark:text-white" data-animate="active">
                   Logo Redesign
                 </div>
               </div>
             </div>
             <!-- Content Section -->
-            <div class="w-full max-w-3xl mx-auto">
+            <div class="w-full max-w-3xl mx-auto bg-white dark:bg-black">
               <!-- Adjusted width to make content smaller -->
-              <div class="description-text">
+              <div class="description-text bg-white dark:bg-black">
                 <!-- Comparison Slider -->
                 <img-comparison-slider
                   value="26"
@@ -836,29 +296,32 @@
         </section>
       </section>
 
-      <section class="bg-[#FAFAFA] py-4">
+      <!-- Divider Line -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="py-4">
         <!-- Add background color and padding if needed -->
-        <section class="container mx-auto px-4 md:px-10 lg:px-10">
+        <section class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10">
           <!-- Section Description -->
-          <div class="section section-inner m-description text-center">
+          <div class="section bg-white dark:bg-black section-inner m-description text-center">
             <!-- Center content -->
             <!-- Header Section -->
             <div class="mb-8">
               <div class="m-titles">
-                <div class="m-title text-2xl font-bold" data-animate="active">
+                <div class="m-title text-2xl font-bold text-gray-900 dark:text-white" data-animate="active">
                   Secondary Logos
                 </div>
               </div>
             </div>
             <!-- Content Section -->
-            <div class="w-full max-w-3xl mx-auto">
+            <div class="w-full max-w-3xl mx-auto bg-white dark:bg-black">
               <!-- Center and constrain content width -->
               <!-- Desktop Layout -->
-              <div class="desktop-only">
+              <div class="desktop-only bg-white dark:bg-black">
                 <!-- Large Image with Thumbnails Below -->
                 <div class="flex flex-col gap-4">
                   <!-- Large Image -->
-                  <div class="large-image-container">
+                  <div class="large-image-container bg-white">
                     <img
                       id="largeImage"
                       src="https://via.placeholder.com/800x450"
@@ -943,15 +406,18 @@
         </section>
       </section>
 
-      <section class="bg-white py-4">
+      <!-- Divider Line -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="py-4">
         <!-- Adjusted padding -->
-        <section class="container mx-auto px-4 md:px-10 lg:px-10">
+        <section class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10">
           <!-- Section Description -->
           <div class="section section-inner m-description text-center">
             <!-- History Title (Moved Above) -->
             <div class="mb-8">
               <div class="m-titles">
-                <div class="m-title text-2xl font-bold" data-animate="active">
+                <div class="m-title text-2xl font-bold text-gray-900 dark:text-white" data-animate="active">
                   Design System
                 </div>
               </div>
@@ -1002,16 +468,19 @@
         </section>
       </section>
 
-      <section class="bg-[#F5F5F5] py-4">
+      <!-- Divider Line -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="py-4">
         <!-- Adjusted padding -->
-        <section class="container mx-auto px-4 md:px-10 lg:px-10">
+        <div class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10">
           <!-- Section Description -->
           <div class="section section-inner m-description text-center">
             <!-- Center content -->
             <!-- History Title (Moved Above) -->
             <div class="mb-8">
               <div class="m-titles">
-                <div class="m-title text-2xl font-bold" data-animate="active">
+                <div class="m-title text-2xl font-bold text-gray-900 dark:text-white" data-animate="active">
                   Website Design
                 </div>
               </div>
@@ -1129,7 +598,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </section>
 
       <!-- Modal -->
@@ -1142,16 +611,19 @@
         </div>
       </div>
 
-      <section class="bg-[#FAFAFA] py-4">
+      <!-- Divider Line -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="py-4">
         <!-- Adjusted padding -->
-        <section class="container mx-auto px-4 md:px-10 lg:px-10">
+        <div class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10">
           <!-- Section Description -->
           <div class="section section-inner m-description text-center">
             <!-- Center content -->
             <!-- History Title (Moved Above) -->
             <div class="mb-8">
               <div class="m-titles">
-                <div class="m-title text-2xl font-bold" data-animate="active">
+                <div class="m-title text-2xl font-bold text-gray-900 dark:text-white" data-animate="active">
                   Platform Engine Dashboard
                 </div>
               </div>
@@ -1240,12 +712,15 @@
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </section>
 
-      <section class="bg-[#F5F5F5] py-16 xl:py-32">
+      <!-- Divider Line -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="py-16 xl:py-32">
         <div class="text-center mb-8">
-          <h2 class="m-title text-2xl font-bold">Website Engine Dashboard</h2>
+          <h2 class="m-title text-2xl font-bold text-gray-900 dark:text-white">Website Engine Dashboard</h2>
         </div>
         <div class="relative w-full flex justify-center overflow-visible">
           <img
@@ -1256,10 +731,13 @@
         </div>
       </section>
 
+      <!-- Divider Line -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
       <section class="py-16 xl:py-32">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center">
           <div class="mb-4">
-            <h3 class="m-title text-2xl font-bold">Stationary</h3>
+            <h3 class="m-title text-2xl font-bold text-gray-900 dark:text-white">Stationary</h3>
           </div>
           <p class="mb-8">Letterhead and business card</p>
           <img
@@ -1277,11 +755,14 @@
         </div>
       </section>
 
-      <section class="bg-[#FAFAFA] py-16 xl:py-32 w-screen">
+      <!-- Divider Line -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="py-16 xl:py-32 w-screen">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4">
           <div class="mx-auto text-center">
             <div class="mb-8">
-              <h3 class="m-title text-2xl font-bold">Stickers</h3>
+              <h3 class="m-title text-2xl font-bold text-gray-900 dark:text-white">Stickers</h3>
             </div>
           </div>
           <div>
@@ -1293,11 +774,14 @@
         </div>
       </section>
 
-      <section class="bg-[#F5F5F5] py-16 xl:py-32 w-screen">
+      <!-- Divider Line -->
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section class="py-16 xl:py-32 w-screen">
         <div class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-14 relative">
           <div class="max-w-2xl md:mx-auto text-center xl:max-w-none">
             <div class="mb-8">
-              <h3 class="m-title text-2xl font-bold">Desktop Wallpaper</h3>
+              <h3 class="m-title text-2xl font-bold text-gray-900 dark:text-white">Desktop Wallpaper</h3>
             </div>
           </div>
           <div
@@ -1312,7 +796,7 @@
       <section class="container my-32 mx-auto px-4 md:px-10 lg:px-10">
         <blockquote class="relative text-center mx-auto">
           <svg
-            class="absolute -top-6 -start-8 size-16 text-gray-100"
+            class="absolute -top-6 -start-14 size-16 text-gray-100 dark:text-gray-700"
             width="16"
             height="16"
             viewBox="0 0 16 16"
@@ -1327,7 +811,7 @@
           </svg>
 
           <div class="relative z-10">
-            <p class="text-xl text-gray-800 md:text-3xl md:leading-normal">
+            <p class="text-xl text-gray-800 dark:text-white md:text-3xl md:leading-normal">
               <em>
                 Roderick showed exceptional independence and adaptability,
                 quickly adjusting to changes. His dedication, pioneering spirit,
@@ -1346,12 +830,12 @@
         </blockquote>
       </section>
 
-      <section class="md:py-20 py-10">
+      <section class="bg-white dark:bg-black md:py-20 py-10">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-4 text-center">
           <!-- Previous Button -->
           <a
             href="karlstorzcase.html"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-white dark:bg-black border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-gray-200"
           >
             Previous
           </a>
@@ -1359,7 +843,7 @@
           <!-- Next Button -->
           <a
             href="smunchcase.html"
-            class="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+            class="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-600 dark:text-gray-300 bg-white dark:bg-black border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-gray-200"
           >
             Next
           </a>
@@ -1370,16 +854,16 @@
       <section
         id="contact"
         aria-labelledby="contact-title"
-        class="relative overflow-hidden py-16 px-4 sm:px-8 lg:px-40 border-t border-gray-100"
+        class="relative overflow-hidden bg-white dark:bg-black py-16 md:py-32 px-4 sm:px-8 lg:px-40 border-t border-gray-100 dark:border-gray-800"
       >
         <div class="container mx-auto relative z-10">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
             <!-- Column 1: Header and Description Container -->
             <div class="md:col-span-4 lg:col-span-12 flex flex-col items-start">
-              <h5 id="contact-title" class="text-3xl font-bold secondary-title">
+              <h5 id="contact-title" class="text-3xl font-bold secondary-title text-gray-900 dark:text-white">
                 Contact
               </h5>
-              <p class="text-lg mt-4">
+              <p class="text-lg mt-4 text-gray-700 dark:text-gray-300">
                 Please use the form below to send me a message. I'll be happy to
                 hear from you.
               </p>
@@ -1388,60 +872,60 @@
           <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-8">
             <form class="space-y-8 input-form" method="POST">
               <div>
-                <label for="form-name" class="block mb-4 text-xl font-bold"
+                <label for="form-name" class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your name</label
                 >
                 <input
                   type="text"
                   name="name"
                   id="form-name"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                  class="w-full border border-input-border bg-slate-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white px-4 py-2"
                   required
                 />
               </div>
               <div>
-                <label for="form-email" class="block mb-4 text-xl font-bold"
+                <label for="form-email" class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your email</label
                 >
                 <input
                   type="email"
                   name="email"
                   id="form-email"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                  class="w-full border border-input-border bg-slate-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white px-4 py-2"
                   required
                 />
               </div>
               <div>
-                <label for="form-message" class="block mb-4 text-xl font-bold"
+                <label for="form-message" class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your message</label
                 >
                 <textarea
                   name="message"
                   id="form-message"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none"
+                  class="w-full border border-input-border bg-slate-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white px-4 py-4 h-56 resize-none"
                   placeholder="Type your message here..."
                   required
                 ></textarea>
               </div>
               <button
                 type="submit"
-                class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                class="text-black dark:text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
               >
                 Send it!
               </button>
             </form>
             <!-- Contact info -->
             <div class="mt-12">
-              <p>+49 163 7126279</p>
+              <p class="text-gray-900 dark:text-white">+49 163 7126279</p>
               <a
                 href="mailto:roderickfmoise@gmail.com"
-                class="underline mt-3 block"
+                class="underline mt-3 block text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                 >roderickfmoise@gmail.com</a
               >
               <a
                 href="img/Roderick-Moise-CV-Designer-Developer.pdf"
                 target="_blank"
-                class="underline mt-3 block"
+                class="underline mt-3 block text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                 ><b>Download my CV</b></a
               >
               <!-- Socials -->
@@ -1452,7 +936,7 @@
                   href="https://www.linkedin.com/in/roderickmoise/"
                 >
                   <svg
-                    class="w-[32px] h-[32px] text-gray-800"
+                    class="w-[32px] h-[32px] text-gray-800 dark:text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1471,7 +955,7 @@
                 <!-- Github logo -->
                 <a target="_blank" href="https://github.com/rmoise">
                   <svg
-                    class="w-[28px] h-[28px] text-gray-800"
+                    class="w-[28px] h-[28px] text-gray-800 dark:text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1489,7 +973,7 @@
                 <!-- Twitter logo -->
                 <a target="_blank" href="https://twitter.com/RoderickMoise">
                   <svg
-                    class="w-6 h-6 text-gray-800"
+                    class="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1618,6 +1102,9 @@
         })
       })
     </script>
+
+    </div> <!-- Close wrapper -->
+
     <script>
       // Initialize Swiper with a new name
       var swiper4 = new Swiper('.swiper-container', {
@@ -1864,8 +1351,8 @@
     </script>
 
     <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="js/navbar.js"></script>
+    <script src="js/global-navbar.js"></script>
+    <script src="js/theme-toggle.js"></script>
     <script src="js/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
   </body>
 </html>

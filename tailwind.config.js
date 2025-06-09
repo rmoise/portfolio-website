@@ -1,9 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   important: true, // Add this line to enable !important globally
+  darkMode: 'class', // Enable class-based dark mode
 
   content: [
-    './index.html',
+    './*.html',
+    './components/**/*.html',
+    './js/**/*.js',
     './src/**/*.{html,js}',
     'node_modules/flowbite/**/*.js',
     'node_modules/preline/dist/*.js',
@@ -29,7 +32,8 @@ module.exports = {
         linkHover: '#001eff',
       },
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       fontSize: {
         '3xl': ['2rem', '2.5rem'], // 32px font size with 40px line height

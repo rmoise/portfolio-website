@@ -3,7 +3,25 @@
 @tailwind utilities;
 
 /* Add Flowbite styles */
-@import "flowbite";
+@import 'flowbite';
+
+/* Custom contrast backgrounds for light/dark mode */
+.bg-contrast-light {
+  background-color: #f5f5f5 !important;
+}
+
+.dark .bg-contrast-light {
+  background-color: #0f0f0f !important; /* Very dark gray, subtle contrast from black */
+}
+
+.bg-contrast-lighter {
+  background-color: #fafafa !important;
+}
+
+.dark .bg-contrast-lighter {
+  background-color: #1a1a1a !important; /* Slightly lighter dark gray for subtle variation */
+}
+
 /*
 ! tailwindcss v3.2.1 | MIT License | https://tailwindcss.com
 */
@@ -28,7 +46,7 @@
 
 ::before,
 ::after {
-  --tw-content: "";
+  --tw-content: '';
 }
 
 /*
@@ -53,16 +71,16 @@ html {
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
-    "Segoe UI",
+    'Segoe UI',
     Roboto,
-    "Helvetica Neue",
+    'Helvetica Neue',
     Arial,
-    "Noto Sans",
+    'Noto Sans',
     sans-serif,
-    "Apple Color Emoji",
-    "Segoe UI Emoji",
-    "Segoe UI Symbol",
-    "Noto Color Emoji";
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji';
   /* 4 */
 }
 
@@ -78,8 +96,8 @@ body {
   /* 2 */
 }
 
-[type="text"],
-[type="email"],
+[type='text'],
+[type='email'],
 textarea {
   border: none !important;
 }
@@ -152,7 +170,7 @@ kbd,
 samp,
 pre {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+    'Liberation Mono', 'Courier New', monospace;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -243,9 +261,9 @@ select {
 */
 
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button;
   /* 1 */
   background-color: transparent;
@@ -292,7 +310,7 @@ Correct the cursor style of increment and decrement buttons in Safari.
 2. Correct the outline style in Safari.
 */
 
-[type="search"] {
+[type='search'] {
   -webkit-appearance: textfield;
   /* 1 */
   outline-offset: -2px;
@@ -398,7 +416,7 @@ Set the default cursor for buttons.
 */
 
 button,
-[role="button"] {
+[role='button'] {
   cursor: pointer;
 }
 
@@ -980,8 +998,8 @@ video {
   text-align: center;
 }
 
-.font-poppins {
-  font-family: Poppins, sans-serif;
+.font-inter {
+  font-family: Inter, sans-serif;
 }
 
 .text-4xl {
@@ -1145,7 +1163,7 @@ video {
 }
 
 .secondary-title::before {
-  content: "";
+  content: '';
   display: block;
   height: 0.5rem;
   width: 3rem;
@@ -1373,23 +1391,21 @@ video {
   top: 0;
   left: 0;
   z-index: 50;
-  transition:
-    transform 0.4s ease-in-out,
-    position 0.3s ease;
+  transition: transform 0.4s ease-in-out;
 }
 
 /* Sub-navigation styles */
 #sub-nav {
   position: fixed;
-  top: 63px; /* Adjust based on main-nav height */
+  top: 72px; /* Adjust based on main-nav height */
   width: 100%;
   backdrop-filter: blur(10px); /* Apply blur effect for desktop */
   -webkit-backdrop-filter: blur(10px); /* Safari support */
-  background-color: rgba(248, 250, 252, 0.8); /* Semi-transparent background */
+  background-color: rgba(248, 250, 252, 0.85); /* Semi-transparent background */
   z-index: 49; /* Ensure it's below the main-nav */
-  transition:
-    transform 0.3s ease-in-out,
-    backdrop-filter 0.3s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  transform: translateY(-100%) !important;
+  opacity: 0 !important;
   overflow: hidden; /* This might prevent scrolling */
 }
 @media (max-width: 768px) {
@@ -1411,17 +1427,17 @@ video {
   z-index: 2000;
   opacity: 0; /* Initially invisible */
   transform: translateY(-100%); /* Slide in from top initially */
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  transition:
+    opacity 0.3s ease-in-out,
+    transform 0.3s ease-in-out;
 }
 
 /* Alpine.js will handle the visibility with x-show */
-.mobile-menu[x-show="navbarOpen"] {
+.mobile-menu[x-show='navbarOpen'] {
   opacity: 1;
   transform: translateY(0); /* Slide in from top when visible */
   pointer-events: all; /* Ensure interactions are enabled */
 }
-
-
 
 /* Sub-navigation container */
 .sub-nav-container {
@@ -1529,7 +1545,22 @@ video {
   transition: top 0.4s ease-in; /* Ease in when showing */
 }
 
+/* CSS classes removed - direct JS control of transforms */
 
+/* Sub-navigation visibility states */
+#sub-nav.nav-visible {
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+}
+
+#sub-nav.subnav-fixed {
+  top: 0 !important;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  background-color: rgba(248, 250, 252, 0.95) !important;
+  backdrop-filter: blur(10px) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
 
 .subnav-wrapper::-webkit-scrollbar {
   display: none;
@@ -1577,7 +1608,7 @@ body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  font-family: Poppins, sans-serif;
+  font-family: Inter, sans-serif;
 }
 
 .parallax-background {
@@ -1586,10 +1617,14 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #f9fafb; /* Fixed background color */
+  background-color: #f9fafb; /* Fixed background color for light mode */
   z-index: -1; /* Ensure it stays behind content */
   opacity: 0; /* Initially hidden */
   transition: opacity 0.3s ease-out; /* Smooth transition for showing/hiding */
+}
+
+.dark .parallax-background {
+  background-color: #000000; /* Dark background for dark mode */
 }
 
 /* Show the parallax background when scrolling */
@@ -1616,7 +1651,7 @@ body {
 }
 
 .parallax::before {
-  content: "";
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
@@ -1629,8 +1664,12 @@ body {
 }
 
 .parallax.overlay::before {
-  background: rgba(249, 250, 251, 1); /* Dark overlay */
+  background: rgba(249, 250, 251, 1); /* Light overlay for light mode */
   position: fixed;
+}
+
+.dark .parallax.overlay::before {
+  background: rgba(0, 0, 0, 1); /* Dark overlay for dark mode */
 }
 
 .gradient-bg {
@@ -1652,10 +1691,9 @@ body {
 /* Main Content */
 .main-content {
   position: relative;
-  background-color: #fff;
   z-index: 3;
   /* Default margin-top for desktop */
-  margin-top: 100vh;
+  margin-top: 0;
 }
 
 /* Disable fixed position and adjust margin on mobile */
@@ -1901,7 +1939,7 @@ body {
   background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
   border-radius: 8px;
   padding: 15px 25px;
-  font-family: "IBM Plex Sans Hebrew", sans-serif;
+  font-family: 'IBM Plex Sans Hebrew', sans-serif;
   font-size: 16px;
   font-weight: 500;
   transition:
@@ -2084,16 +2122,20 @@ media screen and (max-width: 768px) {
   margin-top: 1.5rem; /* Adjust this value to control the space between the image and dots */
 }
 
-.tab {
-  color: black; /* Default text color */
-}
-.tab[aria-selected="true"] {
-  color: white; /* Text color when selected */
-}
+/* Tab colors now handled by Tailwind classes in HTML */
 
 .swiper-pagination-bullet-active {
   background: #01f3ab !important;
   opacity: 1;
+}
+
+/* Dark mode pagination bullets */
+.dark .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .swiper-pagination-bullet-active {
+  background: #01f3ab !important;
 }
 
 /* Ensure equal width and spacing for details labels */
@@ -2137,7 +2179,7 @@ media screen and (max-width: 768px) {
   /* Padding for readability */
   border-radius: 3px;
   /* Slightly rounded corners */
-  font-family: "Poppins", sans-serif;
+  font-family: 'Inter', sans-serif;
   /* Font style to match your site */
   font-size: 14px;
   /* Smaller font size */
@@ -2154,6 +2196,15 @@ media screen and (max-width: 768px) {
 .swiper-pagination-bullet-active {
   background: #01f3ab;
   opacity: 1;
+}
+
+/* Dark mode pagination bullets - second instance */
+.dark .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .swiper-pagination-bullet-active {
+  background: #01f3ab !important;
 }
 
 @media (max-width: 768px) {
@@ -2342,7 +2393,7 @@ media screen and (max-width: 768px) {
   /* Padding for readability */
   border-radius: 3px;
   /* Slightly rounded corners */
-  font-family: "Poppins", sans-serif;
+  font-family: 'Inter', sans-serif;
   /* Font style to match your site */
   font-size: 14px;
   /* Smaller font size */
@@ -2385,12 +2436,27 @@ media screen and (max-width: 768px) {
   transition: background-color 0.3s;
 }
 
+/* Dark mode custom dots */
+.dark .dot {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
 .dot.active {
   background-color: #555;
 }
 
+/* Dark mode active dots */
+.dark .dot.active {
+  background-color: #01f3ab !important;
+}
+
 .dot:hover {
   background-color: #777;
+}
+
+/* Dark mode hover dots */
+.dark .dot:hover {
+  background-color: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* Arrows container (right side) */
@@ -2442,6 +2508,7 @@ media screen and (max-width: 768px) {
 
 .slider-example-opacity-and-size {
   --default-handle-width: 100px;
+  background-color: #ffffff !important;
 }
 
 .slider-example-opacity-and-size:focus {
@@ -2451,6 +2518,7 @@ media screen and (max-width: 768px) {
 .before,
 .after {
   margin: 0;
+  background-color: #ffffff !important;
 }
 
 .before figcaption,
@@ -2479,6 +2547,15 @@ img-comparison-slider {
   display: block;
   width: 100%;
   height: auto;
+  background-color: #ffffff !important;
+}
+
+img-comparison-slider img {
+  background-color: #ffffff !important;
+}
+
+img-comparison-slider figure {
+  background-color: #ffffff !important;
 }
 
 /* Swiper styles */
@@ -2492,6 +2569,7 @@ img-comparison-slider {
   justify-content: center;
   align-items: center;
   width: 100%;
+  background-color: #ffffff !important;
 }
 
 .swiper-button-prev.swiper-button-disabled,
@@ -2708,6 +2786,7 @@ media screen and (max-width: 768px) {
   width: 100%;
   aspect-ratio: 16 / 9;
   /* Maintains 16:9 ratio */
+  background-color: #ffffff !important;
 }
 
 .large-image {
@@ -2715,6 +2794,11 @@ media screen and (max-width: 768px) {
   height: 100%;
   object-fit: cover;
   /* Ensures image maintains its aspect ratio and fills the container */
+  background-color: #ffffff !important;
+}
+
+#largeImage {
+  background-color: #ffffff !important;
 }
 
 .thumbnail {
@@ -2813,48 +2897,7 @@ media screen and (max-width: 768px) {
 .tab-content.active {
   display: block;
 }
-/* Default tab background color */
-.mdc-tab {
-  background-color: transparent !important; /* Transparent background */
-  color: gray !important; /* Default text color */
-}
-
-/* Active tab background color */
-.mdc-tab--active {
-  background-color: transparent !important; /* Transparent background for active tab */
-}
-
-/* Active tab text color */
-.mdc-tab--active .mdc-tab__text-label {
-  color: black !important; /* Black text color for active tab */
-}
-
-/* Underline color for tab indicator */
-.mdc-tab-indicator .mdc-tab-indicator__content--underline {
-  border-color: black !important; /* Black color for the underline */
-  z-index: 2 !important; /* Ensure it stays above the static line */
-}
-
-/* Hover state */
-.mdc-tab:hover {
-  background-color: transparent !important; /* Light gray background on hover */
-}
-
-/* Black text on hover */
-.mdc-tab:hover .mdc-tab__text-label {
-  color: black !important; /* Change text color to black on hover */
-}
-
-/* Ripple effect */
-.mdc-tab .mdc-tab__ripple::before,
-.mdc-tab .mdc-tab__ripple::after {
-  background-color: transparent !important; /* Light gray background for ripple effect */
-}
-
-/* Ensure tab indicator itself does not have conflicting background */
-.mdc-tab-indicator {
-  background-color: transparent !important;
-}
+/* MDC tab overrides removed - using Tailwind classes */
 
 video {
   width: 100vw; /* Full viewport width */
@@ -2904,29 +2947,7 @@ video {
   white-space: nowrap;
 }
 
-.slider-item {
-  width: 128px;
-  height: 128px; /* Now the width and height are the same to make it a square */
-  border-radius: 0.75rem;
-  border: 1px solid #e5e7eb;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  box-sizing: border-box;
-  flex: 0 0 auto;
-  margin-right: 1rem;
-  background-color: #fff;
-  font-size: 1rem;
-  color: #333;
-}
-
-/* Increase gap only for desktop */
-@media (min-width: 1024px) {
-  .slider-item {
-    margin-right: 40px; /* Increased gap for desktop */
-  }
-}
+/* .slider-item styles removed - letting Tailwind handle it */
 /* Modal background */
 #image-lightbox {
   position: fixed;
@@ -3240,7 +3261,7 @@ video {
 }
 
 .title::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -3251,7 +3272,7 @@ video {
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 255, 255, 0) 100%
   );
-  clip-path: text("Aurora Effect");
+  clip-path: text('Aurora Effect');
   mix-blend-mode: screen;
   z-index: -1;
   animation: aurora-border 6s ease-in-out infinite;
@@ -3281,32 +3302,30 @@ video {
   }
 }
 
+.click-to-enlarge {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-top: 10px;
+  color: #007bff; /* Blue color */
+  font-weight: bold;
+}
 
- .click-to-enlarge {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-        margin-top: 10px;
-        color: #007bff; /* Blue color */
-        font-weight: bold;
-      }
+.click-to-enlarge:hover {
+  text-decoration: underline; /* Underline on hover */
+}
 
-      .click-to-enlarge:hover {
-        text-decoration: underline; /* Underline on hover */
-      }
+.magnifying-glass {
+  margin-right: 5px;
+  font-size: 20px; /* Size of the icon */
+}
 
-      .magnifying-glass {
-        margin-right: 5px;
-        font-size: 20px; /* Size of the icon */
-      }
-
- /* Add this CSS */
-      .no-scroll {
-        overflow: hidden;
-        position: fixed;
-        width: 100%;
-      }
-
+/* Add this CSS */
+.no-scroll {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
 
 #main-nav {
   transition: transform 0.5s ease-in-out;
@@ -3314,11 +3333,12 @@ video {
 }
 
 #sub-nav {
-  transition: transform 0.5s ease-in-out, position 0.5s ease-in-out;
+  transition:
+    transform 0.5s ease-in-out,
+    position 0.5s ease-in-out;
   will-change: transform, position;
   position: fixed; /* Keep subNav fixed below mainNav */
 }
-
 
 .sub-nav-container a.active {
   font-weight: bold;
@@ -3346,19 +3366,7 @@ video {
   width: max-content; /* Ensure content stretches based on the number of icons */
 }
 
-/* Icon container */
-.slider-item {
-  flex-shrink: 0; /* Prevent shrinking */
-  margin: 0;
-  padding: 0;
-}
-
-/* Icons - no padding */
-.slider-item svg {
-  display: block;
-  padding: 0;
-  margin: 0;
-}
+/* Icon container and SVG styles removed - letting Tailwind handle it */
 
 /* Adjustments for mobile views (optional) */
 @media (max-width: 768px) {
@@ -3367,11 +3375,34 @@ video {
   }
 }
 
-
-
 /* Prevent scrolling when the menu is open */
 body.fixed {
   position: fixed;
   overflow: hidden;
   width: 100%;
+}
+
+/* Tool icon border override - counteract universal reset */
+.custom-slider-item a {
+  border-width: 1px;
+}
+
+/* Tab text color fix - maximum specificity */
+div[role='tablist']
+  button[role='tab'][aria-selected='true']
+  span.text-black.tracking-wider {
+  color: #000000 !important;
+}
+
+/* Alternative max specificity approach */
+#portfolio div[role='tablist'] button[role='tab'][aria-selected='true'] span {
+  color: #000000 !important;
+}
+
+button[role='tab'][aria-selected='false'] span.dark\:text-white {
+  color: #374151;
+}
+
+.dark button[role='tab'][aria-selected='false'] span.dark\:text-white {
+  color: #ffffff;
 }

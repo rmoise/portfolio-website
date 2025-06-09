@@ -10,10 +10,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
@@ -39,573 +44,19 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
     />
+
+    <!-- Tailwind Dark Mode - Official pattern to avoid FOUC -->
   </head>
 
-  <body class="flex h-full flex-col">
-    <div class="wrapper">
-      <!-- Navbar -->
-      <nav
-        id="main-nav"
-        x-data="navbar()"
-        x-init="init()"
-        class="bg-white fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-32 py-2 xl:px-40 mx-auto z-50"
-      >
-        <!-- Container with minimal padding -->
-        <div
-          class="container mx-auto flex flex-wrap items-center justify-between p-0"
-        >
-          <!-- Logo -->
-          <a href="index.html" class="inline-flex items-center p-2">
-            <img src="img/rm_logo.svg" alt="Logo" class="h-8" />
-          </a>
-          <!-- Toggler Btn -->
-          <button
-            id="menu-toggle"
-            type="button"
-            class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
-            @click="toggleNavbar()"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 transition-transform"
-              :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-            <svg
-              x-cloak
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 transition-transform"
-              :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-          <!-- Menu for Desktop -->
-          <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
-            <ul class="flex flex-row space-x-2">
-              <!-- Dropdown for Desktop -->
-              <li
-                x-data="{ dropdownOpen: false }"
-                @click.away="dropdownOpen = false"
-                class="relative"
-              >
-                <button
-                  @click="dropdownOpen = !dropdownOpen"
-                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                >
-                  Portfolio
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 ml-2 transition-transform"
-                    :class="{ 'rotate-180': dropdownOpen }"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <!-- Dropdown Menu for Desktop -->
-                <div
-                  x-show="dropdownOpen"
-                  x-cloak
-                  class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48"
-                  x-transition
-                >
-                  <ul class="space-y-2">
-                    <!-- Categories Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleCategories()"
-                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Design Systems
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': categoriesOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="categoriesOpen"
-                        class="mt-1 bg-white rounded-md shadow-lg"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <!-- Nested Links -->
-                          <li>
-                            <a
-                              href="karlstorzcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >KARL STORZ</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="kytocase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Kyto</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="smunchcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Smunch</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="cogalleriescase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >coGalleries</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="organize.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Organize</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pffcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pffcase</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="stak.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Stak</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
+  <body class="bg-white dark:bg-black text-gray-900 dark:text-white">
+    <!-- Navigation -->
+    <div id="navbar-container"></div>
 
-                    <!-- Web Dev Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleNestedDropdown()"
-                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Web Dev
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': nestedDropdownOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="nestedDropdownOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-app"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-api"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager API
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="pokemoncase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pokédex App</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="myflixcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix React</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/myFlix-Angular-client"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix Angular
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="meetcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Meet</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="chatappcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Chat</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  @click="closeNavbar()"
-                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </div>
-          <!-- Mobile Menu -->
-          <div
-            id="mobile-menu"
-            x-show="navbarOpen"
-            x-cloak
-            class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
-            x-transition
-          >
-            <ul class="flex flex-col space-y-2 px-4 py-2">
-              <!-- Dropdown for Mobile -->
-              <li class="relative">
-                <button
-                  @click="toggleDropdown()"
-                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                >
-                  Portfolio
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 ml-2 transition-transform"
-                    :class="{ 'rotate-180': dropdownOpen }"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <!-- Dropdown Menu for Mobile -->
-                <div
-                  x-show="dropdownOpen"
-                  x-cloak
-                  class="lg:hidden mt-2 bg-white rounded-md"
-                  x-transition
-                >
-                  <ul class="space-y-2">
-                    <!-- Categories Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleCategories()"
-                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Design Systems
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': categoriesOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="categoriesOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <!-- Nested Links -->
-                          <li>
-                            <a
-                              href="karlstorzcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >KARL STORZ</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="kytocase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Kyto</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="smunchcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Smunch</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="cogalleriescase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >coGalleries</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="organize.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Organize</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pffcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pffcase</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="stak.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Stak</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <!-- Web Dev Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleNestedDropdown()"
-                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Web Dev
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': nestedDropdownOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="nestedDropdownOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-app"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-api"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager API</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pokemoncase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pokédex App</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="myflixcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix React</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/myFlix-Angular-client"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix Angular</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="meetcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Meet</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="chatappcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Chat</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  @click.prevent="handleContactClick()"
-                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+    <div class="wrapper bg-white dark:bg-black">
       <!-- Title Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="mt-32 flex justify-center items-center mx-auto px-4 lg:px-10 w-full"
         >
@@ -619,7 +70,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://myflix-movie-client-react.netlify.app/"
-                class="block pr-4 pl-2 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                class="block pr-4 pl-2 md:px-6 md:pt-2 lg:pl-0 underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
               >
                 Demo
               </a>
@@ -627,7 +78,7 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://github.com/rmoise/myFlix_api"
-                class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
               >
                 API
               </a>
@@ -635,14 +86,14 @@
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://github.com/rmoise/myFlix-client"
-                class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                class="block pr-4 md:px-6 md:pt-2 lg:pl-0 underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
               >
                 Client
               </a>
               <a
                 rel="noopener noreferrer"
                 href="img/myFlix Case Study.pdf"
-                class="block md:p-3 md:px-6 pr-2 md:pt-2 lg:pl-0 underline text-black hover:text-darkGrayishBlue"
+                class="block md:p-3 md:px-6 pr-2 md:pt-2 lg:pl-0 underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
               >
                 Download PDF
               </a>
@@ -652,16 +103,21 @@
       </section>
 
       <!-- Overview Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="mt-32 flex md:flex-nowrap flex-wrap justify-between items-center mx-auto px-4 lg:px-10 w-full"
         >
           <!-- Left item -->
           <div class="flex flex-col md:w-1/2 justify-center">
-            <h2 id="web" class="secondary-title text-3xl font-bold">
+            <h2
+              id="web"
+              class="secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+            >
               Overview
             </h2>
-            <p class="mt-4 md:mb-0 mb-8">
+            <p class="mt-4 md:mb-0 mb-8 text-gray-700 dark:text-gray-300">
               myFlix is a web app, developed using the MERN stack, that provides
               users with access to information about movies, directors, and
               genres. Users are able to create an account, update their personal
@@ -681,20 +137,24 @@
       </section>
 
       <!-- Purpose & Context Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="mt-10 flex justify-between items-center mx-auto px-4 lg:px-10 w-full"
         >
           <!-- Left item -->
           <div class="flex flex-col md:w-full">
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
-              <h2 class="mt-4 secondary-title text-3xl font-bold">
+              <h2
+                class="mt-4 secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+              >
                 Purpose & Context
               </h2>
 
-              <p class="mt-4 md:mb-0">
+              <p class="mt-4 md:mb-0 text-gray-700 dark:text-gray-300">
                 myFlix was a project I built as part of my web development
                 course at CareerFoundry to demonstrate my mastery of full-stack
                 JavaScript development.
@@ -705,7 +165,9 @@
       </section>
 
       <!-- Objective Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="flex flex-wrap-reverse md:flex-nowrap mt-10 mb-8 px-4 md:px-10 lg:px-10 w-full"
         >
@@ -719,8 +181,12 @@
           </div>
           <!-- Left item -->
           <div class="mt-8 flex flex-col md:w-1/2 justify-center">
-            <h2 class="secondary-title text-3xl font-bold">Objective</h2>
-            <p class="mt-4 mb-8">
+            <h2
+              class="secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+            >
+              Objective
+            </h2>
+            <p class="mt-4 mb-8 text-gray-700 dark:text-gray-300">
               The aim of the project was to build the complete server-side and
               client-side application from scratch.
             </p>
@@ -729,7 +195,9 @@
       </section>
 
       <!-- Duration Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div class="mt-10 px-4 md:px-10 lg:px-10 w-full">
           <!-- Left item -->
           <div class="flex flex-col">
@@ -740,7 +208,7 @@
               class="grid mb-8 rounded-lg shadow-sm gap-4 md:mb-12 md:grid-cols"
             >
               <figure
-                class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+                class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
               >
                 <svg
                   fill="none"
@@ -758,14 +226,18 @@
                   ></path>
                 </svg>
 
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                <h5
+                  class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+                >
                   Duration
                 </h5>
 
-                <p class="mb-3 font-normal">45 Days</p>
+                <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
+                  45 Days
+                </p>
               </figure>
               <figure
-                class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+                class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
               >
                 <svg
                   fill="none"
@@ -783,17 +255,21 @@
                   ></path>
                 </svg>
 
-                <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                <h5
+                  class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+                >
                   Credits
                 </h5>
 
-                <ul class="grid md:grid-cols-1 gap-1 list-disc list-inside">
+                <ul
+                  class="grid md:grid-cols-1 gap-1 list-disc list-inside text-gray-700 dark:text-gray-300"
+                >
                   <li>Tutor: Terver Aosu</li>
                   <li>Mentor: Stephen Barungi</li>
                 </ul>
               </figure>
               <figure
-                class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+                class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
               >
                 <svg
                   fill="none"
@@ -816,12 +292,16 @@
                   ></path>
                 </svg>
                 <a href="#">
-                  <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+                  <h5
+                    class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+                  >
                     Built With
                   </h5>
                 </a>
 
-                <ul class="grid md:grid-cols-3 gap-1 list-disc list-inside">
+                <ul
+                  class="grid md:grid-cols-3 gap-1 list-disc list-inside text-gray-700 dark:text-gray-300"
+                >
                   <li>React</li>
                   <li>Redux</li>
                   <li>Bootstrap</li>
@@ -840,13 +320,17 @@
       </section>
 
       <!-- Title Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="flex flex-wrap md:mb-8 justify-center md:justify-start md:flex-nowrap mt-6 mb-6 px-4 md:px-10 lg:px-10 w-full"
         >
           <!-- Left item -->
           <div class="flex flex-col md:w-1/2">
-            <h1 class="font-bold text-5xl xl:text-6xl text-center md:text-left">
+            <h1
+              class="font-bold text-5xl xl:text-6xl text-center md:text-left text-gray-900 dark:text-white"
+            >
               Approach
             </h1>
           </div>
@@ -854,14 +338,22 @@
       </section>
 
       <!-- Serverside Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="flex flex-wrap md:flex-nowrap mt-10 mb-8 px-4 md:px-10 lg:px-10 w-full"
         >
           <!-- Left item -->
           <div class="flex flex-col md:w-1/2">
-            <h2 class="secondary-title text-3xl font-bold">Serverside</h2>
-            <p class="mt-4 md:mb-0 mb-8 md:mr-12">
+            <h2
+              class="secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+            >
+              Serverside
+            </h2>
+            <p
+              class="mt-4 md:mb-0 mb-8 md:mr-12 text-gray-700 dark:text-gray-300"
+            >
               I created a RESTful API using Node.js and Express, that interacts
               with a non-relational database (MongoDB). The API can be accessed
               via commonly used HTTP methods like GET or POST. To retrieve and
@@ -875,7 +367,7 @@
             class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-2 lg:gap-6"
           >
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -893,11 +385,13 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 01 Basics
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 I first needed to determine if I wanted a relational or non-
                 relational Database. After testing with PostGreSQL and MongoDB,
                 I chose MongoDB because it is a non-relational database and
@@ -905,7 +399,7 @@
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -923,18 +417,20 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 02 Business Logic
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 Next, I created models to keep my data consistently formatted
                 and used Mongoose to interact with the database
               </p>
             </figure>
 
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -951,11 +447,13 @@
                   d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"
                 ></path>
               </svg>
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 03 Security
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 I chose basic HTTP for initial login paired with a JWT token
                 based authorization to make my site secure. Then, I implemented
                 CORS password hashing and data validation for extra security.
@@ -963,7 +461,7 @@
             </figure>
 
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -980,11 +478,13 @@
                   d="M4.5 12.75l6 6 9-13.5"
                 ></path>
               </svg>
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 04 Deployment
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 After testing all endpoints using Postman, I finally used Heroku
                 to deploy my app and MongoDB Atlas to host my database.
               </p>
@@ -994,14 +494,22 @@
       </section>
 
       <!-- Clientside Section -->
-      <section class="container flex justify-between items-center mx-auto">
+      <section
+        class="container bg-white dark:bg-black flex justify-between items-center mx-auto"
+      >
         <div
           class="flex flex-wrap md:flex-nowrap mt-10 px-4 md:px-10 lg:px-10 w-full"
         >
           <!-- Left item -->
           <div class="flex flex-col md:w-3/5">
-            <h2 class="secondary-title text-3xl font-bold">Clientside</h2>
-            <p class="leading-relaxed mt-4 mb-2 md:mr-12">
+            <h2
+              class="secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+            >
+              Clientside
+            </h2>
+            <p
+              class="leading-relaxed mt-4 mb-2 md:mr-12 text-gray-700 dark:text-gray-300"
+            >
               After completing the API, I built the interface users would need
               to interact with the server-side. It is a single-page, responsive
               application, developed with React and React-Redux. It provides
@@ -1030,7 +538,7 @@
             class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols lg:gap-6 mb-10"
           >
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1053,11 +561,13 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 The Build
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 This project taught me how to use MVC architecture as a design
                 pattern. To facilitate this, I chose to use React because it is
                 fast, easy to maintain, and well documented. Then, I used Parcel
@@ -1065,7 +575,7 @@
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1083,18 +593,20 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 Create Components
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 Once the initial build was done, I created components for the
                 different views and hooks to control the state. I used Axios to
                 pull in the API I had previously created.
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1112,16 +624,20 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">Design</h5>
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
+                Design
+              </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 I used React Bootstrap to design the layout of the pages and
                 cards and to ensure consistent styling. I also used client side
                 app-routing to add authentication to access views.
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1139,11 +655,13 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 Final product
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 Finally, I added Redux to better manage the application's state
                 and ensure that my app would be scalable. Once integrated, I
                 hosted my completed project on Netlify.
@@ -1155,18 +673,22 @@
 
       <!-- Retrospective Section -->
       <section
-        class="container mb-24 flex justify-between items-center mx-auto"
+        class="container bg-white dark:bg-black mb-24 flex justify-between items-center mx-auto"
       >
         <div class="mt-24 px-4 md:px-10 lg:px-10 w-full">
           <!-- Left item -->
-          <h2 class="mb-8 secondary-title text-3xl font-bold">Retrospective</h2>
+          <h2
+            class="mb-8 secondary-title text-3xl font-bold text-gray-900 dark:text-white"
+          >
+            Retrospective
+          </h2>
 
           <!-- Image -->
           <div
             class="md:w-full grid gap-4 xs:grid-cols-2 xs:p-8 md:grid-cols-4 lg:gap-6 mb-10"
           >
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1184,11 +706,13 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tight">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 What went well?
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 I very much enjoyed learning how to build the database, working
                 on the frontend and setting up the backend. Having worked as a
                 UI designer, designing UI components/libraries I found react to
@@ -1196,7 +720,7 @@
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1215,12 +739,12 @@
               </svg>
 
               <h5
-                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900"
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
               >
                 What didn't go well?
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 The biggest challenge was time. I would've hoped to add more
                 functionality to the app, like adding google login, and possibly
                 more movie choices and options such as trending, whats popular,
@@ -1229,7 +753,7 @@
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1248,12 +772,12 @@
               </svg>
 
               <h5
-                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900"
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
               >
                 Future Steps
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 I would like to continue to build on the app to include more
                 movies, movie features and a google oauth 2.0 login. I would
                 like to incorporate features such as whats trending, whats
@@ -1262,7 +786,7 @@
               </p>
             </figure>
             <figure
-              class="fmax-w-sm p-6 bg-white border border-gray-200 rounded-lg"
+              class="fmax-w-sm p-6 bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-lg"
             >
               <svg
                 fill="none"
@@ -1280,11 +804,13 @@
                 ></path>
               </svg>
 
-              <h5 class="mb-2 text-2xl font-semibold tracking-tigh">
+              <h5
+                class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              >
                 Final Thoughts
               </h5>
 
-              <p class="mb-3 font-normal">
+              <p class="mb-3 font-normal text-gray-700 dark:text-gray-300">
                 Overall, I've enjoyed this project and gained quite a bit of
                 knowledge about developing an entire web application from
                 scratch. This project taught me the ins and outs of react and
@@ -1299,16 +825,19 @@
       <section
         id="contact"
         aria-labelledby="contact-title"
-        class="relative overflow-hidden py-16 px-4 sm:px-8 lg:px-40 border-t border-gray-100"
+        class="relative overflow-hidden py-16 px-4 sm:px-8 lg:px-40 border-t border-gray-100 dark:border-gray-700 bg-white dark:bg-black"
       >
-        <div class="container mx-auto relative z-10">
+        <div class="container bg-white dark:bg-black mx-auto relative z-10">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
             <!-- Column 1: Header and Description Container -->
             <div class="md:col-span-4 lg:col-span-12 flex flex-col items-start">
-              <h5 id="contact-title" class="text-3xl font-bold secondary-title">
+              <h5
+                id="contact-title"
+                class="text-3xl font-bold secondary-title text-gray-900 dark:text-white"
+              >
                 Contact
               </h5>
-              <p class="text-lg mt-4">
+              <p class="text-lg mt-4 text-gray-700 dark:text-gray-300">
                 Please use the form below to send me a message. I'll be happy to
                 hear from you.
               </p>
@@ -1317,60 +846,66 @@
           <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-8">
             <form class="space-y-8 input-form" method="POST">
               <div>
-                <label for="form-name" class="block mb-4 text-xl font-bold"
+                <label
+                  for="form-name"
+                  class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your name</label
                 >
                 <input
                   type="text"
                   name="name"
                   id="form-name"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                  class="w-full border border-input-border dark:border-gray-600 bg-slate-100 dark:bg-gray-800 dark:text-white px-4 py-2 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
               </div>
               <div>
-                <label for="form-email" class="block mb-4 text-xl font-bold"
+                <label
+                  for="form-email"
+                  class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your email</label
                 >
                 <input
                   type="email"
                   name="email"
                   id="form-email"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                  class="w-full border border-input-border dark:border-gray-600 bg-slate-100 dark:bg-gray-800 dark:text-white px-4 py-2 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   required
                 />
               </div>
               <div>
-                <label for="form-message" class="block mb-4 text-xl font-bold"
+                <label
+                  for="form-message"
+                  class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your message</label
                 >
                 <textarea
                   name="message"
                   id="form-message"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none"
+                  class="w-full border border-input-border dark:border-gray-600 bg-slate-100 dark:bg-gray-800 dark:text-white px-4 py-4 h-56 resize-none rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   placeholder="Type your message here..."
                   required
                 ></textarea>
               </div>
               <button
                 type="submit"
-                class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center transition-colors"
               >
                 Send it!
               </button>
             </form>
             <!-- Contact info -->
             <div class="mt-12">
-              <p>+49 163 7126279</p>
+              <p class="text-gray-700 dark:text-gray-300">+49 163 7126279</p>
               <a
                 href="mailto:roderickfmoise@gmail.com"
-                class="underline mt-3 block"
+                class="underline mt-3 block text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
                 >roderickfmoise@gmail.com</a
               >
               <a
                 href="img/Roderick-Moise-CV-Designer-Developer.pdf"
                 target="_blank"
-                class="underline mt-3 block"
+                class="underline mt-3 block text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
                 ><b>Download my CV</b></a
               >
               <!-- Socials -->
@@ -1379,9 +914,10 @@
                 <a
                   target="_blank"
                   href="https://www.linkedin.com/in/roderickmoise/"
+                  class="text-gray-800 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white transition-colors"
                 >
                   <svg
-                    class="w-[32px] h-[32px] text-gray-800"
+                    class="w-[32px] h-[32px]"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1398,9 +934,13 @@
                   </svg>
                 </a>
                 <!-- Github logo -->
-                <a target="_blank" href="https://github.com/rmoise">
+                <a
+                  target="_blank"
+                  href="https://github.com/rmoise"
+                  class="text-gray-800 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white transition-colors"
+                >
                   <svg
-                    class="w-[28px] h-[28px] text-gray-800"
+                    class="w-[28px] h-[28px]"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1416,9 +956,13 @@
                   </svg>
                 </a>
                 <!-- Twitter logo -->
-                <a target="_blank" href="https://twitter.com/RoderickMoise">
+                <a
+                  target="_blank"
+                  href="https://twitter.com/RoderickMoise"
+                  class="text-gray-800 dark:text-gray-300 hover:text-gray-600 dark:hover:text-white transition-colors"
+                >
                   <svg
-                    class="w-6 h-6 text-gray-800"
+                    class="w-6 h-6"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1446,11 +990,9 @@
       </div>
 
       <script src="https://smtpjs.com/v3/smtp.js"></script>
-      <script src="js/navbar.js"></script>
+      <script src="js/global-navbar.js"></script>
+      <script src="js/theme-toggle.js"></script>
       <script src="js/script.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.4/flowbite.min.js"></script>
-      <script src="https://cdn.tailwindcss.com"></script>
-      <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     </div>
   </body>
 </html>

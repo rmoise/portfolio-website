@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', function () {
   const gradientLeft = document.querySelector('.gradient-left')
   const gradientRight = document.querySelector('.gradient-right')
 
+  // Exit early if elements don't exist
+  if (!subNavContainer || !gradientLeft || !gradientRight) {
+    console.log('Gradient elements not found, skipping gradient functionality');
+    return;
+  }
+
   function updateGradients() {
     const scrollLeft = subNavContainer.scrollLeft
     const maxScrollLeft =

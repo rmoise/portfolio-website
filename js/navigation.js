@@ -24,17 +24,19 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   // Toggle the menu and lock/unlock scroll
-  menuToggle.addEventListener('click', function (event) {
-    event.preventDefault();
-    navbarOpen = !navbarOpen;
-    if (navbarOpen) {
-      lockScroll(); // Lock scroll when the nav is open
-    } else {
-      unlockScroll(); // Unlock scroll when the nav is closed
-    }
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      navbarOpen = !navbarOpen;
+      if (navbarOpen) {
+        lockScroll(); // Lock scroll when the nav is open
+      } else {
+        unlockScroll(); // Unlock scroll when the nav is closed
+      }
 
-    console.log("Navbar toggled. Navbar Open:", navbarOpen);
-  });
+      console.log("Navbar toggled. Navbar Open:", navbarOpen);
+    });
+  }
 
   // Close the menu and unlock scroll on link click (for mobile and desktop)
   document.querySelectorAll('nav a').forEach(link => {

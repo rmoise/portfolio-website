@@ -66,6 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Reveal elements after the page has fully loaded
   window.addEventListener('load', () => {
+    const headline = document.querySelector('.headline, #headline');
+    const image = document.querySelector('.image, #image');
+
     if (headline) {
       headline.classList.remove('initial-hidden');
     }

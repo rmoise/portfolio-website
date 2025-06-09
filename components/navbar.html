@@ -1,0 +1,563 @@
+<!-- Global Navigation Component -->
+<style>
+  #logo-link:hover,
+  a#logo-link:hover,
+  nav a#logo-link:hover {
+    color: #00feb0 !important;
+    text-decoration: none !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const logoLink = document.getElementById('logo-link')
+    if (logoLink) {
+      logoLink.addEventListener('mouseenter', function () {
+        // Clear any existing styles first
+        this.style.removeProperty('color')
+        // Force the green color
+        this.style.setProperty('color', '#00FEB0', 'important')
+        console.log('Logo hover: Applied green color')
+      })
+      logoLink.addEventListener('mouseleave', function () {
+        this.style.removeProperty('color')
+        console.log('Logo hover: Removed color')
+      })
+    }
+  })
+</script>
+<nav
+  id="main-nav"
+  class="bg-white dark:bg-black text-gray-900 dark:text-white border-b border-gray-200 dark:border-gray-800 shadow-sm fixed top-0 left-0 w-full z-50 transition-all duration-300"
+  x-data="{ navbarOpen: false }"
+>
+  <div class="container mx-auto px-4 md:px-24 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a
+          id="logo-link"
+          href="index.html"
+          class="text-xl tracking-tight font-medium transition-colors"
+          >Roderick</a
+        >
+      </div>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-6 text-sm">
+        <!-- Portfolio Dropdown -->
+        <div
+          x-data="{ dropdownOpen: false }"
+          @click.away="dropdownOpen = false"
+          class="relative"
+        >
+          <button
+            @click="dropdownOpen = !dropdownOpen"
+            class="flex items-center hover:text-indigo-300 transition-colors"
+          >
+            Work
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4 ml-1 transition-transform"
+              :class="{ 'rotate-180': dropdownOpen }"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div
+            x-show="dropdownOpen"
+            x-cloak
+            class="absolute right-0 mt-2 bg-white dark:bg-black border border-gray-200 dark:border-indigo-500/30 rounded-md shadow-lg w-64 z-50"
+            x-transition
+          >
+            <div class="py-2">
+              <!-- Design Systems -->
+              <div class="px-4 py-2">
+                <p
+                  class="text-xs text-gray-500 dark:text-indigo-300 font-medium uppercase tracking-wider"
+                >
+                  Design Systems
+                </p>
+                <div class="mt-2 space-y-1">
+                  <a
+                    href="karlstorzcase.html"
+                    class="block px-3 py-2 text-gray-900 dark:text-white hover:text-indigo-500 dark:hover:text-indigo-300 rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="karlstorzcase"
+                    >KARL STORZ</a
+                  >
+                  <a
+                    href="kytocase.html"
+                    class="block px-3 py-2 text-white hover:text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="kytocase"
+                    >Kyto</a
+                  >
+                  <a
+                    href="smunchcase.html"
+                    class="block px-3 py-2 text-white hover:text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="smunchcase"
+                    >Smunch</a
+                  >
+                  <a
+                    href="cogalleriescase.html"
+                    class="block px-3 py-2 text-white hover:text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="cogalleriescase"
+                    >coGalleries</a
+                  >
+                  <a
+                    href="organize.html"
+                    class="block px-3 py-2 text-white hover:text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="organize"
+                    >Organize</a
+                  >
+                  <a
+                    href="pffcase.html"
+                    class="block px-3 py-2 text-white hover:text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="pffcase"
+                    >Pffcase</a
+                  >
+                  <a
+                    href="stak.html"
+                    class="block px-3 py-2 text-white hover:text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="stak"
+                    >Stak</a
+                  >
+                </div>
+              </div>
+
+              <!-- Divider -->
+              <div
+                class="h-px bg-gray-200 dark:bg-indigo-500/50 my-3 mx-4"
+              ></div>
+
+              <!-- Web Development -->
+              <div class="px-4 py-2">
+                <p
+                  class="text-xs text-gray-500 dark:text-indigo-300 font-medium uppercase tracking-wider"
+                >
+                  Web Development
+                </p>
+                <div class="mt-2 space-y-1">
+                  <a
+                    href="https://github.com/rmoise/captain-frank-flight-funnel"
+                    target="_blank"
+                    class="block px-3 py-2 text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    >Captain Frank</a
+                  >
+                  <a
+                    href="https://github.com/rmoise/All7s"
+                    target="_blank"
+                    class="block px-3 py-2 text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    >All7z Website</a
+                  >
+                  <a
+                    href="https://github.com/rmoise/document-management-app"
+                    target="_blank"
+                    class="block px-3 py-2 text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    >Doc Manager</a
+                  >
+                  <a
+                    href="pokemoncase.html"
+                    class="block px-3 py-2 text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="pokemoncase"
+                    >Pokédex App</a
+                  >
+                  <a
+                    href="myflixcase.html"
+                    class="block px-3 py-2 text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="myflixcase"
+                    >myFlix React</a
+                  >
+                  <a
+                    href="meetcase.html"
+                    class="block px-3 py-2 text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="meetcase"
+                    >Meet</a
+                  >
+                  <a
+                    href="chatappcase.html"
+                    class="block px-3 py-2 text-white rounded-md transition-all duration-200 text-sm nav-link"
+                    data-page="chatappcase"
+                    >Chat</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme Toggle Button -->
+        <button
+          id="theme-toggle"
+          class="flex items-center justify-center w-10 h-10 border border-indigo-500/30 rounded-md hover:bg-indigo-500/10 transition-all"
+          title="Toggle theme"
+        >
+          <!-- Sun Icon (Light Mode) -->
+          <svg
+            id="sun-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5 hidden theme-icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+          <!-- Moon Icon (Dark Mode) -->
+          <svg
+            id="moon-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-5 h-5 hidden theme-icon"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+            />
+          </svg>
+        </button>
+
+        <!-- CTA Button -->
+        <a
+          href="#contact"
+          class="text-sm border border-indigo-500/30 rounded-md px-4 py-2 hover:bg-indigo-500/10 transition-all inline-block scroll-smooth"
+          onclick="smoothScrollToContact(event)"
+        >
+          Let's Talk
+        </a>
+      </div>
+
+      <!-- Mobile Toggler Btn -->
+      <button
+        id="menu-toggle"
+        type="button"
+        class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-white border border-indigo-500/30 rounded-md focus:outline-none md:hidden"
+        @click="navbarOpen = !navbarOpen"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6 transition-transform"
+          :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+        <svg
+          x-cloak
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-6 h-6 transition-transform"
+          :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    x-show="navbarOpen"
+    x-cloak
+    class="fixed top-[72px] left-0 w-full h-[calc(100vh-72px)] bg-white dark:bg-black z-[9998] md:hidden"
+    x-transition
+  >
+    <div class="container mx-auto px-6 py-4">
+      <div class="flex flex-col space-y-6 mt-4">
+        <!-- Mobile Portfolio Dropdown -->
+        <div x-data="{ mobileDropdownOpen: false }" class="flex flex-col">
+          <button
+            @click="mobileDropdownOpen = !mobileDropdownOpen"
+            class="flex items-center text-gray-900 dark:text-white text-lg transition-colors text-left"
+          >
+            Work
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-4 h-4 ml-2 transition-transform"
+              :class="{ 'rotate-180': mobileDropdownOpen }"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <!-- Mobile Dropdown Content -->
+          <div
+            x-show="mobileDropdownOpen"
+            x-cloak
+            class="mt-4 ml-4 space-y-3"
+            x-transition
+          >
+            <div
+              class="text-sm text-gray-500 dark:text-indigo-300 font-medium uppercase tracking-wider"
+            >
+              Design Systems
+            </div>
+            <div class="ml-4 space-y-2">
+              <a
+                href="karlstorzcase.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="karlstorzcase"
+                >KARL STORZ</a
+              >
+              <a
+                href="kytocase.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="kytocase"
+                >Kyto</a
+              >
+              <a
+                href="smunchcase.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="smunchcase"
+                >Smunch</a
+              >
+              <a
+                href="cogalleriescase.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="cogalleriescase"
+                >coGalleries</a
+              >
+              <a
+                href="organize.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="organize"
+                >Organize</a
+              >
+              <a
+                href="pffcase.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="pffcase"
+                >Pffcase</a
+              >
+              <a
+                href="stak.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="stak"
+                >Stak</a
+              >
+            </div>
+
+            <div
+              class="text-sm text-gray-500 dark:text-indigo-300 font-medium uppercase tracking-wider mt-4"
+            >
+              Web Development
+            </div>
+            <div class="ml-4 space-y-2">
+              <a
+                href="https://github.com/rmoise/captain-frank-flight-funnel"
+                target="_blank"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors"
+                >Captain Frank</a
+              >
+              <a
+                href="https://github.com/rmoise/All7s"
+                target="_blank"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors"
+                >All7z Website</a
+              >
+              <a
+                href="https://github.com/rmoise/document-management-app"
+                target="_blank"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors"
+                >Doc Manager</a
+              >
+              <a
+                href="pokemoncase.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="pokemoncase"
+                >Pokédex App</a
+              >
+              <a
+                href="myflixcase.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="myflixcase"
+                >myFlix React</a
+              >
+              <a
+                href="meetcase.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="meetcase"
+                >Meet</a
+              >
+              <a
+                href="chatappcase.html"
+                @click="navbarOpen = false"
+                class="block text-white transition-colors nav-link"
+                data-page="chatappcase"
+                >Chat</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Theme Toggle -->
+        <div class="flex items-center justify-between">
+          <span class="text-gray-900 dark:text-white text-lg">Theme</span>
+          <button
+            id="mobile-theme-toggle"
+            class="flex items-center justify-center w-10 h-10 border border-indigo-500/30 rounded-md hover:bg-indigo-500/10 transition-all"
+            title="Toggle theme"
+          >
+            <!-- Sun Icon (Light Mode) -->
+            <svg
+              id="mobile-sun-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 hidden theme-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+              />
+            </svg>
+            <!-- Moon Icon (Dark Mode) -->
+            <svg
+              id="mobile-moon-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-5 h-5 hidden theme-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <button
+          class="text-sm border border-indigo-500/30 rounded-md px-4 py-2 hover:bg-indigo-500/10 transition-all text-left w-fit"
+        >
+          Let's Talk
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Sub Navigation - Only shows on homepage -->
+<nav id="sub-nav" class="homepage-only">
+  <div class="max-w-screen-xl px-4 py-3 mx-auto relative">
+    <div class="flex items-center justify-center relative">
+      <!-- Gradient overlays positioned over the subnav-wrapper -->
+      <div
+        class="absolute inset-y-0 left-[69%] w-[60%] -ml-[100%] bg-gradient-to-r from-transparent via-[#f9fafb] to-transparent pointer-events-none gradient-left"
+      ></div>
+      <div
+        class="absolute inset-y-0 right-[69%] w-[60%] -mr-[100%] bg-gradient-to-l from-transparent via-[#f9fafb] to-transparent pointer-events-none gradient-right"
+      ></div>
+
+      <div class="relative overflow-hidden w-[320px] md:w-auto">
+        <!-- Content container -->
+        <div class="flex overflow-x-auto subnav-wrapper relative px-2">
+          <ul
+            class="flex flex-row font-medium mt-0 space-x-6 md:space-x-8 rtl:space-x-reverse text-sm sub-nav-container whitespace-nowrap"
+          >
+            <li>
+              <a
+                href="index.html#about"
+                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                data-section="about"
+                >About</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="index.html#tools"
+                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                data-section="tools"
+                >Tools & Skills</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#portfolio"
+                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                data-section="portfolio"
+                >Portfolio</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#recent-visuals"
+                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                data-section="recent-visuals"
+                >Recent Visuals</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#testimonials"
+                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                data-section="testimonials"
+                >Testimonials</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

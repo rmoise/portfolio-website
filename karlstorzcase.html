@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link
@@ -18,11 +18,12 @@
       href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css"
     />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css"
-      rel="stylesheet"
-    />
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+      }
+    </script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
       defer
@@ -33,6 +34,8 @@
     />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+    <!-- Tailwind Dark Mode - Official pattern to avoid FOUC -->
 
     <style>
       .click-to-enlarge {
@@ -55,584 +58,30 @@
     </style>
   </head>
 
-  <body x-data="navbar" x-init="init()">
-    <div class="wrapper">
-      <!-- Navbar -->
-      <nav
-        id="main-nav"
-        x-data="navbar()"
-        x-init="init()"
-        class="bg-white fixed top-0 left-0 w-full px-4 sm:px-8 lg:px-32 py-2 xl:px-40 mx-auto z-50"
-      >
-        <!-- Container with minimal padding -->
-        <div
-          class="container mx-auto flex flex-wrap items-center justify-between p-0"
-        >
-          <!-- Logo -->
-          <a href="index.html" class="inline-flex items-center p-2">
-            <img src="img/rm_logo.svg" alt="Logo" class="h-8" />
-          </a>
-          <!-- Toggler Btn -->
-          <button
-            id="menu-toggle"
-            type="button"
-            class="menu-toggle menu-button inline-flex items-center justify-center w-10 h-10 ml-auto text-gray-800 border rounded-md focus:outline-none lg:hidden"
-            @click="toggleNavbar()"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 transition-transform"
-              :class="{ 'hidden': navbarOpen, 'block': !navbarOpen }"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-            <svg
-              x-cloak
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 transition-transform"
-              :class="{ 'block': navbarOpen, 'hidden': !navbarOpen }"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-          <!-- Menu for Desktop -->
-          <div class="hidden lg:flex lg:ml-auto lg:w-auto lg:mt-0">
-            <ul class="flex flex-row space-x-2">
-              <!-- Dropdown for Desktop -->
-              <li
-                x-data="{ dropdownOpen: false }"
-                @click.away="dropdownOpen = false"
-                class="relative"
-              >
-                <button
-                  @click="dropdownOpen = !dropdownOpen"
-                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                >
-                  Portfolio
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 ml-2 transition-transform"
-                    :class="{ 'rotate-180': dropdownOpen }"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <!-- Dropdown Menu for Desktop -->
-                <div
-                  x-show="dropdownOpen"
-                  x-cloak
-                  class="absolute left-0 mt-2 bg-white rounded-md shadow-lg w-48"
-                  x-transition
-                >
-                  <ul class="space-y-2">
-                    <!-- Categories Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleCategories()"
-                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Design Systems
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': categoriesOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="categoriesOpen"
-                        class="mt-1 bg-white rounded-md shadow-lg"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <!-- Nested Links -->
-                          <li>
-                            <a
-                              href="karlstorzcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >KARL STORZ</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="kytocase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Kyto</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="smunchcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Smunch</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="cogalleriescase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >coGalleries</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="organize.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Organize</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pffcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pffcase</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="stak.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Stak</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-
-                    <!-- Web Dev Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleNestedDropdown()"
-                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Web Dev
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': nestedDropdownOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="nestedDropdownOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-app"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-api"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager API
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="pokemoncase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pokédex App</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="myflixcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix React</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/myFlix-Angular-client"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix Angular
-                            </a>
-                          </li>
-                          <li>
-                            <a
-                              href="meetcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Meet</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="chatappcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Chat</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  @click="closeNavbar()"
-                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </div>
-          <!-- Mobile Menu -->
-          <div
-            id="mobile-menu"
-            x-show="navbarOpen"
-            x-cloak
-            class="mobile-menu lg:hidden fixed top-16 right-0 bottom-0 left-0 bg-white z-50 overflow-y-auto"
-            x-transition
-          >
-            <ul class="flex flex-col space-y-2 px-4 py-2">
-              <!-- Dropdown for Mobile -->
-              <li class="relative">
-                <button
-                  @click="toggleDropdown()"
-                  :class="{ 'bg-gray-100 text-black': isActive('portfolio') }"
-                  class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                >
-                  Portfolio
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-4 h-4 ml-2 transition-transform"
-                    :class="{ 'rotate-180': dropdownOpen }"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </svg>
-                </button>
-                <!-- Dropdown Menu for Mobile -->
-                <div
-                  x-show="dropdownOpen"
-                  x-cloak
-                  class="lg:hidden mt-2 bg-white rounded-md"
-                  x-transition
-                >
-                  <ul class="space-y-2">
-                    <!-- Categories Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleCategories()"
-                        :class="{ 'bg-gray-100 text-black': isActive('design-systems') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Design Systems
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': categoriesOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="categoriesOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <!-- Nested Links -->
-                          <li>
-                            <a
-                              href="karlstorzcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('karlstorzcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >KARL STORZ</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="kytocase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('kytocase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Kyto</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="smunchcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('smunchcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Smunch</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="cogalleriescase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('cogalleriescase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >coGalleries</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="organize.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('organize') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Organize</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pffcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pffcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pffcase</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="stak.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('stak') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Stak</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                    <!-- Web Dev Dropdown -->
-                    <li>
-                      <button
-                        @click="toggleNestedDropdown()"
-                        :class="{ 'bg-gray-100 text-black': isActive('web-dev') }"
-                        class="flex items-center px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100 w-full"
-                      >
-                        Web Dev
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          class="w-4 h-4 ml-2 transition-transform"
-                          :class="{ 'rotate-180': nestedDropdownOpen }"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </button>
-                      <div
-                        x-show="nestedDropdownOpen"
-                        class="mt-1 bg-white rounded-md"
-                        x-transition
-                      >
-                        <ul class="space-y-2">
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-app"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/document-management-api"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('doc-manager-api') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Doc Manager API</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="pokemoncase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('pokemoncase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Pokédex App</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="myflixcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflixcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix React</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              target="_blank"
-                              href="https://github.com/rmoise/myFlix-Angular-client"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('myflix-angular') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >myFlix Angular</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="meetcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('meetcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Meet</a
-                            >
-                          </li>
-                          <li>
-                            <a
-                              href="chatappcase.html"
-                              @click="closeNavbar()"
-                              :class="{ 'bg-gray-100 text-black': isActive('chatappcase') }"
-                              class="block px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                              >Chat</a
-                            >
-                          </li>
-                        </ul>
-                      </div>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li>
-                <a
-                  href="#contact"
-                  @click.prevent="handleContactClick()"
-                  :class="{ 'bg-gray-100 text-black': isActive('contact') }"
-                  class="flex px-4 py-2 font-medium text-gray-800 rounded-md hover:bg-gray-100"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+  <body class="bg-white dark:bg-black text-gray-900 dark:text-white">
+    <div class="wrapper bg-white dark:bg-black">
       <!-- Hero Section -->
 
       <!-- Section: Heading -->
-      <section class="section section-inner started-heading lg:pt-52 lg:pb-16">
-        <div class="container mx-auto lg:px-16 px-8 w-full">
+      <section
+        class="section started-heading bg-white dark:bg-black pb-8 pt-36 lg:pt-52 lg:pb-16"
+      >
+        <div
+          class="container bg-white dark:bg-black mx-auto lg:px-16 px-8 w-full"
+        >
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
               <!-- Eyebrow Section -->
               <p
-                class="text-sm font-medium uppercase tracking-wide text-gray-500 mb-2"
+                class="text-sm font-medium uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-2"
               >
                 Case Study
               </p>
               <!-- Main Heading -->
-              <h1 id="header" class="font-bold text-6xl">
+              <h1
+                id="header"
+                class="font-bold text-6xl text-gray-900 dark:text-white"
+              >
                 <span>KARL STORZ</span>
               </h1>
             </div>
@@ -641,7 +90,9 @@
       </section>
 
       <!-- Section: Parallax Image -->
-      <section class="section m-image-large relative custom-image-section">
+      <section
+        class="section bg-white dark:bg-black m-image-large relative custom-image-section"
+      >
         <div
           class="image parallax-cs absolute inset-0"
           style="background-image: url('img/2.jpg')"
@@ -653,9 +104,9 @@
 
       <!-- Section: Details (Kyto) -->
       <section
-        class="section-inner m-details py-16 px-4 sm:px-8 lg:px-32 xl:px-40"
+        class="section bg-white dark:bg-black m-details py-16 px-4 sm:px-8 lg:px-32 xl:px-40"
       >
-        <div class="container mx-auto">
+        <div class="container bg-white dark:bg-black mx-auto">
           <!-- Flex container with left-aligned items -->
           <div class="flex flex-wrap gap-6">
             <!-- Client -->
@@ -687,15 +138,22 @@
         </div>
       </section>
 
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <section
+        class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10"
+      >
         <!-- Section Description -->
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <!-- History Title -->
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold" data-animate="active">
+                  <div
+                    class="m-title text-2xl font-bold text-gray-900 dark:text-white"
+                    data-animate="active"
+                  >
                     UX/UI Design
                   </div>
                 </div>
@@ -703,7 +161,11 @@
               <!-- History Description -->
               <div class="w-full pb-12 lg:w-2/3">
                 <div class="description-text">
-                  <h3 class="text-xl font-bold mb-4">Overview</h3>
+                  <h3
+                    class="text-xl font-bold mb-4 text-gray-900 dark:text-white"
+                  >
+                    Overview
+                  </h3>
                   <p class="mb-4">
                     The objective was to optimize the online catalog for KARL
                     STORZ, enhancing usability and user engagement within a
@@ -715,12 +177,14 @@
                   </p>
 
                   <div
-                    class="bg-green-50 border-l-4 border-[#01f3ab] p-4 my-16"
+                    class="bg-green-50 dark:bg-gray-800 border-l-4 border-[#01f3ab] p-4 my-16"
                   >
-                    <h3 class="text-lg font-bold mt-16 mb-4 text-black">
+                    <h3
+                      class="text-lg font-bold mt-16 mb-4 text-gray-900 dark:text-white"
+                    >
                       Research Goals
                     </h3>
-                    <p class="text-black">
+                    <p class="text-gray-700 dark:text-gray-300">
                       To understand user interactions with the existing catalog
                       and identify pain points, facilitating a seamless
                       experience that aligns with the company's commitment to
@@ -755,13 +219,17 @@
       </section>
 
       <!-- Section Description -->
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+      <section
+        class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10"
+      >
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold">
+                  <div
+                    class="m-title text-2xl font-bold text-gray-900 dark:text-white"
+                  >
                     Competitive <br />Analysis
                   </div>
                 </div>
@@ -797,14 +265,22 @@
         </div>
       </section>
 
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
       <!-- Section Description -->
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+      <section
+        class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10"
+      >
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold">User Persona</div>
+                  <div
+                    class="m-title text-2xl font-bold text-gray-900 dark:text-white"
+                  >
+                    User Persona
+                  </div>
                 </div>
               </div>
               <div class="w-full pb-12 lg:w-2/3">
@@ -848,14 +324,20 @@
         </div>
       </section>
 
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
       <!-- Section Description -->
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+      <section
+        class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10"
+      >
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold">
+                  <div
+                    class="m-title text-2xl font-bold text-gray-900 dark:text-white"
+                  >
                     Information Architecture
                   </div>
                 </div>
@@ -887,13 +369,19 @@
       </section>
 
       <!-- Section Description -->
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+      <section
+        class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10"
+      >
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold">User Flow</div>
+                  <div
+                    class="m-title text-2xl font-bold text-gray-900 dark:text-white"
+                  >
+                    User Flow
+                  </div>
                 </div>
               </div>
               <div class="w-full pb-12 lg:w-2/3">
@@ -939,14 +427,22 @@
         </div>
       </section>
 
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
       <!-- Section Description -->
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+      <section
+        class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10"
+      >
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold">Task Flow</div>
+                  <div
+                    class="m-title text-2xl font-bold text-gray-900 dark:text-white"
+                  >
+                    Task Flow
+                  </div>
                 </div>
               </div>
               <div class="w-full pb-12 lg:w-2/3">
@@ -1035,14 +531,20 @@
         </div>
       </section>
 
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
       <!-- Section Description -->
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+      <section
+        class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10"
+      >
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold">
+                  <div
+                    class="m-title text-2xl font-bold text-gray-900 dark:text-white"
+                  >
                     Key Changes Implemented
                   </div>
                 </div>
@@ -1051,7 +553,9 @@
                 <div class="description-text">
                   <!-- Change 1: Renaming "Shopping Basket" to "Offer List" -->
                   <div class="mb-6">
-                    <h4 class="text-lg font-semibold mb-2">
+                    <h4
+                      class="text-lg font-semibold mb-2 text-gray-900 dark:text-white"
+                    >
                       1. Renaming any mention of "Shopping Basket" in
                       breadcrumbs to "Offer List"
                     </h4>
@@ -1069,7 +573,9 @@
                           alt="Before - Shopping Basket"
                           class="w-full h-auto rounded-lg border"
                         />
-                        <p class="text-center mt-2 text-sm text-gray-600">
+                        <p
+                          class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                        >
                           Before - Shopping Basket
                         </p>
                       </div>
@@ -1079,7 +585,9 @@
                           alt="After - Offer List"
                           class="mt-8 w-full h-auto rounded-lg border"
                         />
-                        <p class="text-center mt-2 text-sm text-gray-600">
+                        <p
+                          class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                        >
                           After - Offer List
                         </p>
                       </div>
@@ -1089,7 +597,9 @@
 
                 <!-- Change 2: Clearer CTAs -->
                 <div class="mt-16 mb-6">
-                  <h4 class="text-lg font-semibold mb-2">
+                  <h4
+                    class="text-lg font-semibold mb-2 text-gray-900 dark:text-white"
+                  >
                     2. Clearer CTAs (Call-to-Actions)
                   </h4>
                   <p class="mb-8">
@@ -1106,7 +616,9 @@
                         alt="Before - CTAs"
                         class="w-full h-auto rounded-lg border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         Before - CTAs
                       </p>
                     </div>
@@ -1116,7 +628,9 @@
                         alt="After - CTAs"
                         class="mt-8 w-full h-auto rounded-lg border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         After - Clearer CTAs
                       </p>
                     </div>
@@ -1125,7 +639,9 @@
 
                 <!-- Change 3: Product Overview and Detail Page Design Update -->
                 <div class="mt-16 mb-6">
-                  <h4 class="text-lg font-semibold mb-2">
+                  <h4
+                    class="text-lg font-semibold mb-2 text-gray-900 dark:text-white"
+                  >
                     3. Product Overview and Detail Page Design Update
                   </h4>
                   <p class="mb-4">
@@ -1150,7 +666,9 @@
                         alt="Before - Overview Page"
                         class="w-full h-auto rounded-lg p-2 border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         Before - Product Details Page
                       </p>
                     </div>
@@ -1160,7 +678,9 @@
                         alt="After - Overview Page"
                         class="mt-8 w-full h-auto rounded-lg p-2 border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         After - Updated CTAs
                       </p>
                     </div>
@@ -1169,7 +689,9 @@
 
                 <!-- Change 4: Overlay Feature with Hidden Quantity Inputs -->
                 <div class="mt-16 mb-6">
-                  <h4 class="text-lg font-semibold mb-2">
+                  <h4
+                    class="text-lg font-semibold mb-2 text-gray-900 dark:text-white"
+                  >
                     4. Overlay Feature with Hidden Quantity Inputs
                   </h4>
                   <p class="mb-4">
@@ -1186,7 +708,9 @@
                         alt="Before - Quantity Inputs"
                         class="mt-8 p-2 w-full h-auto rounded-lg border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         Quantity Inputs moved to overlay
                       </p>
                     </div>
@@ -1196,7 +720,9 @@
                         alt="After - Overlay Feature"
                         class="mt-8 w-full h-auto rounded-lg border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         New - Overlay Feature
                       </p>
                     </div>
@@ -1205,7 +731,9 @@
 
                 <!-- Change 5: Icon Visibility and Update to List Icon -->
                 <div class="mb-6 mt-16">
-                  <h4 class="text-lg font-semibold mb-2">
+                  <h4
+                    class="text-lg font-semibold mb-2 text-gray-900 dark:text-white"
+                  >
                     5. Icon Visibility and Update to List Icon
                   </h4>
                   <p class="mb-4">
@@ -1223,7 +751,9 @@
                         alt="Before - Heart Icon"
                         class="mt-8 w-full h-auto rounded-lg"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         Default State
                       </p>
                     </div>
@@ -1233,7 +763,9 @@
                         alt="After - List Icon"
                         class="mt-8 w-full h-auto rounded-lg"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         State 2 - Icon appears only when a product is added to
                         offer list
                       </p>
@@ -1243,7 +775,9 @@
 
                 <!-- Change 6: Fixed Right-Side Panel for Checkout Navigation -->
                 <div class="mt-16 mb-6">
-                  <h4 class="text-lg font-semibold mb-2">
+                  <h4
+                    class="text-lg font-semibold mb-2 text-gray-900 dark:text-white"
+                  >
                     6. Fixed Right-Side Panel for Checkout Navigation
                   </h4>
                   <p class="mb-8">
@@ -1259,7 +793,9 @@
                         alt="Before - No Right-Side Panel"
                         class="w-full h-auto rounded-lg border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         Before - shopping basket
                       </p>
                     </div>
@@ -1269,7 +805,9 @@
                         alt="After - Fixed Right-Side Panel"
                         class="mt-8 w-full h-auto rounded-lg border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         After - offer list
                       </p>
                     </div>
@@ -1277,7 +815,9 @@
                 </div>
                 <!-- Change 7: Clearer Headline for Right-Hand Side in Checkout Form -->
                 <div class="mt-16 mb-6">
-                  <h4 class="text-lg font-semibold mb-2">
+                  <h4
+                    class="text-lg font-semibold mb-2 text-gray-900 dark:text-white"
+                  >
                     7. Clearer Headline for Right-Hand Side and labels in
                     Checkout Form
                   </h4>
@@ -1297,7 +837,9 @@
                         alt="Before - Checkout Headline"
                         class="w-full h-auto rounded-lg border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         Before - Checkout Headline and form labels
                       </p>
                     </div>
@@ -1307,7 +849,9 @@
                         alt="After - Updated Headline & CTA"
                         class="mt-8 w-full h-auto rounded-lg border"
                       />
-                      <p class="text-center mt-2 text-sm text-gray-600">
+                      <p
+                        class="text-center mt-2 text-sm text-gray-600 dark:text-gray-400"
+                      >
                         After - Updated Headline & CTA with updated form labels
                       </p>
                     </div>
@@ -1319,14 +863,20 @@
         </div>
       </section>
 
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
       <!-- Section Description -->
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
-        <div class="section section-inner m-description">
-          <div class="container mx-auto px-8">
+      <section
+        class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10"
+      >
+        <div class="section bg-white dark:bg-black section-inner m-description">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold">
+                  <div
+                    class="m-title text-2xl font-bold text-gray-900 dark:text-white"
+                  >
                     Working Prototype
                   </div>
                 </div>
@@ -1346,14 +896,22 @@
         </div>
       </section>
 
-      <!-- Section Description -->
-      <section class="container mx-auto px-4 md:px-10 lg:px-10">
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
+      <!-- Key Takeaways Section -->
+      <section
+        class="container bg-white dark:bg-black mx-auto px-4 md:px-10 lg:px-10 py-16 md:py-20 lg:py-24"
+      >
         <div>
-          <div class="container mx-auto px-8">
+          <div class="container bg-white dark:bg-black mx-auto px-8">
             <div class="flex flex-col lg:flex-row">
               <div class="lg:w-1/4 mb-8 lg:mb-0">
                 <div class="m-titles text-left">
-                  <div class="m-title text-2xl font-bold">Key Takeaways</div>
+                  <div
+                    class="m-title text-2xl font-bold text-gray-900 dark:text-white"
+                  >
+                    Key Takeaways
+                  </div>
                 </div>
               </div>
               <div class="w-full pb-12 lg:w-2/3">
@@ -1413,11 +971,15 @@
         </div>
       </section>
 
+      <hr class="border-t border-gray-100 dark:border-gray-700" />
+
       <!-- Section Description -->
-      <section class="container my-32 mx-auto px-4 md:px-10 lg:px-10">
+      <section
+        class="container bg-white dark:bg-black my-32 mx-auto px-4 md:px-10 lg:px-10"
+      >
         <blockquote class="relative text-center mx-auto">
           <svg
-            class="absolute -top-6 -start-8 size-16 text-gray-100"
+            class="absolute -top-6 -start-8 size-16 text-gray-100 dark:text-gray-700"
             width="16"
             height="16"
             viewBox="0 0 16 16"
@@ -1432,7 +994,9 @@
           </svg>
 
           <div class="relative z-10">
-            <p class="text-xl text-gray-800 md:text-3xl md:leading-normal">
+            <p
+              class="text-xl text-gray-800 dark:text-white md:text-3xl md:leading-normal"
+            >
               <em>
                 Mr. Moise applied extensive specialist knowledge confidently and
                 skillfully, enhancing expertise through seminars and delivering
@@ -1455,7 +1019,7 @@
           <!-- Previous Button -->
           <a
             href="stak.html"
-            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+            class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-300 bg-white dark:bg-black border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-gray-200"
           >
             Previous
           </a>
@@ -1463,7 +1027,7 @@
           <!-- Next Button -->
           <a
             href="kytocase.html"
-            class="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700"
+            class="inline-flex items-center px-4 py-2 ml-3 text-sm font-medium text-gray-600 dark:text-gray-300 bg-white dark:bg-black border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-700 dark:hover:text-gray-200"
           >
             Next
           </a>
@@ -1474,16 +1038,19 @@
       <section
         id="contact"
         aria-labelledby="contact-title"
-        class="relative overflow-hidden py-16 px-4 sm:px-8 lg:px-40 border-t border-gray-100"
+        class="relative overflow-hidden bg-white dark:bg-black py-16 md:py-32 px-4 sm:px-8 lg:px-40 border-t border-gray-100 dark:border-gray-800"
       >
         <div class="container mx-auto relative z-10">
           <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
             <!-- Column 1: Header and Description Container -->
             <div class="md:col-span-4 lg:col-span-12 flex flex-col items-start">
-              <h5 id="contact-title" class="text-3xl font-bold secondary-title">
+              <h5
+                id="contact-title"
+                class="text-3xl font-bold secondary-title text-gray-900 dark:text-white"
+              >
                 Contact
               </h5>
-              <p class="text-lg mt-4">
+              <p class="text-lg mt-4 text-gray-700 dark:text-gray-300">
                 Please use the form below to send me a message. I'll be happy to
                 hear from you.
               </p>
@@ -1492,60 +1059,66 @@
           <div class="w-full grid lg:grid-cols-2 gap-8 lg:gap-32 mt-8">
             <form class="space-y-8 input-form" method="POST">
               <div>
-                <label for="form-name" class="block mb-4 text-xl font-bold"
+                <label
+                  for="form-name"
+                  class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your name</label
                 >
                 <input
                   type="text"
                   name="name"
                   id="form-name"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                  class="w-full border border-input-border bg-slate-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white px-4 py-2"
                   required
                 />
               </div>
               <div>
-                <label for="form-email" class="block mb-4 text-xl font-bold"
+                <label
+                  for="form-email"
+                  class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your email</label
                 >
                 <input
                   type="email"
                   name="email"
                   id="form-email"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-2"
+                  class="w-full border border-input-border bg-slate-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white px-4 py-2"
                   required
                 />
               </div>
               <div>
-                <label for="form-message" class="block mb-4 text-xl font-bold"
+                <label
+                  for="form-message"
+                  class="block mb-4 text-xl font-bold text-gray-900 dark:text-white"
                   >Your message</label
                 >
                 <textarea
                   name="message"
                   id="form-message"
-                  class="w-full border border-input-border bg-slate-100 px-4 py-4 h-56 resize-none"
+                  class="w-full border border-input-border bg-slate-100 dark:bg-gray-800 dark:border-gray-700 dark:text-white px-4 py-4 h-56 resize-none"
                   placeholder="Type your message here..."
                   required
                 ></textarea>
               </div>
               <button
                 type="submit"
-                class="text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
+                class="text-black dark:text-black bg-[#00FEB0] hover:bg-[#01e1a1] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center"
               >
                 Send it!
               </button>
             </form>
             <!-- Contact info -->
             <div class="mt-12">
-              <p>+49 163 7126279</p>
+              <p class="text-gray-900 dark:text-white">+49 163 7126279</p>
               <a
                 href="mailto:roderickfmoise@gmail.com"
-                class="underline mt-3 block"
+                class="underline mt-3 block text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                 >roderickfmoise@gmail.com</a
               >
               <a
                 href="img/Roderick-Moise-CV-Designer-Developer.pdf"
                 target="_blank"
-                class="underline mt-3 block"
+                class="underline mt-3 block text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                 ><b>Download my CV</b></a
               >
               <!-- Socials -->
@@ -1556,7 +1129,7 @@
                   href="https://www.linkedin.com/in/roderickmoise/"
                 >
                   <svg
-                    class="w-[32px] h-[32px] text-gray-800"
+                    class="w-[32px] h-[32px] text-gray-800 dark:text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1575,7 +1148,7 @@
                 <!-- Github logo -->
                 <a target="_blank" href="https://github.com/rmoise">
                   <svg
-                    class="w-[28px] h-[28px] text-gray-800"
+                    class="w-[28px] h-[28px] text-gray-800 dark:text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1593,7 +1166,7 @@
                 <!-- Twitter logo -->
                 <a target="_blank" href="https://twitter.com/RoderickMoise">
                   <svg
-                    class="w-6 h-6 text-gray-800"
+                    class="w-6 h-6 text-gray-800 dark:text-white"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -1635,9 +1208,9 @@
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
-    <script src="js/navigation.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="js/navbar.js"></script>
+    <script src="js/global-navbar.js"></script>
+    <script src="js/theme-toggle.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>
