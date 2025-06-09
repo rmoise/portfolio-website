@@ -18,11 +18,19 @@ function initThemeToggle() {
   cleanupOldThemeEntries();
 
   // Apply theme immediately on page load to prevent flash
-  document.documentElement.classList.toggle(
-    'dark',
-    localStorage.theme === 'dark' ||
-    (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-  );
+  // Default to dark mode if no system preference is available
+  let shouldUseDarkMode;
+
+  if ('theme' in localStorage) {
+    // User has explicitly set a theme
+    shouldUseDarkMode = localStorage.theme === 'dark';
+  } else {
+    // No stored preference - default to dark mode
+    // (System preference detection is often unreliable)
+    shouldUseDarkMode = true;
+  }
+
+  document.documentElement.classList.toggle('dark', shouldUseDarkMode);
 
   // Update icon states based on current theme - try immediately and with retries
   updateThemeIcons();
@@ -48,13 +56,11 @@ function setTheme(theme) {
   } else if (theme === 'dark') {
     localStorage.theme = 'dark';
     document.documentElement.classList.add('dark');
-  } else {
+    } else {
     // System theme
     localStorage.removeItem('theme');
-    document.documentElement.classList.toggle(
-      'dark',
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    );
+    // Default to dark mode (System preference detection is often unreliable)
+    document.documentElement.classList.toggle('dark', true);
   }
   updateThemeIcons();
 }
@@ -138,10 +144,8 @@ function updateToolIcons(isDark) {
 function handleSystemThemeChange() {
   if (!('theme' in localStorage)) {
     // Only apply system changes if no explicit theme is set
-    document.documentElement.classList.toggle(
-      'dark',
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-    );
+    // Default to dark mode (System preference detection is often unreliable)
+    document.documentElement.classList.toggle('dark', true);
     updateThemeIcons();
   }
 }
