@@ -157,14 +157,10 @@
 
       /* About Me Section Background */
       #about {
-        background-image: url('img/about-me-bg.png');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        position: relative;
       }
 
-      /* Light mode overlay for better readability */
+      /* Background image with blue tint filter for light mode */
       #about::before {
         content: '';
         position: absolute;
@@ -172,7 +168,24 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(135deg, rgba(238, 242, 247, 0.3) 0%, rgba(238, 242, 247, 0.5) 25%, rgba(238, 242, 247, 0.6) 50%, rgba(238, 242, 247, 0.5) 75%, rgba(238, 242, 247, 0.3) 100%);
+        background-image: url('img/about-me-bg.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        filter: sepia(1) hue-rotate(200deg) saturate(0.8);
+        z-index: 0;
+      }
+
+      /* Light mode overlay for better readability */
+      #about::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(238, 242, 247, 0.5) 0%, rgba(238, 242, 247, 0.7) 25%, rgba(238, 242, 247, 0.8) 50%, rgba(238, 242, 247, 0.7) 75%, rgba(238, 242, 247, 0.5) 100%);
         z-index: 1;
       }
 
@@ -204,6 +217,29 @@
       .dark #about > * {
         position: relative;
         z-index: 2;
+      }
+
+      /* Dark mode - override light mode background styling */
+      .dark #about::before {
+        background-image: url('img/about-me-bg.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        filter: none;
+        z-index: 0;
+      }
+
+      /* Dark mode overlay with blue gradient */
+      .dark #about::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.3) 0%, rgba(59, 130, 246, 0.4) 25%, rgba(59, 130, 246, 0.5) 50%, rgba(59, 130, 246, 0.6) 75%, rgba(6, 182, 212, 0.7) 100%);
+        z-index: 1;
       }
 
       /* Glass button styling for dark mode only */
