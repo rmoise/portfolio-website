@@ -496,24 +496,28 @@ class GlobalNavbar {
   scrollSubNavToActiveLink(activeLink) {
     const subNavContainer = document.querySelector('.sub-nav-container');
     if (activeLink && subNavContainer) {
+      // Check if this link is already centered (prevent redundant scrolling)
       const containerRect = subNavContainer.getBoundingClientRect();
       const linkRect = activeLink.getBoundingClientRect();
       const linkCenter = linkRect.left + linkRect.width / 2;
       const containerCenter = containerRect.left + containerRect.width / 2;
       const offset = linkCenter - containerCenter;
 
-      // Smooth scroll the subnav to center the active link
-      subNavContainer.scrollTo({
-        left: subNavContainer.scrollLeft + offset,
-        behavior: 'smooth'
-      });
+      // Only scroll if the link is significantly off-center (>50px)
+      if (Math.abs(offset) > 50) {
+        // Smooth scroll the subnav to center the active link
+        subNavContainer.scrollTo({
+          left: subNavContainer.scrollLeft + offset,
+          behavior: 'smooth'
+        });
 
-      // Update gradient visibility after scrolling
-      setTimeout(() => {
-        this.updateGradientVisibility();
-      }, 300);
+        // Update gradient visibility after scrolling
+        setTimeout(() => {
+          this.updateGradientVisibility();
+        }, 300);
 
-      console.log(`Auto-scrolled subnav to show active link: ${activeLink.textContent}`);
+        // console.log(`Auto-scrolled subnav to show active link: ${activeLink.textContent}`); // Disabled for performance
+      }
     }
   }
 
@@ -530,26 +534,45 @@ class GlobalNavbar {
       const isFixed = subNav.classList.contains('subnav-fixed');
       const isMobile = window.innerWidth <= 768;
 
-      // Determine the correct gradient colors based on subnav state
+      // Determine the correct gradient colors based on subnav state and theme
+      const isDarkMode = document.documentElement.classList.contains('dark');
       let gradientColor, gradientColorFade;
 
-      if (isMobile) {
-        // Mobile uses solid background
-        gradientColor = '#f9fafb';
-        gradientColorFade = 'rgba(249, 250, 251, 0.8)';
-      } else if (isFixed) {
-        // Fixed state uses more opaque background
-        gradientColor = 'rgba(248, 250, 252, 0.95)';
-        gradientColorFade = 'rgba(248, 250, 252, 0.7)';
+      if (isDarkMode) {
+        // Dark mode colors
+        if (isMobile) {
+          // Mobile uses solid dark background
+          gradientColor = '#1f2937';
+          gradientColorFade = 'rgba(31, 41, 55, 0.8)';
+        } else if (isFixed) {
+          // Fixed state uses more opaque dark background
+          gradientColor = 'rgba(31, 41, 55, 0.95)';
+          gradientColorFade = 'rgba(31, 41, 55, 0.7)';
+        } else {
+          // Normal state uses semi-transparent dark background
+          gradientColor = 'rgba(31, 41, 55, 0.85)';
+          gradientColorFade = 'rgba(31, 41, 55, 0.6)';
+        }
       } else {
-        // Normal state uses semi-transparent background
-        gradientColor = 'rgba(248, 250, 252, 0.85)';
-        gradientColorFade = 'rgba(248, 250, 252, 0.6)';
+        // Light mode colors (original)
+        if (isMobile) {
+          // Mobile uses solid background
+          gradientColor = '#f9fafb';
+          gradientColorFade = 'rgba(249, 250, 251, 0.8)';
+        } else if (isFixed) {
+          // Fixed state uses more opaque background
+          gradientColor = 'rgba(248, 250, 252, 0.95)';
+          gradientColorFade = 'rgba(248, 250, 252, 0.7)';
+        } else {
+          // Normal state uses semi-transparent background
+          gradientColor = 'rgba(248, 250, 252, 0.85)';
+          gradientColorFade = 'rgba(248, 250, 252, 0.6)';
+        }
       }
 
-      // Update gradient backgrounds
-      leftGradient.style.background = `linear-gradient(to right, ${gradientColor}, ${gradientColorFade}, transparent)`;
-      rightGradient.style.background = `linear-gradient(to left, ${gradientColor}, ${gradientColorFade}, transparent)`;
+      // Update gradient backgrounds with !important to override CSS
+      leftGradient.style.setProperty('background', `linear-gradient(to right, ${gradientColor}, ${gradientColorFade}, transparent)`, 'important');
+      rightGradient.style.setProperty('background', `linear-gradient(to left, ${gradientColor}, ${gradientColorFade}, transparent)`, 'important');
 
       // Show/hide left gradient
       if (scrollLeft > 10) {
@@ -568,7 +591,7 @@ class GlobalNavbar {
   }
 
   initSectionHighlighting() {
-    const sections = ['about', 'expertise', 'tools', 'portfolio', 'recent-visuals', 'testimonials'];
+    const sections = ['about', 'tools', 'portfolio', 'recent-visuals', 'testimonials'];
     const subnavLinks = document.querySelectorAll('.subnav-link');
     let currentActiveSection = null;
 
@@ -595,28 +618,42 @@ class GlobalNavbar {
       }
     });
 
-    // Method to update mobile menu background based on current section
+    // Method to update mobile menu background based on current section (optimized)
+    let lastMobileMenuState = null;
     const updateMobileMenuBackground = (sectionId) => {
       const mobileMenu = document.getElementById('mobile-menu');
-      console.log('Mobile menu element:', mobileMenu); // Debug
-      console.log('Current section:', sectionId, 'Scroll position:', window.scrollY); // Debug
 
       if (mobileMenu) {
-        if (sectionId === 'about' || window.scrollY < 600) {
-          // In hero/about section - use off-white background (default)
-          mobileMenu.classList.remove('mobile-menu-white');
-          mobileMenu.style.setProperty('background', '#F2F2F4', 'important');
-          console.log('Set off-white background'); // Debug
-        } else {
-          // In other sections - use white background
-          mobileMenu.classList.add('mobile-menu-white');
-          mobileMenu.style.setProperty('background', 'white', 'important');
-          console.log('Set white background'); // Debug
+        const shouldBeOffWhite = sectionId === 'about' || window.scrollY < 600;
+        const isDarkMode = document.documentElement.classList.contains('dark');
+
+        // Only update if state actually changed
+        if (lastMobileMenuState !== shouldBeOffWhite) {
+          if (shouldBeOffWhite) {
+            // In hero/about section - use off-white/dark background based on theme
+            mobileMenu.classList.remove('mobile-menu-white');
+
+            if (isDarkMode) {
+              // Dark mode: use black background
+              mobileMenu.style.setProperty('background', 'black', 'important');
+            } else {
+              // Light mode: use off-white background
+              mobileMenu.style.setProperty('background', '#F2F2F4', 'important');
+            }
+          } else {
+            // In other sections - use white/dark background based on theme
+            mobileMenu.classList.add('mobile-menu-white');
+
+            if (isDarkMode) {
+              // Dark mode: use black background
+              mobileMenu.style.setProperty('background', 'black', 'important');
+            } else {
+              // Light mode: use white background
+              mobileMenu.style.setProperty('background', 'white', 'important');
+            }
+          }
+          lastMobileMenuState = shouldBeOffWhite;
         }
-        console.log('Mobile menu classes:', mobileMenu.classList.toString()); // Debug
-        console.log('Mobile menu background style:', mobileMenu.style.background); // Debug
-      } else {
-        console.log('Mobile menu element not found!'); // Debug
       }
     };
 
@@ -941,33 +978,50 @@ class GlobalNavbar {
   }
 
   initMobileMenuBackgroundChange() {
-    // Only add scroll detection for homepage, set white background for all other pages
+    // Only add scroll detection for homepage, set theme-appropriate background for all other pages
     if (this.currentPage !== 'index') {
-      // For non-homepage pages: just set white background and return
+      // For non-homepage pages: set theme-appropriate background and return
       setTimeout(() => {
         const mobileMenu = document.getElementById('mobile-menu');
         if (mobileMenu) {
-          mobileMenu.style.setProperty('background-color', 'white', 'important');
-          console.log('Set white background for non-homepage page:', this.currentPage);
+          const isDarkMode = document.documentElement.classList.contains('dark');
+
+          if (isDarkMode) {
+            // Dark mode: use black background
+            mobileMenu.style.setProperty('background-color', 'black', 'important');
+            console.log('Set dark background for non-homepage page:', this.currentPage);
+          } else {
+            // Light mode: use white background
+            mobileMenu.style.setProperty('background-color', 'white', 'important');
+            console.log('Set white background for non-homepage page:', this.currentPage);
+          }
         }
       }, 500);
       return;
     }
 
-    // Homepage-only: scroll-based background change
+    // Homepage-only: scroll-based background change (optimized)
+    let lastScrollState = null;
     const updateMobileMenuBackground = () => {
       const mobileMenu = document.getElementById('mobile-menu');
       if (mobileMenu) {
-        if (window.scrollY < 200) {
-          // Homepage at top - add hero-bg class for off-white background
-          mobileMenu.classList.add('hero-bg');
-          console.log('Added hero-bg class for homepage top (scroll < 200px)');
-        } else {
-          // Homepage scrolled down - remove hero-bg class for white background
-          mobileMenu.classList.remove('hero-bg');
-          console.log('Removed hero-bg class for homepage scrolled (scroll >= 200px)');
+        const scrollY = window.scrollY;
+        const isAtTop = scrollY < 200;
+
+        // Only update if state actually changed
+        if (lastScrollState !== isAtTop) {
+          if (isAtTop) {
+            // Homepage at top - add hero-bg class for off-white background
+            mobileMenu.classList.add('hero-bg');
+            // console.log('Added hero-bg class for homepage top (scroll < 200px)'); // Disabled excessive logging
+          } else {
+            // Homepage scrolled down - remove hero-bg class for white background
+            mobileMenu.classList.remove('hero-bg');
+            // console.log('Removed hero-bg class for homepage scrolled (scroll >= 200px)'); // Disabled excessive logging
+          }
+          lastScrollState = isAtTop;
+          // console.log('Mobile menu classes:', mobileMenu.className); // Disabled excessive logging
         }
-        console.log('Mobile menu classes:', mobileMenu.className);
       }
     };
 
@@ -976,15 +1030,26 @@ class GlobalNavbar {
       updateMobileMenuBackground();
     }, 500);
 
-    // Add scroll listener for homepage only
+    // Add optimized scroll listener for homepage only
     let ticking = false;
+    let lastScrollY = 0;
+
     window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          updateMobileMenuBackground();
-          ticking = false;
-        });
-        ticking = true;
+      const currentScrollY = window.scrollY;
+
+      // Only process if scroll crossed the threshold (200px) or changed significantly
+      if (Math.abs(currentScrollY - lastScrollY) > 15 ||
+          (lastScrollY < 200 && currentScrollY >= 200) ||
+          (lastScrollY >= 200 && currentScrollY < 200)) {
+
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            updateMobileMenuBackground();
+            ticking = false;
+          });
+          ticking = true;
+        }
+        lastScrollY = currentScrollY;
       }
     }, { passive: true });
 
@@ -1817,6 +1882,8 @@ function initializeGlobalNavbar() {
   if (!globalNavbarInstance) {
     console.log('Initializing GlobalNavbar...');
     globalNavbarInstance = new GlobalNavbar();
+    // Make instance available globally for theme updates
+    window.globalNavbarInstance = globalNavbarInstance;
   } else {
     console.log('GlobalNavbar already initialized, skipping...');
   }

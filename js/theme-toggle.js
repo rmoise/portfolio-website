@@ -40,6 +40,13 @@ function initThemeToggle() {
   setTimeout(() => updateThemeIcons(), 300);
   setTimeout(() => updateThemeIcons(), 500);
 
+  // Ensure mobile menu theme and gradients are set correctly on initial load
+  setTimeout(() => {
+    const isDark = document.documentElement.classList.contains('dark');
+    updateMobileMenuTheme(isDark);
+    updateSubnavGradients(isDark);
+  }, 600);
+
   console.log('Theme initialized:', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
 }
 
@@ -132,8 +139,69 @@ function updateThemeIcons() {
     }
   }
 
+  // Update mobile menu background to respect new theme
+  updateMobileMenuTheme(isDark);
+
+  // Update subnav gradients to respect new theme
+  updateSubnavGradients(isDark);
+
+  if (window.globalNavbarInstance && window.globalNavbarInstance.updateGradientVisibility) {
+    setTimeout(() => {
+      window.globalNavbarInstance.updateGradientVisibility();
+    }, 100);
+  }
+
   // Force update tool icons
   updateToolIcons(isDark);
+}
+
+function updateSubnavGradients(isDark) {
+  // Aggressively update subnav gradients to override any CSS
+  const leftGradient = document.querySelector('.gradient-left');
+  const rightGradient = document.querySelector('.gradient-right');
+
+  if (leftGradient && rightGradient) {
+    if (isDark) {
+      // Dark mode gradients
+      leftGradient.style.setProperty('background', 'linear-gradient(to right, #1f2937, rgba(31, 41, 55, 0.8), transparent)', 'important');
+      rightGradient.style.setProperty('background', 'linear-gradient(to left, #1f2937, rgba(31, 41, 55, 0.8), transparent)', 'important');
+      console.log('Applied dark mode gradients');
+    } else {
+      // Light mode gradients
+      leftGradient.style.setProperty('background', 'linear-gradient(to right, #f9fafb, rgba(249, 250, 251, 0.8), transparent)', 'important');
+      rightGradient.style.setProperty('background', 'linear-gradient(to left, #f9fafb, rgba(249, 250, 251, 0.8), transparent)', 'important');
+      console.log('Applied light mode gradients');
+    }
+  }
+}
+
+function updateMobileMenuTheme(isDark) {
+  // Update mobile menu background to respect theme changes
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (mobileMenu) {
+    if (isDark) {
+      // Dark mode: use black background to match CSS intention
+      mobileMenu.style.setProperty('background', 'black', 'important');
+      mobileMenu.style.setProperty('background-color', 'black', 'important');
+      // Ensure text is white for contrast
+      mobileMenu.style.setProperty('color', 'white', 'important');
+    } else {
+      // Light mode: check if we should use off-white or white based on scroll position
+      const isAtTop = window.scrollY < 600;
+      if (isAtTop) {
+        // Use off-white for hero/about section
+        mobileMenu.style.setProperty('background', '#F2F2F4', 'important');
+        mobileMenu.style.setProperty('background-color', '#F2F2F4', 'important');
+      } else {
+        // Use white for other sections
+        mobileMenu.style.setProperty('background', 'white', 'important');
+        mobileMenu.style.setProperty('background-color', 'white', 'important');
+      }
+      // Ensure text is dark for contrast in light mode
+      mobileMenu.style.setProperty('color', '', '');
+    }
+    console.log('Updated mobile menu theme:', isDark ? 'dark' : 'light');
+  }
 }
 
 function updateToolIcons(isDark) {
@@ -159,13 +227,15 @@ function attachThemeToggleListeners() {
   console.log('Desktop theme toggle found:', !!themeToggle);
   console.log('Mobile theme toggle found:', !!mobileThemeToggle);
 
-  if (themeToggle) {
+  if (themeToggle && !themeToggle.hasAttribute('data-listener-attached')) {
     themeToggle.addEventListener('click', toggleTheme);
+    themeToggle.setAttribute('data-listener-attached', 'true');
     console.log('Desktop theme toggle listener attached');
   }
 
-  if (mobileThemeToggle) {
+  if (mobileThemeToggle && !mobileThemeToggle.hasAttribute('data-listener-attached')) {
     mobileThemeToggle.addEventListener('click', toggleTheme);
+    mobileThemeToggle.setAttribute('data-listener-attached', 'true');
     console.log('Mobile theme toggle listener attached');
   }
 
@@ -180,8 +250,13 @@ function attachThemeToggleListeners() {
 
 // Try to attach listeners with retries for dynamically loaded navbar
 function attachThemeToggleListenersWithRetry() {
+  // Check if already successfully attached
+  if (window.themeToggleListenersAttached) {
+    return;
+  }
+
   let attempts = 0;
-  const maxAttempts = 10;
+  const maxAttempts = 5; // Reduced attempts
 
   const tryAttach = () => {
     attempts++;
@@ -189,11 +264,12 @@ function attachThemeToggleListenersWithRetry() {
 
     if (attachThemeToggleListeners()) {
       console.log('Theme toggle listeners successfully attached!');
+      window.themeToggleListenersAttached = true;
       return;
     }
 
     if (attempts < maxAttempts) {
-      setTimeout(tryAttach, 500); // Wait 500ms and try again
+      setTimeout(tryAttach, 300); // Reduced wait time
     } else {
       console.warn('Failed to attach theme toggle listeners after', maxAttempts, 'attempts');
     }

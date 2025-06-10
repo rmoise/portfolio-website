@@ -1558,6 +1558,25 @@ video {
     );
     width: 48px; /* Match the Tailwind w-12 class */
   }
+
+  /* Dark mode gradient colors */
+  .dark .gradient-left {
+    background: linear-gradient(
+      to right,
+      #1f2937,
+      rgba(31, 41, 55, 0.8),
+      transparent
+    ) !important;
+  }
+
+  .dark .gradient-right {
+    background: linear-gradient(
+      to left,
+      #1f2937,
+      rgba(31, 41, 55, 0.8),
+      transparent
+    ) !important;
+  }
 }
 
 /* Ensure Gradients Always Show */
@@ -1640,13 +1659,31 @@ video {
   box-shadow: 0 0 0 2px; /* Optional: Add focus ring */
 }
 
-/* General Styles */
+/* General Styles - Optimized for smooth scrolling */
 html,
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: Inter, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimize scrolling performance */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize parallax elements */
+.parallax-content,
+.parallax-content * {
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
 }
 
 .parallax-background {
@@ -1670,7 +1707,7 @@ body {
   opacity: 1;
 }
 
-/* Parallax Section */
+/* Parallax Section - Optimized for smooth scrolling */
 .parallax {
   position: fixed;
   width: 100%;
@@ -1683,9 +1720,11 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: transform 0.3s ease-out;
   will-change: transform;
-  transform: translateZ(0); /* Forces GPU acceleration */
+  transform: translate3d(0, 0, 0); /* Forces GPU acceleration */
+  backface-visibility: hidden;
+  perspective: 1000px;
+  /* Remove transition for smoother scroll-based animation */
 }
 
 .parallax::before {
@@ -2722,11 +2761,25 @@ img-comparison-slider figure {
   cursor: not-allowed;
 }
 
-/* Custom Parallax Effect */
+/* Custom Parallax Effect - Performance Optimized */
 .parallax-cs {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  will-change: transform, background-position;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+}
+
+/* Smooth parallax support for about section */
+#about {
+  --parallax-y: 0px;
+}
+
+#about::before {
+  transform: translate3d(0, var(--parallax-y, 0px), 0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 /* Custom Style for Large Parallax Image Section */

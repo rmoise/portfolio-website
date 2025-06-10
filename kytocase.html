@@ -1003,36 +1003,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const imageElement = document.querySelector(
-          '.custom-image-section .image',
-        )
-
-        // Check if window width is less than 768px (mobile)
-        function isMobile() {
-          return window.innerWidth <= 768
-        }
-
-        // Function to enable or disable the parallax effect
-        function applyParallax() {
-          if (isMobile()) {
-            // Remove parallax effect if on mobile
-            window.removeEventListener('scroll', parallaxEffect)
-          }
-        }
-
-        // Parallax effect function
-        function parallaxEffect() {
-          const offset = window.pageYOffset
-          imageElement.style.backgroundPositionY = `${offset * 0.5}px` // Adjust speed for parallax
-        }
-
-        // Initial check and event listener for window resize
-        applyParallax()
-        window.addEventListener('resize', applyParallax)
-      })
-    </script>
+    <!-- Parallax functionality now handled by js/smooth-parallax.js for better performance -->
 
     <script>
       document.addEventListener('DOMContentLoaded', () => {
@@ -1353,6 +1324,7 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="js/global-navbar.js"></script>
     <script src="js/theme-toggle.js"></script>
+    <script src="js/smooth-parallax.js"></script>
     <script src="js/script.js"></script>
   </body>
 </html>

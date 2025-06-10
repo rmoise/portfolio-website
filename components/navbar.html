@@ -438,7 +438,7 @@
           <span class="text-gray-900 dark:text-white text-lg">Theme</span>
           <button
             id="mobile-theme-toggle"
-            class="flex items-center justify-center w-10 h-10 border border-indigo-500/30 rounded-md hover:bg-indigo-500/10 transition-all"
+            class="flex items-center justify-center w-10 h-10 border border-indigo-500/30 rounded-md hover:bg-indigo-500/10 transition-all text-gray-900 dark:text-white"
             title="Toggle theme"
           >
             <!-- Sun Icon (Light Mode) -->
@@ -489,15 +489,18 @@
 </nav>
 
 <!-- Sub Navigation - Only shows on homepage -->
-<nav id="sub-nav" class="homepage-only">
+<nav
+  id="sub-nav"
+  class="homepage-only bg-white dark:bg-gray-800 transition-colors"
+>
   <div class="max-w-screen-xl px-4 py-3 mx-auto relative">
     <div class="flex items-center justify-center relative">
       <!-- Gradient overlays positioned over the subnav-wrapper -->
       <div
-        class="absolute inset-y-0 left-[69%] w-[60%] -ml-[100%] bg-gradient-to-r from-transparent via-[#f9fafb] to-transparent pointer-events-none gradient-left"
+        class="absolute inset-y-0 left-[69%] w-[60%] -ml-[100%] bg-gradient-to-r from-transparent via-[#f9fafb] dark:via-[#1f2937] to-transparent pointer-events-none gradient-left"
       ></div>
       <div
-        class="absolute inset-y-0 right-[69%] w-[60%] -mr-[100%] bg-gradient-to-l from-transparent via-[#f9fafb] to-transparent pointer-events-none gradient-right"
+        class="absolute inset-y-0 right-[69%] w-[60%] -mr-[100%] bg-gradient-to-l from-transparent via-[#f9fafb] dark:via-[#1f2937] to-transparent pointer-events-none gradient-right"
       ></div>
 
       <div class="relative overflow-hidden w-[320px] md:w-auto">
@@ -509,7 +512,7 @@
             <li>
               <a
                 href="index.html#about"
-                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                class="text-gray-900 dark:text-gray-100 hover:underline subnav-link px-2 py-1"
                 data-section="about"
                 >About</a
               >
@@ -518,7 +521,7 @@
             <li>
               <a
                 href="index.html#tools"
-                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                class="text-gray-900 dark:text-gray-100 hover:underline subnav-link px-2 py-1"
                 data-section="tools"
                 >Tools & Skills</a
               >
@@ -526,7 +529,7 @@
             <li>
               <a
                 href="index.html#portfolio"
-                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                class="text-gray-900 dark:text-gray-100 hover:underline subnav-link px-2 py-1"
                 data-section="portfolio"
                 >Portfolio</a
               >
@@ -534,7 +537,7 @@
             <li>
               <a
                 href="index.html#recent-visuals"
-                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                class="text-gray-900 dark:text-gray-100 hover:underline subnav-link px-2 py-1"
                 data-section="recent-visuals"
                 >Recent Visuals</a
               >
@@ -542,7 +545,7 @@
             <li>
               <a
                 href="index.html#testimonials"
-                class="text-gray-900 hover:underline subnav-link px-2 py-1"
+                class="text-gray-900 dark:text-gray-100 hover:underline subnav-link px-2 py-1"
                 data-section="testimonials"
                 >Testimonials</a
               >
