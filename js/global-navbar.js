@@ -173,6 +173,25 @@ class GlobalNavbar {
           mobileMenu.classList.remove('hidden');
           mobileMenu.style.display = 'block';
 
+          // Remove transparent class to make navbar solid when menu opens
+          if (mainNav.classList.contains('transparent')) {
+            mainNav.classList.remove('transparent');
+            mainNav.setAttribute('data-was-transparent', 'true');
+            console.log('Removed transparent class for solid menu background');
+          }
+
+          // Change background to white when toggled on homepage in light mode
+          const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+          const isHomepage = currentPage === 'index.html' || currentPage === '';
+          const isDarkMode = document.documentElement.classList.contains('dark');
+
+          if (isHomepage && !isDarkMode) {
+            // Homepage + Light mode: Change to white when menu opens
+            mobileMenu.style.setProperty('background', 'white', 'important');
+            mobileMenu.style.setProperty('background-color', 'white', 'important');
+            console.log('Set mobile menu to white for homepage light mode');
+          }
+
           // Safe scroll lock - prevent background scrolling but keep menu scrollable
           document.body.style.overflow = 'hidden';
           document.documentElement.style.overflow = 'hidden'; // For some browsers
@@ -193,6 +212,13 @@ class GlobalNavbar {
           console.log('CLOSING menu - scroll position:', window.scrollY);
           mobileMenu.classList.add('hidden');
           mobileMenu.style.display = 'none';
+
+          // Restore transparent class if it was previously transparent
+          if (mainNav.getAttribute('data-was-transparent') === 'true') {
+            mainNav.classList.add('transparent');
+            mainNav.removeAttribute('data-was-transparent');
+            console.log('Restored transparent class after closing menu');
+          }
 
           // Restore scroll ability
           document.body.style.overflow = '';
@@ -256,6 +282,13 @@ class GlobalNavbar {
                     // Force close the mobile menu
           mobileMenu.classList.add('hidden');
           mobileMenu.style.display = 'none';
+
+          // Restore transparent class if it was previously transparent
+          if (mainNav && mainNav.getAttribute('data-was-transparent') === 'true') {
+            mainNav.classList.add('transparent');
+            mainNav.removeAttribute('data-was-transparent');
+            console.log('Restored transparent class after link click');
+          }
 
           // Reset icons
           if (hamburgerIcon && closeIcon) {
@@ -323,28 +356,90 @@ class GlobalNavbar {
     // Handle contact button
     if (mobileContactBtn) {
       mobileContactBtn.addEventListener('click', (event) => {
+        console.log('=== CONTACT BUTTON CLICKED ===');
         event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
 
         const targetElement = document.querySelector('#contact');
-        console.log('Mobile contact button clicked');
+        console.log('Target contact element found:', !!targetElement);
 
         if (targetElement) {
-          // Close mobile menu first
-          this.closeMobileMenu();
+          // Close mobile menu and handle Alpine.js state
+          const mobileMenu = document.getElementById('mobile-menu');
+          const mainNav = document.getElementById('main-nav');
+          const menuToggle = document.getElementById('menu-toggle');
+          const hamburgerIcon = menuToggle?.querySelector('.hamburger-icon');
+          const closeIcon = menuToggle?.querySelector('.close-icon');
 
-          // Smooth scroll to contact section
-          setTimeout(() => {
+          if (mobileMenu) {
+            // Close the mobile menu (visual)
+            mobileMenu.classList.add('hidden');
+            mobileMenu.style.display = 'none';
+
+            // Handle Alpine.js navbarOpen state if Alpine is available
+            if (window.Alpine && mainNav._x_dataStack) {
+              const alpineData = mainNav._x_dataStack[0];
+              if (alpineData && 'navbarOpen' in alpineData) {
+                alpineData.navbarOpen = false;
+                console.log('Updated Alpine.js navbarOpen to false');
+              }
+            }
+
+            // Restore transparent class if it was previously transparent
+            if (mainNav && mainNav.getAttribute('data-was-transparent') === 'true') {
+              mainNav.classList.add('transparent');
+              mainNav.removeAttribute('data-was-transparent');
+              console.log('Restored transparent class after contact button click');
+            }
+
+            // Reset icons
+            if (hamburgerIcon && closeIcon) {
+              hamburgerIcon.classList.remove('hidden');
+              closeIcon.classList.add('hidden');
+            }
+
+            // Restore scrolling
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+
+            console.log('Mobile menu closed via contact button');
+          }
+
+          // Force scroll to contact section
+          const performScroll = () => {
             const offset = 80; // Account for fixed navbar
             const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
             const offsetPosition = elementPosition - offset;
 
+            console.log('Performing scroll - element position:', elementPosition, 'offset position:', offsetPosition);
+
+            // Try both methods
             window.scrollTo({
               top: offsetPosition,
               behavior: 'smooth'
             });
-          }, 100);
+
+            // Backup: Instant scroll if smooth doesn't work
+            setTimeout(() => {
+              if (Math.abs(window.pageYOffset - offsetPosition) > 100) {
+                console.log('Smooth scroll failed, using instant scroll');
+                window.scrollTo(0, offsetPosition);
+              }
+            }, 500);
+          };
+
+          // Try immediate scroll first
+          performScroll();
+
+          // Also try with delay
+          setTimeout(performScroll, 200);
+        } else {
+          console.log('Contact element not found!');
         }
       });
+    } else {
+      console.log('Mobile contact button not found!');
     }
   }
 
@@ -359,6 +454,13 @@ class GlobalNavbar {
       // Close the mobile menu
       mobileMenu.classList.add('hidden');
       mobileMenu.style.display = 'none';
+
+      // Restore transparent class if it was previously transparent
+      if (mainNav && mainNav.getAttribute('data-was-transparent') === 'true') {
+        mainNav.classList.add('transparent');
+        mainNav.removeAttribute('data-was-transparent');
+        console.log('Restored transparent class in closeMobileMenu');
+      }
 
       // Reset icons
       if (hamburgerIcon && closeIcon) {
@@ -624,35 +726,19 @@ class GlobalNavbar {
       const mobileMenu = document.getElementById('mobile-menu');
 
       if (mobileMenu) {
-        const shouldBeOffWhite = sectionId === 'about' || window.scrollY < 600;
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const isHomepage = currentPage === 'index.html' || currentPage === '';
         const isDarkMode = document.documentElement.classList.contains('dark');
 
-        // Only update if state actually changed
-        if (lastMobileMenuState !== shouldBeOffWhite) {
-          if (shouldBeOffWhite) {
-            // In hero/about section - use off-white/dark background based on theme
-            mobileMenu.classList.remove('mobile-menu-white');
-
-            if (isDarkMode) {
-              // Dark mode: use black background
-              mobileMenu.style.setProperty('background', 'black', 'important');
-            } else {
-              // Light mode: use off-white background
-              mobileMenu.style.setProperty('background', '#F2F2F4', 'important');
-            }
-          } else {
-            // In other sections - use white/dark background based on theme
-            mobileMenu.classList.add('mobile-menu-white');
-
-            if (isDarkMode) {
-              // Dark mode: use black background
-              mobileMenu.style.setProperty('background', 'black', 'important');
-            } else {
-              // Light mode: use white background
-              mobileMenu.style.setProperty('background', 'white', 'important');
-            }
-          }
-          lastMobileMenuState = shouldBeOffWhite;
+        if (isDarkMode) {
+          // Dark mode: always use black background
+          mobileMenu.style.setProperty('background', 'black', 'important');
+        } else if (isHomepage) {
+          // Homepage in light mode: always use white background (no hero off-white)
+          mobileMenu.style.setProperty('background', 'white', 'important');
+        } else {
+          // Other pages in light mode: use white background
+          mobileMenu.style.setProperty('background', 'white', 'important');
         }
       }
     };
@@ -991,7 +1077,7 @@ class GlobalNavbar {
             mobileMenu.style.setProperty('background-color', 'black', 'important');
             console.log('Set dark background for non-homepage page:', this.currentPage);
           } else {
-            // Light mode: use white background
+            // Light mode: always use white background (no auto-change)
             mobileMenu.style.setProperty('background-color', 'white', 'important');
             console.log('Set white background for non-homepage page:', this.currentPage);
           }
@@ -1485,11 +1571,25 @@ class GlobalNavbar {
         border-bottom: 1px solid #e5e7eb !important;
       }
 
-      /* Transparent navbar at top of page */
+      /* Transparent navbar at top of page - but not the mobile menu */
+      #main-nav.transparent:not([x-show="navbarOpen"]) {
+        /* background-color: transparent !important; */
+        border-bottom: 1px solid transparent !important;
+        backdrop-filter: none !important;
+      }
+
+      /* Ensure navbar background is transparent when collapsed (not mobile menu) */
       #main-nav.transparent {
         background-color: transparent !important;
         border-bottom: 1px solid transparent !important;
         backdrop-filter: none !important;
+      }
+
+      /* Override: Mobile menu should never be transparent */
+      #main-nav.transparent [x-show="navbarOpen"] {
+        background-color: white !important;
+        border-bottom: 1px solid #e5e7eb !important;
+        backdrop-filter: blur(10px) !important;
       }
 
       /* Transparent navbar text colors */
@@ -1535,6 +1635,13 @@ class GlobalNavbar {
         border-bottom: 1px solid transparent !important;
       }
 
+      /* Dark mode: Override Mobile menu should never be transparent */
+      .dark #main-nav.transparent [x-show="navbarOpen"] {
+        background-color: black !important;
+        border-bottom: 1px solid #374151 !important;
+        backdrop-filter: blur(10px) !important;
+      }
+
       /* Dark mode transparent navbar text colors */
       .dark #main-nav.transparent a {
         color: white !important;
@@ -1578,6 +1685,11 @@ class GlobalNavbar {
         border-color: #e5e7eb !important;
       }
 
+      /* Mobile menu should always have solid background, even when navbar is transparent */
+      #main-nav.transparent [x-show="navbarOpen"] {
+        background-color: white !important;
+      }
+
       #main-nav [x-show="dropdownOpen"] a {
         color: #1f2937 !important;
       }
@@ -1610,6 +1722,11 @@ class GlobalNavbar {
       .dark #main-nav.transparent [x-show="dropdownOpen"] {
         background-color: black !important;
         border-color: #374151 !important;
+      }
+
+      /* Dark mode mobile menu should always have solid background, even when navbar is transparent */
+      .dark #main-nav.transparent [x-show="navbarOpen"] {
+        background-color: black !important;
       }
 
       .dark #main-nav [x-show="dropdownOpen"] a {
@@ -1895,3 +2012,4 @@ if (document.readyState === 'loading') {
 } else {
   initializeGlobalNavbar();
 }/* Cache bust: Sun Jun  8 19:21:53 CEST 2025 */
+

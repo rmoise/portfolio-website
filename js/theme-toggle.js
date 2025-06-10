@@ -186,17 +186,9 @@ function updateMobileMenuTheme(isDark) {
       // Ensure text is white for contrast
       mobileMenu.style.setProperty('color', 'white', 'important');
     } else {
-      // Light mode: check if we should use off-white or white based on scroll position
-      const isAtTop = window.scrollY < 600;
-      if (isAtTop) {
-        // Use off-white for hero/about section
-        mobileMenu.style.setProperty('background', '#F2F2F4', 'important');
-        mobileMenu.style.setProperty('background-color', '#F2F2F4', 'important');
-      } else {
-        // Use white for other sections
-        mobileMenu.style.setProperty('background', 'white', 'important');
-        mobileMenu.style.setProperty('background-color', 'white', 'important');
-      }
+      // Light mode: always use white background (no auto-change)
+      mobileMenu.style.setProperty('background', 'white', 'important');
+      mobileMenu.style.setProperty('background-color', 'white', 'important');
       // Ensure text is dark for contrast in light mode
       mobileMenu.style.setProperty('color', '', '');
     }
