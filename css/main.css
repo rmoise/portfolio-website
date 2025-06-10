@@ -2761,14 +2761,22 @@ img-comparison-slider figure {
   cursor: not-allowed;
 }
 
-/* Custom Parallax Effect - Performance Optimized */
+/* Custom Parallax Effect - Fixed Background for Case Studies */
 .parallax-cs {
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  will-change: transform, background-position;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
+  background-repeat: no-repeat;
+  position: relative;
+  will-change: auto !important;
+  transform: none !important;
+  backface-visibility: visible;
+}
+
+/* Prevent JavaScript from interfering with parallax-cs elements */
+.parallax-cs * {
+  will-change: auto !important;
+  transform: none !important;
 }
 
 /* Smooth parallax support for about section */
@@ -2955,6 +2963,13 @@ media screen and (max-width: 768px) {
   .custom-image-section .image {
     background-size: contain;
     background-position: center top;
+  }
+
+  /* Disable fixed attachment on mobile for parallax-cs elements */
+  .parallax-cs {
+    background-attachment: scroll;
+    background-size: cover;
+    background-position: center;
   }
 }
 

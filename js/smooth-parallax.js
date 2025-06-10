@@ -43,6 +43,9 @@ class UltraSmoothParallax {
   }
 
   init() {
+    // Clear any existing transforms on parallax-cs elements first
+    this.clearFixedParallaxTransforms();
+
     // Collect parallax elements with data attributes (Locomotive style)
     this.collectElements();
 
@@ -59,7 +62,28 @@ class UltraSmoothParallax {
     this.startAnimationLoop();
   }
 
+  clearFixedParallaxTransforms() {
+    // Ensure parallax-cs elements have no transforms applied
+    const parallaxCsElements = document.querySelectorAll('.parallax-cs');
+    parallaxCsElements.forEach(element => {
+      element.style.transform = 'none';
+      element.style.willChange = 'auto';
+      element.style.backfaceVisibility = 'visible';
+
+      // Also clear transforms from any child elements
+      const children = element.querySelectorAll('*');
+      children.forEach(child => {
+        child.style.transform = 'none';
+        child.style.willChange = 'auto';
+      });
+    });
+  }
+
   collectElements() {
+    // Detect if we're on a case study page
+    const isCaseStudyPage = window.location.pathname.includes('case.html') ||
+                           document.querySelector('.parallax-cs') !== null;
+
     // Collect elements with data-scroll attributes (Locomotive Scroll pattern)
     const scrollElements = document.querySelectorAll('[data-scroll]');
 
@@ -83,11 +107,14 @@ class UltraSmoothParallax {
       });
     });
 
-    // Legacy parallax support
-    const legacyParallax = document.querySelectorAll('.parallax, .parallax-cs');
+    // Skip .parallax-cs elements entirely - they use CSS background-attachment: fixed
+    // No JavaScript processing needed for case study parallax
+
+    // Legacy parallax support (homepage style)
+    const legacyParallax = document.querySelectorAll('.parallax');
     legacyParallax.forEach((element) => {
-      if (!element.hasAttribute('data-scroll')) {
-      this.elements.push({
+      if (!element.hasAttribute('data-scroll') && !element.classList.contains('parallax-cs')) {
+        this.elements.push({
           element,
           type: 'legacy-parallax',
           speed: 0.5,
@@ -106,9 +133,9 @@ class UltraSmoothParallax {
     const customImages = document.querySelectorAll('.custom-image-section .image');
     customImages.forEach((element) => {
       if (!element.hasAttribute('data-scroll')) {
-      this.elements.push({
-        element,
-        type: 'custom-image',
+        this.elements.push({
+          element,
+          type: 'custom-image',
           speed: 0.3,
           direction: 'vertical',
           offset: 0,
@@ -141,11 +168,13 @@ class UltraSmoothParallax {
   }
 
   enableGPUAcceleration() {
-    // Apply GPU acceleration to all parallax elements (SimpleParallax technique)
+    // Apply GPU acceleration to parallax elements (SimpleParallax technique)
     this.elements.forEach(item => {
-      const { element } = item;
+      const { element, type } = item;
 
-      // Force GPU layer creation
+
+
+      // Force GPU layer creation for moving parallax elements
       element.style.willChange = 'transform';
       element.style.backfaceVisibility = 'hidden';
       element.style.perspective = '1000px';
@@ -295,7 +324,7 @@ class UltraSmoothParallax {
     const buffer = 300; // Larger buffer to reduce recalculation
 
     this.elements.forEach((item, index) => {
-      const { element, speed, direction, offset, bounds } = item;
+      const { element, speed, direction, offset, bounds, type } = item;
       const elementId = `element_${index}`;
 
       // Check if element is in viewport (with buffer)
@@ -315,6 +344,8 @@ class UltraSmoothParallax {
 
       // Skip elements that are not visible and weren't visible before
       if (!isInViewport && !wasVisible) return;
+
+
 
       // Calculate parallax values
       const parallaxValue = this.calculateParallaxValue(bounds, speed, direction, offset);
