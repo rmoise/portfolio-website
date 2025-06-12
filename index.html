@@ -1615,8 +1615,7 @@
                 class="relative mt-8 grid h-12 w-auto grid-cols-2 items-center gap-x-1 overflow-hidden rounded-lg bg-white/40 dark:bg-gray-800/40 ring-1 ring-inset ring-gray-300 dark:ring-gray-600 px-[3px] sm:w-max"
               >
                 <div
-                  class="tab-indicator absolute h-10 rounded-lg bg-green"
-                  style="left: 4px; width: 114px"
+                  class="tab-indicator absolute h-10 rounded-lg bg-green transition-all duration-300 ease-in-out"
                 ></div>
                 <button
                   role="tab"
@@ -1629,7 +1628,7 @@
                   data-tab="design"
                 >
                   <span
-                    class="m-auto block w-max text-sm font-medium text-black tracking-wider"
+                    class="m-auto block w-max text-sm text-gray-900 dark:text-white font-medium tracking-wider"
                   >
                     Design Systems
                   </span>
@@ -2194,7 +2193,7 @@
                   <!-- Content for Feature 2 -->
                   <section class="w-full">
                     <div
-                      class="mt-8 rounded-md border border-gray-300 dark:border-gray-600 overflow-hidden"
+                      class="mt-8 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black overflow-hidden"
                     >
                       <!-- Project A -->
                       <div
@@ -3788,15 +3787,27 @@
         const panels = document.querySelectorAll('.panel')
         const indicator = document.querySelector('.tab-indicator')
 
-        function updateTabIndicator() {
+                function updateTabIndicator() {
           const selectedTab = document.querySelector('[aria-selected="true"]')
-          if (selectedTab) {
-            const rect = selectedTab.getBoundingClientRect()
-            const containerRect =
-              selectedTab.parentElement.getBoundingClientRect()
-            const indicatorWidth = selectedTab.offsetWidth
-            indicator.style.left = `${rect.left - containerRect.left}px`
-            indicator.style.width = `${indicatorWidth}px`
+          if (selectedTab && indicator) {
+            // Use a small delay to ensure elements are properly rendered
+            setTimeout(() => {
+              const tabData = selectedTab.getAttribute('data-tab')
+              const tabContainer = selectedTab.parentElement
+              const tabs = Array.from(tabContainer.querySelectorAll('.tab'))
+
+              // Calculate position based on tab order
+              let leftPosition = 3 // Initial padding
+              const selectedIndex = tabs.indexOf(selectedTab)
+
+              for (let i = 0; i < selectedIndex; i++) {
+                leftPosition += tabs[i].offsetWidth + 4 // 4px for gap-x-1
+              }
+
+              const indicatorWidth = selectedTab.offsetWidth
+              indicator.style.left = `${leftPosition}px`
+              indicator.style.width = `${indicatorWidth}px`
+            }, 50)
           }
         }
 
@@ -3835,6 +3846,8 @@
             // Default to design if no hash or invalid hash
             showTab('design')
           }
+          // Ensure indicator is updated after DOM changes
+          setTimeout(updateTabIndicator, 100)
         }
 
         tabs.forEach((tab) => {
@@ -3850,6 +3863,9 @@
 
         // Listen for hash changes (e.g., browser back/forward, direct URL access)
         window.addEventListener('hashchange', handleHashChange)
+
+        // Listen for window resize to recalculate indicator position
+        window.addEventListener('resize', debounce(updateTabIndicator, 100))
 
         // Handle initial page load
         handleHashChange()
