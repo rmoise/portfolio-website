@@ -425,6 +425,9 @@
       }
 
       /* Duplicate section removed - using the first style block above */
+      
+      /* Hide projects using CSS class */
+      .project-hidden { display: none !important; }
     </style>
   </head>
 
@@ -433,7 +436,7 @@
 
     <!-- Parallax Section - Minimalist Hero -->
     <section
-      class="parallax bg-gray-100 dark:bg-black"
+      class="parallax "
       id="parallax"
       data-scroll
       data-scroll-speed="-0.3"
@@ -1798,25 +1801,9 @@
                 <button
                   role="tab"
                   aria-selected="true"
-                  aria-controls="panel-0"
+                  aria-controls="panel-1"
                   tabindex="0"
                   title="Feature 1"
-                  class="tab relative block rounded-lg py-2.5 px-4 focus:outline-none focus:ring-0"
-                  onclick="selectTab(event)"
-                  data-tab="design"
-                >
-                  <span
-                    class="m-auto block w-max text-sm text-gray-900 dark:text-white font-medium tracking-wider"
-                  >
-                    Design Systems
-                  </span>
-                </button>
-                <button
-                  role="tab"
-                  aria-selected="false"
-                  aria-controls="panel-1"
-                  tabindex="-1"
-                  title="Feature 2"
                   class="tab relative block rounded-lg py-2.5 px-4 focus:outline-none focus:ring-0"
                   onclick="selectTab(event)"
                   data-tab="development"
@@ -1827,12 +1814,28 @@
                     Web Development
                   </span>
                 </button>
+                <button
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="panel-0"
+                  tabindex="-1"
+                  title="Feature 2"
+                  class="tab relative block rounded-lg py-2.5 px-4 focus:outline-none focus:ring-0"
+                  onclick="selectTab(event)"
+                  data-tab="design"
+                >
+                  <span
+                    class="m-auto block w-max text-sm text-gray-900 dark:text-white font-medium tracking-wider"
+                  >
+                    Design Systems
+                  </span>
+                </button>
               </div>
             </div>
             <div class="mt-8 xl:mt-8 lg:mt-16 md:mt-16">
               <div class="relative">
                 <!-- Panel 0 for Feature 1 -->
-                <div class="panel block transition duration-500" id="panel-0">
+                <div class="panel hidden transition duration-500" id="panel-0">
                   <!-- Container for Feature 1 content -->
                   <section class="w-full">
                     <div
@@ -1850,7 +1853,7 @@
                               <img
                                 src="img/2.jpg"
                                 alt="Karl Storz"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -1914,7 +1917,7 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project A -->
                       <div
@@ -1928,7 +1931,7 @@
                               <img
                                 src="img/03-Laptop-Mockup.jpg"
                                 alt="Kyto"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -1997,7 +2000,7 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project B -->
                       <div
@@ -2011,7 +2014,7 @@
                               <img
                                 src="img/iPhone-Mockup.jpg"
                                 alt="Smunch"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2075,7 +2078,7 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project C -->
                       <div
@@ -2089,7 +2092,7 @@
                               <img
                                 src="img/02-Laptop-Mockup.jpg"
                                 alt="coGalleries"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2149,7 +2152,7 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project D -->
                       <div
@@ -2163,7 +2166,7 @@
                               <img
                                 src="img/organize-ig.jpg"
                                 alt="Organize"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2223,7 +2226,7 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project E -->
                       <div
@@ -2237,7 +2240,7 @@
                               <img
                                 src="img/Simple-Mockup-Free-Scene-2.png"
                                 alt="Personality Friend Finding App"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2306,7 +2309,7 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project F -->
                       <div
@@ -2320,7 +2323,7 @@
                               <img
                                 src="img/Stak-v6.png"
                                 alt="Stak"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2367,34 +2370,403 @@
                 </div>
 
                 <!-- Panel 1 for Feature 2 -->
-                <div class="panel hidden transition duration-500" id="panel-1">
+                <div class="panel block transition duration-500" id="panel-1">
                   <!-- Content for Feature 2 -->
                   <section class="w-full">
                     <div
                       class="mt-8 rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-black overflow-hidden"
                     >
+                      <!-- subscribe.dev App Project -->
+                      <div
+                        class="flex flex-col gap-y-4 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 relative"
+                      >
+                        <div class="w-full">
+                          <a
+                            href="https://github.com/rmoise/subscribe-dev-app"
+                            target="_blank"
+                          >
+                            <div
+                              class=" relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
+                            >
+                              <video
+                                src="https://ik.imagekit.io/0adjo0tl4/subscribe-dev-app.mov/ik-video.mp4?updatedAt=1755867649589"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
+                                style="margin-top: -10px;"
+                              >
+                                <img
+                                  src="img/subscribe-dev-app-mockup.png"
+                                  alt="subscribe.dev Dashboard App"
+                                  class="absolute top-0 left-0 w-full h-full object-cover"
+                                />
+                              </video>
+                            </div>
+                          </a>
+                        </div>
+
+                        <div class="flex flex-col w-full">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                              >
+                                subscribe.dev App
+                              </div>
+                              <div>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                  A modern web dashboard for developers to manage and monitor their AI tool subscriptions. Features subscription tracking, usage analytics, billing history, and service discovery with a clean, accessible interface.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #React 19
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #TypeScript
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #shadcn/ui
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Tailwind CSS
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Framer Motion
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Dashboard
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Divider Line -->
+                      <hr
+                        class="border-t border-gray-200 dark:border-gray-700"
+                      />
+                      <!-- Graph Showcase Project -->
+                      <div
+                        class="flex flex-col gap-y-4 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 relative"
+                      >
+                        <div class="w-full">
+                          <a
+                            href="https://github.com/rmoise/graph-showcase"
+                            target="_blank"
+                          >
+                            <div
+                              class=" relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
+                            >
+                              <video
+                                src="https://ik.imagekit.io/0adjo0tl4/graph-showcase.mov/ik-video.mp4?updatedAt=1755867470100"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
+                              >
+                                <img
+                                  src="img/graph-showcase-mockup.png"
+                                  alt="Graph Showcase Platform"
+                                  class="absolute top-0 left-0 w-full h-full object-cover"
+                                />
+                              </video>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="flex flex-col w-full">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                              >
+                                Graph Showcase
+                              </div>
+                              <div>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                  A modern app discovery platform built with Next.js 15 and React 19. Features dynamic carousels, user authentication, admin management, category filtering, and interactive showcases for applications and games.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Next.js 15
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #React 19
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #TypeScript
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Tailwind CSS
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Supabase
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #shadcn/ui
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://graph-showcase.vercel.app/"
+                                target="_blank"
+                                class="text-sm font-medium underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
+                              >
+                                Live Site
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Divider Line -->
+                      <hr
+                        class="border-t border-gray-200 dark:border-gray-700"
+                      />
+                      <!-- videogame.ai Project -->
+                      <div
+                        class="flex flex-col gap-y-4 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 relative"
+                      >
+                        <div class="w-full">
+                          <a
+                            href="https://github.com/rmoise/videogame-ai-landing"
+                            target="_blank"
+                          >
+                            <div
+                              class=" relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
+                            >
+                              <video
+                                src="https://ik.imagekit.io/0adjo0tl4/videogameai.mov/ik-video.mp4?updatedAt=1755867743162"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
+                              >
+                                <img
+                                  src="img/videogame-ai-mockup.png"
+                                  alt="videogame.ai Platform"
+                                  class="absolute top-0 left-0 w-full h-full object-cover"
+                                />
+                              </video>
+                            </div>
+                          </a>
+                        </div>
+
+                        <div class="flex flex-col w-full">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                              >
+                                videogame.ai
+                              </div>
+                              <div>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                  An AI-powered game development platform that accelerates production by 100x through autonomous workflows, featuring interactive project showcases, AI pipeline visualization, and comprehensive development tools for creating games with zero human intervention.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Next.js
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #TypeScript
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Framer Motion
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Tailwind CSS
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #AI/ML
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Game Development
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Divider Line -->
+                      <hr
+                        class="border-t border-gray-200 dark:border-gray-700"
+                      />
+                      <!-- Remetricate (subscribe.dev) Project -->
+                      <div
+                        class="flex flex-col gap-y-4 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 relative"
+                      >
+                        <div class="w-full">
+                          <a
+                            href="https://github.com/rmoise/subscribe-dev-landing"
+                            target="_blank"
+                          >
+                            <div
+                              class=" relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
+                            >
+                              <video
+                                src="https://ik.imagekit.io/0adjo0tl4/subscribe-dev-landing.mov/ik-video.mp4?updatedAt=1755867939986"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
+                              >
+                                <img
+                                  src="img/subscribe-dev-mockup.png"
+                                  alt="subscribe.dev Platform"
+                                  class="absolute top-0 left-0 w-full h-full object-cover"
+                                />
+                              </video>
+                            </div>
+                          </a>
+                        </div>
+
+                        <div class="flex flex-col w-full">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                              >
+                                subscribe.dev
+                              </div>
+                              <div>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                  A developer-first monetization platform for AI tools, enabling usage-based billing and subscriptions with simple integration. Built with React, TypeScript, and Tailwind CSS v4 for modern AI developers.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #React
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #TypeScript
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Vite
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Tailwind CSS
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Stripe
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #AI Tools
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://subscribe.dev/"
+                                target="_blank"
+                                class="text-sm font-medium underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
+                              >
+                                Live Site
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Divider Line -->
+                      <hr
+                        class="border-t border-gray-200 dark:border-gray-700"
+                      />
                       <!-- Project A -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row relative"
+                        class="flex flex-col gap-y-4 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 relative"
                       >
-                        <div class="w-full xl:w-9/12">
+                        <div class="w-full">
                           <a
                             href="https://github.com/rmoise/captain-frank-flight-funnel"
                             target="_blank"
                           >
                             <div
-                              class="bg-gray-200 relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
+                              class=" relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
                             >
-                              <img
-                                src="img/mockup-website-8.png"
-                                alt="Captain Frank Funnel"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
-                              />
+                              <video
+                                src="https://ik.imagekit.io/0adjo0tl4/captain-frank.mov/ik-video.mp4?updatedAt=1755867878050"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
+                              >
+                                <img
+                                  src="img/mockup-website-8.png"
+                                  alt="Captain Frank Funnel"
+                                  class="absolute top-0 left-0 w-full h-full object-cover"
+                                />
+                              </video>
                             </div>
                           </a>
                         </div>
 
-                        <div class="flex flex-col xl:w-1/4">
+                        <div class="flex flex-col w-full">
                           <div
                             class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
@@ -2450,11 +2822,11 @@
                             <!-- Links at the bottom in a row -->
                             <div class="mt-4 flex gap-4">
                               <a
-                                href="https://github.com/rmoise/captain-frank-flight-funnel"
+                                href="https://captainfrankfunnel.netlify.app/"
                                 target="_blank"
                                 class="text-sm font-medium underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                               >
-                                GitHub
+                                Live Site
                               </a>
                             </div>
                           </div>
@@ -2466,25 +2838,34 @@
                       />
                       <!-- Project B -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row-reverse relative"
+                        class="flex flex-col gap-y-4 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 relative"
                       >
-                        <div class="w-full xl:w-9/12">
+                        <div class="w-full">
                           <a
                             href="https://github.com/rmoise/All7s"
                             target="_blank"
                           >
                             <div
-                              class="bg-gray-200 relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
+                              class="relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
                             >
-                              <img
-                                src="img/mockup-website-9.png"
-                                alt="Captain Frank Funnel"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
-                              />
+                              <video
+                                src="https://ik.imagekit.io/0adjo0tl4/ALL7z Website.mp4?updatedAt=1755870409612"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
+                              >
+                                <img
+                                  src="img/mockup-website-9.png"
+                                  alt="All7z E-commerce Platform"
+                                  class="absolute top-0 left-0 w-full h-full object-cover"
+                                />
+                              </video>
                             </div>
                           </a>
                         </div>
-                        <div class="flex flex-col xl:w-1/4">
+                        <div class="flex flex-col w-full">
                           <div
                             class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
                           >
@@ -2534,11 +2915,11 @@
                             <!-- Links at the bottom in a row -->
                             <div class="mt-4 flex gap-4">
                               <a
-                                href="https://github.com/rmoise/All7s"
+                                href="https://all7z.com/"
                                 target="_blank"
                                 class="text-sm font-medium underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
                               >
-                                GitHub
+                                Live Site
                               </a>
                             </div>
                           </div>
@@ -2548,9 +2929,103 @@
                       <hr
                         class="border-t border-gray-200 dark:border-gray-700"
                       />
+                      <!-- Graph UI Project -->
+                      <div
+                        class="flex flex-col gap-y-4 pt-2 px-2 pb-0 transition hover:bg-gray-50 dark:hover:bg-gray-950 relative"
+                      >
+                        <div class="w-full">
+                          <a
+                            href="https://github.com/rmoise/graph-ui"
+                            target="_blank"
+                          >
+                            <div
+                              class="relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300 hover:rounded-lg"
+                            >
+                              <video
+                                src="https://ik.imagekit.io/0adjo0tl4/Screen%20Recording%202025-08-22%20at%2012.07.53.mov/ik-video.mp4?updatedAt=1755871417689"
+                                autoplay
+                                muted
+                                loop
+                                playsinline
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
+                              >
+                                <img
+                                  src="img/graph-ui-mockup.png"
+                                  alt="Graph UI Platform"
+                                  class="absolute top-0 left-0 w-full h-full object-cover"
+                                />
+                              </video>
+                            </div>
+                          </a>
+                        </div>
+                        <div class="flex flex-col w-full">
+                          <div
+                            class="relative mt-2 flex flex-col justify-between p-3 xl:mt-0 h-full"
+                          >
+                            <div class="flex-grow">
+                              <div
+                                class="mb-2 text-xl font-extrabold tracking-tight md:text-2xl text-gray-900 dark:text-white"
+                              >
+                                Graph UI
+                              </div>
+                              <div>
+                                <p class="text-gray-700 dark:text-gray-300">
+                                  A revolutionary graph-based interface for creating games and applications using AI. Features node-based visual programming, real-time collaboration, and AI-powered development workflows for rapid prototyping and deployment.
+                                </p>
+                              </div>
+                            </div>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #React 19
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #TypeScript
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #React Flow
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Supabase
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #Tailwind CSS
+                              </div>
+                              <div
+                                class="text-sm font-medium lowercase md:text-lg text-gray-600 dark:text-gray-400"
+                              >
+                                #AI Development
+                              </div>
+                            </div>
+                            <!-- Links at the bottom in a row -->
+                            <div class="mt-4 flex gap-4">
+                              <a
+                                href="https://app.graph.plus/"
+                                target="_blank"
+                                class="text-sm font-medium underline text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300"
+                              >
+                                Live Site
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Divider Line -->
+                      <hr
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
+                      />
                       <!-- Project A -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row relative"
+                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row relative project-hidden"
                       >
                         <div class="w-full xl:w-9/12">
                           <a
@@ -2563,7 +3038,7 @@
                               <img
                                 src="img/mockup-website.jpg"
                                 alt="Doc Manager"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2635,11 +3110,11 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project B -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row-reverse relative"
+                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row-reverse relative project-hidden"
                       >
                         <div class="w-full xl:w-9/12">
                           <a
@@ -2652,7 +3127,7 @@
                               <img
                                 src="img/mockup-website-2.jpg"
                                 alt="Doc Manager API"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2718,11 +3193,11 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project C -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row relative"
+                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row relative project-hidden"
                       >
                         <div class="w-full xl:w-9/12">
                           <a href="pokemoncase.html">
@@ -2732,7 +3207,7 @@
                               <img
                                 src="img/mockup-website-3.jpg"
                                 alt="Pokedex"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2810,11 +3285,11 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project D -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row-reverse relative"
+                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row-reverse relative project-hidden"
                       >
                         <div class="w-full xl:w-9/12">
                           <a href="myflixcase.html">
@@ -2824,7 +3299,7 @@
                               <img
                                 src="img/mockup-website-4.jpg"
                                 alt="myFlix"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2898,11 +3373,11 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project E -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row relative"
+                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row relative project-hidden"
                       >
                         <div class="w-full xl:w-9/12">
                           <a href="myflixcase.html">
@@ -2912,7 +3387,7 @@
                               <img
                                 src="img/mockup-website-7.jpg"
                                 alt="myFlix API"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -2984,11 +3459,11 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project F -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row-reverse relative"
+                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row-reverse relative project-hidden"
                       >
                         <div class="w-full xl:w-9/12">
                           <a
@@ -3001,7 +3476,7 @@
                               <img
                                 src="img/mockup-website-5.jpg"
                                 alt="myFlix Angular"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -3062,11 +3537,11 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project G -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row relative"
+                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row relative project-hidden"
                       >
                         <div class="w-full xl:w-9/12">
                           <a href="meetcase.html">
@@ -3076,7 +3551,7 @@
                               <img
                                 src="img/mockup-website-6.jpg"
                                 alt="meet"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -3164,11 +3639,11 @@
                       </div>
                       <!-- Divider Line -->
                       <hr
-                        class="border-t border-gray-200 dark:border-gray-700"
+                        class="border-t border-gray-200 dark:border-gray-700 project-hidden"
                       />
                       <!-- Project H -->
                       <div
-                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row-reverse relative"
+                        class="flex flex-col gap-x-5 p-2 transition hover:bg-gray-50 dark:hover:bg-gray-950 xl:flex-row-reverse relative project-hidden"
                       >
                         <div class="w-full xl:w-9/12">
                           <a href="chatappcase.html">
@@ -3178,7 +3653,7 @@
                               <img
                                 src="img/Phone-07.jpg"
                                 alt="Chat App"
-                                class="absolute top-0 left-0 w-full h-full object-cover transition duration-300 hover:scale-105"
+                                class="absolute inset-2 w-auto h-auto object-contain transition duration-300 hover:scale-105 rounded-md"
                               />
                             </div>
                           </a>
@@ -3273,7 +3748,7 @@
               <h2
                 class="md:text-3xl lg:text-3xl xl:3xl text-2xl secondary-title font-medium text-gray-900 dark:text-white"
               >
-                Latest Work
+                Creative Work
               </h2>
             </div>
           </div>
@@ -4021,8 +4496,8 @@
           } else if (hash === 'development') {
             showTab('development')
           } else {
-            // Default to design if no hash or invalid hash
-            showTab('design')
+            // Default to development if no hash or invalid hash
+            showTab('development')
           }
           // Ensure indicator is updated after DOM changes
           setTimeout(updateTabIndicator, 100)
@@ -4058,5 +4533,41 @@
     <script src="js/performance-optimization.js"></script>
     <script src="js/smooth-parallax.js"></script>
     <script src="js/script.js"></script>
+    <script>
+      // Video autoplay on scroll using Intersection Observer
+      document.addEventListener('DOMContentLoaded', function() {
+        const videos = document.querySelectorAll('video[autoplay]');
+        
+        // Remove autoplay attribute initially to control playback
+        videos.forEach(video => {
+          video.removeAttribute('autoplay');
+          video.pause();
+        });
+        
+        // Create intersection observer
+        const videoObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            const video = entry.target;
+            
+            if (entry.isIntersecting) {
+              // Video is in viewport, play it
+              video.play().catch(e => {
+                console.log('Video autoplay failed:', e);
+              });
+            } else {
+              // Video is out of viewport, pause it
+              video.pause();
+            }
+          });
+        }, {
+          threshold: 0.5 // Play when 50% of video is visible
+        });
+        
+        // Observe all videos
+        videos.forEach(video => {
+          videoObserver.observe(video);
+        });
+      });
+    </script>
   </body>
 </html>
