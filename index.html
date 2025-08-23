@@ -2470,11 +2470,12 @@
                             class=" relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300"
                           >
                             <iframe
-                              src="https://www.youtube.com/embed/euYokgOEPHw?autoplay=1&mute=1&loop=1&playlist=euYokgOEPHw&controls=0&modestbranding=1&rel=0&showinfo=0"
+                              src="https://www.youtube.com/embed/euYokgOEPHw?mute=1&loop=1&playlist=euYokgOEPHw&controls=0&modestbranding=1&rel=0&showinfo=0&enablejsapi=1"
                               frameborder="0"
                               allow="autoplay; encrypted-media"
                               allowfullscreen
-                              class="absolute top-0 left-0 w-full h-full rounded-md"
+                              class="absolute top-0 left-0 w-full h-full rounded-md youtube-autoplay"
+                              data-autoplay="true"
                             ></iframe>
                           </div>
                         </div>
@@ -2933,11 +2934,12 @@
                               class="relative w-full pb-[56.25%] overflow-hidden rounded-md transition-all duration-300"
                             >
                               <iframe
-                                src="https://www.youtube.com/embed/CdOR1HH5eao?autoplay=1&mute=1&loop=1&playlist=CdOR1HH5eao&controls=0&modestbranding=1&rel=0&showinfo=0"
+                                src="https://www.youtube.com/embed/CdOR1HH5eao?mute=1&loop=1&playlist=CdOR1HH5eao&controls=0&modestbranding=1&rel=0&showinfo=0&enablejsapi=1"
                                 frameborder="0"
                                 allow="autoplay; encrypted-media"
                                 allowfullscreen
-                                class="absolute top-0 left-0 w-full h-full rounded-md"
+                                class="absolute top-0 left-0 w-full h-full rounded-md youtube-autoplay"
+                                data-autoplay="true"
                               ></iframe>
                             </div>
                           </a>
@@ -4650,6 +4652,40 @@
           videoObserver.observe(video);
         });
       });
+    </script>
+
+    <!-- YouTube API Script -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+      // YouTube autoplay on scroll
+      let youtubePlayer;
+      
+      function onYouTubeIframeAPIReady() {
+        const youtubeIframes = document.querySelectorAll('.youtube-autoplay');
+        
+        youtubeIframes.forEach((iframe, index) => {
+          const player = new YT.Player(iframe, {
+            events: {
+              'onReady': function(event) {
+                // Create intersection observer for this player
+                const observer = new IntersectionObserver((entries) => {
+                  entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                      event.target.playVideo();
+                    } else {
+                      event.target.pauseVideo();
+                    }
+                  });
+                }, {
+                  threshold: 0.5 // Play when 50% of iframe is visible
+                });
+                
+                observer.observe(iframe);
+              }
+            }
+          });
+        });
+      }
     </script>
   </body>
 </html>
