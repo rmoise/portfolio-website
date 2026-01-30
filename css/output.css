@@ -1036,6 +1036,9 @@ input:checked + .toggle-bg {
 .inset-0 {
   inset: 0px !important;
 }
+.inset-2 {
+  inset: 0.5rem !important;
+}
 .inset-y-0 {
   top: 0px !important;
   bottom: 0px !important;
@@ -1419,6 +1422,12 @@ input:checked + .toggle-bg {
 .w-9 {
   width: 2.25rem !important;
 }
+.w-\[101\%\] {
+  width: 101% !important;
+}
+.w-\[102\%\] {
+  width: 102% !important;
+}
 .w-\[28px\] {
   width: 28px !important;
 }
@@ -1636,6 +1645,9 @@ input:checked + .toggle-bg {
 .gap-2 {
   gap: 0.5rem !important;
 }
+.gap-3 {
+  gap: 0.75rem !important;
+}
 .gap-4 {
   gap: 1rem !important;
 }
@@ -1664,6 +1676,9 @@ input:checked + .toggle-bg {
 .gap-x-8 {
   -moz-column-gap: 2rem !important;
        column-gap: 2rem !important;
+}
+.gap-y-1 {
+  row-gap: 0.25rem !important;
 }
 .gap-y-16 {
   row-gap: 4rem !important;
@@ -1982,9 +1997,17 @@ input:checked + .toggle-bg {
 .fill-black {
   fill: #000000 !important;
 }
+.object-contain {
+  -o-object-fit: contain !important;
+     object-fit: contain !important;
+}
 .object-cover {
   -o-object-fit: cover !important;
      object-fit: cover !important;
+}
+.object-left {
+  -o-object-position: left !important;
+     object-position: left !important;
 }
 .p-0 {
   padding: 0px !important;
@@ -4038,16 +4061,18 @@ video {
 }
 
 /* General Styles - Optimized for smooth scrolling */
-html,
+/* Apply overflow-x only to body to avoid Chrome scroll lock (Safari works with both) */
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: Inter, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 /* Optimize scrolling performance */
@@ -5927,16 +5952,6 @@ button[role='tab'][aria-selected='false'] span.dark\:text-white {
   color: #ffffff;
 }
 
-.hover\:scale-105:hover {
-  --tw-scale-x: 1.05 !important;
-  --tw-scale-y: 1.05 !important;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y)) !important;
-}
-
-.hover\:rounded-lg:hover {
-  border-radius: 0.5rem !important;
-}
-
 .hover\:rounded-xl:hover {
   border-radius: 0.75rem !important;
 }
@@ -5964,11 +5979,6 @@ button[role='tab'][aria-selected='false'] span.dark\:text-white {
 .hover\:bg-gray-100:hover {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1)) !important;
-}
-
-.hover\:bg-gray-50:hover {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1)) !important;
 }
 
 .hover\:bg-gray-800:hover {
@@ -6331,11 +6341,6 @@ button[role='tab'][aria-selected='false'] span.dark\:text-white {
 .dark\:hover\:bg-gray-800:hover:is(.dark *) {
   --tw-bg-opacity: 1 !important;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1)) !important;
-}
-
-.dark\:hover\:bg-gray-950:hover:is(.dark *) {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(3 7 18 / var(--tw-bg-opacity, 1)) !important;
 }
 
 .dark\:hover\:bg-neutral-800:hover:is(.dark *) {

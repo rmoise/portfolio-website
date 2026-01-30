@@ -1660,16 +1660,18 @@ video {
 }
 
 /* General Styles - Optimized for smooth scrolling */
-html,
+/* Apply overflow-x only to body to avoid Chrome scroll lock (Safari works with both) */
+html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   font-family: Inter, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 /* Optimize scrolling performance */
